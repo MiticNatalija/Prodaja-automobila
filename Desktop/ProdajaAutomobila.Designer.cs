@@ -1,6 +1,6 @@
 ﻿namespace Desktop
 {
-    partial class Form1
+    partial class frmProdajaAutomobila
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // frmProdajaAutomobila
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(471, 458);
+            this.Name = "frmProdajaAutomobila";
+            this.Text = "Prodaja automobila";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

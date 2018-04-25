@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Desktop
 {
-    public partial class Form1 : Form
+    public partial class frmProdajaAutomobila : Form
     {
-        public Form1()
+        public frmProdajaAutomobila()
         {
             InitializeComponent();
         }
