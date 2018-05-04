@@ -8,12 +8,15 @@ namespace Desktop.Entiteti
 {
     public class Vlasnik
     {
-        //pripada vozilu
-        public virtual int IdVozila { get; set; }
+       //slabi tip entiteta
+
+
+       // public virtual int IdVozila { get; set; }
         public virtual string Telefon { get; set; }
         public virtual string Adresa { get; set; }
-
-
+        //pripada vozilu
+        public virtual Vozilo vozilo { get; set; }
+        //ili da se napravi mapiranje ili da se ovi atributi stave u vozilo
 
     }
 }

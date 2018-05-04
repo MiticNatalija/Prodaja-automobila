@@ -22,6 +22,9 @@ namespace Desktop.Mapiranja
             Map(x => x.OznakaMotora, "OZNAKA_MOTORA");
             Map(x => x.TipVozila, "TIP_VOZILA");
             Map(x => x.Gorivo, "GORIVO");
+           
+            //VEZA N:1 SE_NALAZI
+            References(x => x.salon).Column("SALON_ID").LazyLoad();
 
         }
     }
@@ -32,7 +35,8 @@ namespace Desktop.Mapiranja
             public TeretnoMapiranja()
             {
                 DiscriminatorValue("Teretno");
-            }
+            Map(x => x.Nosivost, "NOSIVOST");
+        }
         }
 
     class PutnickoMapiranja : SubclassMap<Putnicko>
@@ -40,6 +44,7 @@ namespace Desktop.Mapiranja
         public PutnickoMapiranja()
         {
             DiscriminatorValue("Putnicko");
+            Map(x => x.BrojMesta, "BROJ_MESTA");
         }
     }
 

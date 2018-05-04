@@ -13,7 +13,8 @@ namespace Desktop.Entiteti
         public virtual string Gorivo { get; set; }
         public virtual string OznakaMotora { get; set; }
         public virtual string TipVozila { get; set; }
-
+        public virtual Predstavnistvo salon { get; set; }
+        
 
         //salonId
         //predstavnikID
@@ -23,8 +24,8 @@ namespace Desktop.Entiteti
     }
         public class Putnicko :Vozilo
         {
-            public virtual int BrojMesta { get; set; }
-        }
+        public virtual int BrojMesta { get; set; }
+    }
 
         public class Teretno:Vozilo
         {

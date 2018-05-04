@@ -12,8 +12,8 @@ namespace Desktop.Entiteti
         public virtual string Ime { get; set; }
         public virtual string Prezime { get; set; }
         public virtual string Telefon { get; set; }
-       // public virtual int KupacId { get; set; }
-
+        // public virtual int KupacId { get; set; }
+        public virtual Kupac kupac { get; set; }
 
 
 
