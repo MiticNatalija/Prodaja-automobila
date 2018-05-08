@@ -36,16 +36,99 @@ namespace Desktop.Mapiranja
         public ServisKiaMapiranje()
         {
             DiscriminatorValue("ServisKia");
-            //PredstavnikKia ne adresa
-            Map(x => x.Adresa, "ADRESA");
+
+            References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
         }
     }
 
-    public class ServisHyundaiMapiranje : SubclassMap<ServisKia>
+    public class ServisHyundaiMapiranje : SubclassMap<ServisHyundai>
     {
         public ServisHyundaiMapiranje()
         {
             DiscriminatorValue("ServisHyundai");
+
+            References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
+        }
+    }
+
+    public class ServisHyundaiKiaMapiranje : SubclassMap<ServisHyundaiKia>
+    {
+        public ServisHyundaiKiaMapiranje()
+        {
+            DiscriminatorValue("ServisHyundaiKia");
+
+            References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
+            References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
+        }
+    }
+
+    public class SalonKiaMapiranje : SubclassMap<SalonKia>
+    {
+        public SalonKiaMapiranje()
+        {
+            DiscriminatorValue("SalonKia");
+
+            References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
+        }
+    }
+
+    public class SalonHyundaiMapiranje : SubclassMap<SalonHyundai>
+    {
+        public SalonHyundaiMapiranje()
+        {
+            DiscriminatorValue("SalonHyundai");
+
+            Map(x => x.DatumVazenjaLicence, "DATUM_VAZENJA_LICENCE");
+
+            References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
+        }
+    }
+
+    public class SalonHyundaiKiaMapiranje : SubclassMap<SalonHyundaiKia>
+    {
+        public SalonHyundaiKiaMapiranje()
+        {
+            DiscriminatorValue("SalonHyundaiKia");
+
+            Map(x => x.DatumVazenjaLicence, "DATUM_VAZENJA_LICENCE");
+
+            References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
+            References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
+        }
+    }
+
+    public class SalonServisKiaMapiranje : SubclassMap<SalonServisKia>
+    {
+        public SalonServisKiaMapiranje()
+        {
+            DiscriminatorValue("SalonServisKia");
+
+            References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
+        }
+    }
+
+    public class SalonServisHyundaiMapiranje : SubclassMap<SalonServisHyundai>
+    {
+        public SalonServisHyundaiMapiranje()
+        {
+            DiscriminatorValue("SalonServisHyundai");
+
+            Map(x => x.DatumVazenjaLicence, "DATUM_VAZENJA_LICENCE");
+
+            References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
+        }
+    }
+
+    public class SalonServisHyundaiKiaMapiranje : SubclassMap<SalonServisHyundaiKia>
+    {
+        public SalonServisHyundaiKiaMapiranje()
+        {
+            DiscriminatorValue("SalonServisHyundaiKia");
+
+            Map(x => x.DatumVazenjaLicence, "DATUM_VAZENJA_LICENCE");
+
+            References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
+            References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
         }
     }
 }

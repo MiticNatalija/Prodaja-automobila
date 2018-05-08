@@ -8,8 +8,6 @@ namespace Desktop.Entiteti
 {
     public class Knjizica
     {
-   
-
         public virtual DateTime DatumIntervencije { get; set; }
         public virtual int CenaUsluge { get; set; }
         public virtual string Radovi { get; set; }

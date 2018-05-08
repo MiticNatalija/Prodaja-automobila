@@ -8,7 +8,7 @@ namespace Desktop.Entiteti
 {
     public class Kupac
     {
-        public virtual int Id { get; set; }
+        public virtual int Id { get; protected set; }
         // ID vozila
         public virtual Vozilo vozilo { get; set; }
     }
