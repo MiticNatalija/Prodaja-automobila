@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Desktop.Entiteti
 {
-    public class Predstavnistvo
+    public abstract class Predstavnistvo
     {
         public virtual int Id { get; set; }
         public virtual string Adresa { get; set; }
@@ -21,9 +21,15 @@ namespace Desktop.Entiteti
         //HYUNDAI ID
         //VAZENJE LICENCE
 
+    }
 
+    public class ServisKia : Predstavnistvo
+    {
+        
+    }
 
-
+    public class ServisKia : Predstavnistvo
+    {
 
     }
 }
