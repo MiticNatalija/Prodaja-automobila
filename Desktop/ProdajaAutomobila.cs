@@ -157,5 +157,35 @@ namespace Desktop
                 MessageBox.Show(ec.Message);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                MehanicarHyundai m = s.Load<MehanicarHyundai>(5);
+                PredstavnikHyundai p = s.Load<PredstavnikHyundai>(1);
+
+                Testira t = new Testira();
+                t.Mehanicar = m;
+                t.Predstavnik = p;
+                t.DatumTestiranja = DateTime.Now;
+                t.Ocena = 4;
+
+
+                s.Save(t);
+
+                s.Flush();
+                s.Close();
+
+                MessageBox.Show("Podaci o novom testiranju su uneti.");
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
     }
 }

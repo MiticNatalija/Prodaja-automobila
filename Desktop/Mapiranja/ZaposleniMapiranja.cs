@@ -46,6 +46,15 @@ namespace Desktop.Mapiranja
 
             Map(x => x.Adresa, "ADRESA");
             Map(x => x.Telefon, "TELEFON");
+
+            HasManyToMany(x => x.Mehanicari)
+                .Table("TESTIRA")
+                .ParentKeyColumn("PREDSTAVNIK_ID")
+                .ChildKeyColumn("MEHANICAR_ID")
+                .Inverse()
+                .Cascade.All();
+
+            HasMany(x => x.TestiraMehanicari).KeyColumn("PREDSTAVNIK_ID").LazyLoad().Cascade.All().Inverse();
         }
     }
 
@@ -66,6 +75,15 @@ namespace Desktop.Mapiranja
             DiscriminatorValue("MehanicarHyundai");
 
             Map(x => x.Specijalnost, "SPECIJALNOST");
+
+            HasManyToMany(x => x.Predstavnici)
+                .Table("TESTIRA")
+                .ParentKeyColumn("MEHANICAR_ID")
+                .ChildKeyColumn("PREDSTAVNIK_ID")
+                .Cascade.All();
+
+            HasMany(x => x.TestiraPredstavnici).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.All().Inverse();
+
         }
     }
 

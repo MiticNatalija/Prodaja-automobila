@@ -33,13 +33,14 @@
             this.cmdFizickoLice = new System.Windows.Forms.Button();
             this.btnVezaSe_nalazi = new System.Windows.Forms.Button();
             this.btnVlasnik = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUcitajVozilo
             // 
             this.btnUcitajVozilo.Location = new System.Drawing.Point(12, 12);
             this.btnUcitajVozilo.Name = "btnUcitajVozilo";
-            this.btnUcitajVozilo.Size = new System.Drawing.Size(75, 23);
+            this.btnUcitajVozilo.Size = new System.Drawing.Size(106, 23);
             this.btnUcitajVozilo.TabIndex = 0;
             this.btnUcitajVozilo.Text = "Ucitaj vozilo";
             this.btnUcitajVozilo.UseVisualStyleBackColor = true;
@@ -49,7 +50,7 @@
             // 
             this.btnUcitajKupca.Location = new System.Drawing.Point(12, 41);
             this.btnUcitajKupca.Name = "btnUcitajKupca";
-            this.btnUcitajKupca.Size = new System.Drawing.Size(75, 23);
+            this.btnUcitajKupca.Size = new System.Drawing.Size(106, 23);
             this.btnUcitajKupca.TabIndex = 1;
             this.btnUcitajKupca.Text = "Ucitaj kupca";
             this.btnUcitajKupca.UseVisualStyleBackColor = true;
@@ -79,17 +80,28 @@
             // 
             this.btnVlasnik.Location = new System.Drawing.Point(13, 130);
             this.btnVlasnik.Name = "btnVlasnik";
-            this.btnVlasnik.Size = new System.Drawing.Size(75, 23);
+            this.btnVlasnik.Size = new System.Drawing.Size(105, 23);
             this.btnVlasnik.TabIndex = 4;
             this.btnVlasnik.Text = "Vlasnik";
             this.btnVlasnik.UseVisualStyleBackColor = true;
             this.btnVlasnik.Click += new System.EventHandler(this.btnVlasnik_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(13, 159);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(105, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Kreiranje Testira";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnVezaSeNalazi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 372);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnVlasnik);
             this.Controls.Add(this.btnVezaSe_nalazi);
             this.Controls.Add(this.cmdFizickoLice);
@@ -109,6 +121,7 @@
         private System.Windows.Forms.Button cmdFizickoLice;
         private System.Windows.Forms.Button btnVezaSe_nalazi;
         private System.Windows.Forms.Button btnVlasnik;
+        private System.Windows.Forms.Button button1;
     }
 }
 

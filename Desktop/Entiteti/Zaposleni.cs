@@ -8,7 +8,7 @@ namespace Desktop.Entiteti
 {
     public abstract class Zaposleni
     {
-        public virtual long Id { get; protected set; }
+        public virtual int Id { get; protected set; }
         public virtual string Mbr { get; set; }
         public virtual string LicnoIme { get; set; }
         public virtual string ImeOca { get; set; }
@@ -27,6 +27,16 @@ namespace Desktop.Entiteti
     {
         public virtual string Adresa { get; set; }
         public virtual string Telefon { get; set; }
+
+        public virtual IList<MehanicarHyundai> Mehanicari { get; set; }
+
+        public virtual IList<Testira> TestiraMehanicari { get; set; }
+
+        public PredstavnikHyundai()
+        {
+            Mehanicari = new List<MehanicarHyundai>();
+            TestiraMehanicari = new List<Testira>();
+        }
     }
 
     public class MehanicarKia : Zaposleni
@@ -37,6 +47,16 @@ namespace Desktop.Entiteti
     public class MehanicarHyundai : Zaposleni
     {
         public virtual string Specijalnost { get; set; }
+
+        public virtual IList<PredstavnikHyundai> Predstavnici { get; set; }
+
+        public virtual IList<Testira> TestiraPredstavnici { get; set; }
+
+        public MehanicarHyundai()
+        {
+            Predstavnici = new List<PredstavnikHyundai>();
+            TestiraPredstavnici = new List<Testira>();
+        }
     }
 
     public class MehanicarKiaHyundai : Zaposleni
