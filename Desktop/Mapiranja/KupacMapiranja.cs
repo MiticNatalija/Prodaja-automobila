@@ -19,7 +19,7 @@ namespace Desktop.Mapiranja
           //  Id(x => x.Id).GeneratedBy.TriggerIdentity();
             Id(x => x.Id).Column("ID").GeneratedBy.SequenceIdentity("S15764.KUPAC_ID_SEQ");
 
-            References(x => x.vozilo).Column("VOZILO_ID");//probaj .Unique()
+            References(x => x.Vozilo).Column("VOZILO_ID");//probaj .Unique()
             //ILI HASONE moze 
         }
 

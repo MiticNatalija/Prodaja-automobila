@@ -20,11 +20,14 @@ namespace Desktop.Mapiranja
 
             Map(x => x.Registracija, "REGISTRACIJA");
             Map(x => x.OznakaMotora, "OZNAKA_MOTORA");
-            Map(x => x.TipVozila, "TIP_VOZILA");
             Map(x => x.Gorivo, "GORIVO");
-           
+            Map(x => x.PopustiDelovi, "POPUSTI_DELOVI");
+            Map(x => x.PopustiServis, "POPUSTI_SERVIS");
+
             //VEZA N:1 SE_NALAZI
-            References(x => x.salon).Column("SALON_ID").LazyLoad();
+            References(x => x.Salon).Column("SALON_ID").LazyLoad();
+            //VEZA N:1 PRODAJE
+            References(x => x.Predstavnik).Column("PREDSTAVNIK_ID").LazyLoad();
 
         }
     }

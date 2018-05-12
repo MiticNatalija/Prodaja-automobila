@@ -16,7 +16,7 @@ namespace Desktop.Entiteti
         public virtual string Adresa { get; set; }
         //pripada vozilu
         public virtual Vozilo vozilo { get; set; }
-        //ili da se napravi mapiranje ili da se ovi atributi stave u vozilo
+        //ili da se napravi mapiranje ili da se ovi atributi stave u Vozilo
 
     }
 }

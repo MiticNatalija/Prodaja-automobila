@@ -42,7 +42,7 @@
             this.btnUcitajVozilo.Name = "btnUcitajVozilo";
             this.btnUcitajVozilo.Size = new System.Drawing.Size(106, 23);
             this.btnUcitajVozilo.TabIndex = 0;
-            this.btnUcitajVozilo.Text = "Ucitaj vozilo";
+            this.btnUcitajVozilo.Text = "Ucitaj Vozilo";
             this.btnUcitajVozilo.UseVisualStyleBackColor = true;
             this.btnUcitajVozilo.Click += new System.EventHandler(this.btnUcitajVozilo_Click);
             // 

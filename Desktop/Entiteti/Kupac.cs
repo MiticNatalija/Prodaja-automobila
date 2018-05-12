@@ -10,6 +10,6 @@ namespace Desktop.Entiteti
     {
         public virtual int Id { get; protected set; }
         // ID vozila
-        public virtual Vozilo vozilo { get; set; }
+        public virtual Vozilo Vozilo { get; set; }
     }
 }

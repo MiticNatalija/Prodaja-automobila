@@ -12,9 +12,12 @@ namespace Desktop.Entiteti
         public virtual string Registracija { get; set; }
         public virtual string Gorivo { get; set; }
         public virtual string OznakaMotora { get; set; }
-        public virtual string TipVozila { get; set; }
-        public virtual Predstavnistvo salon { get; set; }
-        
+        public virtual string PopustiServis { get; set; }
+        public virtual string PopustiDelovi { get; set; }
+
+        public virtual Predstavnistvo Salon { get; set; }
+
+        public virtual Zaposleni Predstavnik { get; set; }
 
         //salonId
         //predstavnikID
