@@ -34,6 +34,9 @@
             this.btnVezaSe_nalazi = new System.Windows.Forms.Button();
             this.btnVlasnik = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.createKnjizica = new System.Windows.Forms.Button();
+            this.vezaAngazuje = new System.Windows.Forms.Button();
+            this.vezaSadrzi = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUcitajVozilo
@@ -96,11 +99,44 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // createKnjizica
+            // 
+            this.createKnjizica.Location = new System.Drawing.Point(12, 188);
+            this.createKnjizica.Name = "createKnjizica";
+            this.createKnjizica.Size = new System.Drawing.Size(106, 23);
+            this.createKnjizica.TabIndex = 6;
+            this.createKnjizica.Text = "Kreiranje knjizice";
+            this.createKnjizica.UseVisualStyleBackColor = true;
+            this.createKnjizica.Click += new System.EventHandler(this.createKnjizica_Click);
+            // 
+            // vezaAngazuje
+            // 
+            this.vezaAngazuje.Location = new System.Drawing.Point(12, 217);
+            this.vezaAngazuje.Name = "vezaAngazuje";
+            this.vezaAngazuje.Size = new System.Drawing.Size(106, 23);
+            this.vezaAngazuje.TabIndex = 7;
+            this.vezaAngazuje.Text = "Veza Angazuje";
+            this.vezaAngazuje.UseVisualStyleBackColor = true;
+            this.vezaAngazuje.Click += new System.EventHandler(this.vezaAngazuje_Click);
+            // 
+            // vezaSadrzi
+            // 
+            this.vezaSadrzi.Location = new System.Drawing.Point(13, 246);
+            this.vezaSadrzi.Name = "vezaSadrzi";
+            this.vezaSadrzi.Size = new System.Drawing.Size(105, 23);
+            this.vezaSadrzi.TabIndex = 8;
+            this.vezaSadrzi.Text = "Veza Sadrzi";
+            this.vezaSadrzi.UseVisualStyleBackColor = true;
+            this.vezaSadrzi.Click += new System.EventHandler(this.vezaSadrzi_Click);
+            // 
             // btnVezaSeNalazi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 372);
+            this.Controls.Add(this.vezaSadrzi);
+            this.Controls.Add(this.vezaAngazuje);
+            this.Controls.Add(this.createKnjizica);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnVlasnik);
             this.Controls.Add(this.btnVezaSe_nalazi);
@@ -122,6 +158,9 @@
         private System.Windows.Forms.Button btnVezaSe_nalazi;
         private System.Windows.Forms.Button btnVlasnik;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button createKnjizica;
+        private System.Windows.Forms.Button vezaAngazuje;
+        private System.Windows.Forms.Button vezaSadrzi;
     }
 }
 

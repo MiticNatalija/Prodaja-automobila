@@ -18,6 +18,10 @@ namespace Desktop.Entiteti
         public virtual IList<Vozilo> Vozila { get; set; }
     }
 
+    //public abstract class Salon : Predstavnistvo { }
+    //public abstract class Servis : Predstavnistvo { }
+    //public abstract class SalonServis : Predstavnistvo { }
+
     public class ServisKia : Predstavnistvo
     {
         public virtual PredstavnikKia PredstavnikKia { get; set; }
@@ -65,7 +69,7 @@ namespace Desktop.Entiteti
 
     public class SalonServisHyundaiKia : Predstavnistvo
     {
-        public virtual PredstavnikKia PredstavnikHyundai { get; set; }
+        public virtual PredstavnikHyundai PredstavnikHyundai { get; set; }
         public virtual DateTime DatumVazenjaLicence { get; set; }
         public virtual PredstavnikKia PredstavnikKia { get; set; }
     }

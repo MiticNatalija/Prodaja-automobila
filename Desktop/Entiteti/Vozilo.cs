@@ -19,6 +19,8 @@ namespace Desktop.Entiteti
 
         public virtual Zaposleni Predstavnik { get; set; }
 
+        
+
         //salonId
         //predstavnikID
         //popustiServis

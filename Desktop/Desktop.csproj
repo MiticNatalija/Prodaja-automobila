@@ -78,19 +78,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLayer.cs" />
+    <Compile Include="Entiteti\Angazuje.cs" />
     <Compile Include="Entiteti\FizickoLice.cs" />
     <Compile Include="Entiteti\Knjizica.cs" />
     <Compile Include="Entiteti\Kupac.cs" />
     <Compile Include="Entiteti\PravnoLice.cs" />
     <Compile Include="Entiteti\Predstavnistvo.cs" />
+    <Compile Include="Entiteti\Sadrzi.cs" />
     <Compile Include="Entiteti\Testira.cs" />
     <Compile Include="Entiteti\Vlasnik.cs" />
     <Compile Include="Entiteti\Vozilo.cs" />
     <Compile Include="Entiteti\Zaposleni.cs" />
+    <Compile Include="Mapiranja\AngazujeMapiranja.cs" />
     <Compile Include="Mapiranja\FizickoLiceMapiranja.cs" />
+    <Compile Include="Mapiranja\KnjizicaMapiranja.cs" />
     <Compile Include="Mapiranja\KupacMapiranja.cs" />
     <Compile Include="Mapiranja\PravnoLiceMapiranja.cs" />
     <Compile Include="Mapiranja\PredstavnistvoMapiranja.cs" />
+    <Compile Include="Mapiranja\SadrziMapiranja.cs" />
     <Compile Include="Mapiranja\TestiraMapiranja.cs" />
     <Compile Include="Mapiranja\VlasnikMapiranja.cs" />
     <Compile Include="Mapiranja\VoziloMapiranja.cs" />
