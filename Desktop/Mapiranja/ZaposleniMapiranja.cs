@@ -25,7 +25,7 @@ namespace Desktop.Mapiranja
             Map(x => x.DatumRodjenja, "DATUM_RODJENJA");
             Map(x => x.DatumZaposlenja, "DATUM_ZAPOSLENJA");
             //VEZA N:1 PRODAJE
-            HasMany(x => x.Vozila).KeyColumn("PREDSTAVNIK_ID").LazyLoad().Cascade.All().Inverse();
+          //  HasMany(x => x.Vozila).KeyColumn("PREDSTAVNIK_ID").LazyLoad().Cascade.All().Inverse();
 
         }
     }
@@ -38,6 +38,7 @@ namespace Desktop.Mapiranja
 
             Map(x => x.Adresa, "ADRESA");
             Map(x => x.Telefon, "TELEFON");
+            HasMany(x => x.Vozila).KeyColumn("PREDSTAVNIK_ID").LazyLoad().Cascade.All().Inverse();
         }
     }
 
@@ -49,6 +50,7 @@ namespace Desktop.Mapiranja
 
             Map(x => x.Adresa, "ADRESA");
             Map(x => x.Telefon, "TELEFON");
+            HasMany(x => x.Vozila).KeyColumn("PREDSTAVNIK_ID").LazyLoad().Cascade.All().Inverse();
 
             HasManyToMany(x => x.Mehanicari)
                 .Table("TESTIRA")

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Desktop.Entiteti
 {
-    public class PravnoLice
+    public class PravnoLice:Kupac
     {
         public virtual int Pib { get; set; }
         public virtual string Ime { get; set; }
         public virtual string Prezime { get; set; }
         public virtual string Telefon { get; set; }
         // public virtual int KupacId { get; set; }
-        public virtual Kupac kupac { get; set; }
+      //  public virtual Kupac kupac { get; set; }
 
 
 

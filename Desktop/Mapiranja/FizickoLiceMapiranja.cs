@@ -8,22 +8,22 @@ using FluentNHibernate.Mapping;
 
 namespace Desktop.Mapiranja
 {
-    public class FizickoLiceMapiranja:ClassMap<FizickoLice>
+    public class FizickoLiceMapiranja:SubclassMap<FizickoLice>
     {
         public FizickoLiceMapiranja()
         {
             Table("FIZICKO_LICE");
 
 
-          //  KeyColumn("KUPAC_ID");
-            Id(x => x.Jmbg).GeneratedBy.Assigned().Column("JMBG");
+            KeyColumn("KUPAC_ID");
+          //  Id(x => x.Jmbg).GeneratedBy.Assigned().Column("JMBG");
             //Map(x => x.Jmbg, "JMBG");
             Map(x => x.Ime, "IME");
             Map(x => x.Prezime, "PREZIME");
             Map(x => x.Adresa, "ADRESA");
             Map(x => x.Telefon, "TELEFON");
 
-            References(x => x.kupac).Column("KUPAC_ID");
+           // References(x => x.kupac).Column("KUPAC_ID");
         }
     }
 }

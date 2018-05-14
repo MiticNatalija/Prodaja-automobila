@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Desktop.Entiteti
 {
-    public class FizickoLice
+    public class FizickoLice:Kupac
     {
         public virtual string Jmbg { get; set; }
         public virtual string Ime { get; set; }
@@ -14,6 +14,6 @@ namespace Desktop.Entiteti
         public virtual string Adresa { get; set; }
         public virtual string Telefon { get; set; }
         //kupacId
-        public virtual Kupac kupac { get; set; }
+        //public virtual Kupac kupac { get; set; }
     }
 }

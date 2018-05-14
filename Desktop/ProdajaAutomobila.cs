@@ -89,9 +89,9 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-                FizickoLice f = s.Load<FizickoLice>("2007987457810");
+                //FizickoLice f = s.Load<FizickoLice>("2007987457810");
 
-                MessageBox.Show(f.Ime + " "+ f.kupac.Vozilo.Registracija );
+                //MessageBox.Show(f.Ime + " "+ f.kupac.Vozilo.Registracija );
 
             }
             catch (Exception ec)

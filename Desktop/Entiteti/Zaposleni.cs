@@ -16,19 +16,22 @@ namespace Desktop.Entiteti
         public virtual DateTime DatumRodjenja { get; set; }
         public virtual DateTime DatumZaposlenja { get; set; }
 
-        public virtual IList<Vozilo> Vozila { get; set; }
+        //public virtual IList<Vozilo> Vozila { get; set; }
     }
 
     public class PredstavnikKia : Zaposleni
     {
         public virtual string Adresa { get; set; }
         public virtual string Telefon { get; set; }
+        public virtual IList<Vozilo> Vozila { get; set; }
     }
 
     public class PredstavnikHyundai : Zaposleni
     {
         public virtual string Adresa { get; set; }
         public virtual string Telefon { get; set; }
+
+        public virtual IList<Vozilo> Vozila { get; set; }
 
         public virtual IList<MehanicarHyundai> Mehanicari { get; set; }
 
