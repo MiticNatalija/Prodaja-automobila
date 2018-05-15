@@ -32,15 +32,27 @@ namespace Desktop
                     OznakaMotora = "127898456",
                     BrojMesta = 4
                 };
+                //radi lepo
+                IQuery q = s.CreateQuery("from Vozilo as vo where vo.Id=1");
 
-                //Teretno t = new Teretno()
-                //{
-                //    Gorivo = "Dizel",
-                //    OznakaMotora = "123456789",
-                //    Registracija = "BG 445 KJ",
-                //    TipVozila = "Teretno",
-                //    Nosivost = 1500
-                //};
+               Vozilo v1 = q.UniqueResult<Vozilo>();
+                MessageBox.Show(v1.GetType().ToString());
+
+
+                //ovo radi-koriscen query
+                IList<Vozilo> r1 = s.QueryOver<Vozilo>().List<Vozilo>();
+                foreach (Vozilo v in r1)
+                {
+                    if (v.GetType() == typeof(Putnicko))
+                    {
+                        Putnicko pu = (Putnicko)v;
+                    }
+                    else if (v.GetType() == typeof(Teretno))
+                    {
+                        Teretno ter = (Teretno)v;
+                    }
+
+                }
 
 
                 Vozilo r = s.Load<Vozilo>(1);
@@ -48,7 +60,6 @@ namespace Desktop
 
                 MessageBox.Show(r.Gorivo + " "  + " " + r.Registracija);
 
-                //  s.SaveOrUpdate(t);
                 s.Save(p);
                 s.Flush();
                 s.Close();
@@ -114,12 +125,14 @@ namespace Desktop
                 Predstavnistvo p = s.Load<Predstavnistvo>(1);
                 p.Adresa = "Bulevar Pobede 45";
 
+
+
                 MessageBox.Show(v.Salon.Adresa);
 
-                foreach(Vozilo vo in p.Vozila)
-                {
-                    MessageBox.Show(vo.Registracija);
-                }
+                //foreach (Vozilo vo in p.Vozila)
+                //{
+                //    MessageBox.Show(vo.Registracija);
+                //}
 
                 s.SaveOrUpdate(p);
                 s.Flush();
@@ -309,8 +322,11 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-                Zaposleni z = s.Load<Zaposleni>(5);
-                Knjizica p = s.Load<Knjizica>(1);
+                //knjizica treba da se menja,ali ovako bi islo
+                IQuery q = s.CreateQuery("from Zaposleni as z where z.Id=5 ");
+                IQuery q1 = s.CreateQuery("from Knjizica as k where k.Id=1 ");
+                Zaposleni z = q.UniqueResult<Zaposleni>();
+                Knjizica p = q1.UniqueResult<Knjizica>();
 
                 Sadrzi t = new Sadrzi();
 
@@ -346,6 +362,32 @@ namespace Desktop
 
                 MessageBox.Show("Podaci o novom testiranju su uneti.");
 
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnPredstavnistvo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                ISession s = DataLayer.GetSession();
+
+                IList<Predstavnistvo> p = s.QueryOver<Predstavnistvo>().List<Predstavnistvo>();
+                foreach (Predstavnistvo pre in p)
+                {
+                    if (pre.GetType() == typeof(SalonServisHyundaiKia))
+                        MessageBox.Show("ok");
+
+                }
+
+                IQuery q = s.CreateQuery("from Predstavnistvo as p where p.Id=1");
+
+                Predstavnistvo pr = q.UniqueResult<Predstavnistvo>();
+                MessageBox.Show(pr.GetType().ToString());
             }
             catch (Exception ec)
             {

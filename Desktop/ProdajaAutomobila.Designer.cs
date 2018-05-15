@@ -37,6 +37,7 @@
             this.createKnjizica = new System.Windows.Forms.Button();
             this.vezaAngazuje = new System.Windows.Forms.Button();
             this.vezaSadrzi = new System.Windows.Forms.Button();
+            this.btnPredstavnistvo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUcitajVozilo
@@ -129,11 +130,22 @@
             this.vezaSadrzi.UseVisualStyleBackColor = true;
             this.vezaSadrzi.Click += new System.EventHandler(this.vezaSadrzi_Click);
             // 
+            // btnPredstavnistvo
+            // 
+            this.btnPredstavnistvo.Location = new System.Drawing.Point(202, 11);
+            this.btnPredstavnistvo.Name = "btnPredstavnistvo";
+            this.btnPredstavnistvo.Size = new System.Drawing.Size(116, 23);
+            this.btnPredstavnistvo.TabIndex = 9;
+            this.btnPredstavnistvo.Text = "Predstavnistvo";
+            this.btnPredstavnistvo.UseVisualStyleBackColor = true;
+            this.btnPredstavnistvo.Click += new System.EventHandler(this.btnPredstavnistvo_Click);
+            // 
             // btnVezaSeNalazi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 372);
+            this.Controls.Add(this.btnPredstavnistvo);
             this.Controls.Add(this.vezaSadrzi);
             this.Controls.Add(this.vezaAngazuje);
             this.Controls.Add(this.createKnjizica);
@@ -161,6 +173,7 @@
         private System.Windows.Forms.Button createKnjizica;
         private System.Windows.Forms.Button vezaAngazuje;
         private System.Windows.Forms.Button vezaSadrzi;
+        private System.Windows.Forms.Button btnPredstavnistvo;
     }
 }
 
