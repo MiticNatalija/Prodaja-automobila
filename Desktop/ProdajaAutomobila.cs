@@ -26,7 +26,6 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
              
                 Entiteti.Putnicko p = new Entiteti.Putnicko()
-
                 {
                     Registracija = "NI 789 PO",
                     Gorivo = "Dizel",
@@ -45,7 +44,7 @@ namespace Desktop
 
 
                 Vozilo r = s.Load<Vozilo>(1);
-             //   Putnicko r1 = s.Load<Putnicko>(1);
+              //Putnicko r1 = s.Load<Putnicko>(1);
 
                 MessageBox.Show(r.Gorivo + " "  + " " + r.Registracija);
 
@@ -139,15 +138,30 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
 
                 Vozilo j = s.Load<Vozilo>(1);
-                Vlasnik v = s.Load<Vlasnik>("060789456");
-                MessageBox.Show(v.vozilo.Registracija);
+
+                //Vlasnik v = s.Load<Vlasnik>("060789456");
+                //MessageBox.Show(v.Vozilo.Registracija);
+
                 Vlasnik v1 = new Vlasnik()
                 {
                     Adresa = "sadsad",
                     Telefon = "024156151",
-                    vozilo = j
+                    Vozilo = j
                 };
+
+                // Ako izmenimo relacioni i sql naredbe za Vlasnika i dodamo mu ID, 
+                // onda ce da ima ID, VoziloID, Telefon, Adresa, gde je samo ID primary key,
+                // onda moze da se proba ovako: 
+
+                //Vlasnik v2 = new Vlasnik(j);
+                //v2.Adresa = "Bozidara Adzije 87";
+                //v2.Telefon = "0691887134";
+                
+
+                //proveriti i ucitavanje iz baze
+
                 s.SaveOrUpdate(v1);
+                //s.Save(v2);
                 s.Flush();
                 s.Close();
             }
@@ -162,58 +176,52 @@ namespace Desktop
             try
             {
                 ISession s = DataLayer.GetSession();
+                Testira t = new Testira();
 
                 MehanicarHyundai m = s.Load<MehanicarHyundai>(5);
-                PredstavnikHyundai p = s.Load<PredstavnikHyundai>(22);
+                PredstavnikHyundai p = s.Load<PredstavnikHyundai>(1);
 
-                //foreach (PredstavnikHyundai pr in m.Predstavnici)
+                // Maruska:
+                // Ovo ispod ne radi, upada u else granu.
+
+                //MehanicarHyundai m=new MehanicarHyundai();
+                //PredstavnikHyundai p=new PredstavnikHyundai();
+
+                //Zaposleni z1 = s.Load<Zaposleni>(5);
+                //Zaposleni z2 = s.Load<Zaposleni>(1);
+
+                //if (z1.GetType() == typeof(MehanicarHyundai))
                 //{
-                //    MessageBox.Show(p.Adresa);
+                //    m = (MehanicarHyundai)z1;
                 //}
-                //foreach (MehanicarHyundai me in p.Mehanicari)
+                //else
                 //{
-                //    MessageBox.Show(me.Specijalnost);
+                //    MessageBox.Show("Treba ucitati MehanicarHyundai");
                 //}
 
-
-
-                //MehanicarHyundai m1 = new MehanicarHyundai()
+                //if (z2.GetType() == typeof(PredstavnikHyundai))
                 //{
-                //    DatumRodjenja = new DateTime(1984,5,15),
-                //    DatumZaposlenja = new DateTime(2014,4,21),
-                //    Specijalnost = "motor",
-                //    ImeOca = "Goran",
-                //    LicnoIme = "Dragan",
-                //    Mbr = "2012980736589",
-                //    Prezime = "Ilic"
-
-
-                //};
-
-                //PredstavnikHyundai h1 = new PredstavnikHyundai()
+                //    p = (PredstavnikHyundai)z2;
+                //}
+                //else
                 //{
-                //    DatumRodjenja = new DateTime(1970,10,10),
-                //    DatumZaposlenja = new DateTime(2010, 10, 10),
-                //    Adresa = "Novosadska 15",
-                //    ImeOca = "Zoran",
-                //    LicnoIme = "Dejan",
-                //    Mbr = "1010970401548",
-                //    Prezime = "Ilic",
-                //    Telefon = "064789456"
-                //};
-                //dodavanje-mora i ocena i datum da ide u tabelu testira
-                //m1.Predstavnici.Add(h1);
-                //h1.Mehanicari.Add(m1);
-                //s.Save(h1);
-
-                Testira t = new Testira();
-                //prethodno treba proveriri dal su ucitani bas MehanicarHyundai 
-                //i bas PredstavnikHyundai 
+                //    MessageBox.Show("Treba ucitati PredstavnikHyundai");
+                //}
 
                 t.Mehanicar = m;
                 t.Predstavnik = p;
                 t.DatumTestiranja = DateTime.Now;
-                t.Ocena = 2;
+                t.Ocena = 4;
+
+
+                m.Predstavnici.Add(p);
+                m.TestiraPredstavnici.Add(t);
+                p.Mehanicari.Add(m);
+                p.TestiraMehanicari.Add(t);
+                //ovo radi ispravno, proveri dal tako treba da se radi 
+
+                s.Save(p); 
+                //ovo valjda ne treba, ne menja se zapravo nista u bazi
 
 
                 s.Save(t);

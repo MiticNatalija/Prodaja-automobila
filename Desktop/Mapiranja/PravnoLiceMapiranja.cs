@@ -18,15 +18,14 @@ namespace Desktop.Mapiranja
 
             // Id(x => x.Pib).GeneratedBy.Assigned().Column("PIB");
             //  Id(x => x.Id).GeneratedBy.TriggerIdentity();
-
-            KeyColumn("KUPAC_ID");
+            //KeyColumn("KUPAC_ID");
 
             Map(x => x.Pib, "PIB");
             Map(x => x.Ime, "IME");
             Map(x => x.Prezime, "PREZIME");
             Map(x => x.Telefon, "TELEFON");
 
-           // References(x => x.kupac).Column("KUPAC_ID");
+            References(x => x.Kupac).Column("KUPAC_ID");
         }
     }
 }

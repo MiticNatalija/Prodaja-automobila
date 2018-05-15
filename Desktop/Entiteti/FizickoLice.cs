@@ -13,7 +13,10 @@ namespace Desktop.Entiteti
         public virtual string Prezime { get; set; }
         public virtual string Adresa { get; set; }
         public virtual string Telefon { get; set; }
-        //kupacId
-        //public virtual Kupac kupac { get; set; }
+        public virtual Kupac Kupac { get; set; }
+
+        // Maruska:
+        // Nisam sigurna da je FizickoLice : Kupac okej, 
+        // cekamo da javi Bogdanovic kako se radi s kategorijom
     }
 }

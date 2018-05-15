@@ -19,12 +19,10 @@ namespace Desktop.Entiteti
 
         public virtual Zaposleni Predstavnik { get; set; }
 
-        
 
-        //salonId
-        //predstavnikID
-        //popustiServis
-        //popustiDelovi
+        // Izmena: Svako vozilo ima listu knjizica.
+        public virtual IList<Knjizica> Knjizice { get; set; }
+
 
     }
         public class Putnicko :Vozilo

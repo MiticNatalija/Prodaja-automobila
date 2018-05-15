@@ -29,6 +29,7 @@ namespace Desktop.Mapiranja
             //VEZA N:1 PRODAJE
             References(x => x.Predstavnik).Column("PREDSTAVNIK_ID").LazyLoad();
 
+            HasMany(x => x.Knjizice).KeyColumn("VOZILO_ID").LazyLoad();
         }
     }
 
@@ -38,7 +39,7 @@ namespace Desktop.Mapiranja
             public TeretnoMapiranja()
             {
                 DiscriminatorValue("Teretno");
-            Map(x => x.Nosivost, "NOSIVOST");
+                Map(x => x.Nosivost, "NOSIVOST");
         }
         }
 

@@ -16,7 +16,6 @@ namespace Desktop.Entiteti
         public virtual DateTime DatumRodjenja { get; set; }
         public virtual DateTime DatumZaposlenja { get; set; }
 
-        //public virtual IList<Vozilo> Vozila { get; set; }
     }
 
     public class PredstavnikKia : Zaposleni

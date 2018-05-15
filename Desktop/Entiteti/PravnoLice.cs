@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace Desktop.Entiteti
 {
-    public class PravnoLice:Kupac
+    public class PravnoLice :Kupac
     {
         public virtual int Pib { get; set; }
         public virtual string Ime { get; set; }
         public virtual string Prezime { get; set; }
         public virtual string Telefon { get; set; }
-        // public virtual int KupacId { get; set; }
-      //  public virtual Kupac kupac { get; set; }
+        public virtual Kupac Kupac { get; set; }
 
+        // Maruska:
+        // Nisam sigurna da je PravnoLice : Kupac okej, 
+        // cekamo da javi Bogdanovic kako se radi s kategorijom
 
 
 

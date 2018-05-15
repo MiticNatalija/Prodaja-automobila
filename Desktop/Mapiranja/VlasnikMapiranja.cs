@@ -14,15 +14,16 @@ namespace Desktop.Mapiranja
         {
             Table("VLASNIK");
 
-           
+            //KeyColumn("VOZILO_ID");
+            // Ovo bi bilo dobro kad bi moglo referenca na Vozilo da se postavi za primary key ali mrk 
 
-            Id(x => x.Telefon,"TELEFON").GeneratedBy.Assigned();
+            
+            Id(x => x.Id).Column("ID"); // treba izmeniti relacioni i sql naredbe ako radimo ovako
 
             Map(x => x.Adresa, "ADRESA");
-       
-
-       
-            References(x => x.vozilo).Column("VOZILO_ID");
+            Map(x => x.Telefon, "TELEFON");
+            
+            References(x => x.Vozilo).Column("VOZILO_ID");
 
         }
     }

@@ -24,9 +24,7 @@ namespace Desktop.Mapiranja
             Map(x => x.Prezime, "PREZIME");
             Map(x => x.DatumRodjenja, "DATUM_RODJENJA");
             Map(x => x.DatumZaposlenja, "DATUM_ZAPOSLENJA");
-            //VEZA N:1 PRODAJE
-          //  HasMany(x => x.Vozila).KeyColumn("PREDSTAVNIK_ID").LazyLoad().Cascade.All().Inverse();
-
+         
         }
     }
 

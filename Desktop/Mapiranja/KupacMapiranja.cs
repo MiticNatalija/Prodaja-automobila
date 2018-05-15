@@ -14,12 +14,15 @@ namespace Desktop.Mapiranja
         {
             Table("KUPAC");
 
-           // DiscriminateSubClassesOnColumn("TIP_VOZILA");
+            //DiscriminateSubClassesOnColumn("TIP_VOZILA");
 
-          //  Id(x => x.Id).GeneratedBy.TriggerIdentity();
-            Id(x => x.Id).Column("ID").GeneratedBy.SequenceIdentity("S15764.KUPAC_ID_SEQ");
+            //Id(x => x.Id).GeneratedBy.TriggerIdentity();
 
-            References(x => x.Vozilo).Column("VOZILO_ID");//probaj .Unique()
+            Id(x => x.Id).Column("ID").GeneratedBy.SequenceIdentity("S15794.KUPAC_ID_SEQ");
+
+            References(x => x.Vozilo).Column("VOZILO_ID").LazyLoad(); 
+
+            //probaj .Unique()
             //ILI HASONE moze 
         }
 

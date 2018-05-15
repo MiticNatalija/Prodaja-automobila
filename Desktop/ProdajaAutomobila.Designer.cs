@@ -43,9 +43,9 @@
             // 
             this.btnUcitajVozilo.Location = new System.Drawing.Point(12, 12);
             this.btnUcitajVozilo.Name = "btnUcitajVozilo";
-            this.btnUcitajVozilo.Size = new System.Drawing.Size(106, 23);
+            this.btnUcitajVozilo.Size = new System.Drawing.Size(144, 23);
             this.btnUcitajVozilo.TabIndex = 0;
-            this.btnUcitajVozilo.Text = "Ucitaj Vozilo";
+            this.btnUcitajVozilo.Text = "Vozilo, citanje i upis";
             this.btnUcitajVozilo.UseVisualStyleBackColor = true;
             this.btnUcitajVozilo.Click += new System.EventHandler(this.btnUcitajVozilo_Click);
             // 
