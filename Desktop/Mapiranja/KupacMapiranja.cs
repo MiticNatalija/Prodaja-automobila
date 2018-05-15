@@ -16,14 +16,16 @@ namespace Desktop.Mapiranja
 
             //DiscriminateSubClassesOnColumn("TIP_VOZILA");
 
-            //Id(x => x.Id).GeneratedBy.TriggerIdentity();
+            Id(x => x.Id).Column("ID").GeneratedBy.TriggerIdentity();
 
-            Id(x => x.Id).Column("ID").GeneratedBy.SequenceIdentity("S15794.KUPAC_ID_SEQ");
+            //  Id(x => x.Id).Column("ID").GeneratedBy.SequenceIdentity("S15794.KUPAC_ID_SEQ");
 
-            References(x => x.Vozilo).Column("VOZILO_ID").LazyLoad(); 
 
-            //probaj .Unique()
-            //ILI HASONE moze 
+            //123
+            References(x => x.Vozilo).Column("VOZILO_ID").LazyLoad();//.Unique();  //ovo treba,nego samo zbog probe je pod komentarom
+            HasOne(x => x.FLice).PropertyRef(x => x.Kupac).Cascade.All();
+            HasOne(x => x.PLice).PropertyRef(x => x.Kupac).Cascade.All();
+
         }
 
     }

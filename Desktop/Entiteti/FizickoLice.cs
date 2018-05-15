@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Desktop.Entiteti
 {
-    public class FizickoLice:Kupac
+    public class FizickoLice
     {
         public virtual string Jmbg { get; set; }
         public virtual string Ime { get; set; }
@@ -18,5 +18,7 @@ namespace Desktop.Entiteti
         // Maruska:
         // Nisam sigurna da je FizickoLice : Kupac okej, 
         // cekamo da javi Bogdanovic kako se radi s kategorijom
+
+      
     }
 }

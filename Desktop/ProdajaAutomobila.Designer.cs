@@ -38,6 +38,7 @@
             this.vezaAngazuje = new System.Windows.Forms.Button();
             this.vezaSadrzi = new System.Windows.Forms.Button();
             this.btnPredstavnistvo = new System.Windows.Forms.Button();
+            this.btnUpisiFizicko = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUcitajVozilo
@@ -140,11 +141,22 @@
             this.btnPredstavnistvo.UseVisualStyleBackColor = true;
             this.btnPredstavnistvo.Click += new System.EventHandler(this.btnPredstavnistvo_Click);
             // 
+            // btnUpisiFizicko
+            // 
+            this.btnUpisiFizicko.Location = new System.Drawing.Point(202, 40);
+            this.btnUpisiFizicko.Name = "btnUpisiFizicko";
+            this.btnUpisiFizicko.Size = new System.Drawing.Size(105, 23);
+            this.btnUpisiFizicko.TabIndex = 10;
+            this.btnUpisiFizicko.Text = "Upisi fizicko lice";
+            this.btnUpisiFizicko.UseVisualStyleBackColor = true;
+            this.btnUpisiFizicko.Click += new System.EventHandler(this.btnUpisiFizicko_Click);
+            // 
             // btnVezaSeNalazi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 372);
+            this.Controls.Add(this.btnUpisiFizicko);
             this.Controls.Add(this.btnPredstavnistvo);
             this.Controls.Add(this.vezaSadrzi);
             this.Controls.Add(this.vezaAngazuje);
@@ -174,6 +186,7 @@
         private System.Windows.Forms.Button vezaAngazuje;
         private System.Windows.Forms.Button vezaSadrzi;
         private System.Windows.Forms.Button btnPredstavnistvo;
+        private System.Windows.Forms.Button btnUpisiFizicko;
     }
 }
 

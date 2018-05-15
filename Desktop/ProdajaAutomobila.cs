@@ -76,14 +76,32 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-               
+
 
                 Kupac r = s.Load<Kupac>(2);//FIZICKO LICE
-            
+                FizickoLice f = r.FLice;
+                PravnoLice p = r.PLice;
 
                 MessageBox.Show(r.Vozilo.Registracija);
-            
 
+                FizickoLice f1 = new FizickoLice()
+                {
+                    Adresa = "Bulevar 14",
+                    Ime = "Maja",
+                    Jmbg = "2012965424580",
+                    Prezime = "Tosic",
+                    Telefon = "065127898"
+                };
+                Vozilo v = s.Load<Vozilo>(5);
+                Kupac ku = new Kupac()
+                {
+                    Vozilo = v
+                };
+                f1.Kupac = ku;
+                ku.FLice = f1;
+
+
+                s.Save(ku);
                 s.Flush();
                 s.Close();
             }
@@ -99,9 +117,9 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-                //FizickoLice f = s.Load<FizickoLice>("2007987457810");
+                FizickoLice f = s.Load<FizickoLice>("2007987457810");
 
-                //MessageBox.Show(f.Ime + " "+ f.kupac.Vozilo.Registracija );
+                MessageBox.Show(f.Ime + " "+ f.Kupac.Vozilo.Registracija );
 
             }
             catch (Exception ec)
@@ -394,5 +412,32 @@ namespace Desktop
                 MessageBox.Show(ec.Message);
             }
         }
+
+        private void btnUpisiFizicko_Click(object sender, EventArgs e)
+        {
+            try {
+                ISession s = DataLayer.GetSession();
+
+                FizickoLice f1 = new FizickoLice()
+            {
+                Adresa = "Bulevar 14",
+                Ime = "Ana",
+                Jmbg = "2012987124580",
+                Prezime = "Savic",
+                Telefon = "065123456"
+            };
+
+            Kupac k1 = s.Load<Kupac>(1);
+            f1.Kupac = k1;
+            s.SaveOrUpdate(f1);
+          
+            s.Flush();
+            s.Close();
+        }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+}
     }
 }

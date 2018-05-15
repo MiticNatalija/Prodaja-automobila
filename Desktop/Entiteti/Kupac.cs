@@ -8,7 +8,7 @@ namespace Desktop.Entiteti
 {
     public class Kupac
     {
-        public virtual int Id { get; protected set; }
+        public virtual int Id { get; set; }
 
         //public virtual String Ime { get; set; }
         //public virtual String Prezime { get; set; }
@@ -25,5 +25,9 @@ namespace Desktop.Entiteti
 
         public virtual Vozilo Vozilo { get; set; }
 
+        //123
+        //imace ili jedno ili drugo
+        public virtual FizickoLice FLice { get; set; }
+        public virtual PravnoLice PLice { get; set; }
     }
 }

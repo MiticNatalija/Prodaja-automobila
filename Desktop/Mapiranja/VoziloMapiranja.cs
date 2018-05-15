@@ -30,6 +30,10 @@ namespace Desktop.Mapiranja
             References(x => x.Predstavnik).Column("PREDSTAVNIK_ID").LazyLoad();
 
             HasMany(x => x.Knjizice).KeyColumn("VOZILO_ID").LazyLoad();
+
+            //123
+            HasOne(x => x.kupac).PropertyRef(x => x.Vozilo);
+            
         }
     }
 

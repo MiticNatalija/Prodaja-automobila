@@ -9,23 +9,23 @@ using FluentNHibernate.Mapping;
 
 namespace Desktop.Mapiranja
 {
-    public class PravnoLiceMapiranja : SubclassMap<PravnoLice>
+    public class PravnoLiceMapiranja : ClassMap<PravnoLice>
     {
         public PravnoLiceMapiranja()
         {
             Table("PRAVNO_LICE");
 
 
-            // Id(x => x.Pib).GeneratedBy.Assigned().Column("PIB");
+             Id(x => x.Pib).Column("PIB").GeneratedBy.Assigned();
             //  Id(x => x.Id).GeneratedBy.TriggerIdentity();
             //KeyColumn("KUPAC_ID");
 
-            Map(x => x.Pib, "PIB");
+         //   Map(x => x.Pib, "PIB");
             Map(x => x.Ime, "IME");
             Map(x => x.Prezime, "PREZIME");
             Map(x => x.Telefon, "TELEFON");
-
-            References(x => x.Kupac).Column("KUPAC_ID");
+            //123
+            References(x => x.Kupac).Column("KUPAC_ID").Unique();
         }
     }
 }

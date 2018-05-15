@@ -23,6 +23,8 @@ namespace Desktop.Entiteti
         // Izmena: Svako vozilo ima listu knjizica.
         public virtual IList<Knjizica> Knjizice { get; set; }
 
+        //123
+        public virtual Kupac kupac { get; set; }
 
     }
         public class Putnicko :Vozilo

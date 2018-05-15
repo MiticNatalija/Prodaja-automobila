@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Desktop.Entiteti
 {
-    public class PravnoLice :Kupac
+    public class PravnoLice
     {
         public virtual int Pib { get; set; }
         public virtual string Ime { get; set; }
