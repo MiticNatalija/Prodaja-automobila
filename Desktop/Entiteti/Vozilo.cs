@@ -26,6 +26,8 @@ namespace Desktop.Entiteti
         //123
         public virtual Kupac kupac { get; set; }
 
+        public virtual Vlasnik vlasnik { get; set; }
+
     }
         public class Putnicko :Vozilo
         {

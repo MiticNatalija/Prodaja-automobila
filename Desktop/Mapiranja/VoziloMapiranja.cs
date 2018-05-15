@@ -33,6 +33,9 @@ namespace Desktop.Mapiranja
 
             //123
             HasOne(x => x.kupac).PropertyRef(x => x.Vozilo);
+
+            HasOne(x => x.vlasnik).Cascade.All();
+
             
         }
     }

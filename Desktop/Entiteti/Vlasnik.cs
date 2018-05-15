@@ -31,10 +31,10 @@ namespace Desktop.Entiteti
         public Vlasnik()
         { }
 
-        public Vlasnik(Vozilo Vozilo)
-        {
-            Id = Vozilo.Id;
-            this.Vozilo = Vozilo;
-        }
+        //public Vlasnik(Vozilo Vozilo)
+        //{
+        //    Id = Vozilo.Id;
+        //    this.Vozilo = Vozilo;
+        //}
     }
 }

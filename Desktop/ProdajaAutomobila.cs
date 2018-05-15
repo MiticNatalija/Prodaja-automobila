@@ -168,31 +168,41 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-                Vozilo j = s.Load<Vozilo>(1);
+                Vozilo j = s.Load<Vozilo>(2);
 
-                //Vlasnik v = s.Load<Vlasnik>("060789456");
-                //MessageBox.Show(v.Vozilo.Registracija);
 
-                Vlasnik v1 = new Vlasnik()
+                Vlasnik v = s.Get<Vlasnik>(2);
+                MessageBox.Show(v.Telefon);
+
+
+                Vozilo v1 = s.Load<Vozilo>(1);
+                Vlasnik novi = new Vlasnik()
                 {
-                    Adresa = "sadsad",
-                    Telefon = "024156151",
-                    Vozilo = j
+                    Adresa = "fd",
+                    Telefon = "02515",
+                    Vozilo = v1
+                };
+                s.Save(novi);
+                s.SaveOrUpdate(v1);
+
+                Putnicko p = new Putnicko() {
+                    BrojMesta=5,
+                    Gorivo="Dizel",
+                    OznakaMotora="415641xc",
+                    Registracija="NI 744 KI"
+
                 };
 
-                // Ako izmenimo relacioni i sql naredbe za Vlasnika i dodamo mu ID, 
-                // onda ce da ima ID, VoziloID, Telefon, Adresa, gde je samo ID primary key,
-                // onda moze da se proba ovako: 
-
-                //Vlasnik v2 = new Vlasnik(j);
-                //v2.Adresa = "Bozidara Adzije 87";
-                //v2.Telefon = "0691887134";
+                Vlasnik novi1 = new Vlasnik() {
+                    Adresa = "ftre",
+                    Telefon = "01878946",
+                    Vozilo = p
+                };
                 
+                s.Save(novi1);
+               
 
-                //proveriti i ucitavanje iz baze
-
-                s.SaveOrUpdate(v1);
-                //s.Save(v2);
+              
                 s.Flush();
                 s.Close();
             }
