@@ -298,7 +298,7 @@ namespace Desktop
                 {
                     ServisHyundai o5 = (ServisHyundai)p;
                 }
-                else if (p.FHyundai ==1 && p.FKia==1 && p.FServis==1)
+                else if (p is ServisHyundaiKia)
                 {
                     //kad probamo ovako sa flegovima,
                     //upadne ovde ali ne moze da castuje PredstavnistvoProxy u ServisHyundaiKia
@@ -408,14 +408,20 @@ namespace Desktop
                 foreach (Predstavnistvo pre in p)
                 {
                     if (pre.GetType() == typeof(SalonServisHyundaiKia))
-                        MessageBox.Show("ok");
+                        MessageBox.Show("SalonServisHyundaiKia");
+
+                    if (pre.GetType() == typeof(SalonServisHyundai))
+                        MessageBox.Show("SalonServisHyundai");
+
+                    if (pre.GetType() == typeof(SalonServisKia))
+                        MessageBox.Show("SalonServisKia");
 
                 }
 
                 IQuery q = s.CreateQuery("from Predstavnistvo as p where p.Id=1");
 
                 Predstavnistvo pr = q.UniqueResult<Predstavnistvo>();
-                MessageBox.Show(pr.GetType().ToString());
+
             }
             catch (Exception ec)
             {

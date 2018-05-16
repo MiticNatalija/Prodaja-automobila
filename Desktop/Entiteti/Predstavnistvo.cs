@@ -11,10 +11,7 @@ namespace Desktop.Entiteti
         public virtual int Id { get; protected set; }
         public virtual string Adresa { get; set; }
         public virtual DateTime DatumOtvaranja { get; set; }
-        public virtual int FHyundai { get; set; }
-        public virtual int FKia { get; set; }
-        public virtual int FSalon { get; set; }
-        public virtual int FServis { get; set; }
+        public virtual string Tip { get; set; }
 
         //public virtual IList<Vozilo> Vozila { get; set; }
 
@@ -32,33 +29,33 @@ namespace Desktop.Entiteti
     public class ServisKia : Predstavnistvo
     {
         public virtual PredstavnikKia PredstavnikKia { get; set; }
-        public virtual IList<Knjizica> Knjizice { get; set; }
+        //public virtual IList<Knjizica> Knjizice { get; set; }
     }
 
     public class ServisHyundai : Predstavnistvo
     {
         public virtual PredstavnikHyundai PredstavnikHyundai { get; set; }
-        public virtual IList<Knjizica> Knjizice { get; set; }
+        //public virtual IList<Knjizica> Knjizice { get; set; }
     }
 
     public class ServisHyundaiKia : Predstavnistvo
     {
         public virtual PredstavnikHyundai PredstavnikHyundai { get; set; }
         public virtual PredstavnikKia PredstavnikKia { get; set; }
-        public virtual IList<Knjizica> Knjizice { get; set; }
+        //public virtual IList<Knjizica> Knjizice { get; set; }
     }
 
     public class SalonKia : Predstavnistvo
     {
         public virtual PredstavnikKia PredstavnikKia { get; set; }
-        public virtual IList<Vozilo> Vozila { get; set; }
+        //public virtual IList<Vozilo> Vozila { get; set; }
     }
 
     public class SalonHyundai : Predstavnistvo
     {
         public virtual PredstavnikHyundai PredstavnikHyundai { get; set; }
         public virtual DateTime DatumVazenjaLicence { get; set; }
-        public virtual IList<Vozilo> Vozila { get; set; }
+        //public virtual IList<Vozilo> Vozila { get; set; }
     }
 
     public class SalonHyundaiKia : Predstavnistvo
@@ -66,22 +63,22 @@ namespace Desktop.Entiteti
         public virtual PredstavnikKia PredstavnikKia { get; set; }
         public virtual PredstavnikHyundai PredstavnikHyundai { get; set; }
         public virtual DateTime DatumVazenjaLicence { get; set; }
-        public virtual IList<Vozilo> Vozila { get; set; }
+        //public virtual IList<Vozilo> Vozila { get; set; }
     }
 
     public class SalonServisKia : Predstavnistvo
     {
         public virtual PredstavnikKia PredstavnikKia { get; set; }
-        public virtual IList<Vozilo> Vozila { get; set; }
-        public virtual IList<Knjizica> Knjizice { get; set; }
+        //public virtual IList<Vozilo> Vozila { get; set; }
+        //public virtual IList<Knjizica> Knjizice { get; set; }
     }
 
     public class SalonServisHyundai : Predstavnistvo
     {
         public virtual PredstavnikKia PredstavnikHyundai { get; set; }
         public virtual DateTime DatumVazenjaLicence { get; set; }
-        public virtual IList<Vozilo> Vozila { get; set; }
-        public virtual IList<Knjizica> Knjizice { get; set; }
+        //public virtual IList<Vozilo> Vozila { get; set; }
+        //public virtual IList<Knjizica> Knjizice { get; set; }
     }
 
     public class SalonServisHyundaiKia : Predstavnistvo
@@ -89,7 +86,7 @@ namespace Desktop.Entiteti
         public virtual PredstavnikHyundai PredstavnikHyundai { get; set; }
         public virtual DateTime DatumVazenjaLicence { get; set; }
         public virtual PredstavnikKia PredstavnikKia { get; set; }
-        public virtual IList<Vozilo> Vozila { get; set; }
-        public virtual IList<Knjizica> Knjizice { get; set; }
+        //public virtual IList<Vozilo> Vozila { get; set; }
+        //public virtual IList<Knjizica> Knjizice { get; set; }
     }
 }
