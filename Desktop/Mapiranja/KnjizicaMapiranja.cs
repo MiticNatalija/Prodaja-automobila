@@ -23,6 +23,16 @@ namespace Desktop.Mapiranja
 
             References(x => x.Servis).Column("SERVIS_ID").LazyLoad();
             References(x => x.Vozilo).Column("VOZILO_ID").LazyLoad();
+
+            HasManyToMany(x => x.Mehanicari)
+                .Table("SADRZI")
+                .ParentKeyColumn("KNJIZICA_ID")
+                .ChildKeyColumn("MEHANICAR_ID")
+                .Inverse()
+                .Cascade.All();
+            
+            HasMany(x => x.SadrziMehanicari).KeyColumn("KNJIZICA_ID").LazyLoad().Cascade.All().Inverse();
+
         }
     }
 }

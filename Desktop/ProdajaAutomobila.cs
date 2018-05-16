@@ -228,33 +228,58 @@ namespace Desktop
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)  // veza Testira
         {
             try
             {
                 ISession s = DataLayer.GetSession();
                
-
-              //  Testira test = s.Load<Testira>(2);
-                //MessageBox.Show(test.DatumTestiranja + " " + test.Mehanicar.DatumRodjenja + " " + test.Predstavnik.Adresa);
                 Testira t = new Testira();
 
-                MehanicarHyundai m = s.Load<MehanicarHyundai>(5);
-                PredstavnikHyundai p = s.Load<PredstavnikHyundai>(1);
-                MessageBox.Show( m.Predstavnici[0].Adresa);
-                MessageBox.Show(p.Mehanicari[0].Prezime);
-                // Maruska:
-                // Ovo ispod ne radi, upada u else granu.
+                MehanicarHyundai mh = new MehanicarHyundai()
+                {
+                    Mbr = "1346993762612",
+                    LicnoIme = "Krka",
+                    ImeOca = "Krk",
+                    Prezime = "Krkic",
+                    DatumRodjenja = new DateTime(1993, 1, 2),
+                    DatumZaposlenja = DateTime.Now,
+                    Specijalnost = "motor"
+                };
+                s.Save(mh);
+                s.Flush();
 
-                //MehanicarHyundai m=new MehanicarHyundai();
-                //PredstavnikHyundai p=new PredstavnikHyundai();
+                PredstavnikHyundai ph = new PredstavnikHyundai()
+                {
+                    Mbr = "1566945562612",
+                    LicnoIme = "Prka",
+                    ImeOca = "Prk",
+                    Prezime = "Prkic",
+                    DatumRodjenja = new DateTime(1945, 1, 2),
+                    DatumZaposlenja = DateTime.Now,
+                    Adresa = "Njegoseva",
+                    Telefon = "06328086"
+                };
 
-                //Zaposleni z1 = s.Load<Zaposleni>(5);
-                //Zaposleni z2 = s.Load<Zaposleni>(1);
+                s.Save(ph);
+                s.Flush();
+
+                
+                // RADI I OVO DOLE, SVEJEDNO KOJI NACIN IZABEREMO
+                /////////////////////////////////////////////////////////////////////////
+            
+                //IQuery q = s.CreateQuery("from Zaposleni as p where p.Id=5");
+
+                //Zaposleni z1 = q.UniqueResult<Zaposleni>();
+
+                //IQuery q1 = s.CreateQuery("from Zaposleni as p where p.Id=1");
+
+                //Zaposleni z2 = q1.UniqueResult<Zaposleni>();
 
                 //if (z1.GetType() == typeof(MehanicarHyundai))
                 //{
-                //    m = (MehanicarHyundai)z1;
+                //    MehanicarHyundai m = (MehanicarHyundai)z1;
+                //    t.Mehanicar = m;
                 //}
                 //else
                 //{
@@ -263,27 +288,31 @@ namespace Desktop
 
                 //if (z2.GetType() == typeof(PredstavnikHyundai))
                 //{
-                //    p = (PredstavnikHyundai)z2;
+                //    PredstavnikHyundai p = (PredstavnikHyundai)z2;
+                //    t.Predstavnik = p;
                 //}
                 //else
                 //{
                 //    MessageBox.Show("Treba ucitati PredstavnikHyundai");
                 //}
 
-                t.Mehanicar = m;
-                t.Predstavnik = p;
+                t.Mehanicar = mh; 
+                t.Predstavnik = ph;
                 t.DatumTestiranja = DateTime.Now;
                 t.Ocena = 4;
 
 
-                m.Predstavnici.Add(p);
-                m.TestiraPredstavnici.Add(t);
-                p.Mehanicari.Add(m);
-                p.TestiraMehanicari.Add(t);
-                //ovo radi ispravno, proveri dal tako treba da se radi 
+                // DA LI TREBA OVA DODELA ISPOD ?
+                // KOD NJIH NIJE RADJENA
+                // A OVDE AKO SE DODELA NE URADI ONDA SE LISTE NE UPDATE-UJU
+                // MEJUTIM, KAD SE DODA OVA DODELA, BACA EXCEPTION "CANNOT INSERT NULL IN OCENA"
+                
+                //////////////////////////////////////////////////////////////////////////////////////
 
-                //s.Save(p); 
-                //ovo valjda ne treba, ne menja se zapravo nista u bazi
+                //mh.Predstavnici.Add(ph);
+                //mh.TestiraPredstavnici.Add(t);
+                //ph.Mehanicari.Add(mh);
+                //ph.TestiraMehanicari.Add(t);
 
 
                 s.Save(t);
@@ -307,38 +336,51 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
 
                 Vozilo v = s.Load<Vozilo>(1);
-                MessageBox.Show(v.Registracija);
 
-                Predstavnistvo p = s.Load<Predstavnistvo>(3);
 
-                if (p.GetType() == typeof(ServisKia))
+                // Radi i ono dole kastovanje, a radi i ovo,
+                // mislim da ostavimo ovo jer ono s kastovanjem imamo na vise mesta
+
+                ServisHyundai sh = new ServisHyundai()
                 {
-                    ServisKia o5 = (ServisKia)p;
-                }
-                else if (p.GetType() == typeof(ServisHyundai))
-                {
-                    ServisHyundai o5 = (ServisHyundai)p;
-                }
-                else if (p is ServisHyundaiKia)
-                {
-                    //kad probamo ovako sa flegovima,
-                    //upadne ovde ali ne moze da castuje PredstavnistvoProxy u ServisHyundaiKia
-                    ServisHyundaiKia o5 = (ServisHyundaiKia)p;
-                }
-                else
-                {
-                    MessageBox.Show("");
-                    //Upada nam ovde kad radimo samo sa GetType, bez flegova,
-                    //iako odaberemo Predstavnistvo koje je ServisHyundaiKia
-                    // Julije, proveri flegove da l rade
-                }
+                    Adresa = "moja adresa",
+                    DatumOtvaranja=new DateTime(2017,1,1)
+
+                };
+
+                s.Save(sh);
+                s.Flush();
+
+                //IQuery q = s.CreateQuery("from Predstavnistvo as p where p.Id=3");
+
+                //Predstavnistvo p = q.UniqueResult<Predstavnistvo>();
+
+
+                //if (p.GetType() == typeof(ServisKia))
+                //{
+                //    ServisKia sk = (ServisKia)p;
+                //}
+                //else if (p.GetType() == typeof(ServisHyundai))
+                //{
+                //    ServisHyundai sh = (ServisHyundai)p;
+                //}
+                //else if (p.GetType() == typeof(ServisHyundaiKia))
+                //{
+                //     ServisHyundaiKia shk = (ServisHyundaiKia)p;
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Treba uneti servis.");
+                   
+                //}
                 Knjizica k = new Knjizica()
                 {
                     DatumIntervencije = DateTime.Now,
-                    CenaUsluge = 1500,
+                    CenaUsluge = 1111,
                     Radovi = "Pregled",
                     Vozilo= v,
-                    Servis= p
+                    //Servis= p
+                    Servis=sh
                 };
 
 
@@ -354,62 +396,187 @@ namespace Desktop
 
         private void vezaAngazuje_Click(object sender, EventArgs e)
         {
-            //nismo probale zbog gorenavedenog problema sa Predstavnistvom
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Angazuje t = new Angazuje();
 
-            // kreiraj mehanicara i servis (tj Predstavnistvo pa TypeOf i proveri dal je servis)
+                t.DatumPocetka = new DateTime(2018, 1, 1);
+                t.KrajRada = DateTime.Now;
+                t.Ocena = 3;
 
-            // napravi Angazuje i dodaj atribute
+                IQuery q = s.CreateQuery("from Predstavnistvo as p where p.Id=3");
 
-            // upisi Angazuje 
+                Predstavnistvo z1 = q.UniqueResult<Predstavnistvo>();
 
-            // procitaj Angazuje
+                IQuery q1 = s.CreateQuery("from Zaposleni as p where p.Id=5");
+
+                Zaposleni z2 = q1.UniqueResult<Zaposleni>();
+
+               // ServisHyundaiKia m1 = new ServisHyundaiKia();
+
+                if (z1.GetType() == typeof(ServisKia))
+                {
+                    ServisKia m = (ServisKia)z1;
+                    t.Servis = m;
+                }
+                else if (z1.GetType() == typeof(ServisHyundai))
+                {
+                    ServisHyundai m = (ServisHyundai)z1;
+                    t.Servis = m;
+                }
+                else if (z1.GetType() == typeof(ServisHyundaiKia))
+                {
+                    ServisHyundaiKia m = (ServisHyundaiKia)z1;
+                    t.Servis = m;
+                }
+                else if (z1.GetType() == typeof(SalonServisKia))
+                {
+                    SalonServisKia m = (SalonServisKia)z1;
+                    t.Servis = m;
+                }
+                else if (z1.GetType() == typeof(SalonServisHyundai))
+                {
+                    SalonServisHyundai m = (SalonServisHyundai)z1;
+                    t.Servis = m;
+                }
+                else if (z1.GetType() == typeof(SalonServisHyundaiKia))
+                {
+                    SalonServisHyundaiKia m = (SalonServisHyundaiKia)z1;
+                    t.Servis = m;
+                }
+
+                else
+                {
+                    MessageBox.Show("Treba ucitati servis.");
+                }
+
+                if (z2.GetType() == typeof(MehanicarKia))
+                {
+                    MehanicarKia p = (MehanicarKia)z2;
+                    t.Mehanicar = p;
+                }
+                else if (z2.GetType() == typeof(MehanicarHyundai))
+                {
+                    MehanicarHyundai p = (MehanicarHyundai)z2;
+                    t.Mehanicar = p;
+                }
+                else if (z2.GetType() == typeof(MehanicarKiaHyundai))
+                {
+                    MehanicarKiaHyundai p = (MehanicarKiaHyundai)z2;
+                    t.Mehanicar = p;
+                }
+
+                else
+                {
+                    MessageBox.Show("Treba ucitati mehanicara.");
+                }
+
+
+               
+                s.Save(t);
+
+                s.Flush();
+
+                // cak i nakon snimanja veze u bazu, ne update-uju se liste na obe strane veze
+                // ne znam da l bi to trebalo da se desi, 
+                // ako ne bi trebalo, onda cu da dodam ovde i dodelu
+
+
+                s.Close();
+
+                MessageBox.Show("Podaci o novoj vezi Angazuje su uneti.");
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
         }
 
         private void vezaSadrzi_Click(object sender, EventArgs e)
         {
+            //try
+            //{
+            //        ISession s = DataLayer.GetSession();
+
+            //        Knjizica r1 = s.Load<Knjizica>(1);
+
+            //        foreach ( Zaposleni p1 in r1.Mehanicari)
+            //        {
+            //            MessageBox.Show(p1.LicnoIme); //Ilija
+            //        }
+
+
+            //        s.Close();
+            //}
+            //catch (Exception ec)
+            //{
+            //    MessageBox.Show(ec.Message);
+            //}
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                //knjizica treba da se menja,ali ovako bi islo
                 IQuery q = s.CreateQuery("from Zaposleni as z where z.Id=5 ");
                 IQuery q1 = s.CreateQuery("from Knjizica as k where k.Id=1 ");
                 Zaposleni z = q.UniqueResult<Zaposleni>();
                 Knjizica p = q1.UniqueResult<Knjizica>();
 
+
                 Sadrzi t = new Sadrzi();
 
-                if ( z.GetType() == typeof(MehanicarKia))
+                
+                if (z.GetType() == typeof(MehanicarKia))
                 {
-                    MehanicarKia mk = (MehanicarKia)z;
+                    MehanicarKia mk = new MehanicarKia();
+                    mk = (MehanicarKia)z;
+                    t.Mehanicar = mk;
+                    t.Knjizica = p;
+                    mk.Knjizice.Add(p);
+                    mk.SadrziKnjizice.Add(t);
+                    p.Mehanicari.Add(mk);
+                    p.SadrziMehanicari.Add(t);
+
                 }
                 else if (z.GetType() == typeof(MehanicarHyundai))
                 {
-                    MehanicarHyundai mh = (MehanicarHyundai)z;
+                    MehanicarHyundai mh = new MehanicarHyundai();
+                    mh = (MehanicarHyundai)z;
+                    t.Mehanicar = mh;
+                    t.Knjizica = p;
+                    mh.Knjizice.Add(p);
+                    mh.SadrziKnjizice.Add(t);
+                    p.Mehanicari.Add(mh);
+                    p.SadrziMehanicari.Add(t);
                 }
                 else if (z.GetType() == typeof(MehanicarKiaHyundai))
                 {
-                    MehanicarKiaHyundai mkh = (MehanicarKiaHyundai)z;
+                    MehanicarKiaHyundai mkh = new MehanicarKiaHyundai();
+                    mkh = (MehanicarKiaHyundai)z;
+                    t.Mehanicar = mkh;
+                    t.Knjizica = p;
+                    mkh.Knjizice.Add(p);
+                    mkh.SadrziKnjizice.Add(t);
+                    p.Mehanicari.Add(mkh);
+                    p.SadrziMehanicari.Add(t);
                 }
                 else
                 {
-                    
-                    MessageBox.Show("");
+                    MessageBox.Show("Treba uneti mehanicara.");
                 }
 
-                t.Mehanicar = z;
-                t.Knjizica = p;
+                s.Save(p);
+
 
 
                 s.Save(t);
-
-                //Ucitace se podaci lepo ali ovi GetType ne rade opet,
-                //opet upada u else granu
+                
 
                 s.Flush();
                 s.Close();
 
-                MessageBox.Show("Podaci o novom testiranju su uneti.");
+                MessageBox.Show("Podaci o novoj vezi Sadrzi su uneti.");
 
             }
             catch (Exception ec)

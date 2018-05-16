@@ -32,12 +32,31 @@ namespace Desktop.Entiteti
     {
         public virtual PredstavnikKia PredstavnikKia { get; set; }
         //public virtual IList<Knjizica> Knjizice { get; set; }
+        public virtual IList<Zaposleni> Mehanicari { get; set; }
+
+        public virtual IList<Angazuje> AngazujeMehanicari { get; set; }
+
+        public ServisKia()
+        {
+            Mehanicari = new List<Zaposleni>();
+            AngazujeMehanicari = new List<Angazuje>();
+        }
+
     }
 
     public class ServisHyundai : Predstavnistvo
     {
         public virtual PredstavnikHyundai PredstavnikHyundai { get; set; }
         //public virtual IList<Knjizica> Knjizice { get; set; }
+        public virtual IList<Zaposleni> Mehanicari { get; set; }
+
+        public virtual IList<Angazuje> AngazujeMehanicari { get; set; }
+
+        public ServisHyundai()
+        {
+            Mehanicari = new List<Zaposleni>();
+            AngazujeMehanicari = new List<Angazuje>();
+        }
     }
 
     public class ServisHyundaiKia : Predstavnistvo
@@ -45,6 +64,15 @@ namespace Desktop.Entiteti
         public virtual PredstavnikHyundai PredstavnikHyundai { get; set; }
         public virtual PredstavnikKia PredstavnikKia { get; set; }
         //public virtual IList<Knjizica> Knjizice { get; set; }
+        public virtual IList<Zaposleni> Mehanicari { get; set; }
+
+        public virtual IList<Angazuje> AngazujeMehanicari { get; set; }
+
+        public ServisHyundaiKia()
+        {
+            Mehanicari = new List<Zaposleni>();
+            AngazujeMehanicari = new List<Angazuje>();
+        }
     }
 
     public class SalonKia : Predstavnistvo
@@ -88,10 +116,16 @@ namespace Desktop.Entiteti
         public virtual PredstavnikKia PredstavnikKia { get; set; }
         public virtual IList<Vozilo> Vozila { get; set; }
         //public virtual IList<Knjizica> Knjizice { get; set; }
+        public virtual IList<Zaposleni> Mehanicari { get; set; }
 
+        public virtual IList<Angazuje> AngazujeMehanicari { get; set; }
+
+        
         public SalonServisKia()
         {
             Vozila = new List<Vozilo>();
+            Mehanicari = new List<Zaposleni>();
+            AngazujeMehanicari = new List<Angazuje>();
         }
     }
 
@@ -101,10 +135,14 @@ namespace Desktop.Entiteti
         public virtual DateTime DatumVazenjaLicence { get; set; }
         public virtual IList<Vozilo> Vozila { get; set; }
         //public virtual IList<Knjizica> Knjizice { get; set; }
+        public virtual IList<Zaposleni> Mehanicari { get; set; }
 
+        public virtual IList<Angazuje> AngazujeMehanicari { get; set; }
         public SalonServisHyundai()
         {
             Vozila = new List<Vozilo>();
+            Mehanicari = new List<Zaposleni>();
+            AngazujeMehanicari = new List<Angazuje>();
         }
     }
 
@@ -116,9 +154,14 @@ namespace Desktop.Entiteti
         public virtual IList<Vozilo> Vozila { get; set; }
         //public virtual IList<Knjizica> Knjizice { get; set; }
 
+        public virtual IList<Zaposleni> Mehanicari { get; set; }
+
+        public virtual IList<Angazuje> AngazujeMehanicari { get; set; }
         public SalonServisHyundaiKia()
         {
             Vozila = new List<Vozilo>();
+            Mehanicari = new List<Zaposleni>();
+            AngazujeMehanicari = new List<Angazuje>();
         }
     }
 }

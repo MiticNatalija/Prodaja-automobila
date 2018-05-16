@@ -8,8 +8,6 @@ namespace Desktop.Entiteti
 {
     public class Knjizica
     {
-        // Deluje okej ali je Bogdanovic rekao da za slabe tipove treba da idu kompozitni kljucevi, evo ne znam..
-
         public virtual int Id { get; protected set;}
         public virtual DateTime DatumIntervencije { get; set; }
         public virtual int CenaUsluge { get; set; }
@@ -17,9 +15,15 @@ namespace Desktop.Entiteti
         public virtual Vozilo Vozilo { get; set;}
         public virtual Predstavnistvo Servis { get; set; }
 
+        public virtual IList<Zaposleni> Mehanicari { get; set; }
+
+        public virtual IList<Sadrzi> SadrziMehanicari { get; set; }
+
 
         public Knjizica()
         {
+            Mehanicari = new List<Zaposleni>();
+            SadrziMehanicari = new List<Sadrzi>();
         }
     }
 }

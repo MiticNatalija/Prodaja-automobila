@@ -57,7 +57,7 @@
             // 
             this.btnUcitajKupca.Location = new System.Drawing.Point(12, 41);
             this.btnUcitajKupca.Name = "btnUcitajKupca";
-            this.btnUcitajKupca.Size = new System.Drawing.Size(106, 23);
+            this.btnUcitajKupca.Size = new System.Drawing.Size(144, 23);
             this.btnUcitajKupca.TabIndex = 1;
             this.btnUcitajKupca.Text = "Ucitaj kupca";
             this.btnUcitajKupca.UseVisualStyleBackColor = true;
@@ -67,7 +67,7 @@
             // 
             this.cmdFizickoLice.Location = new System.Drawing.Point(13, 71);
             this.cmdFizickoLice.Name = "cmdFizickoLice";
-            this.cmdFizickoLice.Size = new System.Drawing.Size(105, 23);
+            this.cmdFizickoLice.Size = new System.Drawing.Size(143, 23);
             this.cmdFizickoLice.TabIndex = 2;
             this.cmdFizickoLice.Text = "Ucitaj fizicko lice";
             this.cmdFizickoLice.UseVisualStyleBackColor = true;
@@ -77,7 +77,7 @@
             // 
             this.btnVezaSe_nalazi.Location = new System.Drawing.Point(12, 100);
             this.btnVezaSe_nalazi.Name = "btnVezaSe_nalazi";
-            this.btnVezaSe_nalazi.Size = new System.Drawing.Size(106, 23);
+            this.btnVezaSe_nalazi.Size = new System.Drawing.Size(144, 23);
             this.btnVezaSe_nalazi.TabIndex = 3;
             this.btnVezaSe_nalazi.Text = "Veza se_nalazi";
             this.btnVezaSe_nalazi.UseVisualStyleBackColor = true;
@@ -87,7 +87,7 @@
             // 
             this.btnVlasnik.Location = new System.Drawing.Point(13, 130);
             this.btnVlasnik.Name = "btnVlasnik";
-            this.btnVlasnik.Size = new System.Drawing.Size(105, 23);
+            this.btnVlasnik.Size = new System.Drawing.Size(143, 23);
             this.btnVlasnik.TabIndex = 4;
             this.btnVlasnik.Text = "Vlasnik";
             this.btnVlasnik.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(13, 159);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 23);
+            this.button1.Size = new System.Drawing.Size(143, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Kreiranje Testira";
             this.button1.UseVisualStyleBackColor = true;
@@ -107,7 +107,7 @@
             // 
             this.createKnjizica.Location = new System.Drawing.Point(12, 188);
             this.createKnjizica.Name = "createKnjizica";
-            this.createKnjizica.Size = new System.Drawing.Size(106, 23);
+            this.createKnjizica.Size = new System.Drawing.Size(144, 23);
             this.createKnjizica.TabIndex = 6;
             this.createKnjizica.Text = "Kreiranje knjizice";
             this.createKnjizica.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@
             // 
             this.vezaAngazuje.Location = new System.Drawing.Point(12, 217);
             this.vezaAngazuje.Name = "vezaAngazuje";
-            this.vezaAngazuje.Size = new System.Drawing.Size(106, 23);
+            this.vezaAngazuje.Size = new System.Drawing.Size(144, 23);
             this.vezaAngazuje.TabIndex = 7;
             this.vezaAngazuje.Text = "Veza Angazuje";
             this.vezaAngazuje.UseVisualStyleBackColor = true;
@@ -127,7 +127,7 @@
             // 
             this.vezaSadrzi.Location = new System.Drawing.Point(13, 246);
             this.vezaSadrzi.Name = "vezaSadrzi";
-            this.vezaSadrzi.Size = new System.Drawing.Size(105, 23);
+            this.vezaSadrzi.Size = new System.Drawing.Size(143, 23);
             this.vezaSadrzi.TabIndex = 8;
             this.vezaSadrzi.Text = "Veza Sadrzi";
             this.vezaSadrzi.UseVisualStyleBackColor = true;
@@ -135,9 +135,9 @@
             // 
             // btnPredstavnistvo
             // 
-            this.btnPredstavnistvo.Location = new System.Drawing.Point(202, 11);
+            this.btnPredstavnistvo.Location = new System.Drawing.Point(174, 12);
             this.btnPredstavnistvo.Name = "btnPredstavnistvo";
-            this.btnPredstavnistvo.Size = new System.Drawing.Size(116, 23);
+            this.btnPredstavnistvo.Size = new System.Drawing.Size(144, 23);
             this.btnPredstavnistvo.TabIndex = 9;
             this.btnPredstavnistvo.Text = "Predstavnistvo";
             this.btnPredstavnistvo.UseVisualStyleBackColor = true;
@@ -145,9 +145,9 @@
             // 
             // btnUpisiFizicko
             // 
-            this.btnUpisiFizicko.Location = new System.Drawing.Point(202, 40);
+            this.btnUpisiFizicko.Location = new System.Drawing.Point(174, 43);
             this.btnUpisiFizicko.Name = "btnUpisiFizicko";
-            this.btnUpisiFizicko.Size = new System.Drawing.Size(105, 23);
+            this.btnUpisiFizicko.Size = new System.Drawing.Size(144, 23);
             this.btnUpisiFizicko.TabIndex = 10;
             this.btnUpisiFizicko.Text = "Upisi fizicko lice";
             this.btnUpisiFizicko.UseVisualStyleBackColor = true;
@@ -155,10 +155,10 @@
             // 
             // btnDodavanjePredstavnistva
             // 
-            this.btnDodavanjePredstavnistva.Location = new System.Drawing.Point(202, 71);
-            this.btnDodavanjePredstavnistva.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDodavanjePredstavnistva.Location = new System.Drawing.Point(174, 71);
+            this.btnDodavanjePredstavnistva.Margin = new System.Windows.Forms.Padding(2);
             this.btnDodavanjePredstavnistva.Name = "btnDodavanjePredstavnistva";
-            this.btnDodavanjePredstavnistva.Size = new System.Drawing.Size(107, 54);
+            this.btnDodavanjePredstavnistva.Size = new System.Drawing.Size(144, 23);
             this.btnDodavanjePredstavnistva.TabIndex = 11;
             this.btnDodavanjePredstavnistva.Text = "Dodavanje predstavnistva";
             this.btnDodavanjePredstavnistva.UseVisualStyleBackColor = true;
@@ -166,9 +166,9 @@
             // 
             // btnZaposleni
             // 
-            this.btnZaposleni.Location = new System.Drawing.Point(202, 130);
+            this.btnZaposleni.Location = new System.Drawing.Point(174, 100);
             this.btnZaposleni.Name = "btnZaposleni";
-            this.btnZaposleni.Size = new System.Drawing.Size(75, 23);
+            this.btnZaposleni.Size = new System.Drawing.Size(144, 23);
             this.btnZaposleni.TabIndex = 12;
             this.btnZaposleni.Text = "Zaposleni";
             this.btnZaposleni.UseVisualStyleBackColor = true;
@@ -178,7 +178,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 372);
+            this.ClientSize = new System.Drawing.Size(353, 287);
             this.Controls.Add(this.btnZaposleni);
             this.Controls.Add(this.btnDodavanjePredstavnistva);
             this.Controls.Add(this.btnUpisiFizicko);
@@ -192,7 +192,7 @@
             this.Controls.Add(this.cmdFizickoLice);
             this.Controls.Add(this.btnUcitajKupca);
             this.Controls.Add(this.btnUcitajVozilo);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "btnVezaSeNalazi";
             this.Text = "Prodaja automobila";
             this.ResumeLayout(false);

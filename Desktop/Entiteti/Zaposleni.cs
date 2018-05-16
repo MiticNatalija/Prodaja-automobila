@@ -44,6 +44,7 @@ namespace Desktop.Entiteti
 
         public virtual IList<Testira> TestiraMehanicari { get; set; }
 
+
         public PredstavnikHyundai()
         {
             Mehanicari = new List<MehanicarHyundai>();
@@ -56,6 +57,21 @@ namespace Desktop.Entiteti
     public class MehanicarKia : Zaposleni
     {
         public virtual string Specijalnost { get; set; }
+        public virtual IList<Predstavnistvo> Servisi { get; set; }
+
+        public virtual IList<Angazuje> AngazujeServisi { get; set; }
+        public virtual IList<Knjizica> Knjizice { get; set; }
+
+        public virtual IList<Sadrzi> SadrziKnjizice { get; set; }
+
+       
+        public MehanicarKia()
+        {
+            Servisi = new List<Predstavnistvo>();
+            AngazujeServisi = new List<Angazuje>();
+            Knjizice = new List<Knjizica>();
+           SadrziKnjizice = new List<Sadrzi>();
+        }
     }
 
     public class MehanicarHyundai : Zaposleni
@@ -66,16 +82,40 @@ namespace Desktop.Entiteti
 
         public virtual IList<Testira> TestiraPredstavnici { get; set; }
 
+        public virtual IList<Predstavnistvo> Servisi { get; set; }
+
+        public virtual IList<Angazuje> AngazujeServisi { get; set; }
+        public virtual IList<Knjizica> Knjizice { get; set; }
+
+       public virtual IList<Sadrzi> SadrziKnjizice { get; set; }
+
         public MehanicarHyundai()
         {
             Predstavnici = new List<PredstavnikHyundai>();
             TestiraPredstavnici = new List<Testira>();
-            
+            Servisi = new List<Predstavnistvo>();
+            AngazujeServisi = new List<Angazuje>();
+            Knjizice = new List<Knjizica>();
+            SadrziKnjizice = new List<Sadrzi>();
         }
     }
 
     public class MehanicarKiaHyundai : Zaposleni
     {
         public virtual string Specijalnost { get; set; }
+        public virtual IList<Predstavnistvo> Servisi { get; set; }
+
+        public virtual IList<Angazuje> AngazujeServisi { get; set; }
+        public virtual IList<Knjizica> Knjizice { get; set; }
+
+       public virtual IList<Sadrzi> SadrziKnjizice { get; set; }
+
+        public MehanicarKiaHyundai()
+        {
+            Servisi = new List<Predstavnistvo>();
+            AngazujeServisi = new List<Angazuje>();
+            Knjizice = new List<Knjizica>();
+            SadrziKnjizice = new List<Sadrzi>();
+        }
     }
 }
