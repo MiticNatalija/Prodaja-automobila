@@ -28,6 +28,11 @@ namespace Desktop.Entiteti
 
         public virtual Vlasnik vlasnik { get; set; }
 
+        public Vozilo()
+        {
+            Knjizice = new List<Knjizica>();
+        }
+
     }
         public class Putnicko :Vozilo
         {

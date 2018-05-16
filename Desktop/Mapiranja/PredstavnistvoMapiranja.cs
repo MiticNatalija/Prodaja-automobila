@@ -68,7 +68,7 @@ namespace Desktop.Mapiranja
             DiscriminatorValue("SalonKia");
 
             References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
-            //HasMany(x => x.Vozila).KeyColumn("SALON_ID");
+            HasMany(x => x.Vozila).KeyColumn("SALON_ID").Inverse().Cascade.All();
         }
     }
 
@@ -81,7 +81,7 @@ namespace Desktop.Mapiranja
             Map(x => x.DatumVazenjaLicence, "DATUM_VAZENJA_LICENCE");
 
             References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
-            //HasMany(x => x.Vozila).KeyColumn("SALON_ID");
+            HasMany(x => x.Vozila).KeyColumn("SALON_ID").Inverse().Cascade.All();
         }
     }
 
@@ -95,7 +95,7 @@ namespace Desktop.Mapiranja
 
             References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
             References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
-            //HasMany(x => x.Vozila).KeyColumn("SALON_ID");
+            HasMany(x => x.Vozila).KeyColumn("SALON_ID").Inverse().Cascade.All();
         }
     }
 
@@ -107,7 +107,7 @@ namespace Desktop.Mapiranja
 
             References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
             //HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID");
-            //HasMany(x => x.Vozila).KeyColumn("SALON_ID");
+            HasMany(x => x.Vozila).KeyColumn("SALON_ID").Inverse().Cascade.All();
         }
     }
 
@@ -121,7 +121,7 @@ namespace Desktop.Mapiranja
 
             References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
             //HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID");
-            //HasMany(x => x.Vozila).KeyColumn("SALON_ID");
+            HasMany(x => x.Vozila).KeyColumn("SALON_ID").Inverse().Cascade.All();
         }
     }
 
@@ -136,7 +136,7 @@ namespace Desktop.Mapiranja
             References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
             References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
             //HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID");
-            //HasMany(x => x.Vozila).KeyColumn("SALON_ID");
+            HasMany(x => x.Vozila).KeyColumn("SALON_ID").Inverse().Cascade.All();
         }
     }
 }

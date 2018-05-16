@@ -24,7 +24,7 @@ namespace Desktop
             try
             {
                 ISession s = DataLayer.GetSession();
-             
+
                 Entiteti.Putnicko p = new Entiteti.Putnicko()
                 {
                     Registracija = "NI 789 PO",
@@ -35,7 +35,7 @@ namespace Desktop
                 //radi lepo
                 IQuery q = s.CreateQuery("from Vozilo as vo where vo.Id=1");
 
-               Vozilo v1 = q.UniqueResult<Vozilo>();
+                Vozilo v1 = q.UniqueResult<Vozilo>();
                 MessageBox.Show(v1.GetType().ToString());
 
 
@@ -56,10 +56,11 @@ namespace Desktop
 
 
                 Vozilo r = s.Load<Vozilo>(1);
-              //Putnicko r1 = s.Load<Putnicko>(1);
-
+            
+                r.Gorivo = "Benzin";
                 MessageBox.Show(r.Gorivo + " "  + " " + r.Registracija);
 
+                s.Save(r);
                 s.Save(p);
                 s.Flush();
                 s.Close();
@@ -141,18 +142,32 @@ namespace Desktop
               
                 Vozilo v = s.Load<Vozilo>(1);
                 Predstavnistvo p = s.Load<Predstavnistvo>(1);
-                p.Adresa = "Bulevar Pobede 45";
-
-
+                // p.Adresa = "Bulevar Pobede 45";
+                SalonServisHyundaiKia sve = s.Load<SalonServisHyundaiKia>(1);
+                MessageBox.Show(sve.Adresa);
+                foreach (Vozilo voz in sve.Vozila) {
+                    MessageBox.Show(voz.Gorivo);
+                }
 
                 MessageBox.Show(v.Salon.Adresa);
 
-                //foreach (Vozilo vo in p.Vozila)
-                //{
-                //    MessageBox.Show(vo.Registracija);
-                //}
 
-                s.SaveOrUpdate(p);
+                Putnicko novo = new Putnicko() {
+                    Registracija = "PI 123 PO",
+                    Gorivo = "Dizel",
+                    OznakaMotora = "127897897ff",
+                    BrojMesta = 5
+                };
+
+                SalonHyundai novi= new SalonHyundai() {
+                    Adresa="Uzicka 47",
+                    DatumOtvaranja=new DateTime(2000,1,1),
+                    DatumVazenjaLicence=new DateTime(2104,1,1)
+                };
+
+                novi.Vozila.Add(novo);
+                novo.Salon = novi;
+                s.SaveOrUpdate(novi);
                 s.Flush();
                 s.Close();
             }
@@ -182,6 +197,7 @@ namespace Desktop
                     Telefon = "02515",
                     Vozilo = v1
                 };
+                MessageBox.Show(v1.vlasnik.Telefon);
                 s.Save(novi);
                 s.SaveOrUpdate(v1);
 
@@ -217,11 +233,16 @@ namespace Desktop
             try
             {
                 ISession s = DataLayer.GetSession();
+               
+
+              //  Testira test = s.Load<Testira>(2);
+                //MessageBox.Show(test.DatumTestiranja + " " + test.Mehanicar.DatumRodjenja + " " + test.Predstavnik.Adresa);
                 Testira t = new Testira();
 
                 MehanicarHyundai m = s.Load<MehanicarHyundai>(5);
                 PredstavnikHyundai p = s.Load<PredstavnikHyundai>(1);
-
+                MessageBox.Show( m.Predstavnici[0].Adresa);
+                MessageBox.Show(p.Mehanicari[0].Prezime);
                 // Maruska:
                 // Ovo ispod ne radi, upada u else granu.
 
@@ -261,7 +282,7 @@ namespace Desktop
                 p.TestiraMehanicari.Add(t);
                 //ovo radi ispravno, proveri dal tako treba da se radi 
 
-                s.Save(p); 
+                //s.Save(p); 
                 //ovo valjda ne treba, ne menja se zapravo nista u bazi
 
 
@@ -486,6 +507,45 @@ namespace Desktop
                 };
 
                 s.Save(sh);
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnZaposleni_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Zaposleni z = s.Load<Zaposleni>(1);
+                MessageBox.Show(z.Prezime);
+                //  MessageBox.Show(z.GetType().ToString());
+
+               
+                IQuery q = s.CreateQuery("select z from Zaposleni z where z.Id=5");
+                Zaposleni z1 = q.UniqueResult<Zaposleni>();
+                if (z1.GetType() == typeof(MehanicarHyundai))
+                {
+                    MehanicarHyundai m = (MehanicarHyundai)z1;
+                }
+
+                MehanicarHyundai meh = new MehanicarHyundai() {
+                    DatumRodjenja=new DateTime(1970,1,1),
+                    DatumZaposlenja=new DateTime(2009,4,4),
+                    ImeOca="Srdjan",
+                    LicnoIme="Marko",
+                    Mbr="0404197045101",
+                    Prezime="Matic",
+                    Specijalnost="Hladnjak"
+                    
+                };
+
+                s.Save(meh);
                 s.Flush();
                 s.Close();
 

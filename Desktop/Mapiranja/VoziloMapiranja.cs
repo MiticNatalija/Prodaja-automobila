@@ -29,10 +29,10 @@ namespace Desktop.Mapiranja
             //VEZA N:1 PRODAJE
             References(x => x.Predstavnik).Column("PREDSTAVNIK_ID").LazyLoad();
 
-            HasMany(x => x.Knjizice).KeyColumn("VOZILO_ID").LazyLoad();
+            HasMany(x => x.Knjizice).KeyColumn("VOZILO_ID").LazyLoad().Inverse().Cascade.All();
 
             //123
-            HasOne(x => x.kupac).PropertyRef(x => x.Vozilo);
+            HasOne(x => x.kupac).PropertyRef(x => x.Vozilo).LazyLoad();
 
             HasOne(x => x.vlasnik).Cascade.All();
 

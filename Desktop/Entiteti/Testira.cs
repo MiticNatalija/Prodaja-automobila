@@ -8,7 +8,7 @@ namespace Desktop.Entiteti
 {
     public class Testira
     {
-        public virtual long Id { get; protected set; }
+        public virtual int Id { get; protected set; }
         public virtual int Ocena { get; set; }
         public virtual DateTime DatumTestiranja { get; set; }
         public virtual PredstavnikHyundai Predstavnik { get; set; }

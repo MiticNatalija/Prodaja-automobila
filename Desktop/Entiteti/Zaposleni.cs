@@ -23,6 +23,12 @@ namespace Desktop.Entiteti
         public virtual string Adresa { get; set; }
         public virtual string Telefon { get; set; }
         public virtual IList<Vozilo> Vozila { get; set; }
+        public virtual IList<Predstavnistvo> Predstavnistva {get;set;}
+        public PredstavnikKia()
+        {
+            Vozila = new List<Vozilo>();
+            Predstavnistva = new List<Predstavnistvo>();
+        }
     }
 
     public class PredstavnikHyundai : Zaposleni
@@ -32,6 +38,8 @@ namespace Desktop.Entiteti
 
         public virtual IList<Vozilo> Vozila { get; set; }
 
+        public virtual IList<Predstavnistvo> Predstavnistva { get; set; }
+
         public virtual IList<MehanicarHyundai> Mehanicari { get; set; }
 
         public virtual IList<Testira> TestiraMehanicari { get; set; }
@@ -40,6 +48,8 @@ namespace Desktop.Entiteti
         {
             Mehanicari = new List<MehanicarHyundai>();
             TestiraMehanicari = new List<Testira>();
+            Vozila = new List<Vozilo>();
+            Predstavnistva = new List<Predstavnistvo>();
         }
     }
 
@@ -60,6 +70,7 @@ namespace Desktop.Entiteti
         {
             Predstavnici = new List<PredstavnikHyundai>();
             TestiraPredstavnici = new List<Testira>();
+            
         }
     }
 
