@@ -455,5 +455,45 @@ namespace Desktop
                 MessageBox.Show(ec.Message);
             }
 }
+
+        private void btnDodavanjePredstavnistva_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                PredstavnikHyundai ph = new PredstavnikHyundai()
+                {
+                    LicnoIme = "Marko",
+                    Prezime = "Maric",
+                    ImeOca = "Darko",
+                    Mbr = "1231231233211",
+                    DatumRodjenja = new DateTime(1970, 10, 11),
+                    Adresa = "Maricka 20",
+                    Telefon = "0601233211",
+                    DatumZaposlenja = new DateTime(2018,1,1)
+                };
+
+                s.Save(ph);
+                s.Flush();
+
+                SalonHyundai sh = new SalonHyundai()
+                {
+                    Adresa = "Nova 14",
+                    DatumOtvaranja = new DateTime(),
+                    DatumVazenjaLicence = new DateTime(2020, 2, 2),
+                    PredstavnikHyundai = ph
+                };
+
+                s.Save(sh);
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
