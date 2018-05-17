@@ -49,6 +49,8 @@
             this.btnKnjizicaCitanje = new System.Windows.Forms.Button();
             this.btnKnjizicaBrisanje = new System.Windows.Forms.Button();
             this.btnKnjizicaAzuriranje = new System.Windows.Forms.Button();
+            this.btnKreiranjeVlasnika = new System.Windows.Forms.Button();
+            this.btnBrisanjeVlasnika = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUcitajVozilo
@@ -97,7 +99,7 @@
             this.btnVlasnik.Name = "btnVlasnik";
             this.btnVlasnik.Size = new System.Drawing.Size(143, 23);
             this.btnVlasnik.TabIndex = 4;
-            this.btnVlasnik.Text = "Vlasnik";
+            this.btnVlasnik.Text = "Ucitavanje vlasnika";
             this.btnVlasnik.UseVisualStyleBackColor = true;
             this.btnVlasnik.Click += new System.EventHandler(this.btnVlasnik_Click);
             // 
@@ -265,12 +267,34 @@
             this.btnKnjizicaAzuriranje.UseVisualStyleBackColor = true;
             this.btnKnjizicaAzuriranje.Click += new System.EventHandler(this.btnKnjizicaAzuriranje_Click);
             // 
+            // btnKreiranjeVlasnika
+            // 
+            this.btnKreiranjeVlasnika.Location = new System.Drawing.Point(13, 265);
+            this.btnKreiranjeVlasnika.Name = "btnKreiranjeVlasnika";
+            this.btnKreiranjeVlasnika.Size = new System.Drawing.Size(143, 23);
+            this.btnKreiranjeVlasnika.TabIndex = 21;
+            this.btnKreiranjeVlasnika.Text = "Kreiranje vlasnika";
+            this.btnKreiranjeVlasnika.UseVisualStyleBackColor = true;
+            this.btnKreiranjeVlasnika.Click += new System.EventHandler(this.btnKreiranjeVlasnika_Click);
+            // 
+            // btnBrisanjeVlasnika
+            // 
+            this.btnBrisanjeVlasnika.Location = new System.Drawing.Point(13, 294);
+            this.btnBrisanjeVlasnika.Name = "btnBrisanjeVlasnika";
+            this.btnBrisanjeVlasnika.Size = new System.Drawing.Size(143, 23);
+            this.btnBrisanjeVlasnika.TabIndex = 22;
+            this.btnBrisanjeVlasnika.Text = "Brisanje vlasnika";
+            this.btnBrisanjeVlasnika.UseVisualStyleBackColor = true;
+            this.btnBrisanjeVlasnika.Click += new System.EventHandler(this.btnBrisanjeVlasnika_Click);
+            // 
             // frmProdajaAutomobila
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(554, 427);
+            this.Controls.Add(this.btnBrisanjeVlasnika);
+            this.Controls.Add(this.btnKreiranjeVlasnika);
             this.Controls.Add(this.btnKnjizicaAzuriranje);
             this.Controls.Add(this.btnKnjizicaBrisanje);
             this.Controls.Add(this.btnKnjizicaCitanje);
@@ -322,6 +346,8 @@
         private System.Windows.Forms.Button btnKnjizicaCitanje;
         private System.Windows.Forms.Button btnKnjizicaBrisanje;
         private System.Windows.Forms.Button btnKnjizicaAzuriranje;
+        private System.Windows.Forms.Button btnKreiranjeVlasnika;
+        private System.Windows.Forms.Button btnBrisanjeVlasnika;
     }
 }
 

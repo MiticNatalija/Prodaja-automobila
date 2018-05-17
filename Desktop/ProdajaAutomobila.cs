@@ -143,41 +143,13 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-                Vozilo j = s.Load<Vozilo>(2);
 
 
                 Vlasnik v = s.Get<Vlasnik>(2);
                 MessageBox.Show(v.Telefon);
 
 
-                Vozilo v1 = s.Load<Vozilo>(1);
-                Vlasnik novi = new Vlasnik()
-                {
-                    Adresa = "fd",
-                    Telefon = "02515",
-                    Vozilo = v1
-                };
-                MessageBox.Show(v1.vlasnik.Telefon);
-                s.Save(novi);
-                s.SaveOrUpdate(v1);
-
-                Putnicko p = new Putnicko() {
-                    BrojMesta=5,
-                    Gorivo="Dizel",
-                    OznakaMotora="415641xc",
-                    Registracija="NI 744 KI"
-
-                };
-
-                Vlasnik novi1 = new Vlasnik() {
-                    Adresa = "ftre",
-                    Telefon = "01878946",
-                    Vozilo = p
-                };
-                
-                s.Save(novi1);
-               
-
+       
               
                 s.Flush();
                 s.Close();
@@ -829,6 +801,90 @@ namespace Desktop
                 s.Close();
 
                 MessageBox.Show("Uspesno azuriranje knjizice.");
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnKreiranjeVlasnika_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                //proba za vozilo i vlasnika koje smo bili upisali-radi
+                //Vozilo proba = s.Load<Vozilo>(10);
+                //MessageBox.Show( proba.vlasnik.Telefon);
+
+                Vozilo v1 = s.Load<Vozilo>(5);
+                if (v1.vlasnik == null)
+                {
+                    Vlasnik novi = new Vlasnik()
+                    {
+                        Adresa = "vlaska 15",
+                        Telefon = "02515",
+                        Vozilo = v1
+                    };
+                    v1.vlasnik = novi;
+                    MessageBox.Show(v1.vlasnik.Telefon);
+                    s.Save(novi);
+                    s.SaveOrUpdate(v1);
+                }
+
+
+
+
+
+
+                Putnicko p = new Putnicko()
+                {
+                    BrojMesta = 5,
+                    Gorivo = "Dizel",
+                    OznakaMotora = "415641xc",
+                    Registracija = "NI 744 KI"
+
+                };
+
+                Vlasnik novi1 = new Vlasnik()
+                {
+                    Adresa = "ftre",
+                    Telefon = "01878946",
+                    Vozilo = p
+                };
+
+                s.Save(novi1);
+
+
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnBrisanjeVlasnika_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                //Vlasnik vl = s.Load<Vlasnik>(10);
+
+                Vlasnik vl = s.Load<Vlasnik>(9);
+                vl.Adresa = "adresa 5";
+                s.SaveOrUpdate(vl);
+
+
+                IQuery q = s.CreateQuery("select v from Vlasnik v where v.Id=11");
+                Vlasnik v = q.UniqueResult<Vlasnik>();
+
+                s.Delete(v);
+                s.Flush();
+                s.Close();
+                MessageBox.Show("Uspesno brisanje.");
             }
             catch (Exception ec)
             {

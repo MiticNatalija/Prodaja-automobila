@@ -33,7 +33,7 @@ namespace Desktop.Mapiranja
             //VEZA 1:1 KUPUJE
             HasOne(x => x.kupac).PropertyRef(x => x.Vozilo).LazyLoad();
             //VEZA 1:1 PRIPADA
-            HasOne(x => x.vlasnik).Cascade.All();
+            HasOne(x => x.vlasnik).Cascade.SaveUpdate();//.Cascade.All();
 
             
         }
