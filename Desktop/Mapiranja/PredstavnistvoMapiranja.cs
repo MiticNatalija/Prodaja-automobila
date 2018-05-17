@@ -20,10 +20,6 @@ namespace Desktop.Mapiranja
 
             Map(x => x.Adresa, "ADRESA");
             Map(x => x.DatumOtvaranja, "DATUM_OTVARANJA");
-
-            //VEZA N:1 SE_NALAZI
-            //HasMany(x => x.Vozila).KeyColumn("SALON_ID").LazyLoad().Cascade.All().Inverse();
-
         }
     }
 

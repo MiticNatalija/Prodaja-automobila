@@ -17,7 +17,6 @@ namespace Desktop.Entiteti
 
         public virtual IList<Zaposleni> Mehanicari { get; set; }
 
-       
 
         public Knjizica()
         {

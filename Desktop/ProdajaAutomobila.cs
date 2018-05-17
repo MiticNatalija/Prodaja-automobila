@@ -79,7 +79,7 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
 
               
-                Vozilo v = s.Load<Vozilo>(1);
+                Vozilo v = s.Load<Vozilo>(2);
                 Predstavnistvo p = s.Load<Predstavnistvo>(1);
                 // p.Adresa = "Bulevar Pobede 45";
                 SalonServisHyundaiKia sve = s.Load<SalonServisHyundaiKia>(1);
@@ -229,16 +229,31 @@ namespace Desktop
 
                 //ServisHyundai ser = s.Load<ServisHyundai>(15);
                 //foreach (Knjizica kj in ser.Knjizice)
-                //    MessageBox.Show(kj.CenaUsluge.ToString());
+                //MessageBox.Show(kj.CenaUsluge.ToString());
                 
 
-                Vozilo v = s.Load<Vozilo>(1);
-                
+                Vozilo v = s.Load<Vozilo>(2);
+
+                PredstavnikHyundai ph = new PredstavnikHyundai
+                {
+                    LicnoIme = "Logan",
+                    Prezime = "Kocic",
+                    ImeOca = "Igor",
+                    Mbr = "0100000000001",
+                    DatumRodjenja = new DateTime(1980, 1, 2),
+                    DatumZaposlenja = new DateTime(2017, 2, 3),
+                    Adresa = "Solidna adresa 10",
+                    Telefon = "066555444",
+                };
+
+                s.Save(ph);
+                s.Flush();
+
                 ServisHyundai sh = new ServisHyundai()
                 {
                     Adresa = "moja adresa",
-                    DatumOtvaranja=new DateTime(2017,1,1)
-
+                    DatumOtvaranja = new DateTime(2017, 1, 1),
+                    PredstavnikHyundai = ph,
                 };
 
                 s.Save(sh);
@@ -500,20 +515,28 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-                PredstavnikHyundai ph = new PredstavnikHyundai()
-                {
-                    LicnoIme = "Marko",
-                    Prezime = "Maric",
-                    ImeOca = "Darko",
-                    Mbr = "1231231233211",
-                    DatumRodjenja = new DateTime(1970, 10, 11),
-                    Adresa = "Maricka 20",
-                    Telefon = "0601233211",
-                    DatumZaposlenja = new DateTime(2018,1,1)
-                };
+                IQuery q = s.CreateQuery("select z from Zaposleni z where z.Mbr='1231231233211'");
+                Zaposleni z = q.UniqueResult<Zaposleni>();
+                PredstavnikHyundai ph = null;
 
-                s.Save(ph);
-                s.Flush();
+                if (z == null)
+                {
+                    ph = new PredstavnikHyundai()
+                    {
+                        LicnoIme = "Marko",
+                        Prezime = "Maric",
+                        ImeOca = "Darko",
+                        Mbr = "1231231233211",
+                        DatumRodjenja = new DateTime(1970, 10, 11),
+                        Adresa = "Maricka 20",
+                        Telefon = "0601233211",
+                        DatumZaposlenja = new DateTime(2018, 1, 1)
+                    };
+                    s.Save(ph);
+                    s.Flush();
+                }
+                else
+                    ph = (PredstavnikHyundai)z;
 
                 SalonHyundai sh = new SalonHyundai()
                 {
@@ -541,7 +564,6 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
                 Zaposleni z = s.Load<Zaposleni>(1);
                 MessageBox.Show(z.Prezime);
-                //  MessageBox.Show(z.GetType().ToString());
 
                
                 IQuery q = s.CreateQuery("select z from Zaposleni z where z.Id=5");
@@ -725,7 +747,7 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
 
 
-                Knjizica k = s.Load<Knjizica>(1);
+                Knjizica k = s.Load<Knjizica>(2);
                 MessageBox.Show("Ucitali ste knjizicu u kojoj su zabelezeni radovi :\n"+ k.Radovi );
 
                 foreach (Zaposleni p1 in k.Mehanicari)
@@ -750,7 +772,7 @@ namespace Desktop
 
 
               //  Knjizica k = s.Load<Knjizica>(8);
-                IQuery q = s.CreateQuery("from Knjizica as k where k.Id=8 ");
+                IQuery q = s.CreateQuery("from Knjizica as k where k.Id=10 ");
                 Knjizica k = q.UniqueResult<Knjizica>();
                 MessageBox.Show("Ucitali ste knjizicu u kojoj su zabelezeni radovi :\n" + k.Radovi);
 
@@ -774,7 +796,7 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
 
 
-                Knjizica k = s.Load<Knjizica>(10);
+                Knjizica k = s.Load<Knjizica>(2);
                 MessageBox.Show("Ucitali ste knjizicu u kojoj su zabelezeni radovi :\n" + k.Radovi);
 
                 k.Radovi = "Pregled guma.";
@@ -797,11 +819,9 @@ namespace Desktop
             try
             {
                 ISession s = DataLayer.GetSession();
-                //proba za vozilo i vlasnika koje smo bili upisali-radi
-                //Vozilo proba = s.Load<Vozilo>(10);
-                //MessageBox.Show( proba.vlasnik.Telefon);
 
-                Vozilo v1 = s.Load<Vozilo>(5);
+                IQuery q = s.CreateQuery("select v from Vozilo v where v.Id=3");
+                Vozilo v1 = q.UniqueResult<Vozilo>();
                 if (v1.vlasnik == null)
                 {
                     Vlasnik novi = new Vlasnik()
@@ -815,10 +835,6 @@ namespace Desktop
                     s.Save(novi);
                     s.SaveOrUpdate(v1);
                 }
-
-
-
-
 
 
                 Putnicko p = new Putnicko()
@@ -857,7 +873,7 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
                 //Vlasnik vl = s.Load<Vlasnik>(10);
 
-                Vlasnik vl = s.Load<Vlasnik>(9);
+                Vlasnik vl = s.Load<Vlasnik>(8);
                 vl.Adresa = "adresa 5";
                 s.SaveOrUpdate(vl);
 
@@ -929,8 +945,13 @@ namespace Desktop
                 //ServisHyundai se = s.Load<ServisHyundai>(11);
                 //s.Delete(se);
 
-                SalonServisHyundai sa = s.Load<SalonServisHyundai>(5);
-                s.Delete(sa);
+                IQuery q = s.CreateQuery("select p from Predstavnistvo p where p.Adresa='Nova 14'");
+                Predstavnistvo p = q.UniqueResult<Predstavnistvo>();
+                s.Delete(p);
+                MessageBox.Show("Uspesno brisanje.");
+
+                //SalonServisHyundai sa = s.Load<SalonServisHyundai>(5);
+                //s.Delete(sa);
 
                 //radi-ima vezu sa vozilom
                 //ServisHyundai ser = s.Load<ServisHyundai>(17);
@@ -955,23 +976,15 @@ namespace Desktop
             try
             {
                 ISession s = DataLayer.GetSession();
-                //  Zaposleni z = s.Load<Zaposleni>(10);
-                //   MehanicarHyundai h = s.Load<MehanicarHyundai>(10);
-                PredstavnikHyundai pr = s.Load<PredstavnikHyundai>(11);
-                MessageBox.Show(pr.Prezime);
 
+                IQuery q = s.CreateQuery("select z from Zaposleni z where z.Mbr='0404197045101'");
+                Zaposleni z = q.UniqueResult<Zaposleni>();
+                MessageBox.Show(z.Prezime);
 
-
-                //MessageBox.Show(z.Prezime);
-                //MessageBox.Show(z.GetType().ToString());
-
-                s.Delete(pr);
-              
-
-               
+                s.Delete(z);
                 s.Flush();
                 s.Close();
-
+                MessageBox.Show("Uspesno brisanje prethodno kreiranog zaposlenog radnika.");
             }
             catch (Exception ec)
             {
