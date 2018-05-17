@@ -14,18 +14,14 @@ namespace Desktop.Mapiranja
         {
             Table("FIZICKO_LICE");
 
-
-            //KeyColumn("KUPAC_ID");
-          //  Id(x => x.Jmbg).GeneratedBy.Assigned().Column("JMBG");
             Id(x => x.Jmbg).Column("JMBG").GeneratedBy.Assigned();
 
-           // Map(x => x.Jmbg, "JMBG");
             Map(x => x.Ime, "IME");
             Map(x => x.Prezime, "PREZIME");
             Map(x => x.Adresa, "ADRESA");
             Map(x => x.Telefon, "TELEFON");
-            //123
-            References(x => x.Kupac).Column("KUPAC_ID").Unique();
+
+            References(x => x.Kupac).Column("KUPAC_ID").Unique().Cascade.All(); ;
         }
     }
 }
