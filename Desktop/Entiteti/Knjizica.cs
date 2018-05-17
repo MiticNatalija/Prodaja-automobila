@@ -17,13 +17,11 @@ namespace Desktop.Entiteti
 
         public virtual IList<Zaposleni> Mehanicari { get; set; }
 
-        public virtual IList<Sadrzi> SadrziMehanicari { get; set; }
-
+       
 
         public Knjizica()
         {
             Mehanicari = new List<Zaposleni>();
-            SadrziMehanicari = new List<Sadrzi>();
         }
     }
 }

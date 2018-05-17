@@ -198,7 +198,7 @@ namespace Desktop
 
                 MehanicarHyundai mh = new MehanicarHyundai()
                 {
-                    Mbr = "1346993762612",
+                    Mbr = "2346993762615",
                     LicnoIme = "Krka",
                     ImeOca = "Krk",
                     Prezime = "Krkic",
@@ -211,7 +211,7 @@ namespace Desktop
 
                 PredstavnikHyundai ph = new PredstavnikHyundai()
                 {
-                    Mbr = "1566945562612",
+                    Mbr = "2566945562618",
                     LicnoIme = "Prka",
                     ImeOca = "Prk",
                     Prezime = "Prkic",
@@ -259,21 +259,7 @@ namespace Desktop
                 t.Mehanicar = mh; 
                 t.Predstavnik = ph;
                 t.DatumTestiranja = DateTime.Now;
-                t.Ocena = 4;
-
-
-                // DA LI TREBA OVA DODELA ISPOD ?
-                // KOD NJIH NIJE RADJENA
-                // A OVDE AKO SE DODELA NE URADI ONDA SE LISTE NE UPDATE-UJU
-                // MEJUTIM, KAD SE DODA OVA DODELA, BACA EXCEPTION "CANNOT INSERT NULL IN OCENA"
-                
-                //////////////////////////////////////////////////////////////////////////////////////
-
-                //mh.Predstavnici.Add(ph);
-                //mh.TestiraPredstavnici.Add(t);
-                //ph.Mehanicari.Add(mh);
-                //ph.TestiraMehanicari.Add(t);
-
+                t.Ocena = 3;
 
                 s.Save(t);
 
@@ -296,11 +282,7 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
 
                 Vozilo v = s.Load<Vozilo>(1);
-
-
-                // Radi i ono dole kastovanje, a radi i ovo,
-                // mislim da ostavimo ovo jer ono s kastovanjem imamo na vise mesta
-
+                
                 ServisHyundai sh = new ServisHyundai()
                 {
                     Adresa = "moja adresa",
@@ -311,6 +293,9 @@ namespace Desktop
                 s.Save(sh);
                 s.Flush();
 
+
+                //RADI I OVO ISPOD
+                //////////////////////////////////////////////////////////////////////
                 //IQuery q = s.CreateQuery("from Predstavnistvo as p where p.Id=3");
 
                 //Predstavnistvo p = q.UniqueResult<Predstavnistvo>();
@@ -336,7 +321,7 @@ namespace Desktop
                 Knjizica k = new Knjizica()
                 {
                     DatumIntervencije = DateTime.Now,
-                    CenaUsluge = 1111,
+                    CenaUsluge = 3333,
                     Radovi = "Pregled",
                     Vozilo= v,
                     //Servis= p
@@ -346,6 +331,9 @@ namespace Desktop
 
                 s.Save(k);
                 s.Flush();
+
+                MessageBox.Show("Podaci o novoj knjizici su uneti.");
+
                 s.Close();
             }
             catch (Exception ec)
@@ -363,7 +351,7 @@ namespace Desktop
 
                 t.DatumPocetka = new DateTime(2018, 1, 1);
                 t.KrajRada = DateTime.Now;
-                t.Ocena = 3;
+                t.Ocena = 2;
 
                 IQuery q = s.CreateQuery("from Predstavnistvo as p where p.Id=3");
 
@@ -373,8 +361,7 @@ namespace Desktop
 
                 Zaposleni z2 = q1.UniqueResult<Zaposleni>();
 
-               // ServisHyundaiKia m1 = new ServisHyundaiKia();
-
+              
                 if (z1.GetType() == typeof(ServisKia))
                 {
                     ServisKia m = (ServisKia)z1;
@@ -438,11 +425,6 @@ namespace Desktop
 
                 s.Flush();
 
-                // cak i nakon snimanja veze u bazu, ne update-uju se liste na obe strane veze
-                // ne znam da l bi to trebalo da se desi, 
-                // ako ne bi trebalo, onda cu da dodam ovde i dodelu
-
-
                 s.Close();
 
                 MessageBox.Show("Podaci o novoj vezi Angazuje su uneti.");
@@ -456,93 +438,47 @@ namespace Desktop
 
         private void vezaSadrzi_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //        ISession s = DataLayer.GetSession();
-
-            //        Knjizica r1 = s.Load<Knjizica>(1);
-
-            //        foreach ( Zaposleni p1 in r1.Mehanicari)
-            //        {
-            //            MessageBox.Show(p1.LicnoIme); //Ilija
-            //        }
-
-
-            //        s.Close();
-            //}
-            //catch (Exception ec)
-            //{
-            //    MessageBox.Show(ec.Message);
-            //}
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                IQuery q = s.CreateQuery("from Zaposleni as z where z.Id=5 ");
-                IQuery q1 = s.CreateQuery("from Knjizica as k where k.Id=1 ");
-                Zaposleni z = q.UniqueResult<Zaposleni>();
-                Knjizica p = q1.UniqueResult<Knjizica>();
+                Knjizica r1 = s.Load<Knjizica>(1);
 
-
-                Sadrzi t = new Sadrzi();
-
-                
-                if (z.GetType() == typeof(MehanicarKia))
+                foreach (Zaposleni p1 in r1.Mehanicari)
                 {
-                    MehanicarKia mk = new MehanicarKia();
-                    mk = (MehanicarKia)z;
-                    t.Mehanicar = mk;
-                    t.Knjizica = p;
-                    mk.Knjizice.Add(p);
-                    mk.SadrziKnjizice.Add(t);
-                    p.Mehanicari.Add(mk);
-                    p.SadrziMehanicari.Add(t);
-
-                }
-                else if (z.GetType() == typeof(MehanicarHyundai))
-                {
-                    MehanicarHyundai mh = new MehanicarHyundai();
-                    mh = (MehanicarHyundai)z;
-                    t.Mehanicar = mh;
-                    t.Knjizica = p;
-                    mh.Knjizice.Add(p);
-                    mh.SadrziKnjizice.Add(t);
-                    p.Mehanicari.Add(mh);
-                    p.SadrziMehanicari.Add(t);
-                }
-                else if (z.GetType() == typeof(MehanicarKiaHyundai))
-                {
-                    MehanicarKiaHyundai mkh = new MehanicarKiaHyundai();
-                    mkh = (MehanicarKiaHyundai)z;
-                    t.Mehanicar = mkh;
-                    t.Knjizica = p;
-                    mkh.Knjizice.Add(p);
-                    mkh.SadrziKnjizice.Add(t);
-                    p.Mehanicari.Add(mkh);
-                    p.SadrziMehanicari.Add(t);
-                }
-                else
-                {
-                    MessageBox.Show("Treba uneti mehanicara.");
+                    MessageBox.Show(p1.LicnoIme); 
                 }
 
-                s.Save(p);
+                MehanicarHyundai mh = new MehanicarHyundai()
+                {
+                    Mbr = "2346993762618",
+                    LicnoIme = "Beka",
+                    ImeOca = "Krk",
+                    Prezime = "Bekic",
+                    DatumRodjenja = new DateTime(1993, 1, 2),
+                    DatumZaposlenja = DateTime.Now,
+                    Specijalnost = "dizajn"
+                };
+                s.Save(mh);
+                s.Flush();
 
+                r1.Mehanicari.Add(mh);
+                mh.Knjizice.Add(r1);
 
+                foreach (Zaposleni p1 in r1.Mehanicari)
+                {
+                    MessageBox.Show(p1.LicnoIme);
+                }
 
-                s.Save(t);
-                
-
+                s.SaveOrUpdate(r1);
                 s.Flush();
                 s.Close();
-
-                MessageBox.Show("Podaci o novoj vezi Sadrzi su uneti.");
-
             }
             catch (Exception ec)
             {
                 MessageBox.Show(ec.Message);
             }
+          
         }
 
         private void btnPredstavnistvo_Click(object sender, EventArgs e)
@@ -766,6 +702,137 @@ namespace Desktop
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnTestiraProvera_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                MehanicarHyundai r1 = s.Load<MehanicarHyundai>(5);
+
+                foreach (PredstavnikHyundai p1 in r1.Predstavnici)
+                {
+                    MessageBox.Show(p1.LicnoIme);
+                }
+
+
+                PredstavnikHyundai p2 = s.Load<PredstavnikHyundai>(1);
+
+                foreach (MehanicarHyundai r2 in p2.Mehanicari)
+                {
+                    MessageBox.Show(r2.LicnoIme + " " + r2.Prezime);
+                }
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnAngazujeProvera_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+
+                ServisHyundaiKia shk = s.Load<ServisHyundaiKia>(3);
+
+                foreach (Zaposleni p1 in shk.Mehanicari)
+                {
+                    MessageBox.Show(p1.LicnoIme);
+                }
+
+
+                MehanicarKia p2 = s.Load<MehanicarKia>(3);
+
+                foreach (Predstavnistvo r2 in p2.Servisi)
+                {
+                    MessageBox.Show(r2.Adresa);
+                }
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnKnjizicaCitanje_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+
+                Knjizica k = s.Load<Knjizica>(1);
+                MessageBox.Show("Ucitali ste knjizicu u kojoj su zabelezeni radovi :\n"+ k.Radovi );
+
+                foreach (Zaposleni p1 in k.Mehanicari)
+                {
+                    MessageBox.Show(p1.Id + "  "+ p1.LicnoIme);
+                }
+
+                
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnKnjizicaBrisanje_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+
+                Knjizica k = s.Load<Knjizica>(8);
+                MessageBox.Show("Ucitali ste knjizicu u kojoj su zabelezeni radovi :\n" + k.Radovi);
+
+                s.Delete(k);
+                s.Flush();
+                
+                s.Close();
+
+                MessageBox.Show("Uspesno brisanje knjizice.");
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnKnjizicaAzuriranje_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+
+                Knjizica k = s.Load<Knjizica>(10);
+                MessageBox.Show("Ucitali ste knjizicu u kojoj su zabelezeni radovi :\n" + k.Radovi);
+
+                k.Radovi = "Pregled guma.";
+
+                s.Update(k);
+                s.Flush();
+
+                s.Close();
+
+                MessageBox.Show("Uspesno azuriranje knjizice.");
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
             }
         }
     }

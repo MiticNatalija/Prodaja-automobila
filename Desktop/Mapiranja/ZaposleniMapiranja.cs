@@ -37,8 +37,9 @@ namespace Desktop.Mapiranja
             Map(x => x.Adresa, "ADRESA");
             Map(x => x.Telefon, "TELEFON");
             HasMany(x => x.Vozila).KeyColumn("PREDSTAVNIK_ID").LazyLoad().Cascade.All().Inverse();
-            //valjda ovako
+            
             HasMany(x => x.Predstavnistva).KeyColumn("P_KIA_ID").LazyLoad().Cascade.All().Inverse();
+            
         }
     }
 
@@ -68,7 +69,7 @@ namespace Desktop.Mapiranja
     {
         public MehanicarKiaMapiranja()
         {
-            DiscriminatorValue("MehanciarKia");
+            DiscriminatorValue("MehanicarKia");
 
             Map(x => x.Specijalnost, "SPECIJALNOST");
             HasManyToMany(x => x.Servisi)
@@ -78,14 +79,14 @@ namespace Desktop.Mapiranja
                 .Cascade.All();
 
             HasMany(x => x.AngazujeServisi).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.All().Inverse();
+
             HasManyToMany(x => x.Knjizice)
                 .Table("SADRZI")
                 .ParentKeyColumn("MEHANICAR_ID")
                 .ChildKeyColumn("KNJIZICA_ID")
-                .Cascade.All();
+                .Cascade.All(); 
 
-            HasMany(x => x.SadrziKnjizice).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.All().Inverse();
-
+           
         }
     }
 
@@ -104,6 +105,7 @@ namespace Desktop.Mapiranja
                 .Cascade.All();
 
             HasMany(x => x.TestiraPredstavnici).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.All().Inverse();
+
             HasManyToMany(x => x.Servisi)
                .Table("ANGAZUJE")
                .ParentKeyColumn("MEHANICAR_ID")
@@ -117,8 +119,6 @@ namespace Desktop.Mapiranja
               .ParentKeyColumn("MEHANICAR_ID")
               .ChildKeyColumn("KNJIZICA_ID")
               .Cascade.All();
-
-           HasMany(x => x.SadrziKnjizice).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.All().Inverse();
 
         }
     }
@@ -143,8 +143,6 @@ namespace Desktop.Mapiranja
               .ParentKeyColumn("MEHANICAR_ID")
               .ChildKeyColumn("KNJIZICA_ID")
               .Cascade.All();
-
-            HasMany(x => x.SadrziKnjizice).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.All().Inverse();
 
         }
     }

@@ -34,7 +34,7 @@ namespace Desktop.Mapiranja
             DiscriminatorValue("ServisKia");
 
             References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
-            //HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID");
+            HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID").LazyLoad().Cascade.All().Inverse();
             HasManyToMany(x => x.Mehanicari)
                 .Table("ANGAZUJE")
                 .ParentKeyColumn("SERVIS_ID")
@@ -53,7 +53,7 @@ namespace Desktop.Mapiranja
             DiscriminatorValue("ServisHyundai");
 
             References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
-            //HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID");
+            HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID").LazyLoad().Cascade.All().Inverse();
             HasManyToMany(x => x.Mehanicari)
                .Table("ANGAZUJE")
                .ParentKeyColumn("SERVIS_ID")
@@ -74,7 +74,7 @@ namespace Desktop.Mapiranja
 
             References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
             References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
-            //HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID");
+            HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID").LazyLoad().Cascade.All().Inverse();
             HasManyToMany(x => x.Mehanicari)
                .Table("ANGAZUJE")
                .ParentKeyColumn("SERVIS_ID")
@@ -132,7 +132,7 @@ namespace Desktop.Mapiranja
             DiscriminatorValue("SalonServisKia");
 
             References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
-            //HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID");
+            HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.Vozila).KeyColumn("SALON_ID").Inverse().Cascade.All();
             HasManyToMany(x => x.Mehanicari)
                .Table("ANGAZUJE")
@@ -153,9 +153,10 @@ namespace Desktop.Mapiranja
             DiscriminatorValue("SalonServisHyundai");
 
             Map(x => x.DatumVazenjaLicence, "DATUM_VAZENJA_LICENCE");
-
+        
             References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
-            //HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID");
+          
+            HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.Vozila).KeyColumn("SALON_ID").Inverse().Cascade.All();
             HasManyToMany(x => x.Mehanicari)
                .Table("ANGAZUJE")
@@ -179,7 +180,7 @@ namespace Desktop.Mapiranja
 
             References(x => x.PredstavnikHyundai).Column("P_HYUNDAI_ID").LazyLoad();
             References(x => x.PredstavnikKia).Column("P_KIA_ID").LazyLoad();
-            //HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID");
+            HasMany(x => x.Knjizice).KeyColumn("SERVIS_ID").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.Vozila).KeyColumn("SALON_ID").Inverse().Cascade.All();
             HasManyToMany(x => x.Mehanicari)
                .Table("ANGAZUJE")

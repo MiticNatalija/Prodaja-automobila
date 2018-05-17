@@ -28,11 +28,10 @@ namespace Desktop.Mapiranja
                 .Table("SADRZI")
                 .ParentKeyColumn("KNJIZICA_ID")
                 .ChildKeyColumn("MEHANICAR_ID")
-                .Inverse()
+                //.Inverse() 
                 .Cascade.All();
             
-            HasMany(x => x.SadrziMehanicari).KeyColumn("KNJIZICA_ID").LazyLoad().Cascade.All().Inverse();
-
+           
         }
     }
 }

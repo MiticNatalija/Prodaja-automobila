@@ -62,15 +62,13 @@ namespace Desktop.Entiteti
         public virtual IList<Angazuje> AngazujeServisi { get; set; }
         public virtual IList<Knjizica> Knjizice { get; set; }
 
-        public virtual IList<Sadrzi> SadrziKnjizice { get; set; }
-
+        
        
         public MehanicarKia()
         {
             Servisi = new List<Predstavnistvo>();
             AngazujeServisi = new List<Angazuje>();
             Knjizice = new List<Knjizica>();
-           SadrziKnjizice = new List<Sadrzi>();
         }
     }
 
@@ -86,8 +84,7 @@ namespace Desktop.Entiteti
 
         public virtual IList<Angazuje> AngazujeServisi { get; set; }
         public virtual IList<Knjizica> Knjizice { get; set; }
-
-       public virtual IList<Sadrzi> SadrziKnjizice { get; set; }
+        
 
         public MehanicarHyundai()
         {
@@ -96,7 +93,6 @@ namespace Desktop.Entiteti
             Servisi = new List<Predstavnistvo>();
             AngazujeServisi = new List<Angazuje>();
             Knjizice = new List<Knjizica>();
-            SadrziKnjizice = new List<Sadrzi>();
         }
     }
 
@@ -107,15 +103,13 @@ namespace Desktop.Entiteti
 
         public virtual IList<Angazuje> AngazujeServisi { get; set; }
         public virtual IList<Knjizica> Knjizice { get; set; }
-
-       public virtual IList<Sadrzi> SadrziKnjizice { get; set; }
+        
 
         public MehanicarKiaHyundai()
         {
             Servisi = new List<Predstavnistvo>();
             AngazujeServisi = new List<Angazuje>();
             Knjizice = new List<Knjizica>();
-            SadrziKnjizice = new List<Sadrzi>();
         }
     }
 }
