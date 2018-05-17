@@ -12,21 +12,7 @@ namespace Desktop.Entiteti
         public virtual string Adresa { get; set; }
         public virtual DateTime DatumOtvaranja { get; set; }
         public virtual string Tip { get; set; }
-
-
-      
-        //public virtual IList<Vozilo> Vozila { get; set; }
-
-        // Maruska: 
-        // izmene: Lista vozila pripada samo salonu
-        //         Lista knjizica pripada samo servisu
     }
-
-    // Ovo dole u komentaru bi bilo zgodno kad bi moglo, treba proveriti da li moze.
-
-    //public abstract class Salon : Predstavnistvo { }
-    //public abstract class Servis : Predstavnistvo { }
-    //public abstract class SalonServis : Predstavnistvo { }
 
     public class ServisKia : Predstavnistvo
     {
