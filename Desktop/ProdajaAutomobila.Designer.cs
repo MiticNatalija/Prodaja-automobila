@@ -52,14 +52,15 @@
             this.btnBrisanjeVlasnika = new System.Windows.Forms.Button();
             this.btnObrisiFizickoLice = new System.Windows.Forms.Button();
             this.btnObrisiPravnoLice = new System.Windows.Forms.Button();
+            this.btnBrisiPredstavnistvo = new System.Windows.Forms.Button();
+            this.btnBrisanjeZaposlenog = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUcitajVozilo
             // 
-            this.btnUcitajVozilo.Location = new System.Drawing.Point(16, 15);
-            this.btnUcitajVozilo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUcitajVozilo.Location = new System.Drawing.Point(12, 12);
             this.btnUcitajVozilo.Name = "btnUcitajVozilo";
-            this.btnUcitajVozilo.Size = new System.Drawing.Size(192, 28);
+            this.btnUcitajVozilo.Size = new System.Drawing.Size(144, 23);
             this.btnUcitajVozilo.TabIndex = 0;
             this.btnUcitajVozilo.Text = "Ucitavanje vozila";
             this.btnUcitajVozilo.UseVisualStyleBackColor = true;
@@ -67,10 +68,9 @@
             // 
             // btnUcitajKupca
             // 
-            this.btnUcitajKupca.Location = new System.Drawing.Point(17, 123);
-            this.btnUcitajKupca.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUcitajKupca.Location = new System.Drawing.Point(13, 100);
             this.btnUcitajKupca.Name = "btnUcitajKupca";
-            this.btnUcitajKupca.Size = new System.Drawing.Size(192, 28);
+            this.btnUcitajKupca.Size = new System.Drawing.Size(144, 23);
             this.btnUcitajKupca.TabIndex = 1;
             this.btnUcitajKupca.Text = "Ucitaj kupca";
             this.btnUcitajKupca.UseVisualStyleBackColor = true;
@@ -78,10 +78,9 @@
             // 
             // btnVezaSe_nalazi
             // 
-            this.btnVezaSe_nalazi.Location = new System.Drawing.Point(17, 343);
-            this.btnVezaSe_nalazi.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVezaSe_nalazi.Location = new System.Drawing.Point(13, 279);
             this.btnVezaSe_nalazi.Name = "btnVezaSe_nalazi";
-            this.btnVezaSe_nalazi.Size = new System.Drawing.Size(192, 28);
+            this.btnVezaSe_nalazi.Size = new System.Drawing.Size(144, 23);
             this.btnVezaSe_nalazi.TabIndex = 3;
             this.btnVezaSe_nalazi.Text = "Veza se_nalazi";
             this.btnVezaSe_nalazi.UseVisualStyleBackColor = true;
@@ -89,10 +88,9 @@
             // 
             // btnVlasnik
             // 
-            this.btnVlasnik.Location = new System.Drawing.Point(18, 379);
-            this.btnVlasnik.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVlasnik.Location = new System.Drawing.Point(14, 308);
             this.btnVlasnik.Name = "btnVlasnik";
-            this.btnVlasnik.Size = new System.Drawing.Size(191, 28);
+            this.btnVlasnik.Size = new System.Drawing.Size(143, 23);
             this.btnVlasnik.TabIndex = 4;
             this.btnVlasnik.Text = "Ucitavanje vlasnika";
             this.btnVlasnik.UseVisualStyleBackColor = true;
@@ -100,10 +98,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(533, 245);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(400, 199);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(191, 28);
+            this.button1.Size = new System.Drawing.Size(143, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Veza Testira";
             this.button1.UseVisualStyleBackColor = true;
@@ -111,10 +108,9 @@
             // 
             // createKnjizica
             // 
-            this.createKnjizica.Location = new System.Drawing.Point(232, 375);
-            this.createKnjizica.Margin = new System.Windows.Forms.Padding(4);
+            this.createKnjizica.Location = new System.Drawing.Point(174, 305);
             this.createKnjizica.Name = "createKnjizica";
-            this.createKnjizica.Size = new System.Drawing.Size(192, 28);
+            this.createKnjizica.Size = new System.Drawing.Size(144, 23);
             this.createKnjizica.TabIndex = 6;
             this.createKnjizica.Text = "Kreiranje knjizice";
             this.createKnjizica.UseVisualStyleBackColor = true;
@@ -122,10 +118,9 @@
             // 
             // vezaAngazuje
             // 
-            this.vezaAngazuje.Location = new System.Drawing.Point(532, 362);
-            this.vezaAngazuje.Margin = new System.Windows.Forms.Padding(4);
+            this.vezaAngazuje.Location = new System.Drawing.Point(399, 294);
             this.vezaAngazuje.Name = "vezaAngazuje";
-            this.vezaAngazuje.Size = new System.Drawing.Size(192, 28);
+            this.vezaAngazuje.Size = new System.Drawing.Size(144, 23);
             this.vezaAngazuje.TabIndex = 7;
             this.vezaAngazuje.Text = "Veza Angazuje";
             this.vezaAngazuje.UseVisualStyleBackColor = true;
@@ -133,10 +128,9 @@
             // 
             // vezaSadrzi
             // 
-            this.vezaSadrzi.Location = new System.Drawing.Point(532, 482);
-            this.vezaSadrzi.Margin = new System.Windows.Forms.Padding(4);
+            this.vezaSadrzi.Location = new System.Drawing.Point(399, 392);
             this.vezaSadrzi.Name = "vezaSadrzi";
-            this.vezaSadrzi.Size = new System.Drawing.Size(191, 28);
+            this.vezaSadrzi.Size = new System.Drawing.Size(143, 23);
             this.vezaSadrzi.TabIndex = 8;
             this.vezaSadrzi.Text = "Veza Sadrzi (Provera)";
             this.vezaSadrzi.UseVisualStyleBackColor = true;
@@ -144,10 +138,9 @@
             // 
             // btnPredstavnistvo
             // 
-            this.btnPredstavnistvo.Location = new System.Drawing.Point(232, 15);
-            this.btnPredstavnistvo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPredstavnistvo.Location = new System.Drawing.Point(174, 12);
             this.btnPredstavnistvo.Name = "btnPredstavnistvo";
-            this.btnPredstavnistvo.Size = new System.Drawing.Size(192, 28);
+            this.btnPredstavnistvo.Size = new System.Drawing.Size(144, 23);
             this.btnPredstavnistvo.TabIndex = 9;
             this.btnPredstavnistvo.Text = "Ucitavanje predstavnistva";
             this.btnPredstavnistvo.UseVisualStyleBackColor = true;
@@ -155,10 +148,9 @@
             // 
             // btnUpisiPravo
             // 
-            this.btnUpisiPravo.Location = new System.Drawing.Point(17, 254);
-            this.btnUpisiPravo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpisiPravo.Location = new System.Drawing.Point(13, 206);
             this.btnUpisiPravo.Name = "btnUpisiPravo";
-            this.btnUpisiPravo.Size = new System.Drawing.Size(192, 28);
+            this.btnUpisiPravo.Size = new System.Drawing.Size(144, 23);
             this.btnUpisiPravo.TabIndex = 10;
             this.btnUpisiPravo.Text = "Upisi pravno lice";
             this.btnUpisiPravo.UseVisualStyleBackColor = true;
@@ -166,10 +158,10 @@
             // 
             // btnDodavanjePredstavnistva
             // 
-            this.btnDodavanjePredstavnistva.Location = new System.Drawing.Point(303, 218);
-            this.btnDodavanjePredstavnistva.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDodavanjePredstavnistva.Location = new System.Drawing.Point(174, 42);
+            this.btnDodavanjePredstavnistva.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDodavanjePredstavnistva.Name = "btnDodavanjePredstavnistva";
-            this.btnDodavanjePredstavnistva.Size = new System.Drawing.Size(192, 28);
+            this.btnDodavanjePredstavnistva.Size = new System.Drawing.Size(144, 23);
             this.btnDodavanjePredstavnistva.TabIndex = 11;
             this.btnDodavanjePredstavnistva.Text = "Dodavanje predstavnistva";
             this.btnDodavanjePredstavnistva.UseVisualStyleBackColor = true;
@@ -177,10 +169,9 @@
             // 
             // btnZaposleni
             // 
-            this.btnZaposleni.Location = new System.Drawing.Point(318, 310);
-            this.btnZaposleni.Margin = new System.Windows.Forms.Padding(4);
+            this.btnZaposleni.Location = new System.Drawing.Point(174, 129);
             this.btnZaposleni.Name = "btnZaposleni";
-            this.btnZaposleni.Size = new System.Drawing.Size(192, 28);
+            this.btnZaposleni.Size = new System.Drawing.Size(144, 23);
             this.btnZaposleni.TabIndex = 12;
             this.btnZaposleni.Text = "Zaposleni";
             this.btnZaposleni.UseVisualStyleBackColor = true;
@@ -188,10 +179,10 @@
             // 
             // btnDodajVozilo
             // 
-            this.btnDodajVozilo.Location = new System.Drawing.Point(17, 50);
-            this.btnDodajVozilo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDodajVozilo.Location = new System.Drawing.Point(13, 41);
+            this.btnDodajVozilo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDodajVozilo.Name = "btnDodajVozilo";
-            this.btnDodajVozilo.Size = new System.Drawing.Size(191, 30);
+            this.btnDodajVozilo.Size = new System.Drawing.Size(143, 24);
             this.btnDodajVozilo.TabIndex = 13;
             this.btnDodajVozilo.Text = "Dodavanje novog vozila";
             this.btnDodajVozilo.UseVisualStyleBackColor = true;
@@ -199,10 +190,10 @@
             // 
             // btnBrisanjeVozila
             // 
-            this.btnBrisanjeVozila.Location = new System.Drawing.Point(16, 86);
-            this.btnBrisanjeVozila.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBrisanjeVozila.Location = new System.Drawing.Point(12, 70);
+            this.btnBrisanjeVozila.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBrisanjeVozila.Name = "btnBrisanjeVozila";
-            this.btnBrisanjeVozila.Size = new System.Drawing.Size(192, 30);
+            this.btnBrisanjeVozila.Size = new System.Drawing.Size(144, 24);
             this.btnBrisanjeVozila.TabIndex = 14;
             this.btnBrisanjeVozila.Text = "Brisanje novog vozila";
             this.btnBrisanjeVozila.UseVisualStyleBackColor = true;
@@ -210,10 +201,10 @@
             // 
             // btnKreirajFizickoLice
             // 
-            this.btnKreirajFizickoLice.Location = new System.Drawing.Point(17, 158);
-            this.btnKreirajFizickoLice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnKreirajFizickoLice.Location = new System.Drawing.Point(13, 128);
+            this.btnKreirajFizickoLice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnKreirajFizickoLice.Name = "btnKreirajFizickoLice";
-            this.btnKreirajFizickoLice.Size = new System.Drawing.Size(192, 30);
+            this.btnKreirajFizickoLice.Size = new System.Drawing.Size(144, 24);
             this.btnKreirajFizickoLice.TabIndex = 15;
             this.btnKreirajFizickoLice.Text = "Kreiraj fizicko lice";
             this.btnKreirajFizickoLice.UseVisualStyleBackColor = true;
@@ -221,10 +212,9 @@
             // 
             // btnTestiraProvera
             // 
-            this.btnTestiraProvera.Location = new System.Drawing.Point(532, 281);
-            this.btnTestiraProvera.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTestiraProvera.Location = new System.Drawing.Point(399, 228);
             this.btnTestiraProvera.Name = "btnTestiraProvera";
-            this.btnTestiraProvera.Size = new System.Drawing.Size(189, 47);
+            this.btnTestiraProvera.Size = new System.Drawing.Size(142, 38);
             this.btnTestiraProvera.TabIndex = 16;
             this.btnTestiraProvera.Text = "Provera veze Testira";
             this.btnTestiraProvera.UseVisualStyleBackColor = true;
@@ -232,10 +222,9 @@
             // 
             // btnAngazujeProvera
             // 
-            this.btnAngazujeProvera.Location = new System.Drawing.Point(532, 398);
-            this.btnAngazujeProvera.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAngazujeProvera.Location = new System.Drawing.Point(399, 323);
             this.btnAngazujeProvera.Name = "btnAngazujeProvera";
-            this.btnAngazujeProvera.Size = new System.Drawing.Size(192, 47);
+            this.btnAngazujeProvera.Size = new System.Drawing.Size(144, 38);
             this.btnAngazujeProvera.TabIndex = 17;
             this.btnAngazujeProvera.Text = "Provera veze Angazuje";
             this.btnAngazujeProvera.UseVisualStyleBackColor = true;
@@ -243,10 +232,9 @@
             // 
             // btnKnjizicaCitanje
             // 
-            this.btnKnjizicaCitanje.Location = new System.Drawing.Point(232, 411);
-            this.btnKnjizicaCitanje.Margin = new System.Windows.Forms.Padding(4);
+            this.btnKnjizicaCitanje.Location = new System.Drawing.Point(174, 334);
             this.btnKnjizicaCitanje.Name = "btnKnjizicaCitanje";
-            this.btnKnjizicaCitanje.Size = new System.Drawing.Size(192, 28);
+            this.btnKnjizicaCitanje.Size = new System.Drawing.Size(144, 23);
             this.btnKnjizicaCitanje.TabIndex = 18;
             this.btnKnjizicaCitanje.Text = "Citanje knjizice";
             this.btnKnjizicaCitanje.UseVisualStyleBackColor = true;
@@ -254,10 +242,9 @@
             // 
             // btnKnjizicaBrisanje
             // 
-            this.btnKnjizicaBrisanje.Location = new System.Drawing.Point(232, 482);
-            this.btnKnjizicaBrisanje.Margin = new System.Windows.Forms.Padding(4);
+            this.btnKnjizicaBrisanje.Location = new System.Drawing.Point(174, 392);
             this.btnKnjizicaBrisanje.Name = "btnKnjizicaBrisanje";
-            this.btnKnjizicaBrisanje.Size = new System.Drawing.Size(192, 28);
+            this.btnKnjizicaBrisanje.Size = new System.Drawing.Size(144, 23);
             this.btnKnjizicaBrisanje.TabIndex = 19;
             this.btnKnjizicaBrisanje.Text = "Brisanje knjizice";
             this.btnKnjizicaBrisanje.UseVisualStyleBackColor = true;
@@ -265,10 +252,9 @@
             // 
             // btnKnjizicaAzuriranje
             // 
-            this.btnKnjizicaAzuriranje.Location = new System.Drawing.Point(232, 447);
-            this.btnKnjizicaAzuriranje.Margin = new System.Windows.Forms.Padding(4);
+            this.btnKnjizicaAzuriranje.Location = new System.Drawing.Point(174, 363);
             this.btnKnjizicaAzuriranje.Name = "btnKnjizicaAzuriranje";
-            this.btnKnjizicaAzuriranje.Size = new System.Drawing.Size(192, 28);
+            this.btnKnjizicaAzuriranje.Size = new System.Drawing.Size(144, 23);
             this.btnKnjizicaAzuriranje.TabIndex = 20;
             this.btnKnjizicaAzuriranje.Text = "Azuriranje knjizice";
             this.btnKnjizicaAzuriranje.UseVisualStyleBackColor = true;
@@ -276,10 +262,9 @@
             // 
             // btnKreiranjeVlasnika
             // 
-            this.btnKreiranjeVlasnika.Location = new System.Drawing.Point(17, 451);
-            this.btnKreiranjeVlasnika.Margin = new System.Windows.Forms.Padding(4);
+            this.btnKreiranjeVlasnika.Location = new System.Drawing.Point(13, 366);
             this.btnKreiranjeVlasnika.Name = "btnKreiranjeVlasnika";
-            this.btnKreiranjeVlasnika.Size = new System.Drawing.Size(191, 28);
+            this.btnKreiranjeVlasnika.Size = new System.Drawing.Size(143, 23);
             this.btnKreiranjeVlasnika.TabIndex = 21;
             this.btnKreiranjeVlasnika.Text = "Kreiranje vlasnika";
             this.btnKreiranjeVlasnika.UseVisualStyleBackColor = true;
@@ -287,10 +272,9 @@
             // 
             // btnBrisanjeVlasnika
             // 
-            this.btnBrisanjeVlasnika.Location = new System.Drawing.Point(17, 487);
-            this.btnBrisanjeVlasnika.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBrisanjeVlasnika.Location = new System.Drawing.Point(13, 396);
             this.btnBrisanjeVlasnika.Name = "btnBrisanjeVlasnika";
-            this.btnBrisanjeVlasnika.Size = new System.Drawing.Size(191, 28);
+            this.btnBrisanjeVlasnika.Size = new System.Drawing.Size(143, 23);
             this.btnBrisanjeVlasnika.TabIndex = 22;
             this.btnBrisanjeVlasnika.Text = "Brisanje vlasnika";
             this.btnBrisanjeVlasnika.UseVisualStyleBackColor = true;
@@ -298,9 +282,10 @@
             // 
             // btnObrisiFizickoLice
             // 
-            this.btnObrisiFizickoLice.Location = new System.Drawing.Point(17, 193);
+            this.btnObrisiFizickoLice.Location = new System.Drawing.Point(13, 157);
+            this.btnObrisiFizickoLice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnObrisiFizickoLice.Name = "btnObrisiFizickoLice";
-            this.btnObrisiFizickoLice.Size = new System.Drawing.Size(192, 53);
+            this.btnObrisiFizickoLice.Size = new System.Drawing.Size(144, 43);
             this.btnObrisiFizickoLice.TabIndex = 23;
             this.btnObrisiFizickoLice.Text = "Obrisi prethodno kreirano fizicko lice";
             this.btnObrisiFizickoLice.UseVisualStyleBackColor = true;
@@ -308,20 +293,43 @@
             // 
             // btnObrisiPravnoLice
             // 
-            this.btnObrisiPravnoLice.Location = new System.Drawing.Point(18, 289);
+            this.btnObrisiPravnoLice.Location = new System.Drawing.Point(14, 235);
+            this.btnObrisiPravnoLice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnObrisiPravnoLice.Name = "btnObrisiPravnoLice";
-            this.btnObrisiPravnoLice.Size = new System.Drawing.Size(190, 47);
+            this.btnObrisiPravnoLice.Size = new System.Drawing.Size(142, 38);
             this.btnObrisiPravnoLice.TabIndex = 24;
             this.btnObrisiPravnoLice.Text = "Obrisi prethodno kreirano pravno lice";
             this.btnObrisiPravnoLice.UseVisualStyleBackColor = true;
             this.btnObrisiPravnoLice.Click += new System.EventHandler(this.btnObrisiPravnoLice_Click);
             // 
+            // btnBrisiPredstavnistvo
+            // 
+            this.btnBrisiPredstavnistvo.Location = new System.Drawing.Point(174, 71);
+            this.btnBrisiPredstavnistvo.Name = "btnBrisiPredstavnistvo";
+            this.btnBrisiPredstavnistvo.Size = new System.Drawing.Size(144, 23);
+            this.btnBrisiPredstavnistvo.TabIndex = 25;
+            this.btnBrisiPredstavnistvo.Text = "Brisanje Predstavnistva";
+            this.btnBrisiPredstavnistvo.UseVisualStyleBackColor = true;
+            this.btnBrisiPredstavnistvo.Click += new System.EventHandler(this.btnBrisiPredstavnistvo_Click);
+            // 
+            // btnBrisanjeZaposlenog
+            // 
+            this.btnBrisanjeZaposlenog.Location = new System.Drawing.Point(174, 177);
+            this.btnBrisanjeZaposlenog.Name = "btnBrisanjeZaposlenog";
+            this.btnBrisanjeZaposlenog.Size = new System.Drawing.Size(144, 23);
+            this.btnBrisanjeZaposlenog.TabIndex = 26;
+            this.btnBrisanjeZaposlenog.Text = "Brisanje zaposlenog";
+            this.btnBrisanjeZaposlenog.UseVisualStyleBackColor = true;
+            this.btnBrisanjeZaposlenog.Click += new System.EventHandler(this.btnBrisanjeZaposlenog_Click);
+            // 
             // frmProdajaAutomobila
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(739, 526);
+            this.ClientSize = new System.Drawing.Size(554, 427);
+            this.Controls.Add(this.btnBrisanjeZaposlenog);
+            this.Controls.Add(this.btnBrisiPredstavnistvo);
             this.Controls.Add(this.btnObrisiPravnoLice);
             this.Controls.Add(this.btnObrisiFizickoLice);
             this.Controls.Add(this.btnBrisanjeVlasnika);
@@ -346,7 +354,7 @@
             this.Controls.Add(this.btnVezaSe_nalazi);
             this.Controls.Add(this.btnUcitajKupca);
             this.Controls.Add(this.btnUcitajVozilo);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmProdajaAutomobila";
             this.Text = "Prodaja automobila";
             this.ResumeLayout(false);
@@ -379,6 +387,8 @@
         private System.Windows.Forms.Button btnBrisanjeVlasnika;
         private System.Windows.Forms.Button btnObrisiFizickoLice;
         private System.Windows.Forms.Button btnObrisiPravnoLice;
+        private System.Windows.Forms.Button btnBrisiPredstavnistvo;
+        private System.Windows.Forms.Button btnBrisanjeZaposlenog;
     }
 }
 

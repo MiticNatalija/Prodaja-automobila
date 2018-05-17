@@ -919,5 +919,64 @@ namespace Desktop
                 MessageBox.Show(ec.Message);
             }
         }
+
+        private void btnBrisiPredstavnistvo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                //radi-nema vezu
+                //ServisHyundai se = s.Load<ServisHyundai>(11);
+                //s.Delete(se);
+
+                SalonServisHyundai sa = s.Load<SalonServisHyundai>(5);
+                s.Delete(sa);
+
+                //radi-ima vezu sa vozilom
+                //ServisHyundai ser = s.Load<ServisHyundai>(17);
+                //s.Delete(ser);
+
+                //radi-ima vezu sa voziom
+                //SalonHyundai sal = s.Load<SalonHyundai>(7);
+                //s.Delete(sal);
+
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnBrisanjeZaposlenog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                //  Zaposleni z = s.Load<Zaposleni>(10);
+                //   MehanicarHyundai h = s.Load<MehanicarHyundai>(10);
+                PredstavnikHyundai pr = s.Load<PredstavnikHyundai>(11);
+                MessageBox.Show(pr.Prezime);
+
+
+
+                //MessageBox.Show(z.Prezime);
+                //MessageBox.Show(z.GetType().ToString());
+
+                s.Delete(pr);
+              
+
+               
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
     }
 }

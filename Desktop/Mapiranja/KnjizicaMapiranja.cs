@@ -29,7 +29,7 @@ namespace Desktop.Mapiranja
                 .ParentKeyColumn("KNJIZICA_ID")
                 .ChildKeyColumn("MEHANICAR_ID")
                 //.Inverse() 
-                .Cascade.All();
+                .Cascade.SaveUpdate();
             
            
         }

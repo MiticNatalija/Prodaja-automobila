@@ -58,7 +58,7 @@ namespace Desktop.Mapiranja
                 .ParentKeyColumn("PREDSTAVNIK_ID")
                 .ChildKeyColumn("MEHANICAR_ID")
                 .Inverse()
-                .Cascade.All();
+                .Cascade.SaveUpdate();
 
             HasMany(x => x.TestiraMehanicari).KeyColumn("PREDSTAVNIK_ID").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.Predstavnistva).KeyColumn("P_HYUNDAI_ID").LazyLoad().Cascade.All().Inverse();
@@ -76,7 +76,7 @@ namespace Desktop.Mapiranja
                 .Table("ANGAZUJE")
                 .ParentKeyColumn("MEHANICAR_ID")
                 .ChildKeyColumn("SERVIS_ID")
-                .Cascade.All();
+                .Cascade.SaveUpdate();
 
             HasMany(x => x.AngazujeServisi).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.All().Inverse();
 
@@ -84,7 +84,7 @@ namespace Desktop.Mapiranja
                 .Table("SADRZI")
                 .ParentKeyColumn("MEHANICAR_ID")
                 .ChildKeyColumn("KNJIZICA_ID")
-                .Cascade.All(); 
+                .Cascade.SaveUpdate(); 
 
            
         }
@@ -102,7 +102,7 @@ namespace Desktop.Mapiranja
                 .Table("TESTIRA")
                 .ParentKeyColumn("MEHANICAR_ID")
                 .ChildKeyColumn("PREDSTAVNIK_ID")
-                .Cascade.All();
+                .Cascade.SaveUpdate();
 
             HasMany(x => x.TestiraPredstavnici).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.All().Inverse();
 
@@ -110,7 +110,7 @@ namespace Desktop.Mapiranja
                .Table("ANGAZUJE")
                .ParentKeyColumn("MEHANICAR_ID")
                .ChildKeyColumn("SERVIS_ID")
-               .Cascade.All();
+               .Cascade.SaveUpdate();
 
             HasMany(x => x.AngazujeServisi).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.All().Inverse();
 
@@ -118,7 +118,7 @@ namespace Desktop.Mapiranja
               .Table("SADRZI")
               .ParentKeyColumn("MEHANICAR_ID")
               .ChildKeyColumn("KNJIZICA_ID")
-              .Cascade.All();
+              .Cascade.SaveUpdate();
 
         }
     }

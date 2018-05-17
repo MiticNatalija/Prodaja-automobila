@@ -31,7 +31,7 @@ namespace Desktop.Mapiranja
             //VEZA N:1 IMA
             HasMany(x => x.Knjizice).KeyColumn("VOZILO_ID").LazyLoad().Inverse().Cascade.All();
             //VEZA 1:1 KUPUJE
-            HasOne(x => x.kupac).PropertyRef(x => x.Vozilo).LazyLoad();
+            HasOne(x => x.kupac).PropertyRef(x => x.Vozilo).LazyLoad().Cascade.All();
             //VEZA 1:1 PRIPADA
             HasOne(x => x.vlasnik).Cascade.SaveUpdate();//.Cascade.All();
 
