@@ -54,7 +54,7 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-                Kupac r = s.Load<Kupac>(2);//FIZICKO LICE
+                Kupac r = s.Load<Kupac>(2);
                 FizickoLice f = r.FLice;
                 PravnoLice p = r.PLice;
                 string tip = "Kupac je: ";
@@ -70,28 +70,7 @@ namespace Desktop
             {
                 MessageBox.Show(ec.Message);
             }
-        }
-
-        private void cmdFizickoLice_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ISession s = DataLayer.GetSession();
-
-                FizickoLice f = s.Load<FizickoLice>("2007987457810");
-
-                MessageBox.Show(f.Ime + " "+ f.Kupac.Vozilo.Registracija );
-
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show(ec.Message);
-            }
-
-
-        }
-
-       
+        }      
 
         private void btnVezaSe_nalazi_Click(object sender, EventArgs e)
         {
@@ -143,13 +122,8 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-
-
                 Vlasnik v = s.Get<Vlasnik>(2);
                 MessageBox.Show(v.Telefon);
-
-
-       
               
                 s.Flush();
                 s.Close();
@@ -492,30 +466,33 @@ namespace Desktop
 
         private void btnUpisiFizicko_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 ISession s = DataLayer.GetSession();
 
-                FizickoLice f1 = new FizickoLice()
-            {
-                Adresa = "Bulevar 14",
-                Ime = "Ana",
-                Jmbg = "2012987124580",
-                Prezime = "Savic",
-                Telefon = "065123456"
-            };
+                PravnoLice f1 = new PravnoLice()
+                {
+                    Ime = "Ana",
+                    Pib = 123456,
+                    Prezime = "Savic",
+                    Telefon = "065123456"
+                };
 
-            Kupac k1 = s.Load<Kupac>(1);
-            f1.Kupac = k1;
-            s.SaveOrUpdate(f1);
+                Kupac k1 = new Kupac();
+                Vozilo v = s.Load<Vozilo>(2);
+                k1.Vozilo = v;
+                k1.PLice = f1;
+                f1.Kupac = k1;
+                s.SaveOrUpdate(f1);
           
-            s.Flush();
-            s.Close();
-        }
+                s.Flush();
+                s.Close();
+            }
             catch (Exception ec)
             {
                 MessageBox.Show(ec.Message);
             }
-}
+        }
 
         private void btnDodavanjePredstavnistva_Click(object sender, EventArgs e)
         {
@@ -662,7 +639,7 @@ namespace Desktop
                     Prezime = "Tosic",
                     Telefon = "065127898"
                 };
-                Vozilo v = s.Load<Vozilo>(5);
+                Vozilo v = s.Load<Vozilo>(2);
                 Kupac ku = new Kupac()
                 {
                     Vozilo = v
@@ -889,6 +866,50 @@ namespace Desktop
                 Vlasnik v = q.UniqueResult<Vlasnik>();
 
                 s.Delete(v);
+                s.Flush();
+                s.Close();
+                MessageBox.Show("Uspesno brisanje.");
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnObrisiFizickoLice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IQuery q = s.CreateQuery("select fl from FizickoLice fl where fl.Jmbg='2012965424580'");
+                FizickoLice fl = q.UniqueResult<FizickoLice>();
+                if (fl == null)
+                    throw new Exception("Prvo morate kreirati fizicko lice na dugme iznad.");
+
+                s.Delete(fl);
+                s.Flush();
+                s.Close();
+                MessageBox.Show("Uspesno brisanje.");
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnObrisiPravnoLice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IQuery q = s.CreateQuery("select pl from PravnoLice pl where pl.Pib=123456");
+                PravnoLice pl = q.UniqueResult<PravnoLice>();
+                if (pl == null)
+                    throw new Exception("Prvo morate kreirati pravno lice na dugme iznad.");
+
+                s.Delete(pl);
                 s.Flush();
                 s.Close();
                 MessageBox.Show("Uspesno brisanje.");
