@@ -14,11 +14,5 @@ namespace Desktop.Entiteti
         public virtual string Adresa { get; set; }
         public virtual string Telefon { get; set; }
         public virtual Kupac Kupac { get; set; }
-
-        // Maruska:
-        // Nisam sigurna da je FizickoLice : Kupac okej, 
-        // cekamo da javi Bogdanovic kako se radi s kategorijom
-
-      
     }
 }

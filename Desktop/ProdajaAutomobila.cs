@@ -12,9 +12,9 @@ using Desktop.Entiteti;
 
 namespace Desktop
 {
-    public partial class btnVezaSeNalazi : Form
+    public partial class frmProdajaAutomobila : Form
     {
-        public btnVezaSeNalazi()
+        public frmProdajaAutomobila()
         {
             InitializeComponent();
         }
@@ -25,44 +25,21 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-                Entiteti.Putnicko p = new Entiteti.Putnicko()
-                {
-                    Registracija = "NI 789 PO",
-                    Gorivo = "Dizel",
-                    OznakaMotora = "127898456",
-                    BrojMesta = 4
-                };
-                //radi lepo
-                IQuery q = s.CreateQuery("from Vozilo as vo where vo.Id=1");
-
-                Vozilo v1 = q.UniqueResult<Vozilo>();
-                MessageBox.Show(v1.GetType().ToString());
-
-
-                //ovo radi-koriscen query
                 IList<Vozilo> r1 = s.QueryOver<Vozilo>().List<Vozilo>();
                 foreach (Vozilo v in r1)
                 {
                     if (v.GetType() == typeof(Putnicko))
                     {
                         Putnicko pu = (Putnicko)v;
+                        MessageBox.Show("Id voizla: " + pu.Id + "- Tip vozila: Putnicko");
                     }
                     else if (v.GetType() == typeof(Teretno))
                     {
                         Teretno ter = (Teretno)v;
+                        MessageBox.Show("Id voizla: " + ter.Id + "- Tip vozila: Teretno");
                     }
 
                 }
-
-
-                Vozilo r = s.Load<Vozilo>(1);
-            
-                r.Gorivo = "Benzin";
-                MessageBox.Show(r.Gorivo + " "  + " " + r.Registracija);
-
-                s.Save(r);
-                s.Save(p);
-                s.Flush();
                 s.Close();
             }
             catch (Exception ec)
@@ -77,33 +54,16 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-
-
                 Kupac r = s.Load<Kupac>(2);//FIZICKO LICE
                 FizickoLice f = r.FLice;
                 PravnoLice p = r.PLice;
+                string tip = "Kupac je: ";
+                if (f != null)
+                    tip += "fizicko lice ";
+                else if (p != null)
+                    tip += "pravno lice ";
 
-                MessageBox.Show(r.Vozilo.Registracija);
-
-                FizickoLice f1 = new FizickoLice()
-                {
-                    Adresa = "Bulevar 14",
-                    Ime = "Maja",
-                    Jmbg = "2012965424580",
-                    Prezime = "Tosic",
-                    Telefon = "065127898"
-                };
-                Vozilo v = s.Load<Vozilo>(5);
-                Kupac ku = new Kupac()
-                {
-                    Vozilo = v
-                };
-                f1.Kupac = ku;
-                ku.FLice = f1;
-
-
-                s.Save(ku);
-                s.Flush();
+                MessageBox.Show(tip + "Registracija vozila kupca: " + r.Vozilo.Registracija);
                 s.Close();
             }
             catch (Exception ec)
@@ -718,6 +678,92 @@ namespace Desktop
 
             }
             catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnDodajVozilo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Putnicko p = new Putnicko()
+                {
+                    Registracija = "NI 789 PO",
+                    Gorivo = "Dizel",
+                    OznakaMotora = "127898456",
+                    BrojMesta = 4
+                };
+
+                Vozilo r = s.Load<Vozilo>(1);
+
+                r.Gorivo = "Benzin";
+                MessageBox.Show(r.Gorivo + " " + " " + r.Registracija);
+
+                s.Save(r);
+                s.Save(p);
+                s.Flush();
+                s.Close();
+                MessageBox.Show("Uspesno dodavanje i promena vozila.");
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnBrisanjeVozila_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IQuery q = s.CreateQuery("select v from Vozilo v where v.OznakaMotora='127898456'");
+                Vozilo v = q.UniqueResult<Vozilo>();
+                if (v == null)
+                    throw new Exception("Prvo morate dodati vozilo na dugme iznad!");
+                s.Delete(v);
+                s.Flush();
+                s.Close();
+                MessageBox.Show("Uspesno brisanje.");
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
+        private void btnKreirajFizickoLice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                FizickoLice f1 = new FizickoLice()
+                {
+                    Adresa = "Bulevar 14",
+                    Ime = "Maja",
+                    Jmbg = "2012965424580",
+                    Prezime = "Tosic",
+                    Telefon = "065127898"
+                };
+                Vozilo v = s.Load<Vozilo>(5);
+                Kupac ku = new Kupac()
+                {
+                    Vozilo = v
+                };
+                f1.Kupac = ku;
+                ku.FLice = f1;
+
+
+                s.Save(ku);
+                s.Flush();
+                s.Close();
+                MessageBox.Show("Uspesno kreirano fizicko lice.");
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

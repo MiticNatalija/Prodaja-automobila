@@ -19,11 +19,8 @@ namespace Desktop.Entiteti
 
         public virtual Zaposleni Predstavnik { get; set; }
 
-
-        // Izmena: Svako vozilo ima listu knjizica.
         public virtual IList<Knjizica> Knjizice { get; set; }
 
-        //123
         public virtual Kupac kupac { get; set; }
 
         public virtual Vlasnik vlasnik { get; set; }
@@ -34,22 +31,14 @@ namespace Desktop.Entiteti
         }
 
     }
-        public class Putnicko :Vozilo
-        {
-            public virtual int BrojMesta { get; set; }
-        }
 
-        public class Teretno:Vozilo
-        {
-            public virtual int Nosivost { get; set; }
-        }
+    public class Putnicko : Vozilo
+    {
+        public virtual int BrojMesta { get; set; }
+    }
 
-
-
-
-
-
-
-
-    
+    public class Teretno : Vozilo
+    {
+        public virtual int Nosivost { get; set; }
+    }
 }

@@ -16,7 +16,7 @@ namespace Desktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new btnVezaSeNalazi());
+            Application.Run(new frmProdajaAutomobila());
         }
     }
 }

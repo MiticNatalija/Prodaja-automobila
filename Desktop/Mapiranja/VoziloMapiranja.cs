@@ -28,12 +28,11 @@ namespace Desktop.Mapiranja
             References(x => x.Salon).Column("SALON_ID").LazyLoad();
             //VEZA N:1 PRODAJE
             References(x => x.Predstavnik).Column("PREDSTAVNIK_ID").LazyLoad();
-
+            //VEZA N:1 IMA
             HasMany(x => x.Knjizice).KeyColumn("VOZILO_ID").LazyLoad().Inverse().Cascade.All();
-
-            //123
+            //VEZA 1:1 KUPUJE
             HasOne(x => x.kupac).PropertyRef(x => x.Vozilo).LazyLoad();
-
+            //VEZA 1:1 PRIPADA
             HasOne(x => x.vlasnik).Cascade.All();
 
             
@@ -47,7 +46,7 @@ namespace Desktop.Mapiranja
             {
                 DiscriminatorValue("Teretno");
                 Map(x => x.Nosivost, "NOSIVOST");
-        }
+            }
         }
 
     class PutnickoMapiranja : SubclassMap<Putnicko>
@@ -58,6 +57,4 @@ namespace Desktop.Mapiranja
             Map(x => x.BrojMesta, "BROJ_MESTA");
         }
     }
-
-
 }
