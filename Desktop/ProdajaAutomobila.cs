@@ -253,6 +253,11 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
+                //ServisHyundai ser = s.Load<ServisHyundai>(15);
+                //foreach (Knjizica kj in ser.Knjizice)
+                //    MessageBox.Show(kj.CenaUsluge.ToString());
+                
+
                 Vozilo v = s.Load<Vozilo>(1);
                 
                 ServisHyundai sh = new ServisHyundai()
@@ -767,7 +772,9 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
 
 
-                Knjizica k = s.Load<Knjizica>(8);
+              //  Knjizica k = s.Load<Knjizica>(8);
+                IQuery q = s.CreateQuery("from Knjizica as k where k.Id=8 ");
+                Knjizica k = q.UniqueResult<Knjizica>();
                 MessageBox.Show("Ucitali ste knjizicu u kojoj su zabelezeni radovi :\n" + k.Radovi);
 
                 s.Delete(k);

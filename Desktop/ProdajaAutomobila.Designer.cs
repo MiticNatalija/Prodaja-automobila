@@ -149,7 +149,7 @@
             this.btnPredstavnistvo.Name = "btnPredstavnistvo";
             this.btnPredstavnistvo.Size = new System.Drawing.Size(144, 23);
             this.btnPredstavnistvo.TabIndex = 9;
-            this.btnPredstavnistvo.Text = "Predstavnistvo";
+            this.btnPredstavnistvo.Text = "Ucitavanje predstavnistva";
             this.btnPredstavnistvo.UseVisualStyleBackColor = true;
             this.btnPredstavnistvo.Click += new System.EventHandler(this.btnPredstavnistvo_Click);
             // 
