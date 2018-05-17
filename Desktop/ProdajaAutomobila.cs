@@ -408,7 +408,7 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-                Knjizica r1 = s.Load<Knjizica>(1);
+                Knjizica r1 = s.Load<Knjizica>(12);
 
                 foreach (Zaposleni p1 in r1.Mehanicari)
                 {
@@ -502,6 +502,7 @@ namespace Desktop
           
                 s.Flush();
                 s.Close();
+                MessageBox.Show("Uspesno kreirano pravno lice.");
             }
             catch (Exception ec)
             {
@@ -549,6 +550,7 @@ namespace Desktop
                 s.Save(sh);
                 s.Flush();
                 s.Close();
+                MessageBox.Show("Predstavnistvo je dodato!");
 
             }
             catch (Exception ex)
@@ -609,7 +611,7 @@ namespace Desktop
                     BrojMesta = 4
                 };
 
-                Vozilo r = s.Load<Vozilo>(1);
+                Vozilo r = s.Load<Vozilo>(2);
 
                 r.Gorivo = "Benzin";
                 MessageBox.Show(r.Gorivo + " " + " " + r.Registracija);
@@ -633,10 +635,10 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
 
                 IQuery q = s.CreateQuery("select v from Vozilo v where v.OznakaMotora='127898456'");
-                Vozilo v = q.UniqueResult<Vozilo>();
+                IList<Vozilo> v = q.List<Vozilo>();
                 if (v == null)
                     throw new Exception("Prvo morate dodati vozilo na dugme iznad!");
-                s.Delete(v);
+                s.Delete(v[0]);
                 s.Flush();
                 s.Close();
                 MessageBox.Show("Uspesno brisanje.");
@@ -687,7 +689,7 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-                MehanicarHyundai r1 = s.Load<MehanicarHyundai>(5);
+                MehanicarHyundai r1 = s.Load<MehanicarHyundai>(19);
 
                 foreach (PredstavnikHyundai p1 in r1.Predstavnici)
                 {
@@ -695,7 +697,7 @@ namespace Desktop
                 }
 
 
-                PredstavnikHyundai p2 = s.Load<PredstavnikHyundai>(1);
+                PredstavnikHyundai p2 = s.Load<PredstavnikHyundai>(20);
 
                 foreach (MehanicarHyundai r2 in p2.Mehanicari)
                 {
@@ -747,7 +749,7 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
 
 
-                Knjizica k = s.Load<Knjizica>(2);
+                Knjizica k = s.Load<Knjizica>(1);
                 MessageBox.Show("Ucitali ste knjizicu u kojoj su zabelezeni radovi :\n"+ k.Radovi );
 
                 foreach (Zaposleni p1 in k.Mehanicari)
@@ -921,11 +923,11 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
 
                 IQuery q = s.CreateQuery("select pl from PravnoLice pl where pl.Pib=123456");
-                PravnoLice pl = q.UniqueResult<PravnoLice>();
-                if (pl == null)
+                IList<PravnoLice> pl = q.List<PravnoLice>();
+                if (pl[0] == null)
                     throw new Exception("Prvo morate kreirati pravno lice na dugme iznad.");
 
-                s.Delete(pl);
+                s.Delete(pl[0]);
                 s.Flush();
                 s.Close();
                 MessageBox.Show("Uspesno brisanje.");
@@ -945,9 +947,13 @@ namespace Desktop
                 //ServisHyundai se = s.Load<ServisHyundai>(11);
                 //s.Delete(se);
 
+                //radi-ima vezu angazuje
+                //Predstavnistvo pr = s.Load<Predstavnistvo>(1);
+                //s.Delete(pr);
+
                 IQuery q = s.CreateQuery("select p from Predstavnistvo p where p.Adresa='Nova 14'");
-                Predstavnistvo p = q.UniqueResult<Predstavnistvo>();
-                s.Delete(p);
+               IList< Predstavnistvo> p = q.List<Predstavnistvo>();
+                s.Delete(p[0]);
                 MessageBox.Show("Uspesno brisanje.");
 
                 //SalonServisHyundai sa = s.Load<SalonServisHyundai>(5);
@@ -976,6 +982,7 @@ namespace Desktop
             try
             {
                 ISession s = DataLayer.GetSession();
+
 
                 IQuery q = s.CreateQuery("select z from Zaposleni z where z.Mbr='0404197045101'");
                 Zaposleni z = q.UniqueResult<Zaposleni>();
