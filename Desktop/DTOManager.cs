@@ -88,6 +88,61 @@ namespace Desktop
             return odInfos;
         }
 
+        public static PredstavnistvoPregled GetPredstavnistvo(int id) {
+            PredstavnistvoPregled pr=new PredstavnistvoPregled();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Predstavnistvo p = s.Load<Predstavnistvo>(id);
+                pr = new PredstavnistvoPregled(p.Id, p.Adresa, p.DatumOtvaranja);
+
+
+                s.Close();
+
+            }
+            catch (Exception ec) {
+                MessageBox.Show(ec.Message);
+            }
+            return pr;
+        }
+
+        public static void UpdatePredstavnistvo(PredstavnistvoPregled p)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Predstavnistvo pre = s.Load<Predstavnistvo>(p.PredstavnistvoId);
+                pre.Adresa = p.Adresa;
+                pre.DatumOtvaranja = p.DatumOtvaranja;
+                s.Update(pre);
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+        public static void DeletePredstavnistvo(PredstavnistvoPregled p)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Predstavnistvo pre = s.Load<Predstavnistvo>(p.PredstavnistvoId);
+               
+                s.Delete(pre);
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+        }
+
         public static List<ZaposleniPregled> GetZaposleniInfos()
         {
             List<ZaposleniPregled> zapInfos = new List<ZaposleniPregled>();

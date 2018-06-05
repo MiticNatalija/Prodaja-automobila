@@ -93,6 +93,12 @@
     <Compile Include="Entiteti\Vlasnik.cs" />
     <Compile Include="Entiteti\Vozilo.cs" />
     <Compile Include="Entiteti\Zaposleni.cs" />
+    <Compile Include="IzmeniPredstavnistvo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IzmeniPredstavnistvo.Designer.cs">
+      <DependentUpon>IzmeniPredstavnistvo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mapiranja\AngazujeMapiranja.cs" />
     <Compile Include="Mapiranja\FizickoLiceMapiranja.cs" />
     <Compile Include="Mapiranja\KnjizicaMapiranja.cs" />
@@ -120,6 +126,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="IzmeniPredstavnistvo.resx">
+      <DependentUpon>IzmeniPredstavnistvo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Predstavnistvo.resx">
       <DependentUpon>Predstavnistvo.cs</DependentUpon>
     </EmbeddedResource>

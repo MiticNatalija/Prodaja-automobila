@@ -43,5 +43,36 @@ namespace Desktop
             dgvPredstavnik.Columns[4].DefaultCellStyle.Format = "dd.MM.yyyy";
             dgvPredstavnik.Columns[5].DefaultCellStyle.Format = "dd.MM.yyyy";
         }
+
+        private void btnImeni_Click(object sender, EventArgs e)
+        {
+            //uzimamo id predstavnistva
+            int id = 4;
+            // string g=  dgvPredstavnistvo.SelectedCells.ToString();
+                
+            //  int.TryParse(g, out id);
+            if (id == 0)
+                MessageBox.Show("nece mrrk");
+            //ucitaj pred
+            PredstavnistvoPregled p = DTOManager.GetPredstavnistvo(id);
+            frmIzmeniPredstavnistvo dlg = new frmIzmeniPredstavnistvo(p);
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                PredstavnistvoPregled pr = dlg.pred;
+                //snimi
+                DTOManager.UpdatePredstavnistvo(pr);
+                //Poziv InitPredstavnistva() za refresh DGV-a
+            }
+        }
+
+        private void btnObrisiPredstavnistvo_Click(object sender, EventArgs e)
+        {
+            //uzimamo id predstavnistva
+            int id = 3;
+            //treba da se doda uzimanje indeksa iz dgv
+            // string g=  dgvPredstavnistvo.SelectedCells.ToString();
+            PredstavnistvoPregled p = DTOManager.GetPredstavnistvo(id);
+            DTOManager.DeletePredstavnistvo(p);
+        }
     }
 }
