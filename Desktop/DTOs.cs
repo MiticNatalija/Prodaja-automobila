@@ -23,10 +23,9 @@ namespace Desktop
         {
         }
 
-        public PredstavnistvoPregled(int predstavnistvoId, string adresa, DateTime datumOtvaranja, string tip)
+        public PredstavnistvoPregled(int predstavnistvoId, string adresa, DateTime datumOtvaranja)
         {
             this.PredstavnistvoId = predstavnistvoId;
-            this.Tip = tip;
             this.Adresa = adresa;
             this.DatumOtvaranja = datumOtvaranja;
         }

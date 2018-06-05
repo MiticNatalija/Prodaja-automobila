@@ -95,7 +95,7 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
 
                 Predstavnistvo p = s.Load<Predstavnistvo>(id);
-                pr = new PredstavnistvoPregled(p.Id, p.Adresa, p.DatumOtvaranja, p.Tip);
+                pr = new PredstavnistvoPregled(p.Id, p.Adresa, p.DatumOtvaranja);
 
 
                 s.Close();

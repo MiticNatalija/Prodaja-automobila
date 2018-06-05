@@ -47,7 +47,7 @@ namespace Desktop
         private void btnImeni_Click(object sender, EventArgs e)
         {
             //uzimamo id predstavnistva
-            int id = 2;
+            int id = 4;
             // string g=  dgvPredstavnistvo.SelectedCells.ToString();
                 
             //  int.TryParse(g, out id);
@@ -67,7 +67,7 @@ namespace Desktop
         private void btnObrisiPredstavnistvo_Click(object sender, EventArgs e)
         {
             //uzimamo id predstavnistva
-            int id = 2;
+            int id = 3;
             //treba da se doda uzimanje indeksa iz dgv
             // string g=  dgvPredstavnistvo.SelectedCells.ToString();
             PredstavnistvoPregled p = DTOManager.GetPredstavnistvo(id);
