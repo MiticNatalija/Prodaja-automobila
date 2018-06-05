@@ -19,6 +19,18 @@ namespace Desktop
         [DisplayName("Tip predstavnistva")]
         public string TipPredstavnistva { get; set; }
 
+        public PredstavnistvoPregled()
+        {
+        }
+
+        public PredstavnistvoPregled(int predstavnistvoId, string adresa, DateTime datumOtvaranja, string tip)
+        {
+            this.PredstavnistvoId = predstavnistvoId;
+            this.Tip = tip;
+            this.Adresa = adresa;
+            this.DatumOtvaranja = datumOtvaranja;
+        }
+
         public PredstavnistvoPregled(int predstavnistvoId, string tip, string adresa, DateTime datumOtvaranja, string tipPredstavnistva)
         {
             this.PredstavnistvoId = predstavnistvoId;
