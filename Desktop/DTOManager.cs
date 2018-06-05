@@ -27,44 +27,54 @@ namespace Desktop
                 foreach (Predstavnistvo p in predstavnistva)
                 {
                     string tip = "Greska";
+                    string tipPredstavnistva = "Greska";
 
                     if (p is SalonHyundai)
                     {
-                        tip = "Salon za Hyundai";
+                        tipPredstavnistva = "Salon za Hyundai";
+                        tip = "SalonHyundai";
                     }
                     else if (p is SalonKia)
                     {
-                        tip = "Salon za Kia";
+                        tipPredstavnistva = "Salon za Kiu";
+                        tip = "SalonKia";
                     }
                     else if (p is SalonHyundaiKia)
                     {
-                        tip = "Salon za Hyundai i Kiu";
+                        tipPredstavnistva = "Salon za Hyundai i Kiu";
+                        tip = "SalonHyundaiKia";
                     }
                     else if (p is ServisHyundai)
                     {
-                        tip = "Servis za Hyundai";
+                        tipPredstavnistva = "Servis za Hyundai";
+                        tip = "ServisHyundai";
                     }
                     else if (p is ServisKia)
                     {
-                        tip = "Servis za Kia";
+                        tipPredstavnistva = "Servis za Kiu";
+                        tip = "ServisKia";
                     }
                     else if (p is ServisHyundaiKia)
                     {
-                        tip = "Servis za Hyundai i Kiu";
+                        tipPredstavnistva = "Servis za Hyundai i Kiu";
+                        tip = "ServisHyundaiKia";
                     }
                     else if (p is SalonServisHyundai)
                     {
-                        tip = "Salon i Servis za Hyundai";
+                        tipPredstavnistva = "Salon i Servis za Hyundai";
+                        tip = "SalonServisHyundai";
                     }
                     else if (p is SalonServisKia)
                     {
-                        tip = "Salon i Servis za Kiu";
+                        tipPredstavnistva = "Salon i Servis za Kiu";
+                        tip = "SalonServisKia";
                     }
                     else if (p is SalonServisHyundaiKia)
                     {
-                        tip = "Salon i Servis za Hyundai i Kiu";
+                        tipPredstavnistva = "Salon i Servis za Hyundai i Kiu";
+                        tip = "SalonServisHyundaiKia";
                     }
-                    odInfos.Add(new PredstavnistvoPregled(p.Id, p.Adresa, p.DatumOtvaranja, tip));
+                    odInfos.Add(new PredstavnistvoPregled(p.Id, tip, p.Adresa, p.DatumOtvaranja, tipPredstavnistva));
                 }
 
                 s.Close();
@@ -76,6 +86,60 @@ namespace Desktop
             }
 
             return odInfos;
+        }
+
+        public static List<ZaposleniPregled> GetZaposleniInfos()
+        {
+            List<ZaposleniPregled> zapInfos = new List<ZaposleniPregled>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Zaposleni> zaposleni = from z in s.Query<Zaposleni>()
+                                                             select z;
+
+                foreach (Zaposleni z in zaposleni)
+                {
+                    string tip = "Greska";
+                    string tipZaposlenog = "Greska";
+
+                    if (z is PredstavnikKia)
+                    {
+                        tipZaposlenog = "Predstavnik za Kiu";
+                        tip = "PredstavnikKia";
+                    }
+                    else if (z is PredstavnikHyundai)
+                    {
+                        tipZaposlenog = "Predstavnik za Hyundai";
+                        tip = "PredstavnikHyundai";
+                    }
+                    else if (z is MehanicarKia)
+                    {
+                        tipZaposlenog = "Mehanicar za Kiu";
+                        tip = "MehanicarKia";
+                    }
+                    else if (z is MehanicarHyundai)
+                    {
+                        tipZaposlenog = "Mehanicar za Hyundai";
+                        tip = "MehanicarHyundai";
+                    }
+                    else if (z is MehanicarKiaHyundai)
+                    {
+                        tipZaposlenog = "Mehanicar za Kiu i Hyundai";
+                        tip = "MehanicarKiaHyundai";
+                    }
+                    zapInfos.Add(new ZaposleniPregled(z.Id, tip, z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, z.DatumRodjenja, z.DatumZaposlenja, tipZaposlenog));
+                }
+
+                s.Close();
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+
+            return zapInfos;
         }
     }
 }

@@ -75,6 +75,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tetris">
+      <HintPath>..\..\OOP - Lab4\Tetris\bin\Debug\Tetris.exe</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLayer.cs" />
