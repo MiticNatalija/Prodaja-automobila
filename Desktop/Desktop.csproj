@@ -81,6 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLayer.cs" />
+    <Compile Include="DodajPredstavnistvo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajPredstavnistvo.Designer.cs">
+      <DependentUpon>DodajPredstavnistvo.cs</DependentUpon>
+    </Compile>
     <Compile Include="DTOManager.cs" />
     <Compile Include="DTOs.cs" />
     <Compile Include="Entiteti\Angazuje.cs" />
@@ -126,6 +132,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DodajPredstavnistvo.resx">
+      <DependentUpon>DodajPredstavnistvo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IzmeniPredstavnistvo.resx">
       <DependentUpon>IzmeniPredstavnistvo.cs</DependentUpon>
     </EmbeddedResource>

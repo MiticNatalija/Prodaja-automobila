@@ -49,7 +49,6 @@ namespace Desktop
             //uzimamo id predstavnistva
             int id = 4;
             // string g=  dgvPredstavnistvo.SelectedCells.ToString();
-                
             //  int.TryParse(g, out id);
             if (id == 0)
                 MessageBox.Show("nece mrrk");
@@ -73,6 +72,16 @@ namespace Desktop
             // string g=  dgvPredstavnistvo.SelectedCells.ToString();
             PredstavnistvoPregled p = DTOManager.GetPredstavnistvo(id);
             DTOManager.DeletePredstavnistvo(p);
+        }
+
+        private void btnDodajPredstavnistvo_Click(object sender, EventArgs e)
+        {
+            frmDodajPredstavnistvo dlg = new frmDodajPredstavnistvo();
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                PredstavnistvoPregled p = dlg.p;
+                DTOManager.AddPredstavnistvo(p);
+            }
         }
     }
 }

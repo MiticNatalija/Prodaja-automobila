@@ -125,6 +125,120 @@ namespace Desktop
                 MessageBox.Show(ec.Message);
             }
         }
+        public static void AddPredstavnistvo(PredstavnistvoPregled p)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+
+                string tip = p.TipPredstavnistva;
+                if(tip.CompareTo("Salon za Hyundai")==0){
+                    SalonHyundai sh = new SalonHyundai()
+                    {
+                        Adresa = p.Adresa,
+                        DatumOtvaranja = p.DatumOtvaranja,
+                       DatumVazenjaLicence = p.DatumLicence
+
+                    };
+                    s.Save(sh);
+                }
+                else if(tip.CompareTo("Salon za Kiu") == 0){
+                    SalonKia sh = new SalonKia()
+                    {
+                        Adresa = p.Adresa,
+                        DatumOtvaranja = p.DatumOtvaranja
+  
+                    };
+                    s.Save(sh);
+                }
+                else if (tip.CompareTo("Salon za Hyundai i Kiu") == 0)
+                {
+                    SalonHyundaiKia sh = new SalonHyundaiKia()
+                    {
+                        Adresa = p.Adresa,
+                        DatumOtvaranja = p.DatumOtvaranja,
+                        DatumVazenjaLicence=p.DatumLicence
+
+                    };
+                    s.Save(sh);
+                }
+                else if (tip.CompareTo("Servis za Hyundai") == 0)
+                {
+                    ServisHyundai sh = new ServisHyundai()
+                    {
+                        Adresa = p.Adresa,
+                        DatumOtvaranja = p.DatumOtvaranja
+                        
+                    };
+                    s.Save(sh);
+                }
+                else if (tip.CompareTo("Servis za Kiu") == 0)
+                {
+                    ServisKia sh = new ServisKia()
+                    {
+                        Adresa = p.Adresa,
+                        DatumOtvaranja = p.DatumOtvaranja
+
+                    };
+                    s.Save(sh);
+                }
+                else if (tip.CompareTo("Servis za Hyundai i Kiu") == 0)
+                {
+                       ServisHyundaiKia sh = new ServisHyundaiKia()
+                    {
+                        Adresa = p.Adresa,
+                        DatumOtvaranja = p.DatumOtvaranja
+
+                    };
+                    s.Save(sh);
+                }
+                else if (tip.CompareTo("Salon i Servis za Kiu") == 0)
+                {
+                    SalonServisKia sh = new SalonServisKia()
+                    {
+                        Adresa = p.Adresa,
+                        DatumOtvaranja = p.DatumOtvaranja
+
+                    };
+                    s.Save(sh);
+                }
+                else if (tip.CompareTo("Salon i Servis za Hyundai i Kiu") == 0)
+                {
+                    SalonServisHyundaiKia sh = new SalonServisHyundaiKia()
+                    {
+                        Adresa = p.Adresa,
+                        DatumOtvaranja = p.DatumOtvaranja,
+                        DatumVazenjaLicence=p.DatumLicence
+
+                    };
+                    s.Save(sh);
+                }
+                else if (tip.CompareTo("Salon i Servis za Hyundai") == 0)
+                {
+                    SalonServisHyundai sh = new SalonServisHyundai()
+                    {
+                        Adresa = p.Adresa,
+                        DatumOtvaranja = p.DatumOtvaranja,
+                        DatumVazenjaLicence=p.DatumLicence
+
+                    };
+                    s.Save(sh);
+                }
+
+
+
+
+                s.Flush();
+                s.Close();
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         public static void DeletePredstavnistvo(PredstavnistvoPregled p)
         {
             try

@@ -18,6 +18,7 @@ namespace Desktop
         public DateTime DatumOtvaranja { get; set; }
         [DisplayName("Tip predstavnistva")]
         public string TipPredstavnistva { get; set; }
+        public DateTime DatumLicence { get; set; }
 
         public PredstavnistvoPregled()
         {
@@ -34,6 +35,14 @@ namespace Desktop
         {
             this.PredstavnistvoId = predstavnistvoId;
             this.Tip = tip;
+            this.Adresa = adresa;
+            this.DatumOtvaranja = datumOtvaranja;
+            this.TipPredstavnistva = tipPredstavnistva;
+        }
+        public PredstavnistvoPregled(string adresa, DateTime datumOtvaranja, string tipPredstavnistva)
+        {
+            
+         
             this.Adresa = adresa;
             this.DatumOtvaranja = datumOtvaranja;
             this.TipPredstavnistva = tipPredstavnistva;
