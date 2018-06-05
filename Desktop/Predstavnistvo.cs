@@ -61,6 +61,7 @@ namespace Desktop
                 PredstavnistvoPregled pr = dlg.pred;
                 //snimi
                 DTOManager.UpdatePredstavnistvo(pr);
+                //Poziv InitPredstavnistva() za refresh DGV-a
             }
         }
 
