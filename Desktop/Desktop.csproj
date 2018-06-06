@@ -87,8 +87,10 @@
     <Compile Include="DodajPredstavnistvo.Designer.cs">
       <DependentUpon>DodajPredstavnistvo.cs</DependentUpon>
     </Compile>
-    <Compile Include="DTOManager.cs" />
-    <Compile Include="DTOs.cs" />
+    <Compile Include="DTOManagers\DTOManagerPredstavnistvo.cs" />
+    <Compile Include="DTOManagers\DTOManagerZaposleni.cs" />
+    <Compile Include="DTOs\DTOPredstavnistvo.cs" />
+    <Compile Include="DTOs\DTOZaposleni.cs" />
     <Compile Include="Entiteti\Angazuje.cs" />
     <Compile Include="Entiteti\FizickoLice.cs" />
     <Compile Include="Entiteti\Knjizica.cs" />

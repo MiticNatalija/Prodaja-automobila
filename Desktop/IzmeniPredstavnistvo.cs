@@ -7,33 +7,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Desktop.DTOs;
 
 namespace Desktop
 {
     public partial class frmIzmeniPredstavnistvo : Form
     {
-        public PredstavnistvoPregled pred;
+        public PredstavnistvoPregled Predstavnistvo { get; set; }
+
         public frmIzmeniPredstavnistvo()
         {
             InitializeComponent();
         }
         public frmIzmeniPredstavnistvo(PredstavnistvoPregled p)
         {
-            pred = p;
+            Predstavnistvo = p;
             InitializeComponent();
             fill();
         }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            pred.Adresa = txtAdresa.Text;
-            pred.DatumOtvaranja = dtpDatum.Value;
+            Predstavnistvo.Adresa = txtAdresa.Text;
+            Predstavnistvo.DatumOtvaranja = dtpDatum.Value;
             
             DialogResult = System.Windows.Forms.DialogResult.OK;
         }
-        private void fill() {
-            txtAdresa.Text = pred.Adresa;
-            dtpDatum.Value = pred.DatumOtvaranja;
+        private void fill()
+        {
+            txtAdresa.Text = Predstavnistvo.Adresa;
+            dtpDatum.Value = Predstavnistvo.DatumOtvaranja;
         }
     }
 }

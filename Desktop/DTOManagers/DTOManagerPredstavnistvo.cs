@@ -9,30 +9,34 @@ using System.Drawing;
 using System.Windows.Forms;
 using NHibernate;
 using Desktop.Entiteti;
+using Desktop.DTOs;
 
-namespace Desktop
+namespace Desktop.DTOManagers
 {
-    public class DTOManager
+    public partial class DTOManager
     {
         public static List<PredstavnistvoPregled> GetPredstavnistvoInfos()
         {
-            List<PredstavnistvoPregled> odInfos = new List<PredstavnistvoPregled>();
+            List<PredstavnistvoPregled> prInfos = new List<PredstavnistvoPregled>();
+            ISession s = null;
+
             try
             {
-                ISession s = DataLayer.GetSession();
-
+                s = DataLayer.GetSession();
                 IEnumerable<Predstavnistvo> predstavnistva = from p in s.Query<Predstavnistvo>()
-                                                   select p;
+                                                             select p;
 
                 foreach (Predstavnistvo p in predstavnistva)
                 {
                     string tip = "Greska";
                     string tipPredstavnistva = "Greska";
+                    DateTime? datumVazenjaLicence = null;
 
                     if (p is SalonHyundai)
                     {
                         tipPredstavnistva = "Salon za Hyundai";
                         tip = "SalonHyundai";
+                        datumVazenjaLicence = ((SalonHyundai)p).DatumVazenjaLicence;
                     }
                     else if (p is SalonKia)
                     {
@@ -43,6 +47,7 @@ namespace Desktop
                     {
                         tipPredstavnistva = "Salon za Hyundai i Kiu";
                         tip = "SalonHyundaiKia";
+                        datumVazenjaLicence = ((SalonHyundaiKia)p).DatumVazenjaLicence;
                     }
                     else if (p is ServisHyundai)
                     {
@@ -63,6 +68,7 @@ namespace Desktop
                     {
                         tipPredstavnistva = "Salon i Servis za Hyundai";
                         tip = "SalonServisHyundai";
+                        datumVazenjaLicence = ((SalonServisHyundai)p).DatumVazenjaLicence;
                     }
                     else if (p is SalonServisKia)
                     {
@@ -73,242 +79,195 @@ namespace Desktop
                     {
                         tipPredstavnistva = "Salon i Servis za Hyundai i Kiu";
                         tip = "SalonServisHyundaiKia";
+                        datumVazenjaLicence = ((SalonServisHyundaiKia)p).DatumVazenjaLicence;
                     }
-                    odInfos.Add(new PredstavnistvoPregled(p.Id, tip, p.Adresa, p.DatumOtvaranja, tipPredstavnistva));
+                    prInfos.Add(new PredstavnistvoPregled(p.Id, tip, p.Adresa, p.DatumOtvaranja, tipPredstavnistva, datumVazenjaLicence));
                 }
-
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
                 s.Close();
+            }
+
+            return prInfos;
+        }
+
+        public static PredstavnistvoPregled GetPredstavnistvo(int id)
+        {
+            PredstavnistvoPregled pr = null;
+            ISession s = null;
+
+            try
+            {
+                s = DataLayer.GetSession();
+
+                Predstavnistvo p = s.Load<Predstavnistvo>(id);
+                pr = new PredstavnistvoPregled(p.Id, p.Adresa, p.DatumOtvaranja);
 
             }
             catch (Exception ec)
             {
                 MessageBox.Show(ec.Message);
             }
-
-            return odInfos;
-        }
-
-        public static PredstavnistvoPregled GetPredstavnistvo(int id) {
-            PredstavnistvoPregled pr=new PredstavnistvoPregled();
-            try
+            finally
             {
-                ISession s = DataLayer.GetSession();
-
-                Predstavnistvo p = s.Load<Predstavnistvo>(id);
-                pr = new PredstavnistvoPregled(p.Id, p.Adresa, p.DatumOtvaranja);
-
-
                 s.Close();
+            }
 
-            }
-            catch (Exception ec) {
-                MessageBox.Show(ec.Message);
-            }
             return pr;
         }
 
         public static void UpdatePredstavnistvo(PredstavnistvoPregled p)
         {
+            ISession s = null;
+
             try
             {
-                ISession s = DataLayer.GetSession();
+                s = DataLayer.GetSession();
                 Predstavnistvo pre = s.Load<Predstavnistvo>(p.PredstavnistvoId);
                 pre.Adresa = p.Adresa;
                 pre.DatumOtvaranja = p.DatumOtvaranja;
                 s.Update(pre);
                 s.Flush();
-                s.Close();
-
             }
             catch (Exception ec)
             {
                 MessageBox.Show(ec.Message);
             }
+            finally
+            {
+                s.Close();
+            }
         }
         public static void AddPredstavnistvo(PredstavnistvoPregled p)
         {
+            ISession s = null;
             try
             {
-                ISession s = DataLayer.GetSession();
-
+                s = DataLayer.GetSession();
+                Predstavnistvo sh = null;
 
                 string tip = p.TipPredstavnistva;
-                if(tip.CompareTo("Salon za Hyundai")==0){
-                    SalonHyundai sh = new SalonHyundai()
+                if (tip.CompareTo("Salon za Hyundai") == 0)
+                {
+                    sh = new SalonHyundai()
                     {
                         Adresa = p.Adresa,
                         DatumOtvaranja = p.DatumOtvaranja,
-                       DatumVazenjaLicence = p.DatumLicence
+                        DatumVazenjaLicence = (DateTime)p.DatumLicence
 
                     };
-                    s.Save(sh);
                 }
-                else if(tip.CompareTo("Salon za Kiu") == 0){
-                    SalonKia sh = new SalonKia()
+                else if (tip.CompareTo("Salon za Kiu") == 0)
+                {
+                    sh = new SalonKia()
                     {
                         Adresa = p.Adresa,
                         DatumOtvaranja = p.DatumOtvaranja
-  
+
                     };
-                    s.Save(sh);
                 }
                 else if (tip.CompareTo("Salon za Hyundai i Kiu") == 0)
                 {
-                    SalonHyundaiKia sh = new SalonHyundaiKia()
+                    sh = new SalonHyundaiKia()
                     {
                         Adresa = p.Adresa,
                         DatumOtvaranja = p.DatumOtvaranja,
-                        DatumVazenjaLicence=p.DatumLicence
+                        DatumVazenjaLicence = (DateTime)p.DatumLicence
 
                     };
-                    s.Save(sh);
                 }
                 else if (tip.CompareTo("Servis za Hyundai") == 0)
                 {
-                    ServisHyundai sh = new ServisHyundai()
+                    sh = new ServisHyundai()
                     {
                         Adresa = p.Adresa,
                         DatumOtvaranja = p.DatumOtvaranja
-                        
+
                     };
-                    s.Save(sh);
                 }
                 else if (tip.CompareTo("Servis za Kiu") == 0)
                 {
-                    ServisKia sh = new ServisKia()
+                    sh = new ServisKia()
                     {
                         Adresa = p.Adresa,
                         DatumOtvaranja = p.DatumOtvaranja
 
                     };
-                    s.Save(sh);
                 }
                 else if (tip.CompareTo("Servis za Hyundai i Kiu") == 0)
                 {
-                       ServisHyundaiKia sh = new ServisHyundaiKia()
+                    sh = new ServisHyundaiKia()
                     {
                         Adresa = p.Adresa,
                         DatumOtvaranja = p.DatumOtvaranja
 
                     };
-                    s.Save(sh);
                 }
                 else if (tip.CompareTo("Salon i Servis za Kiu") == 0)
                 {
-                    SalonServisKia sh = new SalonServisKia()
+                    sh = new SalonServisKia()
                     {
                         Adresa = p.Adresa,
                         DatumOtvaranja = p.DatumOtvaranja
 
                     };
-                    s.Save(sh);
                 }
                 else if (tip.CompareTo("Salon i Servis za Hyundai i Kiu") == 0)
                 {
-                    SalonServisHyundaiKia sh = new SalonServisHyundaiKia()
+                    sh = new SalonServisHyundaiKia()
                     {
                         Adresa = p.Adresa,
                         DatumOtvaranja = p.DatumOtvaranja,
-                        DatumVazenjaLicence=p.DatumLicence
+                        DatumVazenjaLicence = (DateTime)p.DatumLicence
 
                     };
-                    s.Save(sh);
                 }
                 else if (tip.CompareTo("Salon i Servis za Hyundai") == 0)
                 {
-                    SalonServisHyundai sh = new SalonServisHyundai()
+                    sh = new SalonServisHyundai()
                     {
                         Adresa = p.Adresa,
                         DatumOtvaranja = p.DatumOtvaranja,
-                        DatumVazenjaLicence=p.DatumLicence
+                        DatumVazenjaLicence = (DateTime)p.DatumLicence
 
                     };
-                    s.Save(sh);
                 }
-
-
-
-
+                s.Save(sh);
                 s.Flush();
-                s.Close();
-                
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                s.Close();
+            }
         }
         public static void DeletePredstavnistvo(PredstavnistvoPregled p)
         {
+            ISession s = null;
             try
             {
-                ISession s = DataLayer.GetSession();
+                s = DataLayer.GetSession();
                 Predstavnistvo pre = s.Load<Predstavnistvo>(p.PredstavnistvoId);
-               
+
                 s.Delete(pre);
                 s.Flush();
-                s.Close();
-
             }
             catch (Exception ec)
             {
                 MessageBox.Show(ec.Message);
             }
-        }
-
-        public static List<ZaposleniPregled> GetZaposleniInfos()
-        {
-            List<ZaposleniPregled> zapInfos = new List<ZaposleniPregled>();
-            try
+            finally
             {
-                ISession s = DataLayer.GetSession();
-
-                IEnumerable<Zaposleni> zaposleni = from z in s.Query<Zaposleni>()
-                                                             select z;
-
-                foreach (Zaposleni z in zaposleni)
-                {
-                    string tip = "Greska";
-                    string tipZaposlenog = "Greska";
-
-                    if (z is PredstavnikKia)
-                    {
-                        tipZaposlenog = "Predstavnik za Kiu";
-                        tip = "PredstavnikKia";
-                    }
-                    else if (z is PredstavnikHyundai)
-                    {
-                        tipZaposlenog = "Predstavnik za Hyundai";
-                        tip = "PredstavnikHyundai";
-                    }
-                    else if (z is MehanicarKia)
-                    {
-                        tipZaposlenog = "Mehanicar za Kiu";
-                        tip = "MehanicarKia";
-                    }
-                    else if (z is MehanicarHyundai)
-                    {
-                        tipZaposlenog = "Mehanicar za Hyundai";
-                        tip = "MehanicarHyundai";
-                    }
-                    else if (z is MehanicarKiaHyundai)
-                    {
-                        tipZaposlenog = "Mehanicar za Kiu i Hyundai";
-                        tip = "MehanicarKiaHyundai";
-                    }
-                    zapInfos.Add(new ZaposleniPregled(z.Id, tip, z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, z.DatumRodjenja, z.DatumZaposlenja, tipZaposlenog));
-                }
-
                 s.Close();
-
             }
-            catch (Exception ec)
-            {
-                MessageBox.Show(ec.Message);
-            }
-
-            return zapInfos;
         }
     }
 }

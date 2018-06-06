@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Desktop.DTOManagers;
+using Desktop.DTOs;
 
 namespace Desktop
 {
@@ -35,6 +37,7 @@ namespace Desktop
         {
             dgvPredstavnistvo.DataSource = DTOManager.GetPredstavnistvoInfos();
             dgvPredstavnistvo.Columns[1].DefaultCellStyle.Format = "dd.MM.yyyy";
+            dgvPredstavnistvo.Columns[3].DefaultCellStyle.Format = "dd.MM.yyyy";
         }
 
         private void InitZaposlnih()
@@ -44,43 +47,41 @@ namespace Desktop
             dgvPredstavnik.Columns[5].DefaultCellStyle.Format = "dd.MM.yyyy";
         }
 
-        private void btnImeni_Click(object sender, EventArgs e)
+        private void btnIzmeniPredstavnistvo_Click(object sender, EventArgs e)
         {
-            //uzimamo id predstavnistva
-            int id = 4;
-            // string g=  dgvPredstavnistvo.SelectedCells.ToString();
-            //  int.TryParse(g, out id);
-            if (id == 0)
-                MessageBox.Show("nece mrrk");
-            //ucitaj pred
-            PredstavnistvoPregled p = DTOManager.GetPredstavnistvo(id);
+            PredstavnistvoPregled tmp = (PredstavnistvoPregled)dgvPredstavnistvo.CurrentRow.DataBoundItem;
+
+            PredstavnistvoPregled p = DTOManager.GetPredstavnistvo(tmp.PredstavnistvoId);
+
             frmIzmeniPredstavnistvo dlg = new frmIzmeniPredstavnistvo(p);
-            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                PredstavnistvoPregled pr = dlg.pred;
-                //snimi
+                PredstavnistvoPregled pr = dlg.Predstavnistvo;
                 DTOManager.UpdatePredstavnistvo(pr);
-                //Poziv InitPredstavnistva() za refresh DGV-a
+                InitPredstavnistava();
             }
         }
 
         private void btnObrisiPredstavnistvo_Click(object sender, EventArgs e)
         {
-            //uzimamo id predstavnistva
-            int id = 3;
-            //treba da se doda uzimanje indeksa iz dgv
-            // string g=  dgvPredstavnistvo.SelectedCells.ToString();
-            PredstavnistvoPregled p = DTOManager.GetPredstavnistvo(id);
-            DTOManager.DeletePredstavnistvo(p);
+            PredstavnistvoPregled tmp = (PredstavnistvoPregled)dgvPredstavnistvo.CurrentRow.DataBoundItem;
+            DialogResult dr = MessageBox.Show("Da li ste sigurni da zelite da obriste izabrano predstavnistvo?", "Brisanje predstavnistva", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dr == DialogResult.Yes)
+            {
+                PredstavnistvoPregled p = DTOManager.GetPredstavnistvo(tmp.PredstavnistvoId);
+                DTOManager.DeletePredstavnistvo(p);
+                InitPredstavnistava();
+            }
         }
 
         private void btnDodajPredstavnistvo_Click(object sender, EventArgs e)
         {
             frmDodajPredstavnistvo dlg = new frmDodajPredstavnistvo();
-            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
                 PredstavnistvoPregled p = dlg.p;
                 DTOManager.AddPredstavnistvo(p);
+                InitPredstavnistava();
             }
         }
     }
