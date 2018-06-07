@@ -635,7 +635,7 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
 
                 IQuery q = s.CreateQuery("select v from Vozilo v where v.OznakaMotora='127898456'");
-                IList<VoziloPredstavnistvoPregled> v = q.List<VoziloPredstavnistvoPregled>();
+                IList<Vozilo> v = q.List<Vozilo>();
                 if (v == null)
                     throw new Exception("Prvo morate dodati vozilo na dugme iznad!");
                 s.Delete(v[0]);
