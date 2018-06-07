@@ -69,5 +69,79 @@ namespace Desktop.DTOManagers
 
             return zapInfos;
         }
+
+        public static List<PredstavnikInfo> GetPredstavniciForPredstavnistvo(int id)
+        {
+            List<PredstavnikInfo> preInfos = new List<PredstavnikInfo>();
+            ISession s = null;
+            try
+            {
+                s = DataLayer.GetSession();
+                Predstavnistvo  pom = (from p in s.Query<Predstavnistvo>()
+                                     where p.Id == id
+                                     select p).Single<Predstavnistvo>();
+                
+                if(pom is SalonHyundai)
+                {
+                    PredstavnikHyundai ph = ((SalonHyundai)pom).PredstavnikHyundai;
+                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai"));
+                }
+                else if(pom is ServisHyundai)
+                {
+                    PredstavnikHyundai ph = ((ServisHyundai)pom).PredstavnikHyundai;
+                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai"));
+                }
+                else if(pom is SalonServisHyundai)
+                {
+                    PredstavnikHyundai ph = ((SalonServisHyundai)pom).PredstavnikHyundai;
+                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai"));
+                }
+                else if(pom is SalonKia)
+                {
+                    PredstavnikKia pk = ((SalonKia)pom).PredstavnikKia;
+                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu"));
+                }
+                else if (pom is ServisKia)
+                {
+                    PredstavnikKia pk = ((ServisKia)pom).PredstavnikKia;
+                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu"));
+                }
+                else if (pom is SalonServisKia)
+                {
+                    PredstavnikKia pk = ((SalonServisKia)pom).PredstavnikKia;
+                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu"));
+                }
+                else if (pom is SalonHyundaiKia)
+                {
+                    PredstavnikHyundai ph = ((SalonHyundaiKia)pom).PredstavnikHyundai;
+                    PredstavnikKia pk = ((SalonHyundaiKia)pom).PredstavnikKia;
+                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu"));
+                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai"));
+                }
+                else if (pom is ServisHyundaiKia)
+                {
+                    PredstavnikHyundai ph = ((ServisHyundaiKia)pom).PredstavnikHyundai;
+                    PredstavnikKia pk = ((ServisHyundaiKia)pom).PredstavnikKia;
+                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu"));
+                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai"));
+                }
+                else if (pom is SalonServisHyundaiKia)
+                {
+                    PredstavnikHyundai ph = ((SalonServisHyundaiKia)pom).PredstavnikHyundai;
+                    PredstavnikKia pk = ((SalonServisHyundaiKia)pom).PredstavnikKia;
+                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu"));
+                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai"));
+                }
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return preInfos;
+        }
     }
 }

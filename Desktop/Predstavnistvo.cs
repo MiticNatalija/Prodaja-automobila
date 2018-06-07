@@ -84,5 +84,29 @@ namespace Desktop
                 InitPredstavnistava();
             }
         }
+
+        private void btnPredstavnik_Click(object sender, EventArgs e)
+        {
+            PredstavnistvoPregled tmp = (PredstavnistvoPregled)dgvPredstavnistvo.CurrentRow.DataBoundItem;
+            List<PredstavnikInfo> predstavnici = DTOManager.GetPredstavniciForPredstavnistvo(tmp.PredstavnistvoId);
+            PredstavnikInfos frm = new PredstavnikInfos(predstavnici);
+            frm.ShowDialog();
+        }
+
+        private void dgvPredstavnistvo_SelectionChanged(object sender, EventArgs e)
+        {
+            PredstavnistvoPregled tmp = (PredstavnistvoPregled)dgvPredstavnistvo.CurrentRow.DataBoundItem;
+            if (tmp.Tip.Contains("Salon"))
+                btnSalonAutomobili.Enabled = true;
+            else
+                btnSalonAutomobili.Enabled = false;
+        }
+
+        private void btnSalonAutomobili_Click(object sender, EventArgs e)
+        {
+            PredstavnistvoPregled tmp = (PredstavnistvoPregled)dgvPredstavnistvo.CurrentRow.DataBoundItem;
+            VoziloPredstavnistvoPregled frm = new VoziloPredstavnistvoPregled(tmp);
+            frm.ShowDialog();
+        }
     }
 }

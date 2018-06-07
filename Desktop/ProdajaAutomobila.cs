@@ -78,7 +78,7 @@ namespace Desktop
             {
                 ISession s = DataLayer.GetSession();
 
-              
+
                 Vozilo v = s.Load<Vozilo>(2);
                 Predstavnistvo p = s.Load<Predstavnistvo>(1);
                 // p.Adresa = "Bulevar Pobede 45";
@@ -230,7 +230,7 @@ namespace Desktop
                 //ServisHyundai ser = s.Load<ServisHyundai>(15);
                 //foreach (Knjizica kj in ser.Knjizice)
                 //MessageBox.Show(kj.CenaUsluge.ToString());
-                
+
 
                 Vozilo v = s.Load<Vozilo>(2);
 
@@ -635,7 +635,7 @@ namespace Desktop
                 ISession s = DataLayer.GetSession();
 
                 IQuery q = s.CreateQuery("select v from Vozilo v where v.OznakaMotora='127898456'");
-                IList<Vozilo> v = q.List<Vozilo>();
+                IList<VoziloPredstavnistvoPregled> v = q.List<VoziloPredstavnistvoPregled>();
                 if (v == null)
                     throw new Exception("Prvo morate dodati vozilo na dugme iznad!");
                 s.Delete(v[0]);

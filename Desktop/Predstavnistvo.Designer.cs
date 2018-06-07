@@ -36,6 +36,9 @@
             this.btnDodajPredstavnistvo = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvPredstavnik = new System.Windows.Forms.DataGridView();
+            this.btnDodajZaposlenog = new System.Windows.Forms.Button();
+            this.btnPredstavnik = new System.Windows.Forms.Button();
+            this.btnSalonAutomobili = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPredstavnistvo)).BeginInit();
             this.tabPrikaz.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -58,22 +61,23 @@
             this.dgvPredstavnistvo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPredstavnistvo.Size = new System.Drawing.Size(848, 603);
             this.dgvPredstavnistvo.TabIndex = 0;
+            this.dgvPredstavnistvo.SelectionChanged += new System.EventHandler(this.dgvPredstavnistvo_SelectionChanged);
             // 
             // btnIzmeniPredstavnistvo
             // 
             this.btnIzmeniPredstavnistvo.Location = new System.Drawing.Point(932, 110);
-            this.btnIzmeniPredstavnistvo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnIzmeniPredstavnistvo.Margin = new System.Windows.Forms.Padding(4);
             this.btnIzmeniPredstavnistvo.Name = "btnIzmeniPredstavnistvo";
             this.btnIzmeniPredstavnistvo.Size = new System.Drawing.Size(248, 79);
             this.btnIzmeniPredstavnistvo.TabIndex = 1;
             this.btnIzmeniPredstavnistvo.Text = "Izmeni predstavnistvo";
             this.btnIzmeniPredstavnistvo.UseVisualStyleBackColor = true;
-            this.btnIzmeniPredstavnistvo.Click += new System.EventHandler(btnIzmeniPredstavnistvo_Click);
+            this.btnIzmeniPredstavnistvo.Click += new System.EventHandler(this.btnIzmeniPredstavnistvo_Click);
             // 
             // btnObrisiPredstavnistvo
             // 
             this.btnObrisiPredstavnistvo.Location = new System.Drawing.Point(932, 213);
-            this.btnObrisiPredstavnistvo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnObrisiPredstavnistvo.Margin = new System.Windows.Forms.Padding(4);
             this.btnObrisiPredstavnistvo.Name = "btnObrisiPredstavnistvo";
             this.btnObrisiPredstavnistvo.Size = new System.Drawing.Size(248, 79);
             this.btnObrisiPredstavnistvo.TabIndex = 2;
@@ -86,24 +90,26 @@
             this.tabPrikaz.Controls.Add(this.tabPage1);
             this.tabPrikaz.Controls.Add(this.tabPage2);
             this.tabPrikaz.Location = new System.Drawing.Point(16, 15);
-            this.tabPrikaz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPrikaz.Margin = new System.Windows.Forms.Padding(4);
             this.tabPrikaz.Name = "tabPrikaz";
             this.tabPrikaz.SelectedIndex = 0;
-            this.tabPrikaz.Size = new System.Drawing.Size(1252, 654);
+            this.tabPrikaz.Size = new System.Drawing.Size(1346, 654);
             this.tabPrikaz.TabIndex = 1;
             this.tabPrikaz.SelectedIndexChanged += new System.EventHandler(this.tabPrikaz_SelectedIndexChanged);
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnSalonAutomobili);
+            this.tabPage1.Controls.Add(this.btnPredstavnik);
             this.tabPage1.Controls.Add(this.btnIzmeniPredstavnistvo);
             this.tabPage1.Controls.Add(this.btnObrisiPredstavnistvo);
             this.tabPage1.Controls.Add(this.btnDodajPredstavnistvo);
             this.tabPage1.Controls.Add(this.dgvPredstavnistvo);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage1.Size = new System.Drawing.Size(1244, 625);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Size = new System.Drawing.Size(1338, 625);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Predstavnistva";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -111,7 +117,7 @@
             // btnDodajPredstavnistvo
             // 
             this.btnDodajPredstavnistvo.Location = new System.Drawing.Point(932, 7);
-            this.btnDodajPredstavnistvo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDodajPredstavnistvo.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajPredstavnistvo.Name = "btnDodajPredstavnistvo";
             this.btnDodajPredstavnistvo.Size = new System.Drawing.Size(248, 80);
             this.btnDodajPredstavnistvo.TabIndex = 1;
@@ -121,12 +127,13 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnDodajZaposlenog);
             this.tabPage2.Controls.Add(this.dgvPredstavnik);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage2.Size = new System.Drawing.Size(1244, 625);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(1338, 625);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Zaposleni";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -138,7 +145,7 @@
             this.dgvPredstavnik.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPredstavnik.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPredstavnik.Location = new System.Drawing.Point(8, 7);
-            this.dgvPredstavnik.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvPredstavnik.Margin = new System.Windows.Forms.Padding(4);
             this.dgvPredstavnik.MultiSelect = false;
             this.dgvPredstavnik.Name = "dgvPredstavnik";
             this.dgvPredstavnik.ReadOnly = true;
@@ -147,11 +154,42 @@
             this.dgvPredstavnik.Size = new System.Drawing.Size(1093, 603);
             this.dgvPredstavnik.TabIndex = 1;
             // 
+            // btnDodajZaposlenog
+            // 
+            this.btnDodajZaposlenog.Location = new System.Drawing.Point(1127, 28);
+            this.btnDodajZaposlenog.Name = "btnDodajZaposlenog";
+            this.btnDodajZaposlenog.Size = new System.Drawing.Size(184, 73);
+            this.btnDodajZaposlenog.TabIndex = 2;
+            this.btnDodajZaposlenog.Text = "Dodaj radnika";
+            this.btnDodajZaposlenog.UseVisualStyleBackColor = true;
+            // 
+            // btnPredstavnik
+            // 
+            this.btnPredstavnik.Location = new System.Drawing.Point(932, 315);
+            this.btnPredstavnik.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPredstavnik.Name = "btnPredstavnik";
+            this.btnPredstavnik.Size = new System.Drawing.Size(248, 79);
+            this.btnPredstavnik.TabIndex = 3;
+            this.btnPredstavnik.Text = "Predstavnik";
+            this.btnPredstavnik.UseVisualStyleBackColor = true;
+            this.btnPredstavnik.Click += new System.EventHandler(this.btnPredstavnik_Click);
+            // 
+            // btnSalonAutomobili
+            // 
+            this.btnSalonAutomobili.Location = new System.Drawing.Point(932, 419);
+            this.btnSalonAutomobili.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSalonAutomobili.Name = "btnSalonAutomobili";
+            this.btnSalonAutomobili.Size = new System.Drawing.Size(248, 79);
+            this.btnSalonAutomobili.TabIndex = 4;
+            this.btnSalonAutomobili.Text = "Automobili";
+            this.btnSalonAutomobili.UseVisualStyleBackColor = true;
+            this.btnSalonAutomobili.Click += new System.EventHandler(this.btnSalonAutomobili_Click);
+            // 
             // frmPredstavnistvo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 683);
+            this.ClientSize = new System.Drawing.Size(1408, 665);
             this.Controls.Add(this.tabPrikaz);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmPredstavnistvo";
@@ -175,5 +213,8 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnDodajPredstavnistvo;
         private System.Windows.Forms.DataGridView dgvPredstavnik;
+        private System.Windows.Forms.Button btnDodajZaposlenog;
+        private System.Windows.Forms.Button btnPredstavnik;
+        private System.Windows.Forms.Button btnSalonAutomobili;
     }
 }
