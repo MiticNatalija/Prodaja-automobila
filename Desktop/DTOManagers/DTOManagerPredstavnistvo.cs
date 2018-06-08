@@ -249,13 +249,13 @@ namespace Desktop.DTOManagers
                 s.Close();
             }
         }
-        public static void DeletePredstavnistvo(PredstavnistvoPregled p)
+        public static void DeletePredstavnistvo(int id)
         {
             ISession s = null;
             try
             {
                 s = DataLayer.GetSession();
-                Predstavnistvo pre = s.Load<Predstavnistvo>(p.PredstavnistvoId);
+                Predstavnistvo pre = s.Load<Predstavnistvo>(id);
 
                 s.Delete(pre);
                 s.Flush();

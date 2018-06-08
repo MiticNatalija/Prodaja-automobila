@@ -69,7 +69,7 @@ namespace Desktop
             if (dr == DialogResult.Yes)
             {
                 PredstavnistvoPregled p = DTOManager.GetPredstavnistvo(tmp.PredstavnistvoId);
-                DTOManager.DeletePredstavnistvo(p);
+                DTOManager.DeletePredstavnistvo(p.PredstavnistvoId);
                 InitPredstavnistava();
             }
         }
@@ -124,12 +124,24 @@ namespace Desktop
         private void btnIzmeniRadnika_Click(object sender, EventArgs e)
         {
             ZaposleniPregled tmp = (ZaposleniPregled)dgvPredstavnik.CurrentRow.DataBoundItem;
-            ZaposleniPregled p = DTOManager.GetZaposleni(tmp.ZaposleniId);
+            ZaposleniIzmena p = DTOManager.GetZaposleni(tmp.ZaposleniId);
 
             IzmeniZaposlenog frm = new IzmeniZaposlenog(p);
             frm.ShowDialog();
+            if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
+                InitZaposlnih();
 
+        }
 
+        private void btnObrisiRadnika_Click(object sender, EventArgs e)
+        {
+
+            DialogResult dr = MessageBox.Show("Da li ste sigurni da zelite da obrisete ovog radnika?", "Brisanje zaposlenog", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dr == DialogResult.No)
+                return;
+            ZaposleniPregled tmp = (ZaposleniPregled)dgvPredstavnik.CurrentRow.DataBoundItem;
+            DTOManager.DeleteZaposleni(tmp.ZaposleniId);
+            InitZaposlnih();
         }
     }
 }

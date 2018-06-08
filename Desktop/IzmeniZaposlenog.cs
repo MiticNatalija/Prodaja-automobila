@@ -14,12 +14,12 @@ namespace Desktop
 {
     public partial class IzmeniZaposlenog : Form
     {
-        private ZaposleniPregled zaposleni;
+        private ZaposleniIzmena zaposleni;
         public IzmeniZaposlenog()
         {
             InitializeComponent();
         }
-        public IzmeniZaposlenog(ZaposleniPregled z)
+        public IzmeniZaposlenog(ZaposleniIzmena z)
         {
             InitializeComponent();
             zaposleni = z;
@@ -36,12 +36,34 @@ namespace Desktop
                 txtSpecijalnost.Enabled = false;
 
             }
+            fill();
+            
         }
 
+        private void fill()
+        {
+            txtIme.Text = zaposleni.LicnoIme;
+            txtImeOca.Text = zaposleni.ImeOca;
+            txtPrezime.Text = zaposleni.Prezime;
+            txtMbr.Text = zaposleni.Mbr;
+            dtpRodjenje.Value = zaposleni.DatumRodjenja;
+            dtpZaposlenje.Value = zaposleni.DatumZaposlenja;
+            if (zaposleni.Tip.Equals("MehanicarKia") || zaposleni.Tip.Equals("MehanicarHyundai"))
+            {
+                txtSpecijalnost.Text = zaposleni.Specijalnost;
+            }
+            else
+            {
+                txtAdresa.Text = zaposleni.Adresa;
+                txtTelefon.Text = zaposleni.Telefon;
+            }
 
+
+            }
         private void btn_Click(object sender, EventArgs e)
         {
-
+            DTOManager.UpdateZaposleni(zaposleni);
+            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
         private void txtIme_TextChanged(object sender, EventArgs e)
@@ -61,6 +83,7 @@ namespace Desktop
 
         private void txtMbr_TextChanged(object sender, EventArgs e)
         {
+            
             zaposleni.Mbr = txtMbr.Text;
         }
 

@@ -69,15 +69,53 @@ namespace Desktop.DTOManagers
 
             return zapInfos;
         }
-        public static ZaposleniPregled GetZaposleni(int id)
+        public static ZaposleniIzmena GetZaposleni(int id)
         {
             ISession s = null;
-            ZaposleniPregled zap=null;
+            ZaposleniIzmena zap=null;
             try
             {
                 s = DataLayer.GetSession();
-                Zaposleni z = s.Load<Zaposleni>(id);
-                zap = new ZaposleniPregled(z.Mbr,z.LicnoIme,z.ImeOca,z.Prezime,z.DatumRodjenja,z.DatumZaposlenja);
+               // Zaposleni z = s.Load<Zaposleni>(id);
+                Zaposleni z = (from za in s.Query<Zaposleni>()
+                                                     where za.Id == id
+                                                     select za).Single<Zaposleni>();
+
+                
+                string tip="";
+                string spec = "";
+                string adr = "";
+                string tel = "";
+  
+                    if (z is PredstavnikKia)
+                    {
+                    PredstavnikKia pk = (PredstavnikKia)z;
+                        tip = "PredstavnikKia";
+                    tel = pk.Telefon;
+                    adr = pk.Adresa;
+                    }
+                    else if (z is PredstavnikHyundai)
+                    {
+                    PredstavnikHyundai ph = (PredstavnikHyundai)z;
+                        tip = "PredstavnikHyundai";
+                    tel = ph.Telefon;
+                    adr = ph.Adresa;
+                    }
+                    else if (z is MehanicarKia)
+                    {
+                    MehanicarKia mk = (MehanicarKia)z;
+                        tip = "MehanicarKia";
+                    spec = mk.Specijalnost;
+                    }
+                    else if (z is MehanicarHyundai)
+                    {
+                    MehanicarHyundai mh = (MehanicarHyundai)z;
+                        tip = "MehanicarHyundai";
+                    spec = mh.Specijalnost;
+                    }
+                   
+
+                    zap = new ZaposleniIzmena(z.Id,tip,z.Mbr,z.LicnoIme,z.ImeOca,z.Prezime,z.DatumRodjenja,z.DatumZaposlenja,adr,tel,spec);
         
 
             }
@@ -92,7 +130,108 @@ namespace Desktop.DTOManagers
             return zap;
 
         }
+        public static void UpdateZaposleni(ZaposleniIzmena z)
+        {
+            ISession s = null;
+            
+            try
+            {
+                s = DataLayer.GetSession();
+                Zaposleni zap = (from za in s.Query<Zaposleni>()
+                               where za.Id == z.PredstavnikId
+                               select za).Single<Zaposleni>();
 
+                if (zap is PredstavnikKia)
+                {
+                    PredstavnikKia pk = (PredstavnikKia)zap;
+                    pk.Adresa = z.Adresa;
+                    pk.DatumRodjenja = z.DatumRodjenja;
+                    pk.DatumZaposlenja = z.DatumZaposlenja;
+                    pk.ImeOca = z.ImeOca;
+                    pk.LicnoIme = z.LicnoIme;
+                    pk.Mbr = z.Mbr;
+                    pk.Prezime = z.Prezime;
+                    pk.Telefon = z.Telefon;
+
+                    s.Update(pk);
+                }
+                else if (zap is PredstavnikHyundai)
+                {
+                    PredstavnikHyundai pk = (PredstavnikHyundai)zap;
+                    pk.Adresa = z.Adresa;
+                    pk.DatumRodjenja = z.DatumRodjenja;
+                    pk.DatumZaposlenja = z.DatumZaposlenja;
+                    pk.ImeOca = z.ImeOca;
+                    pk.LicnoIme = z.LicnoIme;
+                    pk.Mbr = z.Mbr;
+                    pk.Prezime = z.Prezime;
+                    pk.Telefon = z.Telefon;
+                    s.Update(pk);
+
+                }
+                else if (zap is MehanicarKia)
+                {
+                    MehanicarKia pk = (MehanicarKia)zap;
+                   
+                    pk.DatumRodjenja = z.DatumRodjenja;
+                    pk.DatumZaposlenja = z.DatumZaposlenja;
+                    pk.ImeOca = z.ImeOca;
+                    pk.LicnoIme = z.LicnoIme;
+                    pk.Mbr = z.Mbr;
+                    pk.Prezime = z.Prezime;
+                    pk.Specijalnost = z.Specijalnost;
+                    s.Update(pk);
+
+                }
+                else if (zap is MehanicarHyundai)
+                {
+                    MehanicarHyundai pk = (MehanicarHyundai)zap;
+                    
+                    pk.DatumRodjenja = z.DatumRodjenja;
+                    pk.DatumZaposlenja = z.DatumZaposlenja;
+                    pk.ImeOca = z.ImeOca;
+                    pk.LicnoIme = z.LicnoIme;
+                    pk.Mbr = z.Mbr;
+                    pk.Prezime = z.Prezime;
+                    pk.Specijalnost = z.Specijalnost;
+
+                    s.Update(pk);
+                }
+
+
+                s.Flush();
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+        }
+       
+        public static void DeleteZaposleni(int id)
+        {
+            ISession s = null;
+            try
+            {
+                s = DataLayer.GetSession();
+                Zaposleni zap = s.Load<Zaposleni>(id);
+
+                s.Delete(zap);
+                s.Flush();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+        }
         public static List<PredstavnikInfo> GetPredstavniciForPredstavnistvo(int id)
         {
             List<PredstavnikInfo> preInfos = new List<PredstavnikInfo>();

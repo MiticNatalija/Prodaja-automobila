@@ -71,7 +71,7 @@ namespace Desktop.DTOs
         public string Specijalnost { get; set; }
         
 
-        public ZaposleniIzmena(int predstavnikId, string tip, string mbr, string licnoIme, string imeOca, string prezime, DateTime datumRodjenja, DateTime datumZaposlenja, string adresa, string telefon, string tipZaposlenog)
+        public ZaposleniIzmena(int predstavnikId, string tip, string mbr, string licnoIme, string imeOca, string prezime, DateTime datumRodjenja, DateTime datumZaposlenja, string adresa, string telefon, string specijalnost)
         {
             this.PredstavnikId = predstavnikId;
             this.Tip = tip;
@@ -83,6 +83,7 @@ namespace Desktop.DTOs
             this.DatumZaposlenja = datumZaposlenja;
             this.Adresa = adresa;
             this.Telefon = telefon;
+            this.Specijalnost = specijalnost;
             
         }
     }
