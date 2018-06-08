@@ -87,6 +87,12 @@
     <Compile Include="DodajPredstavnistvo.Designer.cs">
       <DependentUpon>DodajPredstavnistvo.cs</DependentUpon>
     </Compile>
+    <Compile Include="DodajZaposlenog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajZaposlenog.Designer.cs">
+      <DependentUpon>DodajZaposlenog.cs</DependentUpon>
+    </Compile>
     <Compile Include="DTOManagers\DTOManagerPredstavnistvo.cs" />
     <Compile Include="DTOManagers\DTOManagerVozilo.cs" />
     <Compile Include="DTOManagers\DTOManagerZaposleni.cs" />
@@ -108,6 +114,12 @@
     </Compile>
     <Compile Include="IzmeniPredstavnistvo.Designer.cs">
       <DependentUpon>IzmeniPredstavnistvo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IzmeniZaposlenog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IzmeniZaposlenog.Designer.cs">
+      <DependentUpon>IzmeniZaposlenog.cs</DependentUpon>
     </Compile>
     <Compile Include="Mapiranja\AngazujeMapiranja.cs" />
     <Compile Include="Mapiranja\FizickoLiceMapiranja.cs" />
@@ -151,8 +163,14 @@
     <EmbeddedResource Include="DodajPredstavnistvo.resx">
       <DependentUpon>DodajPredstavnistvo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DodajZaposlenog.resx">
+      <DependentUpon>DodajZaposlenog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IzmeniPredstavnistvo.resx">
       <DependentUpon>IzmeniPredstavnistvo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IzmeniZaposlenog.resx">
+      <DependentUpon>IzmeniZaposlenog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PredstavnikInfos.resx">
       <DependentUpon>PredstavnikInfos.cs</DependentUpon>

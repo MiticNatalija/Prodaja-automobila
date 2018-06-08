@@ -89,6 +89,12 @@ namespace Desktop
         {
             PredstavnistvoPregled tmp = (PredstavnistvoPregled)dgvPredstavnistvo.CurrentRow.DataBoundItem;
             List<PredstavnikInfo> predstavnici = DTOManager.GetPredstavniciForPredstavnistvo(tmp.PredstavnistvoId);
+            //u ovoj gore fji baca exc jer nema predstavnika,mada msm da to nema veze jer cemo da sredimo bazu da svi moraju da imaju predstavnika
+            if (predstavnici.Count == 0)
+            {
+                MessageBox.Show("Nema predstavnika!");
+                return;
+            }
             PredstavnikInfos frm = new PredstavnikInfos(predstavnici);
             frm.ShowDialog();
         }
@@ -107,6 +113,23 @@ namespace Desktop
             PredstavnistvoPregled tmp = (PredstavnistvoPregled)dgvPredstavnistvo.CurrentRow.DataBoundItem;
             VoziloPredstavnistvoPregled frm = new VoziloPredstavnistvoPregled(tmp);
             frm.ShowDialog();
+        }
+
+        private void btnDodajZaposlenog_Click(object sender, EventArgs e)
+        {
+            DodajZaposlenog frm = new DodajZaposlenog();
+            frm.ShowDialog();
+        }
+
+        private void btnIzmeniRadnika_Click(object sender, EventArgs e)
+        {
+            ZaposleniPregled tmp = (ZaposleniPregled)dgvPredstavnik.CurrentRow.DataBoundItem;
+            ZaposleniPregled p = DTOManager.GetZaposleni(tmp.ZaposleniId);
+
+            IzmeniZaposlenog frm = new IzmeniZaposlenog(p);
+            frm.ShowDialog();
+
+
         }
     }
 }

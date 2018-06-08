@@ -69,6 +69,29 @@ namespace Desktop.DTOManagers
 
             return zapInfos;
         }
+        public static ZaposleniPregled GetZaposleni(int id)
+        {
+            ISession s = null;
+            ZaposleniPregled zap=null;
+            try
+            {
+                s = DataLayer.GetSession();
+                Zaposleni z = s.Load<Zaposleni>(id);
+                zap = new ZaposleniPregled(z.Mbr,z.LicnoIme,z.ImeOca,z.Prezime,z.DatumRodjenja,z.DatumZaposlenja);
+        
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return zap;
+
+        }
 
         public static List<PredstavnikInfo> GetPredstavniciForPredstavnistvo(int id)
         {
@@ -142,6 +165,102 @@ namespace Desktop.DTOManagers
                 s.Close();
             }
             return preInfos;
+        }
+        public static void AddMehanicar(MehanicarAdd m)
+        {
+            ISession s = null;
+            try
+            {
+                s = DataLayer.GetSession();
+                if (m.Tip == "MehanicarHyundai")
+                {
+                    MehanicarHyundai meh = new MehanicarHyundai()
+                    {
+                        ImeOca=m.ImeOca,
+                        LicnoIme=m.LicnoIme,
+                        Prezime=m.Prezime,
+                        Mbr=m.Mbr,
+                        DatumRodjenja=m.DatumRodjenja,
+                        DatumZaposlenja=m.DatumZaposlenja,
+                        Specijalnost=m.Specijalnost
+                    };
+                    s.Save(meh);
+                }
+                else
+                {
+                    MehanicarKia meh = new MehanicarKia()
+                    {
+                        ImeOca = m.ImeOca,
+                        LicnoIme = m.LicnoIme,
+                        Prezime = m.Prezime,
+                        Mbr = m.Mbr,
+                        DatumRodjenja = m.DatumRodjenja,
+                        DatumZaposlenja = m.DatumZaposlenja,
+                        Specijalnost = m.Specijalnost
+                    };
+                    s.Save(meh);
+                }
+               
+                s.Flush();
+                
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+        }
+        public static void AddPredstavnik(PredstavnikAdd p)
+        {
+            ISession s = null;
+            try
+            {
+                s = DataLayer.GetSession();
+                if (p.Tip.Equals("PredstavnikKia"))
+                {
+                    PredstavnikKia pre=new PredstavnikKia()
+                    {
+                        ImeOca = p.ImeOca,
+                        LicnoIme = p.LicnoIme,
+                        Prezime = p.Prezime,
+                        Mbr = p.Mbr,
+                        DatumRodjenja = p.DatumRodjenja,
+                        DatumZaposlenja = p.DatumZaposlenja,
+                        Adresa=p.Adresa,
+                        Telefon=p.Telefon
+                    };
+                    s.Save(pre);
+                }
+                else
+                {
+                    PredstavnikHyundai pre = new PredstavnikHyundai()
+                    {
+                        ImeOca = p.ImeOca,
+                        LicnoIme = p.LicnoIme,
+                        Prezime = p.Prezime,
+                        Mbr = p.Mbr,
+                        DatumRodjenja = p.DatumRodjenja,
+                        DatumZaposlenja = p.DatumZaposlenja,
+                        Adresa = p.Adresa,
+                        Telefon = p.Telefon
+                    };
+                    s.Save(pre);
+                }
+                s.Flush();
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
         }
     }
 }
