@@ -51,6 +51,13 @@ namespace Desktop.DTOs
             this.DatumZaposlenja = datumZaposlenja;
             
         }
+        public ZaposleniPregled(string mbr, string licnoIme, string prezime, string tipZaposlenog)
+        {
+            this.Mbr = mbr;
+            this.LicnoIme = licnoIme;
+            this.Prezime = prezime;
+           this.TipZaposlenog = tipZaposlenog;
+        }
         
 
 

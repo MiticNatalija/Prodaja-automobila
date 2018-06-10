@@ -13,16 +13,27 @@ namespace Desktop.DTOs
         public int VoziloId { get; protected set; }
         [BrowsableAttribute(false)]
         public string Tip { get; protected set; }
+
+
         public string Registracija { get; set; }
         public string Gorivo { get; set; }
-        [BrowsableAttribute(false)]
+
+       // [BrowsableAttribute(false)]
         public string OznakaMotora { get; set; }
+
         [DisplayName("Broj mesta")]
         public int? BrojMesta { get; set; }
         public int? Nosivost { get; set; }
         [DisplayName("Tip vozila")]
         public string TipVozila { get; set; }
 
+        [BrowsableAttribute(false)]
+        public PredstavnistvoPregled PredstavnistvoPregled { get; set; }
+       // public int PredstavnistvoId { get; set; }
+
+        
+        public VoziloPregled()
+        { }
         public VoziloPregled(int voziloId, string tip, string registracija, string gorivo, string oznakaMotora, int? brojMesta, int? nosivost, string tipVozila)
         {
             VoziloId = voziloId;
@@ -34,5 +45,19 @@ namespace Desktop.DTOs
             Nosivost = nosivost;
             TipVozila = tipVozila;
         }
+        public VoziloPregled(string registracija, string gorivo, string tipVozila, string oznakaMotora)
+        {
+            this.Registracija = registracija;
+            this.Gorivo = gorivo;
+            this.TipVozila = tipVozila;
+            this.OznakaMotora = oznakaMotora;
+        }
+        public VoziloPregled(int voziloId, string registracija, string gorivo)
+        {
+            this.VoziloId = voziloId;
+            this.Registracija = registracija;
+            this.Gorivo = gorivo;
+        }
+
     }
 }

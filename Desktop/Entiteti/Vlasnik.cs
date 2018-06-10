@@ -16,7 +16,12 @@ namespace Desktop.Entiteti
 
         public Vlasnik()
         { }
+        public Vlasnik(string telefon, string adresa)
+        {
+            this.Telefon = telefon;
+            this.Adresa = adresa;
 
+        }
        
     }
 }

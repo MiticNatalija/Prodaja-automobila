@@ -13,5 +13,16 @@ namespace Desktop.Entiteti
         public virtual string Prezime { get; set; }
         public virtual string Telefon { get; set; }
         public virtual Kupac Kupac { get; set; }
+
+
+        public PravnoLice()
+        { }
+        public PravnoLice(int pib, string ime, string prezime, string telefon)
+        {
+            this.Pib = pib;
+            this.Ime = ime;
+            this.Prezime = prezime;
+            this.Telefon = telefon;
+        }
     }
 }

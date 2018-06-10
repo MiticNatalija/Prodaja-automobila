@@ -22,5 +22,11 @@ namespace Desktop.Entiteti
         {
             Mehanicari = new List<Zaposleni>();
         }
+        public Knjizica(DateTime datumIntervencije, int cenaUsluge, string radovi)
+        {
+            this.DatumIntervencije = datumIntervencije;
+            this.CenaUsluge = cenaUsluge;
+            this.Radovi = radovi;
+        }
     }
 }

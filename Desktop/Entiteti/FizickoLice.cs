@@ -14,5 +14,16 @@ namespace Desktop.Entiteti
         public virtual string Adresa { get; set; }
         public virtual string Telefon { get; set; }
         public virtual Kupac Kupac { get; set; }
+
+        public FizickoLice()
+        { }
+        public FizickoLice(string jmbg, string ime, string prezime, string adresa, string telefon)
+        {
+            this.Jmbg = jmbg;
+            this.Ime = ime;
+            this.Prezime = prezime;
+            this.Adresa = adresa;
+            this.Telefon = telefon;
+        }
     }
 }

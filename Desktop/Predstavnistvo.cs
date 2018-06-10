@@ -106,6 +106,11 @@ namespace Desktop
                 btnSalonAutomobili.Enabled = true;
             else
                 btnSalonAutomobili.Enabled = false;
+
+            if (tmp.Tip.Contains("Servis"))
+                btnServisVozila.Enabled = true;
+            else
+                btnServisVozila.Enabled = false;
         }
 
         private void btnSalonAutomobili_Click(object sender, EventArgs e)
@@ -142,6 +147,19 @@ namespace Desktop
             ZaposleniPregled tmp = (ZaposleniPregled)dgvPredstavnik.CurrentRow.DataBoundItem;
             DTOManager.DeleteZaposleni(tmp.ZaposleniId);
             InitZaposlnih();
+        }
+
+        private void btnServisVozila_Click(object sender, EventArgs e)
+        {
+            // Ne radi deo kada treba da se lista mehanicara doda knjizici
+            // i novokreirana knjizica da se doda u listu knjizica svakom mehanicaru 
+
+            PredstavnistvoPregled tmp = (PredstavnistvoPregled)dgvPredstavnistvo.CurrentRow.DataBoundItem;
+            frmServisVozila frm = new frmServisVozila(tmp);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Uneti su podaci o novom servisu vozila.");
+            }
         }
     }
 }

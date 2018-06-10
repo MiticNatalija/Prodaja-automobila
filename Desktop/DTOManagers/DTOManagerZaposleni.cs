@@ -69,6 +69,59 @@ namespace Desktop.DTOManagers
 
             return zapInfos;
         }
+        public static List<ZaposleniPregled> GetMehanicariForServis(PredstavnistvoPregled pp)
+        {
+            List<ZaposleniPregled> zapInfos = new List<ZaposleniPregled>();
+            ISession s = null;
+            try
+            {
+                s = DataLayer.GetSession();
+               
+                Predstavnistvo p = DTOManager.GetPredstavnistvo(pp);
+
+                IList<Zaposleni> mehanicari = (from a in s.Query<Angazuje>() where a.Servis == p select a.Mehanicar).ToList<Zaposleni>();
+                
+                foreach (Zaposleni z in mehanicari)
+                {
+                    string tip = "Greska";
+                    string tipZaposlenog = "Greska";
+
+                    
+                    if (z is MehanicarKia)
+                    {
+                        tipZaposlenog = "Mehanicar za Kiu";
+                        tip = "MehanicarKia";
+                        zapInfos.Add(new ZaposleniPregled(z.Id, tip, z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, z.DatumRodjenja, z.DatumZaposlenja, tipZaposlenog));
+
+                    }
+                    else if (z is MehanicarHyundai)
+                    {
+                        tipZaposlenog = "Mehanicar za Hyundai";
+                        tip = "MehanicarHyundai";
+                        zapInfos.Add(new ZaposleniPregled(z.Id, tip, z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, z.DatumRodjenja, z.DatumZaposlenja, tipZaposlenog));
+
+                    }
+                    else if (z is MehanicarKiaHyundai)
+                    {
+                        tipZaposlenog = "Mehanicar za Kiu i Hyundai";
+                        tip = "MehanicarKiaHyundai";
+                        zapInfos.Add(new ZaposleniPregled(z.Id, tip, z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, z.DatumRodjenja, z.DatumZaposlenja, tipZaposlenog));
+
+                    }
+                }
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+
+            return zapInfos;
+        }
+
         public static ZaposleniIzmena GetZaposleni(int id)
         {
             ISession s = null;
@@ -130,6 +183,33 @@ namespace Desktop.DTOManagers
             return zap;
 
         }
+
+        public static Zaposleni GetZaposleni(string mbr)
+        {
+            ISession s = null;
+            Zaposleni zap = null;
+            try
+            {
+                s = DataLayer.GetSession();
+
+
+                zap = (from za in s.Query<Zaposleni>()
+                               where za.Mbr == mbr
+                               select za).Single<Zaposleni>();
+                
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return zap;
+
+        }
+
         public static void UpdateZaposleni(ZaposleniIzmena z)
         {
             ISession s = null;
@@ -211,7 +291,88 @@ namespace Desktop.DTOManagers
                 s.Close();
             }
         }
-       
+       /* public static void UpdateMehanicarKia(MehanicarKia mk)
+        {
+            ISession s = null;
+            try
+            {
+                s = DataLayer.GetSession();
+
+
+                MehanicarKia mehk = (MehanicarKia)(from za in s.Query<Zaposleni>()
+                       where za.Id == mk.Id
+                       select za).Single<Zaposleni>();
+
+                mehk = mk;
+
+                s.SaveOrUpdate(mehk);
+                s.Flush();
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+        }
+        public static void UpdateMehanicarHyundai(MehanicarHyundai mh)
+        {
+            ISession s = null;
+            try
+            {
+                s = DataLayer.GetSession();
+
+
+                MehanicarHyundai mehk = (MehanicarHyundai)(from za in s.Query<Zaposleni>()
+                                                   where za.Id == mh.Id
+                                                   select za).Single<Zaposleni>();
+
+                mehk = mh;
+
+                s.SaveOrUpdate(mehk);
+                s.Flush();
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+        }
+        public static void UpdateMehanicarKiaHyundai(MehanicarKiaHyundai mkh)
+        {
+            ISession s = null;
+            try
+            {
+                s = DataLayer.GetSession();
+
+
+                MehanicarKiaHyundai mehk = (MehanicarKiaHyundai)(from za in s.Query<Zaposleni>()
+                                                   where za.Id == mkh.Id
+                                                   select za).Single<Zaposleni>();
+
+                mehk = mkh;
+
+                s.SaveOrUpdate(mehk);
+                s.Flush();
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+        }
+        */
         public static void DeleteZaposleni(int id)
         {
             ISession s = null;

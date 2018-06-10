@@ -269,5 +269,29 @@ namespace Desktop.DTOManagers
                 s.Close();
             }
         }
+        public static Predstavnistvo GetPredstavnistvo(PredstavnistvoPregled pp)
+        {
+            ISession s = null;
+            Predstavnistvo p=null;
+            try
+            {
+                s = DataLayer.GetSession();
+
+                 p = (from za in s.Query<Predstavnistvo>()
+                               where za.Id == pp.PredstavnistvoId
+                               select za).Single<Predstavnistvo>();
+                //p = s.Load<Predstavnistvo>(pp.PredstavnistvoId);
+                
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return p;
+        }
     }
 }

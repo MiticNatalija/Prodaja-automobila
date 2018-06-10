@@ -33,14 +33,15 @@
             this.btnObrisiPredstavnistvo = new System.Windows.Forms.Button();
             this.tabPrikaz = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnServisVozila = new System.Windows.Forms.Button();
             this.btnSalonAutomobili = new System.Windows.Forms.Button();
             this.btnPredstavnik = new System.Windows.Forms.Button();
             this.btnDodajPredstavnistvo = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnObrisiRadnika = new System.Windows.Forms.Button();
             this.btnIzmeniRadnika = new System.Windows.Forms.Button();
             this.btnDodajZaposlenog = new System.Windows.Forms.Button();
             this.dgvPredstavnik = new System.Windows.Forms.DataGridView();
-            this.btnObrisiRadnika = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPredstavnistvo)).BeginInit();
             this.tabPrikaz.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -98,6 +99,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnServisVozila);
             this.tabPage1.Controls.Add(this.btnSalonAutomobili);
             this.tabPage1.Controls.Add(this.btnPredstavnik);
             this.tabPage1.Controls.Add(this.btnIzmeniPredstavnistvo);
@@ -112,13 +114,23 @@
             this.tabPage1.Text = "Predstavnistva";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnServisVozila
+            // 
+            this.btnServisVozila.Location = new System.Drawing.Point(699, 423);
+            this.btnServisVozila.Name = "btnServisVozila";
+            this.btnServisVozila.Size = new System.Drawing.Size(186, 63);
+            this.btnServisVozila.TabIndex = 5;
+            this.btnServisVozila.Text = "Servisiranje vozila u izabranom servisu";
+            this.btnServisVozila.UseVisualStyleBackColor = true;
+            this.btnServisVozila.Click += new System.EventHandler(this.btnServisVozila_Click);
+            // 
             // btnSalonAutomobili
             // 
             this.btnSalonAutomobili.Location = new System.Drawing.Point(699, 340);
             this.btnSalonAutomobili.Name = "btnSalonAutomobili";
             this.btnSalonAutomobili.Size = new System.Drawing.Size(186, 64);
             this.btnSalonAutomobili.TabIndex = 4;
-            this.btnSalonAutomobili.Text = "Automobili";
+            this.btnSalonAutomobili.Text = "Vozila izabranog salona";
             this.btnSalonAutomobili.UseVisualStyleBackColor = true;
             this.btnSalonAutomobili.Click += new System.EventHandler(this.btnSalonAutomobili_Click);
             // 
@@ -128,7 +140,7 @@
             this.btnPredstavnik.Name = "btnPredstavnik";
             this.btnPredstavnik.Size = new System.Drawing.Size(186, 64);
             this.btnPredstavnik.TabIndex = 3;
-            this.btnPredstavnik.Text = "Predstavnik";
+            this.btnPredstavnik.Text = "Predstavnici izabranog predstavnistva";
             this.btnPredstavnik.UseVisualStyleBackColor = true;
             this.btnPredstavnik.Click += new System.EventHandler(this.btnPredstavnik_Click);
             // 
@@ -155,6 +167,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Zaposleni";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnObrisiRadnika
+            // 
+            this.btnObrisiRadnika.Location = new System.Drawing.Point(845, 152);
+            this.btnObrisiRadnika.Name = "btnObrisiRadnika";
+            this.btnObrisiRadnika.Size = new System.Drawing.Size(138, 59);
+            this.btnObrisiRadnika.TabIndex = 4;
+            this.btnObrisiRadnika.Text = "Obrisi radnika";
+            this.btnObrisiRadnika.UseVisualStyleBackColor = true;
+            this.btnObrisiRadnika.Click += new System.EventHandler(this.btnObrisiRadnika_Click);
             // 
             // btnIzmeniRadnika
             // 
@@ -192,16 +214,6 @@
             this.dgvPredstavnik.Size = new System.Drawing.Size(820, 490);
             this.dgvPredstavnik.TabIndex = 1;
             // 
-            // btnObrisiRadnika
-            // 
-            this.btnObrisiRadnika.Location = new System.Drawing.Point(845, 152);
-            this.btnObrisiRadnika.Name = "btnObrisiRadnika";
-            this.btnObrisiRadnika.Size = new System.Drawing.Size(138, 59);
-            this.btnObrisiRadnika.TabIndex = 4;
-            this.btnObrisiRadnika.Text = "Obrisi radnika";
-            this.btnObrisiRadnika.UseVisualStyleBackColor = true;
-            this.btnObrisiRadnika.Click += new System.EventHandler(this.btnObrisiRadnika_Click);
-            // 
             // frmPredstavnistvo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,5 +247,6 @@
         private System.Windows.Forms.Button btnSalonAutomobili;
         private System.Windows.Forms.Button btnIzmeniRadnika;
         private System.Windows.Forms.Button btnObrisiRadnika;
+        private System.Windows.Forms.Button btnServisVozila;
     }
 }

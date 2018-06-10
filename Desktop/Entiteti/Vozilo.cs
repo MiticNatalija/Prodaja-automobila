@@ -34,11 +34,17 @@ namespace Desktop.Entiteti
 
     public class Putnicko : Vozilo
     {
-        public virtual int BrojMesta { get; set; }
+        public virtual int? BrojMesta { get; set; }
+
+        public Putnicko()
+        { }
+
     }
 
     public class Teretno : Vozilo
     {
-        public virtual int Nosivost { get; set; }
+        public virtual int? Nosivost { get; set; }
+        public Teretno()
+        { }
     }
 }
