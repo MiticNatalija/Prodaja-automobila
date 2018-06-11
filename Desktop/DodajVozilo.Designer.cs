@@ -120,6 +120,7 @@
             // 
             // cbxTipVozila
             // 
+            this.cbxTipVozila.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTipVozila.FormattingEnabled = true;
             this.cbxTipVozila.Location = new System.Drawing.Point(125, 128);
             this.cbxTipVozila.Name = "cbxTipVozila";

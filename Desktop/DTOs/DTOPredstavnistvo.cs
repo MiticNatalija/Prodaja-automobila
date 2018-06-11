@@ -25,12 +25,23 @@ namespace Desktop.DTOs
         {
         }
 
-        public PredstavnistvoPregled(int predstavnistvoId, string adresa, DateTime datumOtvaranja)
+        public PredstavnistvoPregled(int predstavnistvoId, string adresa, DateTime datumOtvaranja,string tip)
         {
             this.PredstavnistvoId = predstavnistvoId;
             this.Adresa = adresa;
             this.DatumOtvaranja = datumOtvaranja;
+            this.Tip = tip;
+           
         }
+        public PredstavnistvoPregled(int predstavnistvoId, string adresa, DateTime datumOtvaranja, string tip,DateTime licenca)
+        {
+            this.PredstavnistvoId = predstavnistvoId;
+            this.Adresa = adresa;
+            this.DatumOtvaranja = datumOtvaranja;
+            this.Tip = tip;
+            this.DatumLicence = licenca;
+        }
+
 
         public PredstavnistvoPregled(int predstavnistvoId, string tip, string adresa, DateTime datumOtvaranja, string tipPredstavnistva, DateTime? datumVazenjaLicence)
         {

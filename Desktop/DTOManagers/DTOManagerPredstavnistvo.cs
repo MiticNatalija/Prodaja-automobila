@@ -105,9 +105,51 @@ namespace Desktop.DTOManagers
             {
                 s = DataLayer.GetSession();
 
-                Predstavnistvo p = s.Load<Predstavnistvo>(id);
-                pr = new PredstavnistvoPregled(p.Id, p.Adresa, p.DatumOtvaranja);
+                Predstavnistvo p = (from za in s.Query<Predstavnistvo>()
+                     where za.Id == id
+                     select za).Single<Predstavnistvo>();
+                DateTime? d=null;
+                if(p.GetType()==typeof(SalonHyundai))
+                {
+                    SalonHyundai sa = (SalonHyundai)p;
+                    d = sa.DatumVazenjaLicence;
+                   
+                }
+                else if (p.GetType() == typeof(SalonHyundaiKia))
+                {
+                    SalonHyundaiKia sa = (SalonHyundaiKia)p;
+                    d = sa.DatumVazenjaLicence;
+                }
+                else if (p.GetType() == typeof(SalonServisHyundai))
+                {
+                    SalonServisHyundai sa = (SalonServisHyundai)p;
+                    d = sa.DatumVazenjaLicence;
+                }
+                else if (p.GetType() == typeof(SalonServisHyundaiKia))
+                {
+                    SalonServisHyundaiKia sa = (SalonServisHyundaiKia)p;
+                    d = sa.DatumVazenjaLicence;
+                }
 
+
+                string novi = p.GetType().ToString();
+                string[] niz;
+                niz = novi.Split('.');
+                string tip = niz[niz.Count() - 1];
+                if (d != null)
+                {
+                    //obrada sa
+                   
+                 //   if (tip.Equals("SalonHyundai") || tip.Equals("SalonServisHyundai") || tip.Equals("SalonHyundaiKia") || tip.Equals("SalonServisHyundaiKia"))
+                        pr = new PredstavnistvoPregled(p.Id, p.Adresa, p.DatumOtvaranja,tip,(DateTime)d);
+
+                }
+
+                //obrada bez
+                else {
+
+                    pr = new PredstavnistvoPregled(p.Id, p.Adresa, p.DatumOtvaranja, tip);
+                }
             }
             catch (Exception ec)
             {
@@ -128,10 +170,50 @@ namespace Desktop.DTOManagers
             try
             {
                 s = DataLayer.GetSession();
-                Predstavnistvo pre = s.Load<Predstavnistvo>(p.PredstavnistvoId);
-                pre.Adresa = p.Adresa;
-                pre.DatumOtvaranja = p.DatumOtvaranja;
-                s.Update(pre);
+                if (p.DatumLicence.HasValue)
+                {
+                    if (p.Tip.Equals("SalonHyundai"))
+                    {
+                        SalonHyundai sh = s.Load<SalonHyundai>(p.PredstavnistvoId);
+                        sh.Adresa = p.Adresa;
+                        sh.DatumOtvaranja = p.DatumOtvaranja;
+                        sh.DatumVazenjaLicence = (DateTime)p.DatumLicence;
+                        s.Update(sh);
+                    }
+                    else if (p.Tip.Equals("SalonHyundaiKia"))
+                    {
+                        SalonHyundaiKia sh = s.Load<SalonHyundaiKia>(p.PredstavnistvoId);
+                        sh.Adresa = p.Adresa;
+                        sh.DatumOtvaranja = p.DatumOtvaranja;
+                        sh.DatumVazenjaLicence = (DateTime)p.DatumLicence;
+                        s.Update(sh);
+                    }
+                    else if (p.Tip.Equals("SalonServisHyundai"))
+                    {
+                        SalonServisHyundai sh = s.Load<SalonServisHyundai>(p.PredstavnistvoId);
+                        sh.Adresa = p.Adresa;
+                        sh.DatumOtvaranja = p.DatumOtvaranja;
+                        sh.DatumVazenjaLicence = (DateTime)p.DatumLicence;
+                        s.Update(sh);
+                    }
+                    else if (p.Tip.Equals("SalonServisHyundaiKia"))
+                    {
+                        SalonServisHyundaiKia sh = s.Load<SalonServisHyundaiKia>(p.PredstavnistvoId);
+                        sh.Adresa = p.Adresa;
+                        sh.DatumOtvaranja = p.DatumOtvaranja;
+                        sh.DatumVazenjaLicence = (DateTime)p.DatumLicence;
+                        s.Update(sh);
+                    }
+
+                }
+                else
+                {
+                    Predstavnistvo pre = s.Load<Predstavnistvo>(p.PredstavnistvoId);
+                    pre.Adresa = p.Adresa;
+                    pre.DatumOtvaranja = p.DatumOtvaranja;
+
+                    s.Update(pre);
+                }
                 s.Flush();
             }
             catch (Exception ec)

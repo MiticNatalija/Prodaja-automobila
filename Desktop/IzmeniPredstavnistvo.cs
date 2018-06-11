@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Desktop.DTOs;
 
+
 namespace Desktop
 {
     public partial class frmIzmeniPredstavnistvo : Form
@@ -23,6 +24,11 @@ namespace Desktop
         {
             Predstavnistvo = p;
             InitializeComponent();
+            
+            if (p.Tip.Equals("SalonHyundai") || p.Tip.Equals("SalonServisHyundai") || p.Tip.Equals("SalonHyundaiKia") || p.Tip.Equals("SalonServisHyundaiKia"))
+                dtpLicenca.Enabled = true;
+            else dtpLicenca.Enabled = false;
+
             fill();
         }
 
@@ -30,6 +36,8 @@ namespace Desktop
         {
             Predstavnistvo.Adresa = txtAdresa.Text;
             Predstavnistvo.DatumOtvaranja = dtpDatum.Value;
+            if (dtpDatum.Enabled)
+                Predstavnistvo.DatumLicence = dtpLicenca.Value;
             
             DialogResult = System.Windows.Forms.DialogResult.OK;
         }
@@ -37,6 +45,9 @@ namespace Desktop
         {
             txtAdresa.Text = Predstavnistvo.Adresa;
             dtpDatum.Value = Predstavnistvo.DatumOtvaranja;
+            if (dtpLicenca.Enabled)
+                dtpLicenca.Value =(DateTime)Predstavnistvo.DatumLicence;
+
         }
     }
 }
