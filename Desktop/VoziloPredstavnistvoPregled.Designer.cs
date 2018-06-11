@@ -78,7 +78,7 @@
             this.btnIzbrisiVozilo.Name = "btnIzbrisiVozilo";
             this.btnIzbrisiVozilo.Size = new System.Drawing.Size(148, 49);
             this.btnIzbrisiVozilo.TabIndex = 4;
-            this.btnIzbrisiVozilo.Text = "Izbrisi vozilo";
+            this.btnIzbrisiVozilo.Text = "Obrisi vozilo";
             this.btnIzbrisiVozilo.UseVisualStyleBackColor = true;
             this.btnIzbrisiVozilo.Click += new System.EventHandler(this.btnIzbrisiVozilo_Click);
             // 

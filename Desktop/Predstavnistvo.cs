@@ -89,7 +89,7 @@ namespace Desktop
         {
             PredstavnistvoPregled tmp = (PredstavnistvoPregled)dgvPredstavnistvo.CurrentRow.DataBoundItem;
             List<PredstavnikInfo> predstavnici = DTOManager.GetPredstavniciForPredstavnistvo(tmp.PredstavnistvoId);
-            //u ovoj gore fji baca exc jer nema predstavnika,mada msm da to nema veze jer cemo da sredimo bazu da svi moraju da imaju predstavnika
+           
             if (predstavnici.Count == 0)
             {
                 MessageBox.Show("Nema predstavnika!");
