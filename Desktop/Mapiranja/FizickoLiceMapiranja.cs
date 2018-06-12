@@ -21,7 +21,7 @@ namespace Desktop.Mapiranja
             Map(x => x.Adresa, "ADRESA");
             Map(x => x.Telefon, "TELEFON");
 
-            References(x => x.Kupac).Column("KUPAC_ID").Unique().Cascade.All(); ;
+            References(x => x.Kupac).Column("KUPAC_ID").Unique().Cascade.All(); 
         }
     }
 }

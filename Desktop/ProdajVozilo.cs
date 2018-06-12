@@ -16,15 +16,18 @@ namespace Desktop
     public partial class frmProdajVozilo : Form
     {
         public VoziloPregled vozilo { get; set; }
+        public List<PredstavnikInfo> listaPredstavnika;
 
         public frmProdajVozilo()
         {
             InitializeComponent();
         }
-        public frmProdajVozilo(VoziloPregled v)
+        public frmProdajVozilo(VoziloPregled v,List<PredstavnikInfo> predstavnici)
         {
             this.vozilo = v;
             InitializeComponent();
+
+            listaPredstavnika = predstavnici;
 
             txtFizickoJmbg.Enabled = false;
             txtFizickoIme.Enabled = false;
@@ -37,7 +40,22 @@ namespace Desktop
             txtPravnoPrezime.Enabled = false;
             txtPravnoTelefon.Enabled = false;
 
-            
+            txtPredstavnikHyundai.Enabled = false;
+            txtPredstavnikKia.Enabled = false;
+            if (predstavnici.Count == 0)
+                return;
+
+            if (predstavnici[0].TipZaposlenog.Equals("Predstavnik Za Kiu"))
+                txtPredstavnikKia.Text = predstavnici[0].Mbr;
+            else
+                txtPredstavnikHyundai.Text = predstavnici[0].Mbr;
+            if(predstavnici.Count>1)
+            {
+                if (txtPredstavnikHyundai.Text == "")
+                    txtPredstavnikHyundai.Text = predstavnici[1].Mbr;
+                else
+                    txtPredstavnikKia.Text = predstavnici[1].Mbr;
+            }
 
 
             
@@ -47,18 +65,52 @@ namespace Desktop
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            if(txtPredstavnikHyundai.Text=="" && txtPredstavnikKia.Text=="")
+            {
+                MessageBox.Show("Popunite sva polja!");
+                return;
+            }
+            if(txtPopustiDelovi.Text=="" || txtPopustiServis.Text=="")
+            {
+                MessageBox.Show("Popunite sva polja!");
+                return;
+            }
+            if (radioFizicko.Checked)
+            {
+                if (txtFizickoAdresa.Text == "" || txtFizickoIme.Text == "" || txtFizickoJmbg.Text == "" || txtFizickoPrezime.Text == "" || txtFizickoTelefon.Text == "")
+                {
+                    MessageBox.Show("Popunite sva polja!");
+                    return;
+                }
+            }
+            else if (radioPravno.Checked)
+            {
+                if (txtPravnoIme.Text == "" || txtPravnoPib.Text == "" || txtPravnoPrezime.Text == "" || txtPravnoTelefon.Text == "")
+                {
+                    MessageBox.Show("Popunite sva polja!");
+                    return;
+                }
+            }
+
             FizickoLice f;
             PravnoLice p;
 
 
             //Vlasnik v;
+            string pred= "";
+            if (txtPredstavnikHyundai.Text == "")
+                pred = txtPredstavnikKia.Text;
+            else
+                pred = txtPredstavnikHyundai.Text;
 
-            DTOManager.SetPredstavnikAndPopustiInVozilo(txtPredstavnikMbr.Text, txtPopustiServis.Text, txtPopustiDelovi.Text, vozilo);
+            
+            DTOManager.SetPredstavnikAndPopustiInVozilo(pred, txtPopustiServis.Text, txtPopustiDelovi.Text, vozilo);
             //vozilo dobija predstavnikId da se zna da ga je taj predstavnik prodao i popuste koje taj predstavnik unese
 
-            Kupac k = new Kupac();
-            Vozilo voz = DTOManager.GetVoziloVozilo(vozilo.VoziloId); // vraca bas Vozilo a ne VoziloPregled
-            k.Vozilo = voz;
+          //  Kupac k = new Kupac();
+            
+          //  Vozilo voz = DTOManager.GetVoziloVozilo(vozilo.VoziloId); // vraca bas Vozilo a ne VoziloPregled
+        //    k.Vozilo = voz;
 
             if (radioFizicko.Checked)
             {
@@ -68,32 +120,29 @@ namespace Desktop
                 f.Prezime = txtFizickoPrezime.Text;
                 f.Adresa = txtFizickoAdresa.Text;
                 f.Telefon = txtFizickoTelefon.Text;
-                f.Kupac = k;
-                k.FLice = f;
+              //  f.Kupac = k;
+              //  k.FLice = f;
 
-                //v = new Vlasnik();
-                //v.Telefon = txtFizickoTelefon.Text;
-                //v.Adresa = txtFizickoAdresa.Text;
-                //v.Vozilo = voz;
+                DTOManager.upisiFizickoLice(f, vozilo);
                 
             }
             else if (radioPravno.Checked)
             {
                 p = new PravnoLice();
-                p.Pib = Convert.ToInt32(txtPravnoPib.Text);
+                int pom;
+                if (!int.TryParse(txtPravnoPib.Text, out pom))
+                    return;
+                p.Pib = pom;
                 p.Ime = txtPravnoIme.Text;
                 p.Prezime = txtPravnoPrezime.Text;
                 p.Telefon = txtPravnoTelefon.Text;
-                p.Kupac = k;
-                k.PLice = p;
+                //  p.Kupac = k;
+                //  k.PLice = p;
 
-                //v = new Vlasnik();
-                //v.Telefon = txtPravnoTelefon.Text;
-                //v.Adresa = "Adresa vlasnika u bazi da sme da bude NULL";
-                //v.Vozilo = voz;
+                DTOManager.upisiPravnoLice(p, vozilo);
             }
 
-            DTOManager.upisiKupca(k);
+           // DTOManager.upisiKupca(k);
             DialogResult = System.Windows.Forms.DialogResult.OK;
 
 

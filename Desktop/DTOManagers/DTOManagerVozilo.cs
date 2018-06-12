@@ -331,31 +331,114 @@ namespace Desktop.DTOManagers
             }
         }
 
-        public static void upisiKupca(Kupac k)
+        //public static void upisiKupca(Kupac k)
+        //{
+        //    ISession s = DataLayer.GetSession();
+        //    try
+        //    {
+        //        PravnoLice p = new PravnoLice();
+        //        p = k.PLice;
+
+        //        FizickoLice f = new FizickoLice();
+        //        f = k.FLice;
+
+        //        if (p != null)
+        //        {
+        //            s.Save(p);
+        //            s.Flush();
+        //        }
+        //        else if (f != null)
+        //        {
+        //            s.Save(f);
+        //            s.Flush();
+        //        }
+
+        //        s.Save(k);
+        //        s.Flush();
+               
+        //    }
+        //    catch (Exception ec)
+        //    {
+        //        MessageBox.Show(ec.Message);
+        //    }
+        //    finally
+        //    {
+        //        s.Close();
+        //    }
+        //}
+        public static void upisiFizickoLice(FizickoLice f,VoziloPregled vozilo)
         {
             ISession s = DataLayer.GetSession();
             try
             {
-                PravnoLice p = new PravnoLice();
-                p = k.PLice;
+                Kupac k = new Kupac();
 
-                FizickoLice f = new FizickoLice();
-                f = k.FLice;
-
-                if (p != null)
+                
+                
+                k.FLice = f;
+                f.Kupac = k;
+              if(vozilo.Tip=="Teretno")
                 {
-                    s.Save(p);
-                    s.Flush();
+                    Teretno t = s.Load<Teretno>(vozilo.VoziloId);
+                    k.Vozilo = t;
+                    t.kupac = k;
+                    s.Update(t);
                 }
-                else if (f != null)
+                else if (vozilo.Tip == "Putnicko")
                 {
-                    s.Save(f);
-                    s.Flush();
+                    Putnicko p = s.Load<Putnicko>(vozilo.VoziloId);
+                    k.Vozilo = p;
+                    p.kupac = k;
+                    s.Update(p);
                 }
-
+                
+               
+               //samo kupac da se pamti
+              //  s.Save(f);
                 s.Save(k);
                 s.Flush();
-               
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+        }
+
+        public static void upisiPravnoLice(PravnoLice p, VoziloPregled vozilo)
+        {
+            ISession s = DataLayer.GetSession();
+            try
+            {
+                Kupac k = new Kupac();
+
+                k.PLice = p;
+                p.Kupac = k;
+                if (vozilo.Tip == "Teretno")
+                {
+                    Teretno t = s.Load<Teretno>(vozilo.VoziloId);
+                    k.Vozilo = t;
+                    t.kupac = k;
+                    s.Update(t);
+                }
+                else if (vozilo.Tip == "Putnicko")
+                {
+                    Putnicko pu = s.Load<Putnicko>(vozilo.VoziloId);
+                    k.Vozilo = pu;
+                    pu.kupac = k;
+                    s.Update(pu);
+                }
+
+
+                //samo kupac da se pamti
+                //  s.Save(f);
+                s.Save(k);
+                s.Flush();
+
             }
             catch (Exception ec)
             {

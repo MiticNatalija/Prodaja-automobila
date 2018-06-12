@@ -18,6 +18,7 @@ namespace Desktop
         private PredstavnistvoPregled Predstavnistvo { get; set; }
         //private Predstavnistvo p { get; set; }
         private List<VoziloPregled> Vozila { get; set; }
+        private List<PredstavnikInfo> Predstavnici { get; set; }
 
         public VoziloPredstavnistvoPregled(PredstavnistvoPregled predstavnistvoPregled)
         {
@@ -26,7 +27,9 @@ namespace Desktop
             
             Vozila = DTOManager.GetVozilaForSalon(Predstavnistvo.PredstavnistvoId);
             dgvAutomobili.DataSource = Vozila;
-           // InitVozila();
+
+             Predstavnici = DTOManager.GetPredstavniciForPredstavnistvo(predstavnistvoPregled.PredstavnistvoId);
+            // InitVozila();
         }
         public void InitVozila()
         {
@@ -74,10 +77,16 @@ namespace Desktop
 
         private void btnProdajVozilo_Click(object sender, EventArgs e)
         {
+            if(dgvAutomobili.RowCount==0)
+            {
+                MessageBox.Show("Nije selektovano nijedno vozilo!");
+                return;
+            }
             VoziloPregled tmp = (VoziloPregled)dgvAutomobili.CurrentRow.DataBoundItem;
+           
             VoziloPregled p = DTOManager.GetVozilo(tmp.VoziloId);
 
-            frmProdajVozilo dlg = new frmProdajVozilo(p);
+            frmProdajVozilo dlg = new frmProdajVozilo(p,Predstavnici);
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Podaci o prodaji vozila su uneseni.");

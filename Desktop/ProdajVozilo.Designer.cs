@@ -49,7 +49,7 @@
             this.txtPravnoTelefon = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtPredstavnikMbr = new System.Windows.Forms.TextBox();
+            this.txtPredstavnikKia = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -57,8 +57,10 @@
             this.txtPopustiServis = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.gbxRadio = new System.Windows.Forms.GroupBox();
-            this.radioPravno = new System.Windows.Forms.RadioButton();
             this.radioFizicko = new System.Windows.Forms.RadioButton();
+            this.radioPravno = new System.Windows.Forms.RadioButton();
+            this.txtPredstavnikHyundai = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.gbxRadio.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -236,12 +238,12 @@
             this.label12.TabIndex = 22;
             this.label12.Text = "MBR:";
             // 
-            // txtPredstavnikMbr
+            // txtPredstavnikKia
             // 
-            this.txtPredstavnikMbr.Location = new System.Drawing.Point(182, 271);
-            this.txtPredstavnikMbr.Name = "txtPredstavnikMbr";
-            this.txtPredstavnikMbr.Size = new System.Drawing.Size(100, 20);
-            this.txtPredstavnikMbr.TabIndex = 23;
+            this.txtPredstavnikKia.Location = new System.Drawing.Point(182, 271);
+            this.txtPredstavnikKia.Name = "txtPredstavnikKia";
+            this.txtPredstavnikKia.Size = new System.Drawing.Size(100, 20);
+            this.txtPredstavnikKia.TabIndex = 23;
             // 
             // label13
             // 
@@ -305,18 +307,6 @@
             this.gbxRadio.TabIndex = 30;
             this.gbxRadio.TabStop = false;
             // 
-            // radioPravno
-            // 
-            this.radioPravno.AutoSize = true;
-            this.radioPravno.Location = new System.Drawing.Point(214, 8);
-            this.radioPravno.Name = "radioPravno";
-            this.radioPravno.Size = new System.Drawing.Size(78, 17);
-            this.radioPravno.TabIndex = 0;
-            this.radioPravno.TabStop = true;
-            this.radioPravno.Text = "Pravno lice";
-            this.radioPravno.UseVisualStyleBackColor = true;
-            this.radioPravno.CheckedChanged += new System.EventHandler(this.radioPravno_CheckedChanged);
-            // 
             // radioFizicko
             // 
             this.radioFizicko.AutoSize = true;
@@ -329,11 +319,41 @@
             this.radioFizicko.UseVisualStyleBackColor = true;
             this.radioFizicko.CheckedChanged += new System.EventHandler(this.radioFizicko_CheckedChanged);
             // 
+            // radioPravno
+            // 
+            this.radioPravno.AutoSize = true;
+            this.radioPravno.Location = new System.Drawing.Point(214, 8);
+            this.radioPravno.Name = "radioPravno";
+            this.radioPravno.Size = new System.Drawing.Size(78, 17);
+            this.radioPravno.TabIndex = 0;
+            this.radioPravno.TabStop = true;
+            this.radioPravno.Text = "Pravno lice";
+            this.radioPravno.UseVisualStyleBackColor = true;
+            this.radioPravno.CheckedChanged += new System.EventHandler(this.radioPravno_CheckedChanged);
+            // 
+            // txtPredstavnikHyundai
+            // 
+            this.txtPredstavnikHyundai.Location = new System.Drawing.Point(396, 267);
+            this.txtPredstavnikHyundai.Name = "txtPredstavnikHyundai";
+            this.txtPredstavnikHyundai.Size = new System.Drawing.Size(100, 20);
+            this.txtPredstavnikHyundai.TabIndex = 31;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(349, 274);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(34, 13);
+            this.label16.TabIndex = 32;
+            this.label16.Text = "MBR:";
+            // 
             // frmProdajVozilo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 524);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.txtPredstavnikHyundai);
             this.Controls.Add(this.gbxRadio);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtPopustiServis);
@@ -341,7 +361,7 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.txtPredstavnikMbr);
+            this.Controls.Add(this.txtPredstavnikKia);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtPravnoTelefon);
@@ -395,7 +415,7 @@
         private System.Windows.Forms.TextBox txtPravnoTelefon;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtPredstavnikMbr;
+        private System.Windows.Forms.TextBox txtPredstavnikKia;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
@@ -405,5 +425,7 @@
         private System.Windows.Forms.GroupBox gbxRadio;
         private System.Windows.Forms.RadioButton radioFizicko;
         private System.Windows.Forms.RadioButton radioPravno;
+        private System.Windows.Forms.TextBox txtPredstavnikHyundai;
+        private System.Windows.Forms.Label label16;
     }
 }
