@@ -82,4 +82,14 @@ namespace Desktop.DTOs
         }
 
     }
+    public class VoziloPopust
+    {
+        public string PopustiDelovi { get; set; }
+        public string PopustiServis { get; set; }
+        public VoziloPopust(string delovi,string servis)
+        {
+            PopustiDelovi = delovi;
+            PopustiServis = servis;
+        }
+    }
 }

@@ -108,9 +108,16 @@ namespace Desktop
                 btnSalonAutomobili.Enabled = false;
 
             if (tmp.Tip.Contains("Servis"))
+            {
                 btnServisVozila.Enabled = true;
+                btnPregledServisa.Enabled = true;
+            }
             else
+            {
+
                 btnServisVozila.Enabled = false;
+                btnPregledServisa.Enabled = false;
+            }
         }
 
         private void btnSalonAutomobili_Click(object sender, EventArgs e)
@@ -151,14 +158,25 @@ namespace Desktop
 
         private void btnServisVozila_Click(object sender, EventArgs e)
         {
-            // Ne radi deo kada treba da se lista mehanicara doda knjizici
-            // i novokreirana knjizica da se doda u listu knjizica svakom mehanicaru 
+          
 
             PredstavnistvoPregled tmp = (PredstavnistvoPregled)dgvPredstavnistvo.CurrentRow.DataBoundItem;
             frmServisVozila frm = new frmServisVozila(tmp);
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Uneti su podaci o novom servisu vozila.");
+            }
+        }
+
+        private void btnPregledServisa_Click(object sender, EventArgs e)
+        {
+            PredstavnistvoPregled tmp = (PredstavnistvoPregled)dgvPredstavnistvo.CurrentRow.DataBoundItem;
+          IList<ServisPregled> l=  DTOManager.GetServisi(tmp.PredstavnistvoId);
+
+            foreach(ServisPregled pre in l)
+            {
+                MessageBox.Show(pre.Cena.ToString() + pre.DatumServisa.ToString() + pre.Radovi + pre.Registracija);
+                //ovo samo u neki dgv ili tako nesto
             }
         }
     }

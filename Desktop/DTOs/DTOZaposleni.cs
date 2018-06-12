@@ -163,7 +163,8 @@ namespace Desktop.DTOs
 
         public PredstavnikAdd(string tip, string mbr, string licnoIme, string imeOca, string prezime, DateTime datumRodjenja, DateTime datumZaposlenja, string adresa,string telefon)
         {
-            this.Tip = tip;
+         
+
             this.Mbr = mbr;
             this.LicnoIme = licnoIme;
             this.ImeOca = imeOca;
@@ -176,6 +177,29 @@ namespace Desktop.DTOs
         }
 
 
+    }
+    public class MehanicarPrikaz
+    {
+        public string Mbr { get; set; }
+        [DisplayName("Ime")]
+        public string LicnoIme { get; set; }
+        [DisplayName("Ime oca")]
+        public string ImeOca { get; set; }
+        public string Prezime { get; set; }
+        [BrowsableAttribute(false)]
+        public string Tip { get; protected set; }
+        [DisplayName("Tip zaposlenog")]
+        public string TipZaposlenog { get; set; }
+
+        public MehanicarPrikaz(string mbr, string licnoIme, string imeOca, string prezime,string tip,string tipZaposlenog)
+        {
+            this.Mbr = mbr;
+            this.LicnoIme = licnoIme;
+            this.ImeOca = imeOca;
+            this.Prezime = prezime;
+            this.Tip = tip;
+            this.TipZaposlenog = tipZaposlenog;
+        }
     }
 
 

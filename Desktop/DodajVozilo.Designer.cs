@@ -69,7 +69,7 @@
             this.lblTipVozila.Size = new System.Drawing.Size(55, 13);
             this.lblTipVozila.TabIndex = 2;
             this.lblTipVozila.Text = "Tip vozila:";
-            this.lblTipVozila.Click += new System.EventHandler(this.label1_Click);
+
             // 
             // lblBrojMesta
             // 

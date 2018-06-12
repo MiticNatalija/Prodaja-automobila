@@ -60,4 +60,22 @@ namespace Desktop.DTOs
             this.TipPredstavnistva = tipPredstavnistva;
         }
     }
+
+    public class ServisPregled
+    {
+        public string Registracija { get; set; }
+        public string Radovi { get; set; }
+        public int Cena { get; set; }
+        [DisplayName("Datum servisa")]
+        public DateTime DatumServisa { get; set; }
+
+        public ServisPregled(string reg,string radovi,int cena,DateTime datum)
+        {
+            Registracija = reg;
+            Radovi = radovi;
+            Cena = cena;
+            DatumServisa = datum;
+        }
+
+    }
 }

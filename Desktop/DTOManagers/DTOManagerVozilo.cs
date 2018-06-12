@@ -190,6 +190,51 @@ namespace Desktop.DTOManagers
                 s.Close();
             }
         }
+        public static void NewVozilo(VoziloPregled p)  // p ima i PredstavnistvoPregled atribut
+        {
+            ISession s = null;
+            try
+            {
+                s = DataLayer.GetSession();
+
+                Vozilo v = null;
+
+                string tip = p.TipVozila;
+                if (tip.CompareTo("Putnicko vozilo") == 0)
+                {
+                    v = new Putnicko()
+                    {
+                        Registracija = p.Registracija,
+                        Gorivo = p.Gorivo,
+                        OznakaMotora = p.OznakaMotora,
+                        BrojMesta = p.BrojMesta,
+
+                    };
+                }
+                else if (tip.CompareTo("Teretno vozilo") == 0)
+                {
+                    v = new Teretno()
+                    {
+                        Registracija = p.Registracija,
+                        Gorivo = p.Gorivo,
+                        OznakaMotora = p.OznakaMotora,
+                        Nosivost = p.Nosivost,
+                       
+                    };
+                }
+
+                s.Save(v);
+                s.Flush();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+        }
 
         public static VoziloPregled GetVozilo(int id)
         {
@@ -232,34 +277,7 @@ namespace Desktop.DTOManagers
             return pr;
         }
         
-        
-
-        //public static Vozilo GetVoziloVozilo(int id)
-        //{
-        //    ISession s = null;
-        //    Vozilo p = null;
-
-        //    try
-        //    {
-        //        s = DataLayer.GetSession();
-
-        //        // Vozilo p = s.Load<Vozilo>(id);
-        //        p = (from pv in s.Query<Vozilo>()
-        //                    where pv.Id == id
-        //                    select pv).Single<Vozilo>();
-
-               
-        //    }
-        //    catch (Exception ec)
-        //    {
-        //        MessageBox.Show(ec.Message);
-        //    }
-        //    finally
-        //    {
-        //        s.Close();
-        //    }
-        //    return p;
-        //}
+       
 
         public static Vozilo GetVoziloPrekoRegistracije(string registracija)
         {
@@ -394,41 +412,7 @@ namespace Desktop.DTOManagers
             }
         }
 
-        //public static void upisiKupca(Kupac k)
-        //{
-        //    ISession s = DataLayer.GetSession();
-        //    try
-        //    {
-        //        PravnoLice p = new PravnoLice();
-        //        p = k.PLice;
-
-        //        FizickoLice f = new FizickoLice();
-        //        f = k.FLice;
-
-        //        if (p != null)
-        //        {
-        //            s.Save(p);
-        //            s.Flush();
-        //        }
-        //        else if (f != null)
-        //        {
-        //            s.Save(f);
-        //            s.Flush();
-        //        }
-
-        //        s.Save(k);
-        //        s.Flush();
-               
-        //    }
-        //    catch (Exception ec)
-        //    {
-        //        MessageBox.Show(ec.Message);
-        //    }
-        //    finally
-        //    {
-        //        s.Close();
-        //    }
-        //}
+     
         public static void upisiFizickoLice(FizickoLice f,VoziloPregled vozilo)
         {
             ISession s = DataLayer.GetSession();
@@ -551,5 +535,40 @@ namespace Desktop.DTOManagers
                 s.Close();
             }
         }
+        public static VoziloPopust GetPopust(string reg)
+        {
+           Vozilo v= GetVoziloPrekoRegistracije(reg);
+            VoziloPopust vp = new VoziloPopust(v.PopustiDelovi, v.PopustiServis);
+            return vp;
+        }
+
+      
+        public static bool CheckRegistracija(string reg)
+        {
+            ISession s = DataLayer.GetSession();
+            try
+            {
+
+                Vozilo v = (from va in s.Query<Vozilo>()
+                            where va.Registracija == reg
+                            select va).Single<Vozilo>();
+               
+                    return
+                        true;
+
+
+            }
+            catch (Exception ec)
+            {
+                //MessageBox.Show(ec.Message);
+                return false;
+            }
+            finally
+            {
+                s.Close();
+            }
+
+        }
+
     }
 }

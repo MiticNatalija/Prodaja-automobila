@@ -375,5 +375,37 @@ namespace Desktop.DTOManagers
             }
             return p;
         }
+
+        public static List<ServisPregled> GetServisi(int id)
+        {
+            ISession s = null;
+            
+            List<ServisPregled> servisi=new List<ServisPregled>();
+            try
+            {
+                s = DataLayer.GetSession();
+
+             List<Knjizica> k = (from kn in s.Query<Knjizica>()
+                              where kn.Servis.Id == id
+                              select kn).ToList<Knjizica>();
+                foreach(Knjizica d in k)
+                {
+                    ServisPregled ser = new ServisPregled(d.Vozilo.Registracija, d.Radovi, d.CenaUsluge, d.DatumIntervencije);
+                    servisi.Add(ser);
+                }
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return servisi;
+        }
+
+    
     }
 }

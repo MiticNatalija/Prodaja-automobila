@@ -42,6 +42,7 @@
             this.btnIzmeniRadnika = new System.Windows.Forms.Button();
             this.btnDodajZaposlenog = new System.Windows.Forms.Button();
             this.dgvPredstavnik = new System.Windows.Forms.DataGridView();
+            this.btnPregledServisa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPredstavnistvo)).BeginInit();
             this.tabPrikaz.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -99,6 +100,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnPregledServisa);
             this.tabPage1.Controls.Add(this.btnServisVozila);
             this.tabPage1.Controls.Add(this.btnSalonAutomobili);
             this.tabPage1.Controls.Add(this.btnPredstavnik);
@@ -214,6 +216,16 @@
             this.dgvPredstavnik.Size = new System.Drawing.Size(820, 490);
             this.dgvPredstavnik.TabIndex = 1;
             // 
+            // btnPregledServisa
+            // 
+            this.btnPregledServisa.Location = new System.Drawing.Point(911, 225);
+            this.btnPregledServisa.Name = "btnPregledServisa";
+            this.btnPregledServisa.Size = new System.Drawing.Size(75, 23);
+            this.btnPregledServisa.TabIndex = 6;
+            this.btnPregledServisa.Text = "Vidi servise";
+            this.btnPregledServisa.UseVisualStyleBackColor = true;
+            this.btnPregledServisa.Click += new System.EventHandler(this.btnPregledServisa_Click);
+            // 
             // frmPredstavnistvo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,5 +260,6 @@
         private System.Windows.Forms.Button btnIzmeniRadnika;
         private System.Windows.Forms.Button btnObrisiRadnika;
         private System.Windows.Forms.Button btnServisVozila;
+        private System.Windows.Forms.Button btnPregledServisa;
     }
 }

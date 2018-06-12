@@ -27,6 +27,7 @@ namespace Desktop.Entiteti
             this.DatumIntervencije = datumIntervencije;
             this.CenaUsluge = cenaUsluge;
             this.Radovi = radovi;
+            Mehanicari = new List<Zaposleni>();
         }
     }
 }

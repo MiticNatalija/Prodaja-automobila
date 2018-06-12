@@ -76,11 +76,20 @@ namespace Desktop.DTOManagers
             try
             {
                 s = DataLayer.GetSession();
-               
-                Predstavnistvo p = DTOManager.GetPredstavnistvo(pp);
 
-                IList<Zaposleni> mehanicari = (from a in s.Query<Angazuje>() where a.Servis == p select a.Mehanicar).ToList<Zaposleni>();
-                
+            
+                List<Zaposleni> mehanicari = new List<Zaposleni>();
+            
+
+                IEnumerable<Angazuje> lista = (from a in s.Query<Angazuje>() where a.Servis.Id==pp.PredstavnistvoId select a);
+                foreach (Angazuje a in lista)
+                {
+                    Zaposleni novi = (from g in s.Query<Zaposleni>() where g.Id == a.Id select g).Single<Zaposleni>();
+                    mehanicari.Add(novi);
+                }
+
+
+
                 foreach (Zaposleni z in mehanicari)
                 {
                     string tip = "Greska";
@@ -122,6 +131,68 @@ namespace Desktop.DTOManagers
             return zapInfos;
         }
 
+
+        public static List<MehanicarPrikaz> GetMehanicari(int id)
+        {
+            List<MehanicarPrikaz> zapInfos = new List<MehanicarPrikaz>();
+            ISession s = null;
+            try
+            {
+                s = DataLayer.GetSession();
+
+
+                List<Zaposleni> mehanicari = new List<Zaposleni>();
+
+
+                IEnumerable<Angazuje> lista = (from a in s.Query<Angazuje>() where a.Servis.Id == id select a);
+                foreach (Angazuje a in lista)
+                {
+                    Zaposleni novi = (from g in s.Query<Zaposleni>() where g.Id == a.Id select g).Single<Zaposleni>();
+                    mehanicari.Add(novi);
+                }
+
+
+
+                foreach (Zaposleni z in mehanicari)
+                {
+                    string tip = "Greska";
+                    string tipZaposlenog = "Greska";
+
+
+                    if (z is MehanicarKia)
+                    {
+                        tipZaposlenog = "Mehanicar za Kiu";
+                        tip = "MehanicarKia";
+                        zapInfos.Add(new MehanicarPrikaz(z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime,tip,tipZaposlenog));
+
+                    }
+                    else if (z is MehanicarHyundai)
+                    {
+                        tipZaposlenog = "Mehanicar za Hyundai";
+                        tip = "MehanicarHyundai";
+                        zapInfos.Add(new MehanicarPrikaz(z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, tip, tipZaposlenog));
+
+                    }
+                    else if (z is MehanicarKiaHyundai)
+                    {
+                        tipZaposlenog = "Mehanicar za Kiu i Hyundai";
+                        tip = "MehanicarKiaHyundai";
+                        zapInfos.Add(new MehanicarPrikaz(z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, tip, tipZaposlenog));
+
+                    }
+                }
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+
+            return zapInfos;
+        }
         public static ZaposleniIzmena GetZaposleni(int id)
         {
             ISession s = null;

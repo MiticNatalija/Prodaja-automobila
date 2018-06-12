@@ -44,6 +44,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnDodajMehanicara = new System.Windows.Forms.Button();
             this.dgvMehanicari = new System.Windows.Forms.DataGridView();
+            this.txtPopusti = new System.Windows.Forms.TextBox();
+            this.btnPopusti = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMehanicari)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,7 +150,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(142, 487);
+            this.btnOK.Location = new System.Drawing.Point(143, 492);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(107, 30);
             this.btnOK.TabIndex = 12;
@@ -182,14 +184,36 @@
             this.dgvMehanicari.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvMehanicari.Location = new System.Drawing.Point(24, 216);
             this.dgvMehanicari.Name = "dgvMehanicari";
+            this.dgvMehanicari.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMehanicari.Size = new System.Drawing.Size(226, 104);
             this.dgvMehanicari.TabIndex = 16;
+            // 
+            // txtPopusti
+            // 
+            this.txtPopusti.Enabled = false;
+            this.txtPopusti.Location = new System.Drawing.Point(297, 75);
+            this.txtPopusti.Multiline = true;
+            this.txtPopusti.Name = "txtPopusti";
+            this.txtPopusti.Size = new System.Drawing.Size(145, 107);
+            this.txtPopusti.TabIndex = 17;
+            // 
+            // btnPopusti
+            // 
+            this.btnPopusti.Location = new System.Drawing.Point(335, 34);
+            this.btnPopusti.Name = "btnPopusti";
+            this.btnPopusti.Size = new System.Drawing.Size(75, 23);
+            this.btnPopusti.TabIndex = 18;
+            this.btnPopusti.Text = "Vidi popuste";
+            this.btnPopusti.UseVisualStyleBackColor = true;
+            this.btnPopusti.Click += new System.EventHandler(this.btnPopusti_Click);
             // 
             // frmServisVozila
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(275, 520);
+            this.ClientSize = new System.Drawing.Size(483, 534);
+            this.Controls.Add(this.btnPopusti);
+            this.Controls.Add(this.txtPopusti);
             this.Controls.Add(this.dgvMehanicari);
             this.Controls.Add(this.btnDodajMehanicara);
             this.Controls.Add(this.label7);
@@ -206,6 +230,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "frmServisVozila";
             this.Text = "Servis vozila";
             ((System.ComponentModel.ISupportInitialize)(this.dgvMehanicari)).EndInit();
@@ -232,5 +257,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnDodajMehanicara;
         private System.Windows.Forms.DataGridView dgvMehanicari;
+        private System.Windows.Forms.TextBox txtPopusti;
+        private System.Windows.Forms.Button btnPopusti;
     }
 }

@@ -15,11 +15,19 @@ namespace Desktop
     {
         public VoziloPregled v;
         public PredstavnistvoPregled p;
+        int kojaForma;
         //public int PredstavnistvoId;
 
-        public frmDodajVozilo()
+        public frmDodajVozilo(string reg)
         {
             InitializeComponent();
+            kojaForma = 0;
+            cbxTipVozila.Items.Add("Putnicko vozilo");
+            cbxTipVozila.Items.Add("Teretno vozilo");
+            txtBrojMesta.Enabled = false;
+            txtNosivost.Enabled = false;
+            txtRegistracija.Text = reg;
+            txtRegistracija.Enabled = false;
         }
         public frmDodajVozilo(PredstavnistvoPregled p)
         {
@@ -31,11 +39,11 @@ namespace Desktop
             txtNosivost.Enabled = false;
             // this.PredstavnistvoId = predstavnistvoId;
             this.p = p;
+            kojaForma = 1;
         }
 
 
-        private void label1_Click(object sender, EventArgs e)
-        {}
+        
 
         private void cbxTipVozila_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -53,23 +61,44 @@ namespace Desktop
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (txtRegistracija.Text == "" || txtGorivo.Text== "")
+            if (kojaForma == 1)
             {
-                MessageBox.Show("Popunite sva polja!");
-            }
-            v = new VoziloPregled(txtRegistracija.Text, txtGorivo.Text, cbxTipVozila.SelectedItem.ToString(), txtOznakaMotora.Text);
-            if (cbxTipVozila.SelectedIndex == 0)
-            {
-                v.BrojMesta = Convert.ToInt32(txtBrojMesta.Text);
-            }
-            else  if (cbxTipVozila.SelectedIndex == 1)
-            {
-                v.Nosivost = Convert.ToInt32(txtNosivost.Text);
-            }
+                if (txtRegistracija.Text == "" || txtGorivo.Text == "" || txtOznakaMotora.Text=="")
+                {
+                    MessageBox.Show("Popunite sva polja!");
+                }
+                v = new VoziloPregled(txtRegistracija.Text, txtGorivo.Text, cbxTipVozila.SelectedItem.ToString(), txtOznakaMotora.Text);
+                if (cbxTipVozila.SelectedIndex == 0)
+                {
+                    v.BrojMesta = Convert.ToInt32(txtBrojMesta.Text);
+                }
+                else if (cbxTipVozila.SelectedIndex == 1)
+                {
+                    v.Nosivost = Convert.ToInt32(txtNosivost.Text);
+                }
 
-            v.PredstavnistvoPregled = p;
+                v.PredstavnistvoPregled = p;
 
-            DialogResult = System.Windows.Forms.DialogResult.OK;
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+
+            }
+            else
+            {
+                if (txtGorivo.Text == "" || txtOznakaMotora.Text == "")
+                {
+                    MessageBox.Show("Popunite sva polja!");
+                }
+                v = new VoziloPregled(txtRegistracija.Text, txtGorivo.Text, cbxTipVozila.SelectedItem.ToString(), txtOznakaMotora.Text);
+                if (cbxTipVozila.SelectedIndex == 0)
+                {
+                    v.BrojMesta = Convert.ToInt32(txtBrojMesta.Text);
+                }
+                else if (cbxTipVozila.SelectedIndex == 1)
+                {
+                    v.Nosivost = Convert.ToInt32(txtNosivost.Text);
+                }
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
 
         }
 
