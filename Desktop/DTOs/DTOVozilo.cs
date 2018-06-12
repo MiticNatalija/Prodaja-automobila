@@ -60,4 +60,26 @@ namespace Desktop.DTOs
         }
 
     }
+    public class ProdatoVozilo
+    {
+        [BrowsableAttribute(false)]
+        public int VoziloId { get; protected set; }
+       // [BrowsableAttribute(false)]
+        [DisplayName("Tip vozila")]
+        public string Tip { get; protected set; }
+        [DisplayName("Registarski broj")]
+        public string Registracija { get; set; }
+        [DisplayName("Ime i prezime prodavca")]
+        public string Predstavnik { get; set; }
+
+        public ProdatoVozilo(int id,string tip,string registracija,string predstavnik)
+        {
+            VoziloId = id;
+            Tip = tip;
+            Registracija = registracija;
+            Predstavnik = predstavnik;
+           
+        }
+
+    }
 }

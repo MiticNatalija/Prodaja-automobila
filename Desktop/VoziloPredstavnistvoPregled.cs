@@ -19,25 +19,41 @@ namespace Desktop
         //private Predstavnistvo p { get; set; }
         private List<VoziloPregled> Vozila { get; set; }
         private List<PredstavnikInfo> Predstavnici { get; set; }
+        private List<ProdatoVozilo> prodataVozila { get; set; }
 
         public VoziloPredstavnistvoPregled(PredstavnistvoPregled predstavnistvoPregled)
         {
             InitializeComponent();
+            dgvProdataVozila.DefaultCellStyle.SelectionBackColor = Color.White;
+            dgvProdataVozila.DefaultCellStyle.SelectionForeColor = Color.Black;
             Predstavnistvo = predstavnistvoPregled;
             
             Vozila = DTOManager.GetVozilaForSalon(Predstavnistvo.PredstavnistvoId);
             dgvAutomobili.DataSource = Vozila;
 
+            
+            prodataVozila = DTOManager.GetProdataVozila(Predstavnistvo.PredstavnistvoId);
+
+            dgvProdataVozila.DataSource = prodataVozila;
+
              Predstavnici = DTOManager.GetPredstavniciForPredstavnistvo(predstavnistvoPregled.PredstavnistvoId);
-            // InitVozila();
+           
+
         }
         public void InitVozila()
         {
-           // Vozila = DTOManager.GetVozilaForSalon(Predstavnistvo.PredstavnistvoId);
+         
             dgvAutomobili.DataSource =DTOManager.GetVozilaForSalon(Predstavnistvo.PredstavnistvoId) ;
+            dgvProdataVozila.DataSource= DTOManager.GetProdataVozila(Predstavnistvo.PredstavnistvoId);
+          
         }
         private void btnDodajVozilo_Click(object sender, EventArgs e)
         {
+            if (dgvAutomobili.RowCount == 0)
+            {
+                MessageBox.Show("Nije selektovano nijedno vozilo!");
+                return;
+            }
             frmDodajVozilo dlg = new frmDodajVozilo(Predstavnistvo);
             if (dlg.ShowDialog() == DialogResult.OK)
             {
@@ -50,6 +66,11 @@ namespace Desktop
 
         private void btnIzmeniVozilo_Click(object sender, EventArgs e)
         {
+            if (dgvAutomobili.RowCount == 0)
+            {
+                MessageBox.Show("Nije selektovano nijedno vozilo!");
+                return;
+            }
             VoziloPregled tmp = (VoziloPregled)dgvAutomobili.CurrentRow.DataBoundItem;
 
             VoziloPregled p = DTOManager.GetVozilo(tmp.VoziloId); 
@@ -65,6 +86,11 @@ namespace Desktop
 
         private void btnIzbrisiVozilo_Click(object sender, EventArgs e)
         {
+            if (dgvAutomobili.RowCount == 0)
+            {
+                MessageBox.Show("Nije selektovano nijedno vozilo!");
+                return;
+            }
             VoziloPregled tmp = (VoziloPregled)dgvAutomobili.CurrentRow.DataBoundItem;
             DialogResult dr = MessageBox.Show("Da li ste sigurni da zelite da obriste izabrano vozilo?", "Brisanje vozila", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dr == DialogResult.Yes)

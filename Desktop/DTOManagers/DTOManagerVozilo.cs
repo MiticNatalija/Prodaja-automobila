@@ -77,6 +77,67 @@ namespace Desktop.DTOManagers
 
             return vozInfos;
         }
+        public static List<ProdatoVozilo> GetProdataVozila(int salonId)
+        {
+            ISession s = null;
+            List<ProdatoVozilo> lista=new List<ProdatoVozilo>();
+            try
+            {
+                s = DataLayer.GetSession();
+
+                Predstavnistvo predstavnistvo = (from p in s.Query<Predstavnistvo>()
+                                                 where p.Id == salonId
+                                                 select p).Single<Predstavnistvo>();
+                IList<Vozilo> vozila = null;
+                if (predstavnistvo is SalonHyundai)
+                {
+                    vozila = ((SalonHyundai)predstavnistvo).Vozila;
+                }
+                else if (predstavnistvo is SalonHyundaiKia)
+                {
+                    vozila = ((SalonHyundaiKia)predstavnistvo).Vozila;
+                }
+                else if (predstavnistvo is SalonKia)
+                {
+                    vozila = ((SalonKia)predstavnistvo).Vozila;
+                }
+                else if (predstavnistvo is SalonServisHyundai)
+                {
+                    vozila = ((SalonServisHyundai)predstavnistvo).Vozila;
+                }
+                else if (predstavnistvo is SalonServisKia)
+                {
+                    vozila = ((SalonServisKia)predstavnistvo).Vozila;
+                }
+                else if (predstavnistvo is SalonServisHyundaiKia)
+                {
+                    vozila = ((SalonServisHyundaiKia)predstavnistvo).Vozila;
+                }
+                foreach(Vozilo v in vozila)
+                {
+                    if (v.Predstavnik!=null)
+                    {
+                        string tip = "";
+                        if (v is Putnicko)
+                            tip = "Putnicko";
+                        else tip = "Teretno";
+                        lista.Add(new ProdatoVozilo(v.Id, tip, v.Registracija, v.Predstavnik.LicnoIme + " " + v.Predstavnik.Prezime));
+                    }
+                }
+
+
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return lista;
+        }
 
         public static void AddVozilo(VoziloPregled p)  // p ima i PredstavnistvoPregled atribut
         {
@@ -170,33 +231,35 @@ namespace Desktop.DTOManagers
 
             return pr;
         }
+        
+        
 
-        public static Vozilo GetVoziloVozilo(int id)
-        {
-            ISession s = null;
-            Vozilo p = null;
+        //public static Vozilo GetVoziloVozilo(int id)
+        //{
+        //    ISession s = null;
+        //    Vozilo p = null;
 
-            try
-            {
-                s = DataLayer.GetSession();
+        //    try
+        //    {
+        //        s = DataLayer.GetSession();
 
-                // Vozilo p = s.Load<Vozilo>(id);
-                p = (from pv in s.Query<Vozilo>()
-                            where pv.Id == id
-                            select pv).Single<Vozilo>();
+        //        // Vozilo p = s.Load<Vozilo>(id);
+        //        p = (from pv in s.Query<Vozilo>()
+        //                    where pv.Id == id
+        //                    select pv).Single<Vozilo>();
 
                
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show(ec.Message);
-            }
-            finally
-            {
-                s.Close();
-            }
-            return p;
-        }
+        //    }
+        //    catch (Exception ec)
+        //    {
+        //        MessageBox.Show(ec.Message);
+        //    }
+        //    finally
+        //    {
+        //        s.Close();
+        //    }
+        //    return p;
+        //}
 
         public static Vozilo GetVoziloPrekoRegistracije(string registracija)
         {
