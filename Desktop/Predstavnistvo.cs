@@ -173,11 +173,13 @@ namespace Desktop
             PredstavnistvoPregled tmp = (PredstavnistvoPregled)dgvPredstavnistvo.CurrentRow.DataBoundItem;
           IList<ServisPregled> l=  DTOManager.GetServisi(tmp.PredstavnistvoId);
 
-            foreach(ServisPregled pre in l)
+           
+                frmServisiranjePregled frm = new frmServisiranjePregled((List<ServisPregled>)l);
+            if (frm.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(pre.Cena.ToString() + pre.DatumServisa.ToString() + pre.Radovi + pre.Registracija);
-                //ovo samo u neki dgv ili tako nesto
+                return;
             }
+                
         }
     }
 }

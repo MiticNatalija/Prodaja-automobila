@@ -178,6 +178,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServisiranjePregled.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServisiranjePregled.Designer.cs">
+      <DependentUpon>ServisiranjePregled.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServisVozila.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +239,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ServisiranjePregled.resx">
+      <DependentUpon>ServisiranjePregled.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServisVozila.resx">
       <DependentUpon>ServisVozila.cs</DependentUpon>
     </EmbeddedResource>
