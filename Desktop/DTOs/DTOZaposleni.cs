@@ -42,23 +42,23 @@ namespace Desktop.DTOs
 
         public ZaposleniPregled(string mbr, string licnoIme, string imeOca, string prezime, DateTime datumRodjenja, DateTime datumZaposlenja)
         {
-           
+
             this.Mbr = mbr;
             this.LicnoIme = licnoIme;
             this.ImeOca = imeOca;
             this.Prezime = prezime;
             this.DatumRodjenja = datumRodjenja;
             this.DatumZaposlenja = datumZaposlenja;
-            
+
         }
         public ZaposleniPregled(string mbr, string licnoIme, string prezime, string tipZaposlenog)
         {
             this.Mbr = mbr;
             this.LicnoIme = licnoIme;
             this.Prezime = prezime;
-           this.TipZaposlenog = tipZaposlenog;
+            this.TipZaposlenog = tipZaposlenog;
         }
-        
+
 
 
 
@@ -76,7 +76,7 @@ namespace Desktop.DTOs
         public string Adresa { get; set; }
         public string Telefon { get; set; }
         public string Specijalnost { get; set; }
-        
+
 
         public ZaposleniIzmena(int predstavnikId, string tip, string mbr, string licnoIme, string imeOca, string prezime, DateTime datumRodjenja, DateTime datumZaposlenja, string adresa, string telefon, string specijalnost)
         {
@@ -91,7 +91,7 @@ namespace Desktop.DTOs
             this.Adresa = adresa;
             this.Telefon = telefon;
             this.Specijalnost = specijalnost;
-            
+
         }
     }
 
@@ -108,8 +108,9 @@ namespace Desktop.DTOs
         public string Adresa { get; set; }
         public string Telefon { get; set; }
         public string TipZaposlenog { get; set; }
+        public int BrojProdatihVozila { get; set; }
 
-        public PredstavnikInfo(int predstavnikId, string tip, string mbr, string licnoIme, string imeOca, string prezime, DateTime datumRodjenja, DateTime datumZaposlenja, string adresa, string telefon, string tipZaposlenog)
+        public PredstavnikInfo(int predstavnikId, string tip, string mbr, string licnoIme, string imeOca, string prezime, DateTime datumRodjenja, DateTime datumZaposlenja, string adresa, string telefon, string tipZaposlenog, int brojProdatihVozila)
         {
             this.PredstavnikId = predstavnikId;
             this.Tip = tip;
@@ -122,10 +123,12 @@ namespace Desktop.DTOs
             this.Adresa = adresa;
             this.Telefon = telefon;
             this.TipZaposlenog = tipZaposlenog;
+            this.BrojProdatihVozila = brojProdatihVozila;
         }
     }
-    public class MehanicarAdd{
-       
+    public class MehanicarAdd
+    {
+
         public string Tip { get; protected set; }
         public string Mbr { get; set; }
         public string LicnoIme { get; set; }
@@ -134,7 +137,7 @@ namespace Desktop.DTOs
         public DateTime DatumRodjenja { get; set; }
         public DateTime DatumZaposlenja { get; set; }
         public string Specijalnost { get; set; }
-        public MehanicarAdd(string tip, string mbr, string licnoIme, string imeOca, string prezime, DateTime datumRodjenja, DateTime datumZaposlenja,string specijalnost)
+        public MehanicarAdd(string tip, string mbr, string licnoIme, string imeOca, string prezime, DateTime datumRodjenja, DateTime datumZaposlenja, string specijalnost)
         {
             this.Tip = tip;
             this.Mbr = mbr;
@@ -146,7 +149,7 @@ namespace Desktop.DTOs
             this.Specijalnost = specijalnost;
         }
 
-       
+
     }
     public class PredstavnikAdd
     {
@@ -161,10 +164,10 @@ namespace Desktop.DTOs
         public string Adresa { get; set; }
         public string Telefon { get; set; }
 
-        public PredstavnikAdd(string tip, string mbr, string licnoIme, string imeOca, string prezime, DateTime datumRodjenja, DateTime datumZaposlenja, string adresa,string telefon)
+        public PredstavnikAdd(string tip, string mbr, string licnoIme, string imeOca, string prezime, DateTime datumRodjenja, DateTime datumZaposlenja, string adresa, string telefon)
         {
-         
 
+            this.Tip = tip;
             this.Mbr = mbr;
             this.LicnoIme = licnoIme;
             this.ImeOca = imeOca;
@@ -173,7 +176,7 @@ namespace Desktop.DTOs
             this.DatumZaposlenja = datumZaposlenja;
             this.Adresa = adresa;
             this.Telefon = telefon;
-          
+
         }
 
 
@@ -191,7 +194,7 @@ namespace Desktop.DTOs
         [DisplayName("Tip zaposlenog")]
         public string TipZaposlenog { get; set; }
 
-        public MehanicarPrikaz(string mbr, string licnoIme, string imeOca, string prezime,string tip,string tipZaposlenog)
+        public MehanicarPrikaz(string mbr, string licnoIme, string imeOca, string prezime, string tip, string tipZaposlenog)
         {
             this.Mbr = mbr;
             this.LicnoIme = licnoIme;
@@ -202,5 +205,103 @@ namespace Desktop.DTOs
         }
     }
 
+    public class PredstavnikPick
+    {
+        public int PredstavnikId { get; set; }
+        public string LicnoIme { get; set; }
+        public string ImeOca { get; set; }
+        public string Prezime { get; set; }
 
+        public PredstavnikPick(int predstavnikId, string licnoIme, string imeOca, string prezime)
+        {
+            PredstavnikId = predstavnikId;
+            LicnoIme = licnoIme;
+            ImeOca = imeOca;
+            Prezime = prezime;
+        }
+
+        public override string ToString()
+        {
+            return LicnoIme + ", " + ImeOca + " " + Prezime;
+        }
+    }
+
+    public class MehanicarOcenaPregled
+    {
+        [BrowsableAttribute(false)]
+        public int MehanicarId { get; set; }
+        [DisplayName("Ime")]
+        public string LicnoIme { get; set; }
+        public string Prezime { get; set; }
+        [DisplayName("Tip")]
+        public string TipMehanicara { get; set; }
+        [BrowsableAttribute(false)]
+        public string Tip { get; set; }
+        [DisplayName("Datum rodjenja")]
+        public DateTime DatumRodjenja { get; set; }
+        [DisplayName("Datum zaposlenja")]
+        public DateTime DatumZaposlenja { get; set; }
+        public string Specijalnost { get; set; }
+        [DisplayName("Datum testiranja")]
+        public DateTime DatumTestiranja { get; set; }
+        public int Ocena { get; set; }
+
+        public MehanicarOcenaPregled(int mehanicarId, string licnoIme, string prezime, string tip, DateTime datumRodjenja, DateTime datumZaposlenja, string specijalnost, DateTime datumTestiranja, int ocena)
+        {
+            MehanicarId = mehanicarId;
+            LicnoIme = licnoIme;
+            Prezime = prezime;
+            Tip = tip;
+            if (Tip.CompareTo("MehanicarKiaHyundai") == 0)
+                TipMehanicara = "Mehanicar za Kiu i Hyundai";
+            else if (Tip.CompareTo("MehanicarKia") == 0)
+                TipMehanicara = "Mehanicar za Kiu";
+            else
+            {
+                TipMehanicara = "Mehanicar za Hyundai";
+            }
+            DatumRodjenja = datumRodjenja;
+            DatumZaposlenja = datumZaposlenja;
+            Specijalnost = specijalnost;
+            DatumTestiranja = datumTestiranja;
+            Ocena = ocena;
+        }
+    }
+
+    public class MehanicarOceni
+    {
+        [BrowsableAttribute(false)]
+        public int MehanicarId { get; set; }
+        [DisplayName("Ime")]
+        public string LicnoIme { get; set; }
+        public string Prezime { get; set; }
+        [DisplayName("Tip")]
+        public string TipMehanicara { get; set; }
+        [BrowsableAttribute(false)]
+        public string Tip { get; set; }
+        [DisplayName("Datum rodjenja")]
+        public DateTime DatumRodjenja { get; set; }
+        [DisplayName("Datum zaposlenja")]
+        public DateTime DatumZaposlenja { get; set; }
+        public string Specijalnost { get; set; }
+
+        public MehanicarOceni(int mehanicarId, string licnoIme, string prezime, string tip, DateTime datumRodjenja, DateTime datumZaposlenja, string specijalnost)
+        {
+            MehanicarId = mehanicarId;
+            LicnoIme = licnoIme;
+            Prezime = prezime;
+            Tip = tip;
+            if (Tip.CompareTo("MehanicarKiaHyundai") == 0)
+                TipMehanicara = "Mehanicar za Kiu i Hyundai";
+            else if (Tip.CompareTo("MehanicarKia") == 0)
+                TipMehanicara = "Mehanicar za Kiu";
+            else
+            {
+                TipMehanicara = "Mehanicar za Hyundai";
+            }
+            DatumRodjenja = datumRodjenja;
+            DatumZaposlenja = datumZaposlenja;
+            Specijalnost = specijalnost;
+        }
+    }
 }

@@ -225,14 +225,14 @@ namespace Desktop.DTOManagers
                 s.Close();
             }
         }
-        public static void AddPredstavnistvo(PredstavnistvoPregled p)
+        public static void AddPredstavnistvo(PredstavnistvoAdd p)
         {
             ISession s = null;
             try
             {
                 s = DataLayer.GetSession();
                 Predstavnistvo sh = null;
-
+                
                 string tip = p.TipPredstavnistva;
                 if (tip.CompareTo("Salon za Hyundai") == 0)
                 {
@@ -240,8 +240,8 @@ namespace Desktop.DTOManagers
                     {
                         Adresa = p.Adresa,
                         DatumOtvaranja = p.DatumOtvaranja,
-                        DatumVazenjaLicence = (DateTime)p.DatumLicence
-
+                        DatumVazenjaLicence = (DateTime)p.DatumLicence,
+                        PredstavnikHyundai = s.Load<PredstavnikHyundai>(p.PredstavnikHyundaiId)
                     };
                 }
                 else if (tip.CompareTo("Salon za Kiu") == 0)
@@ -249,8 +249,8 @@ namespace Desktop.DTOManagers
                     sh = new SalonKia()
                     {
                         Adresa = p.Adresa,
-                        DatumOtvaranja = p.DatumOtvaranja
-
+                        DatumOtvaranja = p.DatumOtvaranja,
+                        PredstavnikKia = s.Load<PredstavnikKia>(p.PredstavnikKiaId)
                     };
                 }
                 else if (tip.CompareTo("Salon za Hyundai i Kiu") == 0)
@@ -259,8 +259,9 @@ namespace Desktop.DTOManagers
                     {
                         Adresa = p.Adresa,
                         DatumOtvaranja = p.DatumOtvaranja,
-                        DatumVazenjaLicence = (DateTime)p.DatumLicence
-
+                        DatumVazenjaLicence = (DateTime)p.DatumLicence,
+                        PredstavnikHyundai = s.Load<PredstavnikHyundai>(p.PredstavnikHyundaiId),
+                        PredstavnikKia = s.Load<PredstavnikKia>(p.PredstavnikKiaId)
                     };
                 }
                 else if (tip.CompareTo("Servis za Hyundai") == 0)
@@ -268,8 +269,8 @@ namespace Desktop.DTOManagers
                     sh = new ServisHyundai()
                     {
                         Adresa = p.Adresa,
-                        DatumOtvaranja = p.DatumOtvaranja
-
+                        DatumOtvaranja = p.DatumOtvaranja,
+                        PredstavnikHyundai = s.Load<PredstavnikHyundai>(p.PredstavnikHyundaiId)
                     };
                 }
                 else if (tip.CompareTo("Servis za Kiu") == 0)
@@ -277,8 +278,8 @@ namespace Desktop.DTOManagers
                     sh = new ServisKia()
                     {
                         Adresa = p.Adresa,
-                        DatumOtvaranja = p.DatumOtvaranja
-
+                        DatumOtvaranja = p.DatumOtvaranja,
+                        PredstavnikKia = s.Load<PredstavnikKia>(p.PredstavnikKiaId)
                     };
                 }
                 else if (tip.CompareTo("Servis za Hyundai i Kiu") == 0)
@@ -286,8 +287,9 @@ namespace Desktop.DTOManagers
                     sh = new ServisHyundaiKia()
                     {
                         Adresa = p.Adresa,
-                        DatumOtvaranja = p.DatumOtvaranja
-
+                        DatumOtvaranja = p.DatumOtvaranja,
+                        PredstavnikHyundai = s.Load<PredstavnikHyundai>(p.PredstavnikHyundaiId),
+                        PredstavnikKia = s.Load<PredstavnikKia>(p.PredstavnikKiaId)
                     };
                 }
                 else if (tip.CompareTo("Salon i Servis za Kiu") == 0)
@@ -295,8 +297,8 @@ namespace Desktop.DTOManagers
                     sh = new SalonServisKia()
                     {
                         Adresa = p.Adresa,
-                        DatumOtvaranja = p.DatumOtvaranja
-
+                        DatumOtvaranja = p.DatumOtvaranja,
+                        PredstavnikKia = s.Load<PredstavnikKia>(p.PredstavnikKiaId)
                     };
                 }
                 else if (tip.CompareTo("Salon i Servis za Hyundai i Kiu") == 0)
@@ -305,8 +307,9 @@ namespace Desktop.DTOManagers
                     {
                         Adresa = p.Adresa,
                         DatumOtvaranja = p.DatumOtvaranja,
-                        DatumVazenjaLicence = (DateTime)p.DatumLicence
-
+                        DatumVazenjaLicence = (DateTime)p.DatumLicence,
+                        PredstavnikHyundai = s.Load<PredstavnikHyundai>(p.PredstavnikHyundaiId),
+                        PredstavnikKia = s.Load<PredstavnikKia>(p.PredstavnikKiaId)
                     };
                 }
                 else if (tip.CompareTo("Salon i Servis za Hyundai") == 0)
@@ -315,8 +318,8 @@ namespace Desktop.DTOManagers
                     {
                         Adresa = p.Adresa,
                         DatumOtvaranja = p.DatumOtvaranja,
-                        DatumVazenjaLicence = (DateTime)p.DatumLicence
-
+                        DatumVazenjaLicence = (DateTime)p.DatumLicence,
+                        PredstavnikHyundai = s.Load<PredstavnikHyundai>(p.PredstavnikHyundaiId),
                     };
                 }
                 s.Save(sh);

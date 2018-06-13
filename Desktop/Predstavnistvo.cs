@@ -79,7 +79,7 @@ namespace Desktop
             frmDodajPredstavnistvo dlg = new frmDodajPredstavnistvo();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                PredstavnistvoPregled p = dlg.p;
+                PredstavnistvoAdd p = dlg.Predstavnistvo;
                 DTOManager.AddPredstavnistvo(p);
                 InitPredstavnistava();
             }
@@ -130,7 +130,9 @@ namespace Desktop
         private void btnDodajZaposlenog_Click(object sender, EventArgs e)
         {
             DodajZaposlenog frm = new DodajZaposlenog();
-            frm.ShowDialog();
+            DialogResult dr = frm.ShowDialog();
+            if(dr == DialogResult.OK)
+                InitZaposlnih();
         }
 
         private void btnIzmeniRadnika_Click(object sender, EventArgs e)
@@ -171,15 +173,35 @@ namespace Desktop
         private void btnPregledServisa_Click(object sender, EventArgs e)
         {
             PredstavnistvoPregled tmp = (PredstavnistvoPregled)dgvPredstavnistvo.CurrentRow.DataBoundItem;
-          IList<ServisPregled> l=  DTOManager.GetServisi(tmp.PredstavnistvoId);
+            IList<ServisPregled> l=  DTOManager.GetServisi(tmp.PredstavnistvoId);
 
            
-                frmServisiranjePregled frm = new frmServisiranjePregled((List<ServisPregled>)l);
+            frmServisiranjePregled frm = new frmServisiranjePregled((List<ServisPregled>)l);
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 return;
             }
                 
+        }
+
+        private void dgvPredstavnik_SelectionChanged(object sender, EventArgs e)
+        {
+            ZaposleniPregled tmp = (ZaposleniPregled)dgvPredstavnik.CurrentRow.DataBoundItem;
+            if(tmp.Tip.CompareTo("PredstavnikHyundai") == 0)
+            {
+                btnOceneMehanicara.Enabled = true;
+            }
+            else
+            {
+                btnOceneMehanicara.Enabled = false;
+            }
+        }
+
+        private void btnOceneMehanicara_Click(object sender, EventArgs e)
+        {
+            ZaposleniPregled tmp = (ZaposleniPregled)dgvPredstavnik.CurrentRow.DataBoundItem;
+            OceneMehanicara frm = new OceneMehanicara(tmp);
+            frm.ShowDialog();
         }
     }
 }

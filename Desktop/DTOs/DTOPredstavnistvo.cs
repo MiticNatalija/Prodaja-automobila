@@ -61,6 +61,38 @@ namespace Desktop.DTOs
         }
     }
 
+    public class PredstavnistvoAdd
+    {
+        public string Tip { get; protected set; }
+        public string TipPredstavnistva { get; set; }
+        public string Adresa { get; set; }
+        public DateTime DatumOtvaranja { get; set; }
+        public DateTime? DatumLicence { get; set; }
+        public int? PredstavnikHyundaiId { get; set; }
+        public int? PredstavnikKiaId { get; set; }
+
+        public PredstavnistvoAdd()
+        {
+        }
+
+        public PredstavnistvoAdd(string tip, string adresa, DateTime datumOtvaranja, DateTime? datumLicence, int? predstavnikHyundaiId, int? predstavnikKiaId)
+        {
+            this.Adresa = adresa;
+            this.DatumOtvaranja = datumOtvaranja;
+            this.Tip = tip;
+            this.DatumLicence = datumLicence;
+            this.PredstavnikHyundaiId = predstavnikHyundaiId;
+            this.PredstavnikKiaId = predstavnikKiaId;
+        }
+
+        public PredstavnistvoAdd(string adresa, DateTime datumOtvaranja, string tipPredstavnistva)
+        {
+            this.Adresa = adresa;
+            this.DatumOtvaranja = datumOtvaranja;
+            this.TipPredstavnistva = tipPredstavnistva;
+        }
+    }
+
     public class ServisPregled
     {
         public string Registracija { get; set; }

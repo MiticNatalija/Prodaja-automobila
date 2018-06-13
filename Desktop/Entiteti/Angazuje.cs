@@ -17,6 +17,16 @@ namespace Desktop.Entiteti
 
         public Angazuje()
         { }
+
+        public Angazuje(int id, DateTime datumPocetka, DateTime? krajRada, int ocena, Predstavnistvo servis, Zaposleni mehanicar)
+        {
+            Id = id;
+            DatumPocetka = datumPocetka;
+            KrajRada = krajRada;
+            Ocena = ocena;
+            Servis = servis;
+            Mehanicar = mehanicar;
+        }
     }
     
 }

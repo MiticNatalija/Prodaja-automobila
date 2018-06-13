@@ -480,42 +480,42 @@ namespace Desktop.DTOManagers
                     PredstavnikHyundai ph = ((SalonHyundai)pom).PredstavnikHyundai;
                     if (ph == null)
                         return preInfos;
-                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai"));
+                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai", ph.Vozila.Count));
                 }
                 else if(pom is ServisHyundai)
                 {
                     PredstavnikHyundai ph = ((ServisHyundai)pom).PredstavnikHyundai;
                     if (ph == null)
                         return preInfos;
-                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai"));
+                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai", ph.Vozila.Count));
                 }
                 else if(pom is SalonServisHyundai)
                 {
                     PredstavnikHyundai ph = ((SalonServisHyundai)pom).PredstavnikHyundai;
                     if (ph == null)
                         return preInfos;
-                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai"));
+                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai", ph.Vozila.Count));
                 }
                 else if(pom is SalonKia)
                 {
                     PredstavnikKia pk = ((SalonKia)pom).PredstavnikKia;
                     if (pk == null)
                         return preInfos;
-                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu"));
+                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu", pk.Vozila.Count));
                 }
                 else if (pom is ServisKia)
                 {
                     PredstavnikKia pk = ((ServisKia)pom).PredstavnikKia;
                     if (pk == null)
                         return preInfos;
-                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu"));
+                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu", pk.Vozila.Count));
                 }
                 else if (pom is SalonServisKia)
                 {
                     PredstavnikKia pk = ((SalonServisKia)pom).PredstavnikKia;
                     if (pk == null)
                         return preInfos;
-                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu"));
+                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu", pk.Vozila.Count));
                 }
                 else if (pom is SalonHyundaiKia)
                 {
@@ -524,8 +524,8 @@ namespace Desktop.DTOManagers
                     if (pk==null && ph == null)
                         return preInfos;
 
-                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu"));
-                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai"));
+                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu", pk.Vozila.Count));
+                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai", ph.Vozila.Count));
                 }
                 else if (pom is ServisHyundaiKia)
                 {
@@ -533,8 +533,8 @@ namespace Desktop.DTOManagers
                     PredstavnikKia pk = ((ServisHyundaiKia)pom).PredstavnikKia;
                     if (pk == null && ph == null)
                         return preInfos;
-                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu"));
-                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai"));
+                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu", pk.Vozila.Count));
+                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai", ph.Vozila.Count));
                 }
                 else if (pom is SalonServisHyundaiKia)
                 {
@@ -542,8 +542,8 @@ namespace Desktop.DTOManagers
                     PredstavnikKia pk = ((SalonServisHyundaiKia)pom).PredstavnikKia;
                     if (pk == null && ph == null)
                         return preInfos;
-                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu"));
-                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai"));
+                    preInfos.Add(new PredstavnikInfo(pk.Id, "PredstavnikKia", pk.Mbr, pk.LicnoIme, pk.ImeOca, pk.Prezime, pk.DatumRodjenja, pk.DatumZaposlenja, pk.Adresa, pk.Telefon, "Predstavnik za Kiu", pk.Vozila.Count));
+                    preInfos.Add(new PredstavnikInfo(ph.Id, "PredstavnikHyundai", ph.Mbr, ph.LicnoIme, ph.ImeOca, ph.Prezime, ph.DatumRodjenja, ph.DatumZaposlenja, ph.Adresa, ph.Telefon, "Predstavnik za Hyundai", ph.Vozila.Count));
                 }
             }
             catch (Exception ec)
@@ -651,6 +651,125 @@ namespace Desktop.DTOManagers
             {
                 s.Close();
             }
+        }
+
+        public static List<PredstavnikPick> GetFreeHyundaiPredstavnik()
+        {
+            ISession s = null;
+            List<PredstavnikPick> pp = new List<PredstavnikPick>();
+            try
+            {
+                s = DataLayer.GetSession();
+
+                IEnumerable<PredstavnikHyundai> lista = (from ph in s.Query<PredstavnikHyundai>() where ph.Predstavnistva.Count == 0 select ph);
+                foreach (PredstavnikHyundai ph in lista)
+                {
+                    pp.Add(new PredstavnikPick(ph.Id, ph.LicnoIme, ph.ImeOca, ph.Prezime));
+                }
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return pp;
+        }
+
+        public static List<PredstavnikPick> GetFreeKiaPredstavnik()
+        {
+            ISession s = null;
+            List<PredstavnikPick> pp = new List<PredstavnikPick>();
+            try
+            {
+                s = DataLayer.GetSession();
+
+                IEnumerable<PredstavnikKia> lista = (from pk in s.Query<PredstavnikKia>() where pk.Predstavnistva.Count == 0 select pk);
+                foreach (PredstavnikKia pk in lista)
+                {
+                    pp.Add(new PredstavnikPick(pk.Id, pk.LicnoIme, pk.ImeOca, pk.Prezime));
+                }
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return pp;
+        }
+        
+        public static List<MehanicarOcenaPregled> GetOceneMehanicara(int predstavnikId)
+        {
+            ISession s = null;
+            List<MehanicarOcenaPregled> mo = new List<MehanicarOcenaPregled>();
+            try
+            {
+                s = DataLayer.GetSession();
+
+                Zaposleni pom = (from z in s.Query<Zaposleni>()
+                                      where z.Id == predstavnikId
+                                 select z).Single<Zaposleni>();
+
+                if(pom is PredstavnikHyundai)
+                {
+                    PredstavnikHyundai tmp = (PredstavnikHyundai)pom;
+                    foreach(Testira t in tmp.TestiraMehanicari)
+                    {
+                        MehanicarHyundai m = (MehanicarHyundai)t.Mehanicar;
+                        mo.Add(new MehanicarOcenaPregled(m.Id, m.LicnoIme, m.Prezime, "MehanicarHyundai", m.DatumRodjenja, m.DatumZaposlenja, m.Specijalnost, t.DatumTestiranja, t.Ocena));
+                    }
+                }
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return mo;
+        }
+
+        public static List<MehanicarOceni> GetMehanicariForOcenjivanje(int zaposleniId)
+        {
+            ISession s = null;
+            List<MehanicarOceni> mo = new List<MehanicarOceni>();
+            try
+            {
+                s = DataLayer.GetSession();
+
+                Predstavnistvo pom = (from ph in s.Query<PredstavnikHyundai>()
+                                 where ph.Id == zaposleniId && ph.Predstavnistva.Count > 0
+                                      select ph.Predstavnistva[0]).Single<Predstavnistvo>();
+
+                IEnumerable<Angazuje> lista = (from a in s.Query<Angazuje>()
+                                               where a.Servis.Id == pom.Id && a.KrajRada == null && a.Mehanicar is MehanicarHyundai
+                                               select a);
+                foreach(Angazuje a in lista)
+                {
+                    //Rad sa bazom u foreach?!
+                    //Nece cast preko a.Mehanicar nego moram ovo da radim
+                    MehanicarHyundai mh = (from m in s.Query<MehanicarHyundai>() where m.Id == a.Mehanicar.Id select m).Single<MehanicarHyundai>();
+                    mo.Add(new MehanicarOceni(mh.Id, mh.LicnoIme, mh.Prezime, "MehanicarHyundai", mh.DatumRodjenja, mh.DatumZaposlenja, mh.Specijalnost));
+                }
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return mo;
         }
     }
 }
