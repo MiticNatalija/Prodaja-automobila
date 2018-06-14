@@ -80,6 +80,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AngazaujMehanicaraServis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AngazaujMehanicaraServis.Designer.cs">
+      <DependentUpon>AngazaujMehanicaraServis.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataLayer.cs" />
     <Compile Include="DodajMehanicare.cs">
       <SubType>Form</SubType>
@@ -184,6 +190,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RadnaKnjizicaMehanicar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RadnaKnjizicaMehanicar.Designer.cs">
+      <DependentUpon>RadnaKnjizicaMehanicar.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServisiranjePregled.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +214,15 @@
     <Compile Include="VoziloPredstavnistvoPregled.Designer.cs">
       <DependentUpon>VoziloPredstavnistvoPregled.cs</DependentUpon>
     </Compile>
+    <Compile Include="ZavrsiRadniOdnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZavrsiRadniOdnos.Designer.cs">
+      <DependentUpon>ZavrsiRadniOdnos.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AngazaujMehanicaraServis.resx">
+      <DependentUpon>AngazaujMehanicaraServis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DodajMehanicare.resx">
       <DependentUpon>DodajMehanicare.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +269,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RadnaKnjizicaMehanicar.resx">
+      <DependentUpon>RadnaKnjizicaMehanicar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServisiranjePregled.resx">
       <DependentUpon>ServisiranjePregled.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VoziloPredstavnistvoPregled.resx">
       <DependentUpon>VoziloPredstavnistvoPregled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZavrsiRadniOdnos.resx">
+      <DependentUpon>ZavrsiRadniOdnos.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bin\Debug\Desktop.exe.config" />
     <None Include="bin\Debug\Desktop.vshost.exe.config" />

@@ -408,8 +408,50 @@ namespace Desktop.DTOManagers
             }
             return servisi;
         }
-        
 
-    
+        public static List<ServisAngazovanjePregled> GetServisiForAngazovanjeByTip(string tip)
+        {
+            ISession s = null;
+            List<ServisAngazovanjePregled> servisi = new List<ServisAngazovanjePregled>();
+            try
+            {
+                s = DataLayer.GetSession();
+                IEnumerable<Predstavnistvo> lista = null;
+
+                if (tip.CompareTo("MehanicarHyundaiKia") == 0)
+                {
+                    lista = from shk in s.Query<Predstavnistvo>()
+                                        where shk is ServisHyundaiKia || shk is SalonServisHyundaiKia
+                                        select shk;
+                }
+                else if(tip.CompareTo("MehanicarHyundai") == 0)
+                {
+                    lista = from shk in s.Query<Predstavnistvo>()
+                            where shk is ServisHyundai || shk is SalonServisHyundai
+                            select shk;
+                }
+                else if (tip.CompareTo("MehanicarKia") == 0)
+                {
+                    lista = from shk in s.Query<Predstavnistvo>()
+                            where shk is ServisKia || shk is SalonServisKia
+                            select shk;
+                }
+
+                foreach (Predstavnistvo p in lista)
+                {
+                    servisi.Add(new ServisAngazovanjePregled(p.Id, p.Adresa));
+                }
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return servisi;
+        }
     }
 }

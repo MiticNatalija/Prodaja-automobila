@@ -195,12 +195,27 @@ namespace Desktop
             {
                 btnOceneMehanicara.Enabled = false;
             }
+            if(tmp.Tip.Contains("Mehanicar"))
+            {
+                btnRadnaKnjizica.Enabled = true;
+            }
+            else
+            {
+                btnRadnaKnjizica.Enabled = false;
+            }
         }
 
         private void btnOceneMehanicara_Click(object sender, EventArgs e)
         {
             ZaposleniPregled tmp = (ZaposleniPregled)dgvPredstavnik.CurrentRow.DataBoundItem;
             OceneMehanicara frm = new OceneMehanicara(tmp);
+            frm.ShowDialog();
+        }
+
+        private void btnRadnaKnjizica_Click(object sender, EventArgs e)
+        {
+            ZaposleniPregled tmp = (ZaposleniPregled)dgvPredstavnik.CurrentRow.DataBoundItem;
+            RadnaKnjizicaMehanicar frm = new RadnaKnjizicaMehanicar(tmp);
             frm.ShowDialog();
         }
     }

@@ -323,4 +323,26 @@ namespace Desktop.DTOs
             Specijalnost = specijalnost;
         }
     }
+
+    public class AngazovanjeMehanicaraPregled
+    {
+        [BrowsableAttribute(false)]
+        public int AngazovanjeId { get; set; }
+        [DisplayName("Adresa predstavnistva")]
+        public string AdresaPredstavnistva { get; set; }
+        [DisplayName("Datum pocetka rada")]
+        public DateTime DatumPocetka { get; set; }
+        [DisplayName("Datum kraja rada")]
+        public DateTime? KrajRada { get; set; }
+        public int Ocena { get; set; }
+
+        public AngazovanjeMehanicaraPregled(int angazovanjeId, string adresaPredstavnistva, DateTime datumPocetka, DateTime? krajRada, int ocena)
+        {
+            AngazovanjeId = angazovanjeId;
+            AdresaPredstavnistva = adresaPredstavnistva;
+            DatumPocetka = datumPocetka;
+            KrajRada = krajRada;
+            Ocena = ocena;
+        }
+    }
 }

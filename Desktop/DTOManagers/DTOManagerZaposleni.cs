@@ -830,5 +830,89 @@ namespace Desktop.DTOManagers
             }
             return mehanicari;
         }
+
+        public static List<AngazovanjeMehanicaraPregled> GetAngazovanjaMehanicara(int mehanicarId)
+        {
+            ISession s = null;
+            List<AngazovanjeMehanicaraPregled> am = new List<AngazovanjeMehanicaraPregled>();
+            try
+            {
+                s = DataLayer.GetSession();
+
+                IEnumerable<Angazuje> lista = (from a in s.Query<Angazuje>()
+                                               where a.Mehanicar.Id == mehanicarId
+                                               select a);
+                foreach (Angazuje a in lista)
+                {
+                    am.Add(new AngazovanjeMehanicaraPregled(a.Id, a.Servis.Adresa, a.DatumPocetka, a.KrajRada, a.Ocena));
+                }
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return am;
+        }
+
+        public static void UpdataAngazuje(AngazovanjeMehanicaraPregled angazuje)
+        {
+            ISession s = null;
+            try
+            {
+                s = DataLayer.GetSession();
+                Angazuje ang = (from a in s.Query<Angazuje>()
+                                 where a.Id == angazuje.AngazovanjeId
+                                 select a).Single<Angazuje>();
+
+                ang.KrajRada = angazuje.KrajRada;
+                ang.Ocena = angazuje.Ocena;
+
+                s.Update(ang);
+                s.Flush();
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+        }
+
+        public static void CreateAngazuje(int servisId, int mehanicarId, DateTime datumPocetka)
+        {
+            ISession s = null;
+            try
+            {
+                s = DataLayer.GetSession();
+                Predstavnistvo p = (from pr in s.Query<Predstavnistvo>()
+                                    where pr.Id == servisId
+                                    select pr).Single<Predstavnistvo>();
+
+                Zaposleni z = (from zp in s.Query<Zaposleni>()
+                                    where zp.Id == mehanicarId
+                                    select zp).Single<Zaposleni>();
+
+                Angazuje ang = new Angazuje(datumPocetka, p, z);
+
+                s.Save(ang);
+                s.Flush();
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+        }
     }
 }

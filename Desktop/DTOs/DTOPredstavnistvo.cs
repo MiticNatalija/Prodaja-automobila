@@ -112,4 +112,21 @@ namespace Desktop.DTOs
         }
 
     }
+
+    public class ServisAngazovanjePregled
+    {
+        public int ServisId { get; set; }
+        public string Adresa { get; set; }
+
+        public ServisAngazovanjePregled(int servisId, string adresa)
+        {
+            ServisId = servisId;
+            Adresa = adresa;
+        }
+
+        public override string ToString()
+        {
+            return Adresa;
+        }
+    }
 }
