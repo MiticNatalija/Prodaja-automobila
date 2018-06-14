@@ -38,42 +38,48 @@
             // lblServis
             // 
             this.lblServis.AutoSize = true;
-            this.lblServis.Location = new System.Drawing.Point(166, 71);
+            this.lblServis.Location = new System.Drawing.Point(124, 58);
+            this.lblServis.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblServis.Name = "lblServis";
-            this.lblServis.Size = new System.Drawing.Size(51, 17);
+            this.lblServis.Size = new System.Drawing.Size(39, 13);
             this.lblServis.TabIndex = 0;
             this.lblServis.Text = "Servis:";
             // 
             // lblDatumPocetakRada
             // 
             this.lblDatumPocetakRada.AutoSize = true;
-            this.lblDatumPocetakRada.Location = new System.Drawing.Point(77, 126);
+            this.lblDatumPocetakRada.Location = new System.Drawing.Point(58, 102);
+            this.lblDatumPocetakRada.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDatumPocetakRada.Name = "lblDatumPocetakRada";
-            this.lblDatumPocetakRada.Size = new System.Drawing.Size(140, 17);
+            this.lblDatumPocetakRada.Size = new System.Drawing.Size(107, 13);
             this.lblDatumPocetakRada.TabIndex = 1;
             this.lblDatumPocetakRada.Text = "Datum pocetka rada:";
             // 
             // cbxServis
             // 
+            this.cbxServis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxServis.FormattingEnabled = true;
-            this.cbxServis.Location = new System.Drawing.Point(243, 68);
+            this.cbxServis.Location = new System.Drawing.Point(182, 55);
+            this.cbxServis.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbxServis.Name = "cbxServis";
-            this.cbxServis.Size = new System.Drawing.Size(221, 24);
+            this.cbxServis.Size = new System.Drawing.Size(167, 21);
             this.cbxServis.TabIndex = 2;
             // 
             // dtpDatumPocetkaRada
             // 
             this.dtpDatumPocetkaRada.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumPocetkaRada.Location = new System.Drawing.Point(243, 121);
+            this.dtpDatumPocetkaRada.Location = new System.Drawing.Point(182, 98);
+            this.dtpDatumPocetkaRada.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpDatumPocetkaRada.Name = "dtpDatumPocetkaRada";
-            this.dtpDatumPocetkaRada.Size = new System.Drawing.Size(221, 22);
+            this.dtpDatumPocetkaRada.Size = new System.Drawing.Size(167, 20);
             this.dtpDatumPocetkaRada.TabIndex = 3;
             // 
             // brnOk
             // 
-            this.brnOk.Location = new System.Drawing.Point(169, 188);
+            this.brnOk.Location = new System.Drawing.Point(127, 153);
+            this.brnOk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.brnOk.Name = "brnOk";
-            this.brnOk.Size = new System.Drawing.Size(219, 36);
+            this.brnOk.Size = new System.Drawing.Size(164, 29);
             this.brnOk.TabIndex = 4;
             this.brnOk.Text = "OK";
             this.brnOk.UseVisualStyleBackColor = true;
@@ -81,16 +87,17 @@
             // 
             // AngazaujMehanicaraServis
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 259);
+            this.ClientSize = new System.Drawing.Size(423, 218);
             this.Controls.Add(this.brnOk);
             this.Controls.Add(this.dtpDatumPocetkaRada);
             this.Controls.Add(this.cbxServis);
             this.Controls.Add(this.lblDatumPocetakRada);
             this.Controls.Add(this.lblServis);
-            this.MaximumSize = new System.Drawing.Size(580, 306);
-            this.MinimumSize = new System.Drawing.Size(580, 306);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximumSize = new System.Drawing.Size(439, 256);
+            this.MinimumSize = new System.Drawing.Size(439, 256);
             this.Name = "AngazaujMehanicaraServis";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Angazuj mehanicara u servis";

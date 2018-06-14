@@ -124,6 +124,7 @@
             this.txtBrojMesta.Name = "txtBrojMesta";
             this.txtBrojMesta.Size = new System.Drawing.Size(100, 20);
             this.txtBrojMesta.TabIndex = 9;
+            this.txtBrojMesta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBrojMesta_KeyPress);
             // 
             // txtNosivost
             // 
@@ -131,6 +132,7 @@
             this.txtNosivost.Name = "txtNosivost";
             this.txtNosivost.Size = new System.Drawing.Size(100, 20);
             this.txtNosivost.TabIndex = 10;
+            this.txtNosivost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNosivost_KeyPress);
             // 
             // txtOznakaMotora
             // 

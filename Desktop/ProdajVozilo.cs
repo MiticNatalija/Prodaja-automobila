@@ -42,34 +42,64 @@ namespace Desktop
 
             txtPredstavnikHyundai.Enabled = false;
             txtPredstavnikKia.Enabled = false;
+            rdbKia.Enabled = false;
+            rdbHyundai.Enabled = false;
             if (predstavnici.Count == 0)
                 return;
 
-            if (predstavnici[0].TipZaposlenog.Equals("Predstavnik Za Kiu"))
-                txtPredstavnikKia.Text = predstavnici[0].Mbr;
-            else
-                txtPredstavnikHyundai.Text = predstavnici[0].Mbr;
+          
+
+                if (predstavnici[0].TipZaposlenog.Equals("Predstavnik Za Kiu"))
+                {
+                    txtPredstavnikKia.Text = predstavnici[0].Mbr;
+                    rdbKia.Enabled = true;
+                    rdbKia.Checked = true;
+                }
+                else
+                {
+                    rdbHyundai.Enabled = true;
+                    rdbHyundai.Checked = true;
+                    txtPredstavnikHyundai.Text = predstavnici[0].Mbr;
+                }
+
+            
             if(predstavnici.Count>1)
             {
                 if (txtPredstavnikHyundai.Text == "")
+                {
+                    rdbHyundai.Enabled = true;
                     txtPredstavnikHyundai.Text = predstavnici[1].Mbr;
+                }
                 else
+                {
+                    rdbKia.Enabled = true;
                     txtPredstavnikKia.Text = predstavnici[1].Mbr;
+                }
             }
 
 
             
         }
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        { }
+       
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if(txtPredstavnikHyundai.Text=="" && txtPredstavnikKia.Text=="")
+
+            if(!rdbHyundai.Checked && !rdbKia.Checked)
             {
-                MessageBox.Show("Popunite sva polja!");
+                MessageBox.Show("Izaberite prodavca!");
                 return;
             }
+            if(!radioFizicko.Checked && !radioPravno.Checked)
+            {
+                MessageBox.Show("Da li je kupac fizicko ili pravno lice? Cekirajte!");
+                return;
+            }
+            //if(txtPredstavnikHyundai.Text=="" && txtPredstavnikKia.Text=="")
+            //{
+            //    MessageBox.Show("Popunite sva polja!");
+            //    return;
+            //}
             if(txtPopustiDelovi.Text=="" || txtPopustiServis.Text=="")
             {
                 MessageBox.Show("Popunite sva polja!");
@@ -98,10 +128,10 @@ namespace Desktop
 
             //Vlasnik v;
             string pred= "";
-            if (txtPredstavnikHyundai.Text == "")
-                pred = txtPredstavnikKia.Text;
-            else
+            if (rdbHyundai.Checked)
                 pred = txtPredstavnikHyundai.Text;
+            else
+                pred = txtPredstavnikKia.Text;
 
             
             DTOManager.SetPredstavnikAndPopustiInVozilo(pred, txtPopustiServis.Text, txtPopustiDelovi.Text, vozilo);

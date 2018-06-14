@@ -21,12 +21,16 @@ namespace Desktop
             InitializeComponent();
             Mehanicar = mehanicar;
             cbxServis.DataSource = DTOManager.GetServisiForAngazovanjeByTip(Mehanicar.Tip);
+            cbxServis.SelectedIndex = 0;
         }
 
         private void brnOk_Click(object sender, EventArgs e)
         {
             if(cbxServis.SelectedValue != null)
             {
+                if (Mehanicar.DatumZaposlenja > dtpDatumPocetkaRada.Value) {
+                    MessageBox.Show("Pogresan datum!"+Environment.NewLine+"Radnik je prvi put zaposljen: "+Mehanicar.DatumZaposlenja.ToShortDateString());
+                }
                 ServisAngazovanjePregled tmp = (ServisAngazovanjePregled)cbxServis.SelectedValue;
                 DTOManager.CreateAngazuje(tmp.ServisId, Mehanicar.ZaposleniId, dtpDatumPocetkaRada.Value);
                 this.DialogResult = DialogResult.OK;

@@ -61,7 +61,11 @@
             this.radioPravno = new System.Windows.Forms.RadioButton();
             this.txtPredstavnikHyundai = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.rdbKia = new System.Windows.Forms.RadioButton();
+            this.rdbHyundai = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gbxRadio.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -123,7 +127,6 @@
             this.txtFizickoIme.Name = "txtFizickoIme";
             this.txtFizickoIme.Size = new System.Drawing.Size(100, 20);
             this.txtFizickoIme.TabIndex = 8;
-            this.txtFizickoIme.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // txtFizickoPrezime
             // 
@@ -232,7 +235,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(126, 274);
+            this.label12.Location = new System.Drawing.Point(126, 288);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(34, 13);
             this.label12.TabIndex = 22;
@@ -240,7 +243,7 @@
             // 
             // txtPredstavnikKia
             // 
-            this.txtPredstavnikKia.Location = new System.Drawing.Point(182, 271);
+            this.txtPredstavnikKia.Location = new System.Drawing.Point(182, 285);
             this.txtPredstavnikKia.Name = "txtPredstavnikKia";
             this.txtPredstavnikKia.Size = new System.Drawing.Size(100, 20);
             this.txtPredstavnikKia.TabIndex = 23;
@@ -267,7 +270,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(129, 395);
+            this.label15.Location = new System.Drawing.Point(129, 420);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(89, 13);
             this.label15.TabIndex = 26;
@@ -276,15 +279,17 @@
             // txtPopustiDelovi
             // 
             this.txtPopustiDelovi.Location = new System.Drawing.Point(253, 349);
+            this.txtPopustiDelovi.Multiline = true;
             this.txtPopustiDelovi.Name = "txtPopustiDelovi";
-            this.txtPopustiDelovi.Size = new System.Drawing.Size(100, 20);
+            this.txtPopustiDelovi.Size = new System.Drawing.Size(243, 43);
             this.txtPopustiDelovi.TabIndex = 27;
             // 
             // txtPopustiServis
             // 
-            this.txtPopustiServis.Location = new System.Drawing.Point(253, 388);
+            this.txtPopustiServis.Location = new System.Drawing.Point(253, 413);
+            this.txtPopustiServis.Multiline = true;
             this.txtPopustiServis.Name = "txtPopustiServis";
-            this.txtPopustiServis.Size = new System.Drawing.Size(100, 20);
+            this.txtPopustiServis.Size = new System.Drawing.Size(243, 39);
             this.txtPopustiServis.TabIndex = 28;
             // 
             // btnOK
@@ -333,7 +338,7 @@
             // 
             // txtPredstavnikHyundai
             // 
-            this.txtPredstavnikHyundai.Location = new System.Drawing.Point(396, 267);
+            this.txtPredstavnikHyundai.Location = new System.Drawing.Point(396, 285);
             this.txtPredstavnikHyundai.Name = "txtPredstavnikHyundai";
             this.txtPredstavnikHyundai.Size = new System.Drawing.Size(100, 20);
             this.txtPredstavnikHyundai.TabIndex = 31;
@@ -341,17 +346,50 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(349, 274);
+            this.label16.Location = new System.Drawing.Point(356, 288);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(34, 13);
             this.label16.TabIndex = 32;
             this.label16.Text = "MBR:";
+            // 
+            // rdbKia
+            // 
+            this.rdbKia.AutoSize = true;
+            this.rdbKia.Location = new System.Drawing.Point(6, 16);
+            this.rdbKia.Name = "rdbKia";
+            this.rdbKia.Size = new System.Drawing.Size(40, 17);
+            this.rdbKia.TabIndex = 35;
+            this.rdbKia.TabStop = true;
+            this.rdbKia.Text = "Kia";
+            this.rdbKia.UseVisualStyleBackColor = true;
+            // 
+            // rdbHyundai
+            // 
+            this.rdbHyundai.AutoSize = true;
+            this.rdbHyundai.Location = new System.Drawing.Point(214, 16);
+            this.rdbHyundai.Name = "rdbHyundai";
+            this.rdbHyundai.Size = new System.Drawing.Size(64, 17);
+            this.rdbHyundai.TabIndex = 36;
+            this.rdbHyundai.TabStop = true;
+            this.rdbHyundai.Text = "Hyundai";
+            this.rdbHyundai.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rdbHyundai);
+            this.groupBox1.Controls.Add(this.rdbKia);
+            this.groupBox1.Location = new System.Drawing.Point(182, 228);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(314, 39);
+            this.groupBox1.TabIndex = 37;
+            this.groupBox1.TabStop = false;
             // 
             // frmProdajVozilo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 524);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtPredstavnikHyundai);
             this.Controls.Add(this.gbxRadio);
@@ -387,6 +425,8 @@
             this.Text = "Prodaj vozilo";
             this.gbxRadio.ResumeLayout(false);
             this.gbxRadio.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,5 +467,8 @@
         private System.Windows.Forms.RadioButton radioPravno;
         private System.Windows.Forms.TextBox txtPredstavnikHyundai;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.RadioButton rdbKia;
+        private System.Windows.Forms.RadioButton rdbHyundai;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

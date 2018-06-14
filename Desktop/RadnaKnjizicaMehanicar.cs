@@ -54,7 +54,7 @@ namespace Desktop
             dgvRadnaKnjizica.DataSource = lista;
             bool zaposli = true;
             foreach(AngazovanjeMehanicaraPregled a in lista)
-                if(a.KrajRada == null)
+                if(a.KrajRada == null || a.KrajRada<DateTime.Today)
                 {
                     zaposli = false;
                     return;
