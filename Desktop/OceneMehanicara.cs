@@ -22,5 +22,10 @@ namespace Desktop
             dgvOceneMehanicara.DataSource = DTOManager.GetOceneMehanicara(Predstavnik.ZaposleniId);
             dgvMehanicari.DataSource = DTOManager.GetMehanicariForOcenjivanje(Predstavnik.ZaposleniId);
         }
+
+        private void btnOceniMehanicara_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

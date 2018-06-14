@@ -29,18 +29,19 @@ namespace Desktop
         public frmServisVozila(PredstavnistvoPregled p)
         {
             this.predstavnistvo = p;
-          
+            
             InitializeComponent();
             InitMehanicari();
             this.Width = 500;
             this.Height = 110;
-            
+            btnPopusti.Visible = true;
 
 
         }
         public void InitMehanicari()
         {
             svi = DTOManager.GetMehanicariForServis(predstavnistvo);
+           
             init();
          //  dgvMehanicari.DataSource = DTOManager.GetMehanicariForServis(predstavnistvo);
           //  dgvMehanicari.DataSource = DTOManager.GetMehanicari(predstavnistvo.PredstavnistvoId);
@@ -122,9 +123,13 @@ namespace Desktop
 
         private void btnPopusti_Click(object sender, EventArgs e)
         {
-            if (txtRegistracija.Text == "")
-                return;
 
+            if (txtRegistracija.Text == "")
+            {
+                MessageBox.Show("Unesi registraciju!");
+                return;
+            }
+            btnPopusti.Visible = false;
             bool ind = DTOManager.CheckRegistracija(txtRegistracija.Text);
             if (ind)
             {
@@ -170,10 +175,12 @@ namespace Desktop
                     c.Visible = true;
 
                 }
+                btnPopusti.Visible = false;
                 this.Height = 576;
                 btnOK.Location = new Point(143, 492);
-                btnPopusti.Enabled = false;
+                
             }
+            
         }
     }
 }

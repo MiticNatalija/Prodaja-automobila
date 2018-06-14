@@ -46,13 +46,12 @@
             this.dgvOceneMehanicara.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvOceneMehanicara.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOceneMehanicara.Enabled = false;
-            this.dgvOceneMehanicara.Location = new System.Drawing.Point(13, 64);
-            this.dgvOceneMehanicara.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvOceneMehanicara.Location = new System.Drawing.Point(10, 52);
             this.dgvOceneMehanicara.MultiSelect = false;
             this.dgvOceneMehanicara.Name = "dgvOceneMehanicara";
             this.dgvOceneMehanicara.ReadOnly = true;
             this.dgvOceneMehanicara.RowHeadersVisible = false;
-            this.dgvOceneMehanicara.Size = new System.Drawing.Size(680, 146);
+            this.dgvOceneMehanicara.Size = new System.Drawing.Size(510, 119);
             this.dgvOceneMehanicara.TabIndex = 1;
             // 
             // dgvMehanicari
@@ -61,54 +60,58 @@
             this.dgvMehanicari.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMehanicari.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvMehanicari.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMehanicari.Location = new System.Drawing.Point(13, 286);
-            this.dgvMehanicari.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvMehanicari.Location = new System.Drawing.Point(10, 232);
             this.dgvMehanicari.MultiSelect = false;
             this.dgvMehanicari.Name = "dgvMehanicari";
             this.dgvMehanicari.ReadOnly = true;
             this.dgvMehanicari.RowTemplate.Height = 24;
             this.dgvMehanicari.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMehanicari.Size = new System.Drawing.Size(680, 167);
+            this.dgvMehanicari.Size = new System.Drawing.Size(510, 136);
             this.dgvMehanicari.TabIndex = 2;
             // 
             // lblOcenjeniMehanicari
             // 
             this.lblOcenjeniMehanicari.AutoSize = true;
-            this.lblOcenjeniMehanicari.Location = new System.Drawing.Point(286, 25);
+            this.lblOcenjeniMehanicari.Location = new System.Drawing.Point(214, 20);
+            this.lblOcenjeniMehanicari.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOcenjeniMehanicari.Name = "lblOcenjeniMehanicari";
-            this.lblOcenjeniMehanicari.Size = new System.Drawing.Size(141, 17);
+            this.lblOcenjeniMehanicari.Size = new System.Drawing.Size(106, 13);
             this.lblOcenjeniMehanicari.TabIndex = 3;
             this.lblOcenjeniMehanicari.Text = "Ocenjeni mehanicari:";
             // 
             // lblMehanicari
             // 
             this.lblMehanicari.AutoSize = true;
-            this.lblMehanicari.Location = new System.Drawing.Point(198, 239);
+            this.lblMehanicari.Location = new System.Drawing.Point(148, 194);
+            this.lblMehanicari.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMehanicari.Name = "lblMehanicari";
-            this.lblMehanicari.Size = new System.Drawing.Size(297, 17);
+            this.lblMehanicari.Size = new System.Drawing.Size(223, 13);
             this.lblMehanicari.TabIndex = 4;
             this.lblMehanicari.Text = "Mehanicari za Hyundai u servisi predstavnika:";
             this.lblMehanicari.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnOceniMehanicara
             // 
-            this.btnOceniMehanicara.Location = new System.Drawing.Point(267, 481);
+            this.btnOceniMehanicara.Location = new System.Drawing.Point(200, 391);
+            this.btnOceniMehanicara.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnOceniMehanicara.Name = "btnOceniMehanicara";
-            this.btnOceniMehanicara.Size = new System.Drawing.Size(172, 52);
+            this.btnOceniMehanicara.Size = new System.Drawing.Size(129, 42);
             this.btnOceniMehanicara.TabIndex = 5;
             this.btnOceniMehanicara.Text = "Oceni mehanicara";
             this.btnOceniMehanicara.UseVisualStyleBackColor = true;
+            this.btnOceniMehanicara.Click += new System.EventHandler(this.btnOceniMehanicara_Click);
             // 
             // OceneMehanicara
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 545);
+            this.ClientSize = new System.Drawing.Size(530, 443);
             this.Controls.Add(this.btnOceniMehanicara);
             this.Controls.Add(this.lblMehanicari);
             this.Controls.Add(this.lblOcenjeniMehanicari);
             this.Controls.Add(this.dgvMehanicari);
             this.Controls.Add(this.dgvOceneMehanicara);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "OceneMehanicara";
             this.Text = "Ocene Mehanicara";
             ((System.ComponentModel.ISupportInitialize)(this.dgvOceneMehanicara)).EndInit();

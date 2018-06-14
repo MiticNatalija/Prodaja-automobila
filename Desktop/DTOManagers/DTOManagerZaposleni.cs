@@ -83,7 +83,7 @@ namespace Desktop.DTOManagers
 
                 Predstavnistvo p = DTOManager.GetPredstavnistvo(pp);
 
-                IList < Zaposleni > mehanicari = (from a in s.Query<Angazuje>() where a.Servis == p select a.Mehanicar).ToList<Zaposleni>();
+                IList < Zaposleni > mehanicari = (from a in s.Query<Angazuje>() where a.Servis == p &&(a.KrajRada==null || a.KrajRada>DateTime.Today ) select a.Mehanicar).ToList<Zaposleni>();
 
                                foreach (Zaposleni z in mehanicari)
 
@@ -784,7 +784,7 @@ namespace Desktop.DTOManagers
                                       select ph.Predstavnistva[0]).Single<Predstavnistvo>();
 
                 IEnumerable<Angazuje> lista = (from a in s.Query<Angazuje>()
-                                               where a.Servis.Id == pom.Id && a.KrajRada == null && a.Mehanicar is MehanicarHyundai
+                                               where a.Servis.Id == pom.Id && a.KrajRada>DateTime.Today && a.Mehanicar is MehanicarHyundai
                                                select a);
                 foreach(Angazuje a in lista)
                 {

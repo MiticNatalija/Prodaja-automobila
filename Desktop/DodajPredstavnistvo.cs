@@ -36,9 +36,10 @@ namespace Desktop
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-           if(txtAdresa.Text=="" || dtpDatum.Value == null || (cbxPredstavnikKia.SelectedItem == null && cbxPredstavnikHyundai.SelectedItem == null))
+           if(txtAdresa.Text=="" || dtpDatum.Value == null )//|| (cbxPredstavnikKia.SelectedItem == null && cbxPredstavnikHyundai.SelectedItem == null))
             {
                 MessageBox.Show("Popunite sva polja!");
+                return;
             }
             Predstavnistvo = new PredstavnistvoAdd(txtAdresa.Text, dtpDatum.Value, cbxTip.SelectedItem.ToString());
             if (cbxTip.SelectedIndex == 0 || cbxTip.SelectedIndex == 1 || cbxTip.SelectedIndex == 2 || cbxTip.SelectedIndex == 3)
@@ -47,14 +48,29 @@ namespace Desktop
             }
             if(cbxTip.SelectedIndex == 0 || cbxTip.SelectedIndex == 3 || cbxTip.SelectedIndex == 5)
             {
+                if (cbxPredstavnikHyundai.Items.Count == 0)
+                {
+                    MessageBox.Show("Zao nam je,nema slobodnih predstavnika!");
+                    return;
+                }
                 Predstavnistvo.PredstavnikHyundaiId = ((PredstavnikPick)cbxPredstavnikHyundai.SelectedValue).PredstavnikId;
             }
             else if(cbxTip.SelectedIndex == 4 || cbxTip.SelectedIndex == 7 || cbxTip.SelectedIndex == 8)
             {
+                if (cbxPredstavnikKia.Items.Count == 0)
+                {
+                    MessageBox.Show("Zao nam je,nema slobodnih predstavnika!");
+                    return;
+                }
                 Predstavnistvo.PredstavnikKiaId = ((PredstavnikPick)cbxPredstavnikKia.SelectedValue).PredstavnikId;
             }
             else
             {
+                if (cbxPredstavnikKia.Items.Count == 0 || cbxPredstavnikHyundai.Items.Count==0)
+                {
+                    MessageBox.Show("Zao nam je,nema slobodnih predstavnika!");
+                    return;
+                }
                 Predstavnistvo.PredstavnikHyundaiId = ((PredstavnikPick)cbxPredstavnikHyundai.SelectedValue).PredstavnikId;
                 Predstavnistvo.PredstavnikKiaId = ((PredstavnikPick)cbxPredstavnikKia.SelectedValue).PredstavnikId;
             }
