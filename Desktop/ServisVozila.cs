@@ -18,7 +18,9 @@ namespace Desktop
         public PredstavnistvoPregled predstavnistvo;
     
 
-        public List<MehanicarPrikaz> dodmehanicari = new List<MehanicarPrikaz>();
+      //  public List<MehanicarPrikaz> dodmehanicari = new List<MehanicarPrikaz>();
+        public List<ZaposleniPregled> dodmehanicari = new List<ZaposleniPregled>();
+        public List<ZaposleniPregled> svi = new List<ZaposleniPregled>();
 
         public frmServisVozila()
         {
@@ -38,18 +40,31 @@ namespace Desktop
         }
         public void InitMehanicari()
         {
-            dgvMehanicari.DataSource = DTOManager.GetMehanicari(predstavnistvo.PredstavnistvoId);
+            svi = DTOManager.GetMehanicariForServis(predstavnistvo);
+            init();
+         //  dgvMehanicari.DataSource = DTOManager.GetMehanicariForServis(predstavnistvo);
+          //  dgvMehanicari.DataSource = DTOManager.GetMehanicari(predstavnistvo.PredstavnistvoId);
             
           
+        }
+        private void init()
+        {
+            dgvMehanicari.DataSource = null;
+            dgvMehanicari.DataSource = svi;
         }
         private void btnDodajMehanicara_Click(object sender, EventArgs e)
         {
 
      
-            MehanicarPrikaz m = (MehanicarPrikaz)dgvMehanicari.CurrentRow.DataBoundItem;
-       
+         //   MehanicarPrikaz m = (MehanicarPrikaz)dgvMehanicari.CurrentRow.DataBoundItem;
+            ZaposleniPregled m = (ZaposleniPregled)dgvMehanicari.CurrentRow.DataBoundItem;
 
             dodmehanicari.Add(m);
+            svi.Remove(m);
+            MessageBox.Show("Mehanicar je dodat u listu servisera!");
+            init();
+
+          
 
         }
 
@@ -90,7 +105,7 @@ namespace Desktop
             knjizica.Servis = DTOManager.GetPredstavnistvo(predstavnistvo);
 
             List<Zaposleni> lista = new List<Zaposleni>();
-            foreach(MehanicarPrikaz z in dodmehanicari)
+            foreach(ZaposleniPregled z in dodmehanicari)
             {
                 Zaposleni zap = DTOManager.GetZaposleni(z.Mbr);
                 lista.Add(zap);

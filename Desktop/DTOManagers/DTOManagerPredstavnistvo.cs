@@ -393,7 +393,7 @@ namespace Desktop.DTOManagers
                               select kn).ToList<Knjizica>();
                 foreach(Knjizica d in k)
                 {
-                    ServisPregled ser = new ServisPregled(d.Vozilo.Registracija, d.Radovi, d.CenaUsluge, d.DatumIntervencije);
+                    ServisPregled ser = new ServisPregled(d.Id,d.Vozilo.Registracija, d.Radovi, d.CenaUsluge, d.DatumIntervencije);
                     servisi.Add(ser);
                 }
 
@@ -408,6 +408,7 @@ namespace Desktop.DTOManagers
             }
             return servisi;
         }
+        
 
     
     }

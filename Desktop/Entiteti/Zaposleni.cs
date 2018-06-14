@@ -15,7 +15,7 @@ namespace Desktop.Entiteti
         public virtual string Prezime { get; set; }
         public virtual DateTime DatumRodjenja { get; set; }
         public virtual DateTime DatumZaposlenja { get; set; }
-
+        public virtual string Tip { get; set; }
     }
 
     public class PredstavnikKia : Zaposleni

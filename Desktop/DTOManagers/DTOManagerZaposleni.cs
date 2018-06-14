@@ -72,65 +72,94 @@ namespace Desktop.DTOManagers
         public static List<ZaposleniPregled> GetMehanicariForServis(PredstavnistvoPregled pp)
         {
             List<ZaposleniPregled> zapInfos = new List<ZaposleniPregled>();
+
             ISession s = null;
-            try
-            {
+
+                       try
+
+           {
+
                 s = DataLayer.GetSession();
 
-            
-                List<Zaposleni> mehanicari = new List<Zaposleni>();
-            
+                Predstavnistvo p = DTOManager.GetPredstavnistvo(pp);
 
-                IEnumerable<Angazuje> lista = (from a in s.Query<Angazuje>() where a.Servis.Id==pp.PredstavnistvoId select a);
-                foreach (Angazuje a in lista)
-                {
-                    Zaposleni novi = (from g in s.Query<Zaposleni>() where g.Id == a.Id select g).Single<Zaposleni>();
-                    mehanicari.Add(novi);
-                }
+                IList < Zaposleni > mehanicari = (from a in s.Query<Angazuje>() where a.Servis == p select a.Mehanicar).ToList<Zaposleni>();
 
+                               foreach (Zaposleni z in mehanicari)
 
+                                  {
 
-                foreach (Zaposleni z in mehanicari)
-                {
                     string tip = "Greska";
+
                     string tipZaposlenog = "Greska";
 
-                    
-                    if (z is MehanicarKia)
-                    {
-                        tipZaposlenog = "Mehanicar za Kiu";
+           
+                         if (z is MehanicarKia)
+
+                                           {
+
+                       tipZaposlenog = "Mehanicar za Kiu";
+
                         tip = "MehanicarKia";
+
                         zapInfos.Add(new ZaposleniPregled(z.Id, tip, z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, z.DatumRodjenja, z.DatumZaposlenja, tipZaposlenog));
 
+
+
                     }
-                    else if (z is MehanicarHyundai)
+
+                         else if (z is MehanicarHyundai)
+
                     {
+
                         tipZaposlenog = "Mehanicar za Hyundai";
+
                         tip = "MehanicarHyundai";
+
                         zapInfos.Add(new ZaposleniPregled(z.Id, tip, z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, z.DatumRodjenja, z.DatumZaposlenja, tipZaposlenog));
 
+
+
                     }
+
                     else if (z is MehanicarKiaHyundai)
+
                     {
+
                         tipZaposlenog = "Mehanicar za Kiu i Hyundai";
+
                         tip = "MehanicarKiaHyundai";
+
                         zapInfos.Add(new ZaposleniPregled(z.Id, tip, z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, z.DatumRodjenja, z.DatumZaposlenja, tipZaposlenog));
 
+
+
                     }
+
                 }
+
             }
-            catch (Exception ec)
+
+                        catch (Exception ec)
+
             {
+
                 MessageBox.Show(ec.Message);
+
             }
+
             finally
+
             {
+
                 s.Close();
+
             }
+
 
             return zapInfos;
         }
-
+           
 
         public static List<MehanicarPrikaz> GetMehanicari(int id)
         {
@@ -144,10 +173,14 @@ namespace Desktop.DTOManagers
                 List<Zaposleni> mehanicari = new List<Zaposleni>();
 
 
-                IEnumerable<Angazuje> lista = (from a in s.Query<Angazuje>() where a.Servis.Id == id select a);
+                IList<Angazuje> lista = (from a in s.Query<Angazuje>() where a.Servis.Id == id select a).ToList<Angazuje>();
                 foreach (Angazuje a in lista)
                 {
-                    Zaposleni novi = (from g in s.Query<Zaposleni>() where g.Id == a.Id select g).Single<Zaposleni>();
+                    Zaposleni novi = (from g in s.Query<Zaposleni>() where g.Id == a.Mehanicar.Id select g).Single<Zaposleni>();
+                    if(novi.Tip=="MehanicarKia")
+                    {
+                        
+                    }
                     mehanicari.Add(novi);
                 }
 
@@ -770,6 +803,32 @@ namespace Desktop.DTOManagers
                 s.Close();
             }
             return mo;
+        }
+        public static List<MehanicarPlain> GetMehanicariUKnjizici(int id)
+        {
+            ISession s = null;
+            List<MehanicarPlain> mehanicari=new List<MehanicarPlain>();
+            try
+            {
+                s = DataLayer.GetSession();
+
+                Knjizica knjizica = (from k in s.Query<Knjizica>()
+                                     where k.Id == id select k).Single<Knjizica>();
+
+                foreach(Zaposleni z in knjizica.Mehanicari)
+                {
+                    mehanicari.Add(new MehanicarPlain(z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime));
+                }
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return mehanicari;
         }
     }
 }

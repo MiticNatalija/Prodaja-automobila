@@ -203,7 +203,7 @@
             this.btnPopusti.Name = "btnPopusti";
             this.btnPopusti.Size = new System.Drawing.Size(75, 23);
             this.btnPopusti.TabIndex = 18;
-            this.btnPopusti.Text = "Vidi popuste";
+            this.btnPopusti.Text = "Dodaj servis";
             this.btnPopusti.UseVisualStyleBackColor = true;
             this.btnPopusti.Click += new System.EventHandler(this.btnPopusti_Click);
             // 

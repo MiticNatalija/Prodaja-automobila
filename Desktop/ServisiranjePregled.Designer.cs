@@ -40,7 +40,6 @@
             this.dgvServisi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvServisi.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvServisi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvServisi.Enabled = false;
             this.dgvServisi.Location = new System.Drawing.Point(12, 12);
             this.dgvServisi.MultiSelect = false;
             this.dgvServisi.Name = "dgvServisi";
@@ -48,6 +47,7 @@
             this.dgvServisi.RowHeadersVisible = false;
             this.dgvServisi.Size = new System.Drawing.Size(494, 352);
             this.dgvServisi.TabIndex = 0;
+            this.dgvServisi.DoubleClick += new System.EventHandler(this.dgvServisi_DoubleClick);
             // 
             // frmServisiranjePregled
             // 
@@ -55,6 +55,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(518, 376);
             this.Controls.Add(this.dgvServisi);
+            this.MaximizeBox = false;
             this.Name = "frmServisiranjePregled";
             this.Text = "Pregled servisa";
             this.Leave += new System.EventHandler(this.frmServisiranjePregled_Leave);

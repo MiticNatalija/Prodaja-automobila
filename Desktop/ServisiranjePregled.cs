@@ -33,5 +33,22 @@ namespace Desktop
         {
             DialogResult = DialogResult.OK;
         }
+
+        private void dgvServisi_DoubleClick(object sender, EventArgs e)
+        {
+
+            ServisPregled ser =(ServisPregled) dgvServisi.CurrentRow.DataBoundItem;
+            int id = ser.IdKnjizice;
+
+           List<MehanicarPlain> lista= DTOManager.GetMehanicariUKnjizici(id);
+            string prikaz = "";
+            foreach(MehanicarPlain m in lista)
+            {
+                prikaz += m.Mbr + " " + m.LicnoIme + " " + m.ImeOca + " " + m.Prezime;
+                prikaz += "\n";
+               // MessageBox.Show(m.Mbr + " " + m.LicnoIme + " " + m.ImeOca + " " + m.Prezime);
+            }
+            MessageBox.Show(prikaz);
+        }
     }
 }

@@ -73,6 +73,7 @@ namespace Desktop.DTOs
         public string Prezime { get; set; }
         public DateTime DatumRodjenja { get; set; }
         public DateTime DatumZaposlenja { get; set; }
+        public DateTime KrajRada { get; set; }
         public string Adresa { get; set; }
         public string Telefon { get; set; }
         public string Specijalnost { get; set; }
@@ -179,6 +180,24 @@ namespace Desktop.DTOs
 
         }
 
+
+    }
+    public class MehanicarPlain
+    {
+        public string Mbr { get; set; }
+        [DisplayName("Ime")]
+        public string LicnoIme { get; set; }
+        [DisplayName("Ime oca")]
+        public string ImeOca { get; set; }
+        public string Prezime { get; set; }
+        public MehanicarPlain(string mbr, string licnoIme, string imeOca, string prezime)
+        {
+            this.Mbr = mbr;
+            this.LicnoIme = licnoIme;
+            this.ImeOca = imeOca;
+            this.Prezime = prezime;
+           
+        }
 
     }
     public class MehanicarPrikaz

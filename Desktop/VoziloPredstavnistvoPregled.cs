@@ -49,11 +49,7 @@ namespace Desktop
         }
         private void btnDodajVozilo_Click(object sender, EventArgs e)
         {
-            if (dgvAutomobili.RowCount == 0)
-            {
-                MessageBox.Show("Nije selektovano nijedno vozilo!");
-                return;
-            }
+           
             frmDodajVozilo dlg = new frmDodajVozilo(Predstavnistvo);
             if (dlg.ShowDialog() == DialogResult.OK)
             {

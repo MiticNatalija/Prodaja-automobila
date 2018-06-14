@@ -95,14 +95,16 @@ namespace Desktop.DTOs
 
     public class ServisPregled
     {
+        public int IdKnjizice { get; set; }
         public string Registracija { get; set; }
         public string Radovi { get; set; }
         public int Cena { get; set; }
         [DisplayName("Datum servisa")]
         public DateTime DatumServisa { get; set; }
 
-        public ServisPregled(string reg,string radovi,int cena,DateTime datum)
+        public ServisPregled(int idKnjizice,string reg,string radovi,int cena,DateTime datum)
         {
+            IdKnjizice = idKnjizice;
             Registracija = reg;
             Radovi = radovi;
             Cena = cena;
