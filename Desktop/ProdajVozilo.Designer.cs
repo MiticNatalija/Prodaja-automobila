@@ -148,6 +148,7 @@
             this.txtFizickoTelefon.Name = "txtFizickoTelefon";
             this.txtFizickoTelefon.Size = new System.Drawing.Size(100, 20);
             this.txtFizickoTelefon.TabIndex = 11;
+            this.txtFizickoTelefon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFizickoTelefon_KeyPress);
             // 
             // label6
             // 
@@ -221,6 +222,7 @@
             this.txtPravnoTelefon.Name = "txtPravnoTelefon";
             this.txtPravnoTelefon.Size = new System.Drawing.Size(100, 20);
             this.txtPravnoTelefon.TabIndex = 20;
+            this.txtPravnoTelefon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPravnoTelefon_KeyPress);
             // 
             // label11
             // 

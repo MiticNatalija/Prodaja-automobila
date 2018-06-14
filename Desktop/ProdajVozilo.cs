@@ -206,5 +206,17 @@ namespace Desktop
             txtPravnoPrezime.Enabled = false;
             txtPravnoTelefon.Enabled = false;
         }
+
+        private void txtFizickoTelefon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtPravnoTelefon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
     }
 }

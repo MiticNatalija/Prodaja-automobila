@@ -69,7 +69,6 @@
             this.lblTipVozila.Size = new System.Drawing.Size(55, 13);
             this.lblTipVozila.TabIndex = 2;
             this.lblTipVozila.Text = "Tip vozila:";
-
             // 
             // lblBrojMesta
             // 
@@ -102,7 +101,6 @@
             this.txtGorivo.Name = "txtGorivo";
             this.txtGorivo.Size = new System.Drawing.Size(125, 20);
             this.txtGorivo.TabIndex = 6;
-            this.txtGorivo.TextChanged += new System.EventHandler(this.txtGorivo_TextChanged);
             // 
             // txtBrojMesta
             // 
@@ -110,6 +108,7 @@
             this.txtBrojMesta.Name = "txtBrojMesta";
             this.txtBrojMesta.Size = new System.Drawing.Size(125, 20);
             this.txtBrojMesta.TabIndex = 7;
+            this.txtBrojMesta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBrojMesta_KeyPress);
             // 
             // txtNosivost
             // 
@@ -117,6 +116,7 @@
             this.txtNosivost.Name = "txtNosivost";
             this.txtNosivost.Size = new System.Drawing.Size(125, 20);
             this.txtNosivost.TabIndex = 8;
+            this.txtNosivost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNosivost_KeyPress);
             // 
             // cbxTipVozila
             // 

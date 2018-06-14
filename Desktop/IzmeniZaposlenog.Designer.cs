@@ -100,6 +100,7 @@
             this.txtTelefon.Size = new System.Drawing.Size(100, 20);
             this.txtTelefon.TabIndex = 35;
             this.txtTelefon.TextChanged += new System.EventHandler(this.txtTelefon_TextChanged);
+            this.txtTelefon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefon_KeyPress);
             // 
             // txtMbr
             // 
@@ -109,6 +110,7 @@
             this.txtMbr.Size = new System.Drawing.Size(100, 20);
             this.txtMbr.TabIndex = 34;
             this.txtMbr.TextChanged += new System.EventHandler(this.txtMbr_TextChanged);
+            this.txtMbr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMbr_KeyPress);
             // 
             // txtPrezime
             // 

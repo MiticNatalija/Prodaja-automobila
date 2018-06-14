@@ -169,6 +169,7 @@
             this.txtMbr.Name = "txtMbr";
             this.txtMbr.Size = new System.Drawing.Size(100, 20);
             this.txtMbr.TabIndex = 13;
+            this.txtMbr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMbr_KeyPress);
             // 
             // txtTelefon
             // 
@@ -176,6 +177,7 @@
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(100, 20);
             this.txtTelefon.TabIndex = 14;
+            this.txtTelefon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefon_KeyPress);
             // 
             // txtSpecijalnost
             // 
