@@ -208,6 +208,12 @@
     <Compile Include="ServisVozila.Designer.cs">
       <DependentUpon>ServisVozila.cs</DependentUpon>
     </Compile>
+    <Compile Include="Testiraj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Testiraj.Designer.cs">
+      <DependentUpon>Testiraj.cs</DependentUpon>
+    </Compile>
     <Compile Include="VoziloPredstavnistvoPregled.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ServisVozila.resx">
       <DependentUpon>ServisVozila.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Testiraj.resx">
+      <DependentUpon>Testiraj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VoziloPredstavnistvoPregled.resx">
       <DependentUpon>VoziloPredstavnistvoPregled.cs</DependentUpon>

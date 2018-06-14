@@ -770,6 +770,7 @@ namespace Desktop.DTOManagers
             }
             return mo;
         }
+      
 
         public static List<MehanicarOceni> GetMehanicariForOcenjivanje(int zaposleniId)
         {
@@ -913,6 +914,58 @@ namespace Desktop.DTOManagers
             {
                 s.Close();
             }
+        }
+
+        public static MehanicarOcenaPregled AddTest(int idPredstavnika,int idMehanicara,int ocena,DateTime datum)
+        {
+            ISession s = null;
+            MehanicarOcenaPregled ocenjen = null;
+            try
+            {
+                s = DataLayer.GetSession();
+                Testira test = new Testira()
+                {
+                    DatumTestiranja = datum,
+                    Ocena = ocena,
+
+                };
+
+                Zaposleni za= (from zp in s.Query<Zaposleni>()
+                               where zp.Id == idMehanicara
+                               select zp).Single<Zaposleni>();
+
+           
+                
+                MehanicarHyundai mh=null;
+                if(za is MehanicarHyundai)
+                {
+                    mh = (MehanicarHyundai)za;
+                    test.Mehanicar = mh;
+                }
+               
+              PredstavnikHyundai  pr= (from zp in s.Query<PredstavnikHyundai>()
+                     where zp.Id == idPredstavnika
+                     select zp).Single<PredstavnikHyundai>();
+
+                test.Predstavnik = pr;
+
+                if (test.Predstavnik == null || test.Mehanicar == null)
+                    return null;
+
+                s.Save(test);
+                s.Flush();
+                ocenjen = new MehanicarOcenaPregled(mh.Id,mh.LicnoIme,mh.Prezime,"MehanicarHyundai",mh.DatumRodjenja,mh.DatumZaposlenja,mh.Specijalnost,test.DatumTestiranja,test.Ocena);
+
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return ocenjen;
         }
     }
 }

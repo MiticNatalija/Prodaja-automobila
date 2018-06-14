@@ -45,7 +45,6 @@
             this.dgvOceneMehanicara.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOceneMehanicara.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvOceneMehanicara.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOceneMehanicara.Enabled = false;
             this.dgvOceneMehanicara.Location = new System.Drawing.Point(10, 52);
             this.dgvOceneMehanicara.MultiSelect = false;
             this.dgvOceneMehanicara.Name = "dgvOceneMehanicara";
@@ -85,15 +84,15 @@
             this.lblMehanicari.Location = new System.Drawing.Point(148, 194);
             this.lblMehanicari.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMehanicari.Name = "lblMehanicari";
-            this.lblMehanicari.Size = new System.Drawing.Size(223, 13);
+            this.lblMehanicari.Size = new System.Drawing.Size(227, 13);
             this.lblMehanicari.TabIndex = 4;
-            this.lblMehanicari.Text = "Mehanicari za Hyundai u servisi predstavnika:";
+            this.lblMehanicari.Text = "Mehanicari za Hyundai u servisu predstavnika:";
             this.lblMehanicari.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnOceniMehanicara
             // 
             this.btnOceniMehanicara.Location = new System.Drawing.Point(200, 391);
-            this.btnOceniMehanicara.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOceniMehanicara.Margin = new System.Windows.Forms.Padding(2);
             this.btnOceniMehanicara.Name = "btnOceniMehanicara";
             this.btnOceniMehanicara.Size = new System.Drawing.Size(129, 42);
             this.btnOceniMehanicara.TabIndex = 5;
@@ -111,7 +110,7 @@
             this.Controls.Add(this.lblOcenjeniMehanicari);
             this.Controls.Add(this.dgvMehanicari);
             this.Controls.Add(this.dgvOceneMehanicara);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "OceneMehanicara";
             this.Text = "Ocene Mehanicara";
             ((System.ComponentModel.ISupportInitialize)(this.dgvOceneMehanicara)).EndInit();
