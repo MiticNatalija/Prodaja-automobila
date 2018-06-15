@@ -207,6 +207,11 @@ namespace Desktop
 
         private void btnOceneMehanicara_Click(object sender, EventArgs e)
         {
+            if (dgvPredstavnik.CurrentRow == null)
+            {
+                MessageBox.Show("Nije selektovan nijedan predstavnik!");
+                return;
+            }
             ZaposleniPregled tmp = (ZaposleniPregled)dgvPredstavnik.CurrentRow.DataBoundItem;
             OceneMehanicara frm = new OceneMehanicara(tmp);
             frm.ShowDialog();
@@ -214,6 +219,11 @@ namespace Desktop
 
         private void btnRadnaKnjizica_Click(object sender, EventArgs e)
         {
+            if (dgvPredstavnik.CurrentRow == null)
+            {
+                MessageBox.Show("Nije selektovan nijedan mehanicar!");
+                return;
+            }
             ZaposleniPregled tmp = (ZaposleniPregled)dgvPredstavnik.CurrentRow.DataBoundItem;
             RadnaKnjizicaMehanicar frm = new RadnaKnjizicaMehanicar(tmp);
             frm.ShowDialog();
