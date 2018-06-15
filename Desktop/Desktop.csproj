@@ -87,12 +87,6 @@
       <DependentUpon>AngazaujMehanicaraServis.cs</DependentUpon>
     </Compile>
     <Compile Include="DataLayer.cs" />
-    <Compile Include="DodajMehanicare.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DodajMehanicare.Designer.cs">
-      <DependentUpon>DodajMehanicare.cs</DependentUpon>
-    </Compile>
     <Compile Include="DodajPredstavnistvo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,9 +228,6 @@
     </Compile>
     <EmbeddedResource Include="AngazaujMehanicaraServis.resx">
       <DependentUpon>AngazaujMehanicaraServis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DodajMehanicare.resx">
-      <DependentUpon>DodajMehanicare.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DodajPredstavnistvo.resx">
       <DependentUpon>DodajPredstavnistvo.cs</DependentUpon>

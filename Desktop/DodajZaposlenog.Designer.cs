@@ -175,6 +175,7 @@
             this.txtMbr.Name = "txtMbr";
             this.txtMbr.Size = new System.Drawing.Size(100, 20);
             this.txtMbr.TabIndex = 13;
+            this.txtMbr.TextChanged += new System.EventHandler(this.txtMbr_TextChanged);
             this.txtMbr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMbr_KeyPress);
             // 
             // txtTelefon

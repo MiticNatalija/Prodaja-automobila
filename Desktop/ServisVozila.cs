@@ -98,6 +98,7 @@ namespace Desktop
             }
            
              Vozilo vozilo = DTOManager.GetVoziloPrekoRegistracije(txtRegistracija.Text);
+
             if (vozilo.vlasnik == null)
             {
                 Vlasnik vlasnik = new Vlasnik(txtTelefonVlasnika.Text, txtAdresaVlasnika.Text);
@@ -134,9 +135,15 @@ namespace Desktop
                 MessageBox.Show("Unesi registraciju!");
                 return;
             }
+            
+            int ind = DTOManager.CheckRegistracija(txtRegistracija.Text);
+            if(ind == 1)
+            {
+                MessageBox.Show("Vozilo jos uvek nije prodato!");
+                return;
+            }
             btnPopusti.Visible = false;
-            bool ind = DTOManager.CheckRegistracija(txtRegistracija.Text);
-            if (ind)
+            if (ind==2)
             {
 
                 VoziloPopust v = DTOManager.GetPopust(txtRegistracija.Text);
@@ -164,7 +171,7 @@ namespace Desktop
                 txtPopusti.AppendText(v.PopustiServis);
 
             }
-            else
+            else if(ind==3)
             {
                 frmDodajVozilo frm = new frmDodajVozilo(txtRegistracija.Text);
                 if (frm.ShowDialog() == DialogResult.OK)

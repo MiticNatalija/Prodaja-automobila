@@ -66,6 +66,28 @@ namespace Desktop
                 if (txtRegistracija.Text == "" || txtGorivo.Text == "" || txtOznakaMotora.Text=="")
                 {
                     MessageBox.Show("Popunite sva polja!");
+                    return;
+                }
+                if (cbxTipVozila.SelectedItem == null)
+                {
+                    MessageBox.Show("Unesite tip vozila!");
+                    return;
+                }
+                if (cbxTipVozila.SelectedIndex == 0)
+                {
+                    if(txtBrojMesta.Text=="" || int.Parse(txtBrojMesta.Text) > 9)
+                    {
+                        MessageBox.Show("Broj mesta je neodgovarajuci!");
+                        return;
+                    }
+                }
+                else
+                {
+                    if (txtNosivost.Text == "")
+                    {
+                        MessageBox.Show("Unesite nosivost!");
+                        return;
+                    }
                 }
                 v = new VoziloPregled(txtRegistracija.Text, txtGorivo.Text, cbxTipVozila.SelectedItem.ToString(), txtOznakaMotora.Text);
                 if (cbxTipVozila.SelectedIndex == 0)
@@ -87,6 +109,28 @@ namespace Desktop
                 if (txtGorivo.Text == "" || txtOznakaMotora.Text == "")
                 {
                     MessageBox.Show("Popunite sva polja!");
+                    return;
+                }
+                if (cbxTipVozila.SelectedItem == null)
+                {
+                    MessageBox.Show("Unesite tip vozila!");
+                    return;
+                }
+                if (cbxTipVozila.SelectedIndex == 0)
+                {
+                    if (txtBrojMesta.Text == "" || int.Parse(txtBrojMesta.Text) > 9)
+                    {
+                        MessageBox.Show("Broj mesta je neodgovarajuci!");
+                        return;
+                    }
+                }
+                else
+                {
+                    if (txtNosivost.Text == "")
+                    {
+                        MessageBox.Show("Unesite nosivost!");
+                        return;
+                    }
                 }
                 v = new VoziloPregled(txtRegistracija.Text, txtGorivo.Text, cbxTipVozila.SelectedItem.ToString(), txtOznakaMotora.Text);
                 if (cbxTipVozila.SelectedIndex == 0)

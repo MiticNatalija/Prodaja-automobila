@@ -543,7 +543,7 @@ namespace Desktop.DTOManagers
         }
 
       
-        public static bool CheckRegistracija(string reg)
+        public static int CheckRegistracija(string reg)
         {
             ISession s = DataLayer.GetSession();
             try
@@ -552,16 +552,19 @@ namespace Desktop.DTOManagers
                 Vozilo v = (from va in s.Query<Vozilo>()
                             where va.Registracija == reg
                             select va).Single<Vozilo>();
-               
-                    return
-                        true;
+
+
+                if (v.vlasnik == null && v.Predstavnik == null)
+                    return 1; //vozilo jos nije prodato
+                else
+                    return 2; //vec je bilo na servisu ili je prodato
 
 
             }
             catch (Exception ec)
             {
                 //MessageBox.Show(ec.Message);
-                return false;
+                return 3; //nema vozila
             }
             finally
             {

@@ -62,6 +62,11 @@ namespace Desktop
             }
         private void btn_Click(object sender, EventArgs e)
         {
+            if (txtMbr.Text == "" || txtIme.Text == "" || txtPrezime.Text == "" || txtImeOca.Text == "" || (txtSpecijalnost.Text == "" && (txtAdresa.Text == "" || txtTelefon.Text == "")))
+                {
+                MessageBox.Show("Popunite sva polja!");
+                return;
+            }
             if (txtMbr.Text.Length != 13)
             { MessageBox.Show("JMBG mora imati 13 cifara!"); }
             else
@@ -88,7 +93,8 @@ namespace Desktop
 
         private void txtMbr_TextChanged(object sender, EventArgs e)
         {
-            
+            if (txtMbr.Text.Length > 13)
+                return;
             zaposleni.Mbr = txtMbr.Text;
         }
 

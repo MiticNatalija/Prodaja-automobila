@@ -120,6 +120,7 @@
             this.txtFizickoJmbg.Name = "txtFizickoJmbg";
             this.txtFizickoJmbg.Size = new System.Drawing.Size(100, 20);
             this.txtFizickoJmbg.TabIndex = 7;
+            this.txtFizickoJmbg.TextChanged += new System.EventHandler(this.txtFizickoJmbg_TextChanged);
             // 
             // txtFizickoIme
             // 

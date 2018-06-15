@@ -283,5 +283,11 @@ namespace Desktop
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
+
+        private void txtFizickoJmbg_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFizickoJmbg.Text.Length > 13)
+                return;
+        }
     }
 }

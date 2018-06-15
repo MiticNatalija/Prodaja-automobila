@@ -34,6 +34,11 @@ namespace Desktop
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            if (txtAdresa.Text == "")
+            {
+                MessageBox.Show("Unesite adresu!");
+                return;
+            }
             Predstavnistvo.Adresa = txtAdresa.Text;
             Predstavnistvo.DatumOtvaranja = dtpDatum.Value;
             if (dtpDatum.Enabled)

@@ -170,5 +170,11 @@ namespace Desktop
             if (txtAdresa.Text.Length >= 1)
                 txtAdresa.Text = txtAdresa.Text.Substring(0, 1).ToUpper() + txtAdresa.Text.Substring(1);
         }
+
+        private void txtMbr_TextChanged(object sender, EventArgs e)
+        {
+            if (txtMbr.Text.Length > 13)
+                return;
+        }
     }
 }

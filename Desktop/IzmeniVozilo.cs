@@ -48,19 +48,38 @@ namespace Desktop
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            v.Registracija = txtRegistracija.Text;
-            v.Gorivo = txtGorivo.Text;
-            v.TipVozila = txtTipVozila.Text;
+            if (txtGorivo.Text == "" || txtRegistracija.Text=="" || txtOznakaMotora.Text=="")
+            {
+                MessageBox.Show("Popunite sva polja!");
+                return;
+            }
             if (txtTipVozila.Text == "Putnicko vozilo")
             {
+
+                if ( txtBrojMesta.Text=="" || int.Parse(txtBrojMesta.Text) > 9 )
+                {
+                    MessageBox.Show("Broj mesta mora biti manji od 9!");
+                    return;
+                }
                 v.BrojMesta = Convert.ToInt32(txtBrojMesta.Text);
                 v.Nosivost = null;
             }
             else if (txtTipVozila.Text == "Teretno vozilo")
             {
+                if (txtNosivost.Text == "")
+                {
+                    MessageBox.Show("Popunite sva polja!");
+                    return;
+                }
                 v.Nosivost = Convert.ToInt32(txtNosivost.Text);
                 v.BrojMesta = null;
             }
+            
+            v.Registracija = txtRegistracija.Text;
+            v.Gorivo = txtGorivo.Text;
+            v.TipVozila = txtTipVozila.Text;
+           
+
             v.OznakaMotora = txtOznakaMotora.Text;
 
             DialogResult = System.Windows.Forms.DialogResult.OK;
