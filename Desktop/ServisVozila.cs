@@ -99,6 +99,8 @@ namespace Desktop
            
              Vozilo vozilo = DTOManager.GetVoziloPrekoRegistracije(txtRegistracija.Text);
 
+           
+
             if (vozilo.vlasnik == null)
             {
                 Vlasnik vlasnik = new Vlasnik(txtTelefonVlasnika.Text, txtAdresaVlasnika.Text);
@@ -145,9 +147,30 @@ namespace Desktop
             btnPopusti.Visible = false;
             if (ind==2)
             {
+              //  Vozilo vozilo = DTOManager.GetVoziloPrekoRegistracije(txtRegistracija.Text);
 
+                string iden = DTOManager.GetProdavacRegistracije(txtRegistracija.Text);
+                if (iden!="")
+                {
+                    if(iden=="PredstavnikKia")
+                    {
+                        if (!predstavnistvo.Tip.Contains("Kia"))
+                        {
+                            MessageBox.Show("Ne mozete u ovom servisu servisirati vozilo!");
+                            return;
+                        }
+                    }
+                    else if(iden=="PredstavnikHyundai")
+                    {
+                        if(!predstavnistvo.Tip.Contains("Hyundai"))
+                        {
+                            MessageBox.Show("Ne mozete u ovom servisu servisirati vozilo!");
+                            return;
+                        }
+                    }
+                }
                 VoziloPopust v = DTOManager.GetPopust(txtRegistracija.Text);
-
+                
                 txtRegistracija.Enabled = false;
                 txtAdresaVlasnika.Visible = false;
                 txtTelefonVlasnika.Visible = false;

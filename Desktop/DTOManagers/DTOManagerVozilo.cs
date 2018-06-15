@@ -312,6 +312,49 @@ namespace Desktop.DTOManagers
             }
             return p;
         }
+        public static string GetProdavacRegistracije(string registracija)
+        {
+            ISession s = null;
+            Vozilo p = null;
+            string ret = "";
+            try
+            {
+                s = DataLayer.GetSession();
+
+                // Vozilo p = s.Load<Vozilo>(id);
+                p = (from pv in s.Query<Vozilo>()
+                     where pv.Registracija == registracija
+                     select pv).Single<Vozilo>();
+
+
+                if (p.Predstavnik != null)
+                {
+                    Zaposleni z = (from zap in s.Query<Zaposleni>()
+                                   where zap.Id == p.Predstavnik.Id
+                                   select zap).Single<Zaposleni>();
+                    
+
+                    if (z is PredstavnikHyundai)
+                    {
+                        ret = "PredstavnikHyundai";
+                    }
+                    else if (z is PredstavnikKia)
+                        ret = "PredstavnikKia";
+                }
+
+            }
+            catch (Exception ec)
+            {
+                //MessageBox.Show("Okej!");
+                MessageBox.Show(ec.Message);
+            }
+            finally
+            {
+                s.Close();
+            }
+            return ret;
+        }
+
 
         public static void UpdateVozilo(VoziloPregled p)
         {
