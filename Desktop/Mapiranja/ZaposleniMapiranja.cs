@@ -57,11 +57,12 @@ namespace Desktop.Mapiranja
             HasManyToMany(x => x.Mehanicari)
                 .Table("TESTIRA")
                 .ParentKeyColumn("PREDSTAVNIK_ID")
-                .ChildKeyColumn("MEHANICAR_ID")
-                .Inverse()
-                .Cascade.All();
+                .ChildKeyColumn("MEHANICAR_ID");
+               // .Inverse();  zakom
+               // .Cascade.All(); zakom
 
-            HasMany(x => x.TestiraMehanicari).KeyColumn("PREDSTAVNIK_ID").LazyLoad().Cascade.All().Inverse();
+            //promena su
+            HasMany(x => x.TestiraMehanicari).KeyColumn("PREDSTAVNIK_ID").LazyLoad().Cascade.SaveUpdate().Inverse();
             HasMany(x => x.Predstavnistva).KeyColumn("P_HYUNDAI_ID").LazyLoad().Cascade.SaveUpdate().Inverse();
         }
     }
@@ -104,10 +105,12 @@ namespace Desktop.Mapiranja
             HasManyToMany(x => x.Predstavnici)
                 .Table("TESTIRA")
                 .ParentKeyColumn("MEHANICAR_ID")
-                .ChildKeyColumn("PREDSTAVNIK_ID")
-                .Cascade.All();
+                .ChildKeyColumn("PREDSTAVNIK_ID");
+               // .Inverse();  //dodato
+                //.Cascade.All();  zakom
 
-            HasMany(x => x.TestiraPredstavnici).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.All().Inverse();
+            //promena su
+            HasMany(x => x.TestiraPredstavnici).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.SaveUpdate().Inverse();
 
             HasManyToMany(x => x.Servisi)
                .Table("ANGAZUJE")

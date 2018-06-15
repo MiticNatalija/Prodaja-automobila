@@ -49,9 +49,8 @@ namespace Desktop
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     tesirani.Add(DTOManager.AddTest(Predstavnik.ZaposleniId, m.MehanicarId, frm.ocena, frm.datum));
-
+                    init();
                 }
-                init();
             }
 
         }
