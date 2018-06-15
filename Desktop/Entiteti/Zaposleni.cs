@@ -96,20 +96,5 @@ namespace Desktop.Entiteti
         }
     }
 
-    public class MehanicarKiaHyundai : Zaposleni
-    {
-        public virtual string Specijalnost { get; set; }
-        public virtual IList<Predstavnistvo> Servisi { get; set; }
-
-        public virtual IList<Angazuje> AngazujeServisi { get; set; }
-        public virtual IList<Knjizica> Knjizice { get; set; }
-        
-
-        public MehanicarKiaHyundai()
-        {
-            Servisi = new List<Predstavnistvo>();
-            AngazujeServisi = new List<Angazuje>();
-            Knjizice = new List<Knjizica>();
-        }
-    }
+   
 }

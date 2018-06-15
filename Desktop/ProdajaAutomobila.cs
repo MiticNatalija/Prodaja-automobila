@@ -374,11 +374,7 @@ namespace Desktop
                     MehanicarHyundai p = (MehanicarHyundai)z2;
                     t.Mehanicar = p;
                 }
-                else if (z2.GetType() == typeof(MehanicarKiaHyundai))
-                {
-                    MehanicarKiaHyundai p = (MehanicarKiaHyundai)z2;
-                    t.Mehanicar = p;
-                }
+               
 
                 else
                 {

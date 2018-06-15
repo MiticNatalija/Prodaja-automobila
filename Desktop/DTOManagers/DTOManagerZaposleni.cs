@@ -50,11 +50,7 @@ namespace Desktop.DTOManagers
                         tipZaposlenog = "Mehanicar za Hyundai";
                         tip = "MehanicarHyundai";
                     }
-                    else if (z is MehanicarKiaHyundai)
-                    {
-                        tipZaposlenog = "Mehanicar za Kiu i Hyundai";
-                        tip = "MehanicarKiaHyundai";
-                    }
+                  
                     zapInfos.Add(new ZaposleniPregled(z.Id, tip, z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, z.DatumRodjenja, z.DatumZaposlenja, tipZaposlenog));
                 }
             }
@@ -122,19 +118,7 @@ namespace Desktop.DTOManagers
 
                     }
 
-                    else if (z is MehanicarKiaHyundai)
-
-                    {
-
-                        tipZaposlenog = "Mehanicar za Kiu i Hyundai";
-
-                        tip = "MehanicarKiaHyundai";
-
-                        zapInfos.Add(new ZaposleniPregled(z.Id, tip, z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, z.DatumRodjenja, z.DatumZaposlenja, tipZaposlenog));
-
-
-
-                    }
+                  
 
                 }
 
@@ -206,13 +190,7 @@ namespace Desktop.DTOManagers
                         zapInfos.Add(new MehanicarPrikaz(z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, tip, tipZaposlenog));
 
                     }
-                    else if (z is MehanicarKiaHyundai)
-                    {
-                        tipZaposlenog = "Mehanicar za Kiu i Hyundai";
-                        tip = "MehanicarKiaHyundai";
-                        zapInfos.Add(new MehanicarPrikaz(z.Mbr, z.LicnoIme, z.ImeOca, z.Prezime, tip, tipZaposlenog));
-
-                    }
+                 
                 }
             }
             catch (Exception ec)
