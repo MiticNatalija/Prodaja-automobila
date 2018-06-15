@@ -56,10 +56,15 @@ namespace Desktop
         private void btnDodajMehanicara_Click(object sender, EventArgs e)
         {
 
-     
-         //   MehanicarPrikaz m = (MehanicarPrikaz)dgvMehanicari.CurrentRow.DataBoundItem;
-            ZaposleniPregled m = (ZaposleniPregled)dgvMehanicari.CurrentRow.DataBoundItem;
 
+            //   MehanicarPrikaz m = (MehanicarPrikaz)dgvMehanicari.CurrentRow.DataBoundItem;
+            if (dgvMehanicari.CurrentRow == null) { 
+                MessageBox.Show("Nije selektovan nijedan mehanicar!");
+            return;
+        }
+
+            ZaposleniPregled m = (ZaposleniPregled)dgvMehanicari.CurrentRow.DataBoundItem;
+           
             dodmehanicari.Add(m);
             svi.Remove(m);
             MessageBox.Show("Mehanicar je dodat u listu servisera!");
