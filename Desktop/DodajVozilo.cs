@@ -113,5 +113,12 @@ namespace Desktop
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
+
+        private void txtGorivo_Leave(object sender, EventArgs e)
+        {
+            if (txtGorivo.Text.Length >= 1)
+                txtGorivo.Text = txtGorivo.Text.Substring(0, 1).ToUpper() + txtGorivo.Text.Substring(1);
+
+        }
     }
 }

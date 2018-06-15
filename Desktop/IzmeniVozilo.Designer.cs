@@ -110,6 +110,7 @@
             this.txtGorivo.Name = "txtGorivo";
             this.txtGorivo.Size = new System.Drawing.Size(100, 20);
             this.txtGorivo.TabIndex = 7;
+            this.txtGorivo.Leave += new System.EventHandler(this.txtGorivo_Leave);
             // 
             // txtTipVozila
             // 

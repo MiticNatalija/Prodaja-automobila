@@ -64,7 +64,7 @@ namespace Desktop
                 MessageBox.Show("Nevalidan datum rodjenja!");
                 return;
             }
-            if (txtIme.Text!="" && txtPrezime.Text != "" && txtImeOca.Text!="" && txtMbr.Text!="")
+            if (txtIme.Text != "" && txtPrezime.Text != "" && txtImeOca.Text != "" && txtMbr.Text != "")
             {
                 string ime = txtIme.Text;
                 string prezime = txtPrezime.Text;
@@ -72,40 +72,45 @@ namespace Desktop
                 string jmbg = txtMbr.Text;
                 DateTime r = dtpRodjenje.Value;
                 DateTime z = dtpZaposlenje.Value;
-                //mehanicar
-                if(cbxTip.SelectedIndex==0 || cbxTip.SelectedIndex == 1)
-                {
-                    if (txtSpecijalnost.Text != "")
-                    {
-                        string tip;
-                        if (cbxTip.SelectedIndex == 0)
-                            tip = "MehanicarKia";
-                        else
-                            tip = "MehanicarHyundai";
-                        MehanicarAdd novi = new MehanicarAdd(tip, jmbg, ime, imeOca, prezime, r, z,txtSpecijalnost.Text);
-                        DTOManager.AddMehanicar(novi);
-                        DialogResult = System.Windows.Forms.DialogResult.OK;
-                    }
-                    else
-                        MessageBox.Show("Popunite sva polja!");
-
-                }
-                //predstavnik
+                if (jmbg.Length != 13)
+                    MessageBox.Show("JMBG treba imati 13 cifara!");
                 else
                 {
-                    if (txtAdresa.Text != "" && txtTelefon.Text != "")
+                    //mehanicar
+                    if (cbxTip.SelectedIndex == 0 || cbxTip.SelectedIndex == 1)
                     {
-                        string tip;
-                        if (cbxTip.SelectedIndex == 2)
-                            tip = "PredstavnikKia";
+                        if (txtSpecijalnost.Text != "")
+                        {
+                            string tip;
+                            if (cbxTip.SelectedIndex == 0)
+                                tip = "MehanicarKia";
+                            else
+                                tip = "MehanicarHyundai";
+                            MehanicarAdd novi = new MehanicarAdd(tip, jmbg, ime, imeOca, prezime, r, z, txtSpecijalnost.Text);
+                            DTOManager.AddMehanicar(novi);
+                            DialogResult = System.Windows.Forms.DialogResult.OK;
+                        }
                         else
-                            tip = "PredstavnikHyundai";
+                            MessageBox.Show("Popunite sva polja!");
 
-                        PredstavnikAdd novi = new PredstavnikAdd(tip, jmbg, ime, imeOca, prezime, r, z, txtAdresa.Text, txtTelefon.Text);
-                        DTOManager.AddPredstavnik(novi);
-                        DialogResult = System.Windows.Forms.DialogResult.OK;
                     }
-                    else    MessageBox.Show("Popunite sva polja!");
+                    //predstavnik
+                    else
+                    {
+                        if (txtAdresa.Text != "" && txtTelefon.Text != "")
+                        {
+                            string tip;
+                            if (cbxTip.SelectedIndex == 2)
+                                tip = "PredstavnikKia";
+                            else
+                                tip = "PredstavnikHyundai";
+
+                            PredstavnikAdd novi = new PredstavnikAdd(tip, jmbg, ime, imeOca, prezime, r, z, txtAdresa.Text, txtTelefon.Text);
+                            DTOManager.AddPredstavnik(novi);
+                            DialogResult = System.Windows.Forms.DialogResult.OK;
+                        }
+                        else MessageBox.Show("Popunite sva polja!");
+                    }
                 }
             }
             else
@@ -122,6 +127,48 @@ namespace Desktop
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void txtIme_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtImeOca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtPrezime_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtIme_Leave(object sender, EventArgs e)
+        {
+            if (txtIme.Text.Length >= 1)
+                txtIme.Text = txtIme.Text.Substring(0, 1).ToUpper() + txtIme.Text.Substring(1);
+        }
+
+        private void txtImeOca_Leave(object sender, EventArgs e)
+        {
+            if (txtImeOca.Text.Length >= 1)
+                txtImeOca.Text = txtImeOca.Text.Substring(0, 1).ToUpper() + txtImeOca.Text.Substring(1);
+        }
+
+        private void txtPrezime_Leave(object sender, EventArgs e)
+        {
+            if (txtPrezime.Text.Length >= 1)
+                txtPrezime.Text = txtPrezime.Text.Substring(0, 1).ToUpper() + txtPrezime.Text.Substring(1);
+        }
+
+        private void txtAdresa_Leave(object sender, EventArgs e)
+        {
+            if (txtAdresa.Text.Length >= 1)
+                txtAdresa.Text = txtAdresa.Text.Substring(0, 1).ToUpper() + txtAdresa.Text.Substring(1);
         }
     }
 }

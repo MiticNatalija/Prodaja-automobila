@@ -150,10 +150,13 @@ namespace Desktop
                 f.Prezime = txtFizickoPrezime.Text;
                 f.Adresa = txtFizickoAdresa.Text;
                 f.Telefon = txtFizickoTelefon.Text;
-              //  f.Kupac = k;
-              //  k.FLice = f;
+                if (txtFizickoJmbg.Text.Length != 13)
+                { MessageBox.Show("JMBG mora imati 13 cifara!");
+                    return;
+                }
 
-                DTOManager.upisiFizickoLice(f, vozilo);
+                else
+                    DTOManager.upisiFizickoLice(f, vozilo);
                 
             }
             else if (radioPravno.Checked)
@@ -163,6 +166,7 @@ namespace Desktop
                 if (!int.TryParse(txtPravnoPib.Text, out pom))
                     return;
                 p.Pib = pom;
+                //provera za duzinu pib-a?
                 p.Ime = txtPravnoIme.Text;
                 p.Prezime = txtPravnoPrezime.Text;
                 p.Telefon = txtPravnoTelefon.Text;
@@ -214,6 +218,67 @@ namespace Desktop
         }
 
         private void txtPravnoTelefon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtFizickoIme_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtFizickoPrezime_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtPravnoIme_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtPravnoPrezime_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtFizickoIme_Leave(object sender, EventArgs e)
+        {
+           
+            if (txtFizickoIme.Text.Length >= 1)
+                txtFizickoIme.Text = txtFizickoIme.Text.Substring(0, 1).ToUpper() + txtFizickoIme.Text.Substring(1);
+        }
+
+        private void txtFizickoPrezime_Leave(object sender, EventArgs e)
+        {
+            if (txtFizickoPrezime.Text.Length >= 1)
+                txtFizickoPrezime.Text = txtFizickoPrezime.Text.Substring(0, 1).ToUpper() + txtFizickoPrezime.Text.Substring(1);
+        }
+
+        private void txtFizickoAdresa_Leave(object sender, EventArgs e)
+        {
+            if (txtFizickoAdresa.Text.Length >= 1)
+                txtFizickoAdresa.Text = txtFizickoAdresa.Text.Substring(0, 1).ToUpper() + txtFizickoAdresa.Text.Substring(1);
+        }
+
+        private void txtPravnoIme_Leave(object sender, EventArgs e)
+        {
+            if (txtPravnoIme.Text.Length >= 1)
+                txtPravnoIme.Text = txtPravnoIme.Text.Substring(0, 1).ToUpper() + txtPravnoIme.Text.Substring(1);
+        }
+
+        private void txtPravnoPrezime_Leave(object sender, EventArgs e)
+        {
+            if (txtPravnoPrezime.Text.Length >= 1)
+                txtPravnoPrezime.Text = txtPravnoPrezime.Text.Substring(0, 1).ToUpper() + txtPravnoPrezime.Text.Substring(1);
+        }
+
+        private void txtPravnoPib_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;

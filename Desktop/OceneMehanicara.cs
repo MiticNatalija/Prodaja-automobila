@@ -37,15 +37,22 @@ namespace Desktop
 
         private void btnOceniMehanicara_Click(object sender, EventArgs e)
         {
-            MehanicarOceni m = (MehanicarOceni)dgvMehanicari.CurrentRow.DataBoundItem;
-
-            frmTestiraj frm = new frmTestiraj();
-            if (frm.ShowDialog() == DialogResult.OK)
+            if (dgvMehanicari.Rows.Count == 0)
             {
-                tesirani.Add(DTOManager.AddTest(Predstavnik.ZaposleniId, m.MehanicarId, frm.ocena, frm.datum));
-               
+                MessageBox.Show("Nema mehanicara za ocenjivanje!");
             }
-            init();
+            else
+            {
+                MehanicarOceni m = (MehanicarOceni)dgvMehanicari.CurrentRow.DataBoundItem;
+
+                frmTestiraj frm = new frmTestiraj();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    tesirani.Add(DTOManager.AddTest(Predstavnik.ZaposleniId, m.MehanicarId, frm.ocena, frm.datum));
+
+                }
+                init();
+            }
 
         }
     }

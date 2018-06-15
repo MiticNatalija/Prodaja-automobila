@@ -49,5 +49,11 @@ namespace Desktop
                 dtpLicenca.Value =(DateTime)Predstavnistvo.DatumLicence;
 
         }
+
+        private void txtAdresa_Leave(object sender, EventArgs e)
+        {
+            if (txtAdresa.Text.Length >= 1)
+                txtAdresa.Text = txtAdresa.Text.Substring(0, 1).ToUpper() + txtAdresa.Text.Substring(1);
+        }
     }
 }

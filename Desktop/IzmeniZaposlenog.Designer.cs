@@ -84,6 +84,7 @@
             this.txtAdresa.Size = new System.Drawing.Size(100, 20);
             this.txtAdresa.TabIndex = 37;
             this.txtAdresa.TextChanged += new System.EventHandler(this.txtAdresa_TextChanged);
+            this.txtAdresa.Leave += new System.EventHandler(this.txtAdresa_Leave);
             // 
             // txtSpecijalnost
             // 
@@ -119,6 +120,8 @@
             this.txtPrezime.Size = new System.Drawing.Size(100, 20);
             this.txtPrezime.TabIndex = 33;
             this.txtPrezime.TextChanged += new System.EventHandler(this.txtPrezime_TextChanged);
+            this.txtPrezime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrezime_KeyPress);
+            this.txtPrezime.Leave += new System.EventHandler(this.txtPrezime_Leave);
             // 
             // txtImeOca
             // 
@@ -127,6 +130,8 @@
             this.txtImeOca.Size = new System.Drawing.Size(100, 20);
             this.txtImeOca.TabIndex = 32;
             this.txtImeOca.TextChanged += new System.EventHandler(this.txtImeOca_TextChanged);
+            this.txtImeOca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImeOca_KeyPress);
+            this.txtImeOca.Leave += new System.EventHandler(this.txtImeOca_Leave);
             // 
             // txtIme
             // 
@@ -134,7 +139,8 @@
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(100, 20);
             this.txtIme.TabIndex = 31;
-            this.txtIme.TextChanged += new System.EventHandler(this.txtIme_TextChanged);
+            this.txtIme.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIme_KeyPress);
+            this.txtIme.Leave += new System.EventHandler(this.txtIme_Leave);
             // 
             // label10
             // 

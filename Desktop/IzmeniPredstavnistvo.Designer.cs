@@ -61,6 +61,7 @@
             this.txtAdresa.Name = "txtAdresa";
             this.txtAdresa.Size = new System.Drawing.Size(100, 20);
             this.txtAdresa.TabIndex = 3;
+            this.txtAdresa.Leave += new System.EventHandler(this.txtAdresa_Leave);
             // 
             // dtpDatum
             // 

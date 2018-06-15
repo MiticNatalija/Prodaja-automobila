@@ -68,6 +68,7 @@
             this.txtAdresa.Name = "txtAdresa";
             this.txtAdresa.Size = new System.Drawing.Size(159, 20);
             this.txtAdresa.TabIndex = 8;
+            this.txtAdresa.Leave += new System.EventHandler(this.txtAdresa_Leave);
             // 
             // lblDatumOtvaranja
             // 

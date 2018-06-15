@@ -62,8 +62,13 @@ namespace Desktop
             }
         private void btn_Click(object sender, EventArgs e)
         {
-            DTOManager.UpdateZaposleni(zaposleni);
-            DialogResult = System.Windows.Forms.DialogResult.OK;
+            if (txtMbr.Text.Length != 13)
+            { MessageBox.Show("JMBG mora imati 13 cifara!"); }
+            else
+            {
+                DTOManager.UpdateZaposleni(zaposleni);
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
         }
 
         private void txtIme_TextChanged(object sender, EventArgs e)
@@ -123,6 +128,48 @@ namespace Desktop
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void txtIme_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtImeOca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtPrezime_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtIme_Leave(object sender, EventArgs e)
+        {
+            if (txtIme.Text.Length >= 1)
+                txtIme.Text = txtIme.Text.Substring(0, 1).ToUpper() + txtIme.Text.Substring(1);
+        }
+
+        private void txtImeOca_Leave(object sender, EventArgs e)
+        {
+            if (txtImeOca.Text.Length >= 1)
+                txtImeOca.Text = txtImeOca.Text.Substring(0, 1).ToUpper() + txtImeOca.Text.Substring(1);
+        }
+
+        private void txtPrezime_Leave(object sender, EventArgs e)
+        {
+            if (txtPrezime.Text.Length >= 1)
+                txtPrezime.Text = txtPrezime.Text.Substring(0, 1).ToUpper() + txtPrezime.Text.Substring(1);
+        }
+
+        private void txtAdresa_Leave(object sender, EventArgs e)
+        {
+            if (txtAdresa.Text.Length >= 1)
+                txtAdresa.Text = txtAdresa.Text.Substring(0, 1).ToUpper() + txtAdresa.Text.Substring(1);
         }
     }
 }

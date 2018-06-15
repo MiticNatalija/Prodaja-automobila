@@ -127,6 +127,8 @@
             this.txtFizickoIme.Name = "txtFizickoIme";
             this.txtFizickoIme.Size = new System.Drawing.Size(100, 20);
             this.txtFizickoIme.TabIndex = 8;
+            this.txtFizickoIme.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFizickoIme_KeyPress);
+            this.txtFizickoIme.Leave += new System.EventHandler(this.txtFizickoIme_Leave);
             // 
             // txtFizickoPrezime
             // 
@@ -134,6 +136,8 @@
             this.txtFizickoPrezime.Name = "txtFizickoPrezime";
             this.txtFizickoPrezime.Size = new System.Drawing.Size(100, 20);
             this.txtFizickoPrezime.TabIndex = 9;
+            this.txtFizickoPrezime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFizickoPrezime_KeyPress);
+            this.txtFizickoPrezime.Leave += new System.EventHandler(this.txtFizickoPrezime_Leave);
             // 
             // txtFizickoAdresa
             // 
@@ -141,6 +145,7 @@
             this.txtFizickoAdresa.Name = "txtFizickoAdresa";
             this.txtFizickoAdresa.Size = new System.Drawing.Size(100, 20);
             this.txtFizickoAdresa.TabIndex = 10;
+            this.txtFizickoAdresa.Leave += new System.EventHandler(this.txtFizickoAdresa_Leave);
             // 
             // txtFizickoTelefon
             // 
@@ -201,6 +206,7 @@
             this.txtPravnoPib.Name = "txtPravnoPib";
             this.txtPravnoPib.Size = new System.Drawing.Size(100, 20);
             this.txtPravnoPib.TabIndex = 17;
+            this.txtPravnoPib.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPravnoPib_KeyPress);
             // 
             // txtPravnoIme
             // 
@@ -208,6 +214,8 @@
             this.txtPravnoIme.Name = "txtPravnoIme";
             this.txtPravnoIme.Size = new System.Drawing.Size(100, 20);
             this.txtPravnoIme.TabIndex = 18;
+            this.txtPravnoIme.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPravnoIme_KeyPress);
+            this.txtPravnoIme.Leave += new System.EventHandler(this.txtPravnoIme_Leave);
             // 
             // txtPravnoPrezime
             // 
@@ -215,6 +223,8 @@
             this.txtPravnoPrezime.Name = "txtPravnoPrezime";
             this.txtPravnoPrezime.Size = new System.Drawing.Size(100, 20);
             this.txtPravnoPrezime.TabIndex = 19;
+            this.txtPravnoPrezime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPravnoPrezime_KeyPress);
+            this.txtPravnoPrezime.Leave += new System.EventHandler(this.txtPravnoPrezime_Leave);
             // 
             // txtPravnoTelefon
             // 

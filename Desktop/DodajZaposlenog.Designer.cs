@@ -147,6 +147,8 @@
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(100, 20);
             this.txtIme.TabIndex = 10;
+            this.txtIme.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIme_KeyPress);
+            this.txtIme.Leave += new System.EventHandler(this.txtIme_Leave);
             // 
             // txtImeOca
             // 
@@ -154,6 +156,8 @@
             this.txtImeOca.Name = "txtImeOca";
             this.txtImeOca.Size = new System.Drawing.Size(100, 20);
             this.txtImeOca.TabIndex = 11;
+            this.txtImeOca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImeOca_KeyPress);
+            this.txtImeOca.Leave += new System.EventHandler(this.txtImeOca_Leave);
             // 
             // txtPrezime
             // 
@@ -161,6 +165,8 @@
             this.txtPrezime.Name = "txtPrezime";
             this.txtPrezime.Size = new System.Drawing.Size(100, 20);
             this.txtPrezime.TabIndex = 12;
+            this.txtPrezime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrezime_KeyPress);
+            this.txtPrezime.Leave += new System.EventHandler(this.txtPrezime_Leave);
             // 
             // txtMbr
             // 
@@ -192,6 +198,7 @@
             this.txtAdresa.Name = "txtAdresa";
             this.txtAdresa.Size = new System.Drawing.Size(100, 20);
             this.txtAdresa.TabIndex = 16;
+            this.txtAdresa.Leave += new System.EventHandler(this.txtAdresa_Leave);
             // 
             // dtpRodjenje
             // 

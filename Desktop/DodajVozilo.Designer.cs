@@ -101,6 +101,7 @@
             this.txtGorivo.Name = "txtGorivo";
             this.txtGorivo.Size = new System.Drawing.Size(125, 20);
             this.txtGorivo.TabIndex = 6;
+            this.txtGorivo.Leave += new System.EventHandler(this.txtGorivo_Leave);
             // 
             // txtBrojMesta
             // 
