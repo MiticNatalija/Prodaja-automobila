@@ -29,7 +29,7 @@ namespace Desktop
         private void dgvRadnaKnjizica_SelectionChanged(object sender, EventArgs e)
         {
             AngazovanjeMehanicaraPregled tmp = (AngazovanjeMehanicaraPregled)dgvRadnaKnjizica.CurrentRow.DataBoundItem;
-            if(tmp.KrajRada == null)
+            if(tmp.KrajRada == null || tmp.KrajRada>DateTime.Today)
             {
                 btnZavrsiRadniOdnos.Enabled = true;
             }
@@ -54,7 +54,7 @@ namespace Desktop
             dgvRadnaKnjizica.DataSource = lista;
             bool zaposli = true;
             foreach(AngazovanjeMehanicaraPregled a in lista)
-                if(a.KrajRada == null || a.KrajRada<DateTime.Today)
+                if(a.KrajRada == null ||DateTime.Today<a.KrajRada)
                 {
                     zaposli = false;
                     return;

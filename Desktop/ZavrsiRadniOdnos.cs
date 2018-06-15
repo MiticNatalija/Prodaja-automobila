@@ -24,6 +24,11 @@ namespace Desktop
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            if (dtpKrajRada.Value > Angazuje.DatumPocetka)
+            {
+                MessageBox.Show("Nevalidan datum!");
+                return;
+            }
             Angazuje.KrajRada = dtpKrajRada.Value;
             Angazuje.Ocena = (int)numOcena.Value;
             DTOManager.UpdataAngazuje(Angazuje);

@@ -95,7 +95,7 @@ namespace Desktop
                 MessageBox.Show("Nema predstavnika!");
                 return;
             }
-            PredstavnikInfos frm = new PredstavnikInfos(predstavnici);
+            PredstavnikInfos frm = new PredstavnikInfos(predstavnici,tmp.PredstavnistvoId);
             frm.ShowDialog();
         }
 

@@ -395,23 +395,154 @@ namespace Desktop.DTOManagers
                 s.Close();
             }
         }
-       /* public static void UpdateMehanicarKia(MehanicarKia mk)
+        /* public static void UpdateMehanicarKia(MehanicarKia mk)
+         {
+             ISession s = null;
+             try
+             {
+                 s = DataLayer.GetSession();
+
+
+                 MehanicarKia mehk = (MehanicarKia)(from za in s.Query<Zaposleni>()
+                        where za.Id == mk.Id
+                        select za).Single<Zaposleni>();
+
+                 mehk = mk;
+
+                 s.SaveOrUpdate(mehk);
+                 s.Flush();
+
+             }
+             catch (Exception ec)
+             {
+                 MessageBox.Show(ec.Message);
+             }
+             finally
+             {
+                 s.Close();
+             }
+         }
+         public static void UpdateMehanicarHyundai(MehanicarHyundai mh)
+         {
+             ISession s = null;
+             try
+             {
+                 s = DataLayer.GetSession();
+
+
+                 MehanicarHyundai mehk = (MehanicarHyundai)(from za in s.Query<Zaposleni>()
+                                                    where za.Id == mh.Id
+                                                    select za).Single<Zaposleni>();
+
+                 mehk = mh;
+
+                 s.SaveOrUpdate(mehk);
+                 s.Flush();
+
+             }
+             catch (Exception ec)
+             {
+                 MessageBox.Show(ec.Message);
+             }
+             finally
+             {
+                 s.Close();
+             }
+         }
+         public static void UpdateMehanicarKiaHyundai(MehanicarKiaHyundai mkh)
+         {
+             ISession s = null;
+             try
+             {
+                 s = DataLayer.GetSession();
+
+
+                 MehanicarKiaHyundai mehk = (MehanicarKiaHyundai)(from za in s.Query<Zaposleni>()
+                                                    where za.Id == mkh.Id
+                                                    select za).Single<Zaposleni>();
+
+                 mehk = mkh;
+
+                 s.SaveOrUpdate(mehk);
+                 s.Flush();
+
+             }
+             catch (Exception ec)
+             {
+                 MessageBox.Show(ec.Message);
+             }
+             finally
+             {
+                 s.Close();
+             }
+         }
+         */
+
+        public static void ChangePredstavnikKia(int id,int idkia)
         {
             ISession s = null;
             try
             {
                 s = DataLayer.GetSession();
+                
+                PredstavnikKia zap = (from z in s.Query<PredstavnikKia>()
+                                 where z.Id == idkia
+                                 select z).Single<PredstavnikKia>();
+              
+
+                Predstavnistvo pred = (from phu in s.Query<Predstavnistvo>()
+                                                              where phu.Id==id
+                                                              select phu).Single<Predstavnistvo>();
+
+                if (pred is SalonKia)
+                {
+                    SalonKia pom = (SalonKia)pred;
+                    pom.PredstavnikKia = zap;
+                    s.Update(pom);
+
+                }
+                else if (pred is SalonServisKia)
+                {
+                    SalonServisKia pom = (SalonServisKia)pred;
+
+                    pom.PredstavnikKia = zap;
+                    s.Update(pom);
+                }
+                else if (pred is SalonHyundaiKia)
+                {
+                    SalonHyundaiKia pom = (SalonHyundaiKia)pred;
+                    pom.PredstavnikKia = zap;
+                    s.Update(pom);
+                }
+                else if (pred is SalonServisHyundaiKia)
+                {
+                    SalonServisHyundaiKia pom = (SalonServisHyundaiKia)pred;
+                    pom.PredstavnikKia = zap;
+                    s.Update(pom);
+                }
+                else if (pred is ServisKia)
+                {
+                    ServisKia pom = (ServisKia)pred;
+                    pom.PredstavnikKia = zap;
+                    s.Update(pom);
+                }
+                else if (pred is ServisHyundaiKia)
+                {
+                    ServisHyundaiKia pom = (ServisHyundaiKia)pred;
+                    pom.PredstavnikKia = zap;
+                    s.Update(pom);
+                }
+                else if (pred is SalonServisHyundaiKia)
+                {
+                    SalonServisHyundaiKia pom = (SalonServisHyundaiKia)pred;
+                    pom.PredstavnikKia = zap;
+                    s.Update(pom);
+                }
 
 
-                MehanicarKia mehk = (MehanicarKia)(from za in s.Query<Zaposleni>()
-                       where za.Id == mk.Id
-                       select za).Single<Zaposleni>();
 
-                mehk = mk;
 
-                s.SaveOrUpdate(mehk);
                 s.Flush();
-
             }
             catch (Exception ec)
             {
@@ -422,23 +553,64 @@ namespace Desktop.DTOManagers
                 s.Close();
             }
         }
-        public static void UpdateMehanicarHyundai(MehanicarHyundai mh)
+        public static void ChangePredstavnikHyundai(int id, int idkia)
         {
             ISession s = null;
             try
             {
                 s = DataLayer.GetSession();
 
+                PredstavnikHyundai zap = (from z in s.Query<PredstavnikHyundai>()
+                                      where z.Id == idkia
+                                      select z).Single<PredstavnikHyundai>();
 
-                MehanicarHyundai mehk = (MehanicarHyundai)(from za in s.Query<Zaposleni>()
-                                                   where za.Id == mh.Id
-                                                   select za).Single<Zaposleni>();
 
-                mehk = mh;
+                Predstavnistvo pred = (from phu in s.Query<Predstavnistvo>()
+                                       where phu.Id == id
+                                       select phu).Single<Predstavnistvo>();
 
-                s.SaveOrUpdate(mehk);
-                s.Flush();
+                if (pred is SalonHyundai)
+                {
+                    SalonHyundai pom = (SalonHyundai)pred;
+                    pom.PredstavnikHyundai = zap;
+                    s.Update(pom);
 
+                }
+                else if (pred is SalonServisHyundai)
+                {
+                    SalonServisHyundai pom = (SalonServisHyundai)pred;
+                    pom.PredstavnikHyundai = zap;
+                    s.Update(pom);
+                }
+                else if (pred is SalonHyundaiKia)
+                {
+                    SalonHyundaiKia pom = (SalonHyundaiKia)pred;
+                    pom.PredstavnikHyundai = zap;
+                    s.Update(pom);
+                }
+                else if (pred is SalonServisHyundaiKia)
+                {
+                    SalonServisHyundaiKia pom = (SalonServisHyundaiKia)pred;
+                    pom.PredstavnikHyundai = zap;
+                    s.Update(pom);
+                }
+                else if (pred is ServisHyundaiKia)
+                {
+                    ServisHyundaiKia pom = (ServisHyundaiKia)pred;
+                    pom.PredstavnikHyundai = zap;
+                    s.Update(pom);
+                }
+                else if (pred is ServisHyundai)
+                {
+                    ServisHyundai pom = (ServisHyundai)pred;
+                    pom.PredstavnikHyundai = zap;
+                    s.Update(pom);
+                }
+
+
+
+
+                    s.Flush();
             }
             catch (Exception ec)
             {
@@ -449,34 +621,8 @@ namespace Desktop.DTOManagers
                 s.Close();
             }
         }
-        public static void UpdateMehanicarKiaHyundai(MehanicarKiaHyundai mkh)
-        {
-            ISession s = null;
-            try
-            {
-                s = DataLayer.GetSession();
 
 
-                MehanicarKiaHyundai mehk = (MehanicarKiaHyundai)(from za in s.Query<Zaposleni>()
-                                                   where za.Id == mkh.Id
-                                                   select za).Single<Zaposleni>();
-
-                mehk = mkh;
-
-                s.SaveOrUpdate(mehk);
-                s.Flush();
-
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show(ec.Message);
-            }
-            finally
-            {
-                s.Close();
-            }
-        }
-        */
         public static void DeleteZaposleni(int id)
         {
             ISession s = null;
