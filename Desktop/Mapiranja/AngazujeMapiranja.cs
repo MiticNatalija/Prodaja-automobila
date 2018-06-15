@@ -20,10 +20,10 @@ namespace Desktop.Mapiranja
             Map(x => x.DatumPocetka).Column("DATUM_POCETKA");
             Map(x => x.KrajRada).Column("KRAJ_RADA");
 
-
-            References(x => x.Servis).Column("SERVIS_ID").LazyLoad();
-
-            References(x => x.Mehanicar).Column("MEHANICAR_ID").LazyLoad();
+            //dodato su
+            References(x => x.Servis).Column("SERVIS_ID").LazyLoad().Cascade.SaveUpdate();
+            //dodato su
+            References(x => x.Mehanicar).Column("MEHANICAR_ID").LazyLoad().Cascade.SaveUpdate();
 
         }
     }

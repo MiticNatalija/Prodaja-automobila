@@ -59,7 +59,12 @@ namespace Desktop
 
         private void btn_Click(object sender, EventArgs e)
         {
-            if(txtIme.Text!="" && txtPrezime.Text != "" && txtImeOca.Text!="" && txtMbr.Text!="")
+            if (dtpRodjenje.Value >= DateTime.Today)
+            {
+                MessageBox.Show("Nevalidan datum rodjenja!");
+                return;
+            }
+            if (txtIme.Text!="" && txtPrezime.Text != "" && txtImeOca.Text!="" && txtMbr.Text!="")
             {
                 string ime = txtIme.Text;
                 string prezime = txtPrezime.Text;

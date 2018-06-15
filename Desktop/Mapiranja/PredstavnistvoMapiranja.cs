@@ -34,11 +34,12 @@ namespace Desktop.Mapiranja
             HasManyToMany(x => x.Mehanicari)
                 .Table("ANGAZUJE")
                 .ParentKeyColumn("SERVIS_ID")
-                .ChildKeyColumn("MEHANICAR_ID")
-                .Inverse()
-                .Cascade.All();
+                .ChildKeyColumn("MEHANICAR_ID");
+                //.Inverse()   novo
+              //  .Cascade.All();  zakomentarisano
 
-            HasMany(x => x.AngazujeMehanicari).KeyColumn("SERVIS_ID").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.AngazujeMehanicari).KeyColumn("SERVIS_ID").LazyLoad().Cascade.SaveUpdate().Inverse();
+            //promena su
         }
     }
 
@@ -53,11 +54,11 @@ namespace Desktop.Mapiranja
             HasManyToMany(x => x.Mehanicari)
                .Table("ANGAZUJE")
                .ParentKeyColumn("SERVIS_ID")
-               .ChildKeyColumn("MEHANICAR_ID")
-               .Inverse()
-               .Cascade.All();
+               .ChildKeyColumn("MEHANICAR_ID");
+              // .Inverse()
+              // .Cascade.All();
 
-            HasMany(x => x.AngazujeMehanicari).KeyColumn("SERVIS_ID").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.AngazujeMehanicari).KeyColumn("SERVIS_ID").LazyLoad().Cascade.SaveUpdate().Inverse();
 
         }
     }
@@ -74,11 +75,11 @@ namespace Desktop.Mapiranja
             HasManyToMany(x => x.Mehanicari)
                .Table("ANGAZUJE")
                .ParentKeyColumn("SERVIS_ID")
-               .ChildKeyColumn("MEHANICAR_ID")
-               .Inverse()
-               .Cascade.All();
+               .ChildKeyColumn("MEHANICAR_ID");
+              // .Inverse()
+              // .Cascade.All();
 
-            HasMany(x => x.AngazujeMehanicari).KeyColumn("SERVIS_ID").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.AngazujeMehanicari).KeyColumn("SERVIS_ID").LazyLoad().Cascade.SaveUpdate().Inverse();
 
         }
     }
@@ -157,11 +158,11 @@ namespace Desktop.Mapiranja
             HasManyToMany(x => x.Mehanicari)
                .Table("ANGAZUJE")
                .ParentKeyColumn("SERVIS_ID")
-               .ChildKeyColumn("MEHANICAR_ID")
-               .Inverse()
-               .Cascade.All();
+               .ChildKeyColumn("MEHANICAR_ID");
+             //  .Inverse()
+            //   .Cascade.All();
 
-            HasMany(x => x.AngazujeMehanicari).KeyColumn("SERVIS_ID").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.AngazujeMehanicari).KeyColumn("SERVIS_ID").LazyLoad().Cascade.SaveUpdate().Inverse();
 
         }
     }
@@ -181,11 +182,11 @@ namespace Desktop.Mapiranja
             HasManyToMany(x => x.Mehanicari)
                .Table("ANGAZUJE")
                .ParentKeyColumn("SERVIS_ID")
-               .ChildKeyColumn("MEHANICAR_ID")
-               .Inverse()
-               .Cascade.All();
+               .ChildKeyColumn("MEHANICAR_ID");
+            //   .Inverse()
+            //   .Cascade.All();
 
-            HasMany(x => x.AngazujeMehanicari).KeyColumn("SERVIS_ID").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.AngazujeMehanicari).KeyColumn("SERVIS_ID").LazyLoad().Cascade.SaveUpdate().Inverse();
 
         }
     }

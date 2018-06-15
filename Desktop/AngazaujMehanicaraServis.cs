@@ -21,7 +21,7 @@ namespace Desktop
             InitializeComponent();
             Mehanicar = mehanicar;
             cbxServis.DataSource = DTOManager.GetServisiForAngazovanjeByTip(Mehanicar.Tip);
-            cbxServis.SelectedIndex = 0;
+           
         }
 
         private void brnOk_Click(object sender, EventArgs e)

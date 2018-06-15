@@ -49,7 +49,7 @@ namespace Desktop
 
           
 
-                if (predstavnici[0].TipZaposlenog.Equals("Predstavnik Za Kiu"))
+                if (predstavnici[0].TipZaposlenog.Equals("Predstavnik za Kiu"))
                 {
                     txtPredstavnikKia.Text = predstavnici[0].Mbr;
                     rdbKia.Enabled = true;

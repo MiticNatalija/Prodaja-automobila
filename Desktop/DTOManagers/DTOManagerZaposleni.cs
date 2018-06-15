@@ -483,7 +483,119 @@ namespace Desktop.DTOManagers
             try
             {
                 s = DataLayer.GetSession();
-                Zaposleni zap = s.Load<Zaposleni>(id);
+               // Zaposleni zap = s.Load<Zaposleni>(id);
+                Zaposleni zap = (from z in s.Query<Zaposleni>()
+                                 where z.Id == id
+                                 select z).Single<Zaposleni>();
+                if (zap is PredstavnikHyundai)
+                {
+                    PredstavnikHyundai ph = (PredstavnikHyundai)zap;
+                    if (ph.Predstavnistva.Count > 0)
+                    {
+                        foreach (Predstavnistvo pred in ph.Predstavnistva)
+                        {
+
+                            List<PredstavnikHyundai> lista = (from phu in s.Query<PredstavnikHyundai>()
+                                                              where phu.Predstavnistva.Count == 0
+                                                              select phu).ToList<PredstavnikHyundai>();
+                            if (lista.Count() == 0)
+                            {
+                                MessageBox.Show("Ne mozete obrisati predstavnika,jer trenutno nema slobodnih");
+                                return;
+                            }
+                            if (pred is SalonHyundai)
+                            {
+                                SalonHyundai pom = (SalonHyundai)pred;
+                                pom.PredstavnikHyundai = lista[0];
+
+                            }
+                            else if (pred is SalonServisHyundai)
+                            {
+                                SalonServisHyundai pom = (SalonServisHyundai)pred;
+                                pom.PredstavnikHyundai = lista[0];
+                            }
+                            else if (pred is SalonHyundaiKia)
+                            {
+                                SalonHyundaiKia pom = (SalonHyundaiKia)pred;
+                                pom.PredstavnikHyundai = lista[0];
+                            }
+                            else if (pred is SalonServisHyundaiKia)
+                            {
+                                SalonServisHyundaiKia pom = (SalonServisHyundaiKia)pred;
+                                pom.PredstavnikHyundai = lista[0];
+                            }
+                            else if (pred is ServisHyundaiKia)
+                            {
+                                ServisHyundaiKia pom = (ServisHyundaiKia)pred;
+                                pom.PredstavnikHyundai = lista[0];
+                            }
+                            else if (pred is ServisHyundai)
+                            {
+                                ServisHyundai pom = (ServisHyundai)pred;
+                                pom.PredstavnikHyundai = lista[0];
+                            }
+
+
+                        }
+                    }
+                }
+                else if (zap is PredstavnikKia)
+                {
+                    PredstavnikKia ph = (PredstavnikKia)zap;
+                    if (ph.Predstavnistva.Count > 0)
+                    {
+                        foreach (Predstavnistvo pred in ph.Predstavnistva)
+                        {
+
+                            List<PredstavnikKia> lista = (from phu in s.Query<PredstavnikKia>()
+                                                              where phu.Predstavnistva.Count == 0
+                                                              select phu).ToList<PredstavnikKia>();
+                            if (lista.Count() == 0)
+                            {
+                                MessageBox.Show("Ne mozete obrisati predstavnika,jer trenutno nema slobodnih");
+                                return;
+                            }
+                            if (pred is SalonKia)
+                            {
+                                SalonKia pom = (SalonKia)pred;
+                                pom.PredstavnikKia = lista[0];
+
+                            }
+                            else if (pred is SalonServisKia)
+                            {
+                                SalonServisKia pom = (SalonServisKia)pred;
+
+                                pom.PredstavnikKia = lista[0];
+                            }
+                            else if (pred is SalonHyundaiKia)
+                            {
+                                SalonHyundaiKia pom = (SalonHyundaiKia)pred;
+                                pom.PredstavnikKia = lista[0];
+                            }
+                            else if (pred is SalonServisHyundaiKia)
+                            {
+                                SalonServisHyundaiKia pom = (SalonServisHyundaiKia)pred;
+                                pom.PredstavnikKia = lista[0];
+                            }
+                            else if(pred is ServisKia)
+                            {
+                                ServisKia pom = (ServisKia)pred;
+                                pom.PredstavnikKia = lista[0];
+                            }
+                            else if (pred is ServisHyundaiKia)
+                            {
+                                ServisHyundaiKia pom = (ServisHyundaiKia)pred;
+                                pom.PredstavnikKia = lista[0];
+                            }
+                            else if (pred is SalonServisHyundaiKia)
+                            {
+                                SalonServisHyundaiKia pom = (SalonServisHyundaiKia)pred;
+                                pom.PredstavnikKia = lista[0];
+                            }
+
+                        }
+                    }
+                }
 
                 s.Delete(zap);
                 s.Flush();

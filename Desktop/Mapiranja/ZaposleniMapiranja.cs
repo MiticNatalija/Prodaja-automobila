@@ -36,9 +36,10 @@ namespace Desktop.Mapiranja
 
             Map(x => x.Adresa, "ADRESA");
             Map(x => x.Telefon, "TELEFON");
-            HasMany(x => x.Vozila).KeyColumn("PREDSTAVNIK_ID").LazyLoad().Cascade.All().Inverse();
-            
-            HasMany(x => x.Predstavnistva).KeyColumn("P_KIA_ID").LazyLoad().Cascade.All().Inverse();
+            //promenjeno su
+            HasMany(x => x.Vozila).KeyColumn("PREDSTAVNIK_ID").LazyLoad().Cascade.SaveUpdate().Inverse();
+            //promenjeno su
+            HasMany(x => x.Predstavnistva).KeyColumn("P_KIA_ID").LazyLoad().Cascade.SaveUpdate().Inverse();
             
         }
     }
@@ -61,7 +62,7 @@ namespace Desktop.Mapiranja
                 .Cascade.All();
 
             HasMany(x => x.TestiraMehanicari).KeyColumn("PREDSTAVNIK_ID").LazyLoad().Cascade.All().Inverse();
-            HasMany(x => x.Predstavnistva).KeyColumn("P_HYUNDAI_ID").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.Predstavnistva).KeyColumn("P_HYUNDAI_ID").LazyLoad().Cascade.SaveUpdate().Inverse();
         }
     }
 
@@ -75,15 +76,17 @@ namespace Desktop.Mapiranja
             HasManyToMany(x => x.Servisi)
                 .Table("ANGAZUJE")
                 .ParentKeyColumn("MEHANICAR_ID")
-                .ChildKeyColumn("SERVIS_ID")
-                .Cascade.All();
+                .ChildKeyColumn("SERVIS_ID");
+               // .Inverse()             //dodato
+              //  .Cascade.All();
 
-            HasMany(x => x.AngazujeServisi).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.AngazujeServisi).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.SaveUpdate().Inverse();
 
             HasManyToMany(x => x.Knjizice)
                 .Table("SADRZI")
                 .ParentKeyColumn("MEHANICAR_ID")
                 .ChildKeyColumn("KNJIZICA_ID")
+                .Inverse()          //dodato
                 .Cascade.All(); 
 
            
@@ -109,15 +112,17 @@ namespace Desktop.Mapiranja
             HasManyToMany(x => x.Servisi)
                .Table("ANGAZUJE")
                .ParentKeyColumn("MEHANICAR_ID")
-               .ChildKeyColumn("SERVIS_ID")
-               .Cascade.All();
-
-            HasMany(x => x.AngazujeServisi).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.All().Inverse();
+               .ChildKeyColumn("SERVIS_ID");
+             //  .Inverse()   //dodato
+             //  .Cascade.All();
+             //promena su
+            HasMany(x => x.AngazujeServisi).KeyColumn("MEHANICAR_ID").LazyLoad().Cascade.SaveUpdate().Inverse();
 
             HasManyToMany(x => x.Knjizice)
               .Table("SADRZI")
               .ParentKeyColumn("MEHANICAR_ID")
               .ChildKeyColumn("KNJIZICA_ID")
+              .Inverse()    //dodato
               .Cascade.All();
 
         }
