@@ -71,58 +71,20 @@ namespace Desktop
             { MessageBox.Show("JMBG mora imati 13 cifara!"); }
             else
             {
+                zaposleni.LicnoIme = txtIme.Text;
+                zaposleni.ImeOca = txtImeOca.Text;
+                zaposleni.Prezime = txtPrezime.Text;
+                zaposleni.Mbr = txtMbr.Text;
+                zaposleni.DatumRodjenja = dtpRodjenje.Value;
+                zaposleni.DatumZaposlenja = dtpZaposlenje.Value;
+                zaposleni.Specijalnost = txtSpecijalnost.Text;
+                zaposleni.Adresa = txtAdresa.Text;
+                zaposleni.Telefon = txtTelefon.Text;
                 DTOManager.UpdateZaposleni(zaposleni);
                 DialogResult = System.Windows.Forms.DialogResult.OK;
             }
         }
 
-        private void txtIme_TextChanged(object sender, EventArgs e)
-        {
-            zaposleni.LicnoIme = txtIme.Text;
-        }
-
-        private void txtImeOca_TextChanged(object sender, EventArgs e)
-        {
-            zaposleni.ImeOca = txtImeOca.Text;
-        }
-
-        private void txtPrezime_TextChanged(object sender, EventArgs e)
-        {
-            zaposleni.Prezime = txtPrezime.Text;
-        }
-
-        private void txtMbr_TextChanged(object sender, EventArgs e)
-        {
-            if (txtMbr.Text.Length > 13)
-                return;
-            zaposleni.Mbr = txtMbr.Text;
-        }
-
-        private void dtpRodjenje_ValueChanged(object sender, EventArgs e)
-        {
-            zaposleni.DatumRodjenja = dtpRodjenje.Value;
-        }
-
-        private void dtpZaposlenje_ValueChanged(object sender, EventArgs e)
-        {
-            zaposleni.DatumZaposlenja = dtpZaposlenje.Value;
-        }
-
-        private void txtSpecijalnost_TextChanged(object sender, EventArgs e)
-        {
-            zaposleni.Specijalnost = txtSpecijalnost.Text;
-        }
-
-        private void txtAdresa_TextChanged(object sender, EventArgs e)
-        {
-           
-            zaposleni.Adresa = txtAdresa.Text;
-        }
-
-        private void txtTelefon_TextChanged(object sender, EventArgs e)
-        {
-            zaposleni.Telefon = txtTelefon.Text;
-        }
 
         private void txtMbr_KeyPress(object sender, KeyPressEventArgs e)
         {

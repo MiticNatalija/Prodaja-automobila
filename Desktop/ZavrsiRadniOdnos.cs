@@ -14,7 +14,7 @@ namespace Desktop
 {
     public partial class ZavrsiRadniOdnos : Form
     {
-        private AngazovanjeMehanicaraPregled Angazuje { get; set; }
+        public AngazovanjeMehanicaraPregled Angazuje { get; set; }
 
         public ZavrsiRadniOdnos(AngazovanjeMehanicaraPregled angazuje)
         {
@@ -24,7 +24,7 @@ namespace Desktop
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            if (dtpKrajRada.Value > Angazuje.DatumPocetka)
+            if (dtpKrajRada.Value < Angazuje.DatumPocetka)
             {
                 MessageBox.Show("Nevalidan datum!");
                 return;

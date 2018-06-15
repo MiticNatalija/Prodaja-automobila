@@ -31,6 +31,7 @@ namespace Desktop
 
         private void init()
         {
+            dgvOceneMehanicara.DataSource = typeof(List<>);
             dgvOceneMehanicara.DataSource = tesirani;
             dgvMehanicari.DataSource = zaTestiranje;
         }

@@ -15,13 +15,14 @@ namespace Desktop
     public partial class AngazaujMehanicaraServis : Form
     {
         private ZaposleniPregled Mehanicar { get; set; }
+        public AngazovanjeMehanicaraPregled Angazovanje { get; protected set; }
 
         public AngazaujMehanicaraServis(ZaposleniPregled mehanicar)
         {
             InitializeComponent();
             Mehanicar = mehanicar;
             cbxServis.DataSource = DTOManager.GetServisiForAngazovanjeByTip(Mehanicar.Tip);
-           
+            Angazovanje = null;
         }
 
         private void brnOk_Click(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace Desktop
                     MessageBox.Show("Pogresan datum!"+Environment.NewLine+"Radnik je prvi put zaposljen: "+Mehanicar.DatumZaposlenja.ToShortDateString());
                 }
                 ServisAngazovanjePregled tmp = (ServisAngazovanjePregled)cbxServis.SelectedValue;
-                DTOManager.CreateAngazuje(tmp.ServisId, Mehanicar.ZaposleniId, dtpDatumPocetkaRada.Value);
+                Angazovanje = DTOManager.CreateAngazuje(tmp.ServisId, Mehanicar.ZaposleniId, dtpDatumPocetkaRada.Value);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

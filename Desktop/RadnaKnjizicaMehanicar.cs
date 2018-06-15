@@ -16,6 +16,8 @@ namespace Desktop
     {
         public ZaposleniPregled Mehanicar { get; set; }
 
+        private List<AngazovanjeMehanicaraPregled> Lista { get; set; }
+
         public RadnaKnjizicaMehanicar(ZaposleniPregled mehanicar)
         {
             InitializeComponent();
@@ -23,13 +25,14 @@ namespace Desktop
             txtIme.Text = Mehanicar.LicnoIme;
             txtJmbg.Text = Mehanicar.Mbr;
             txtPrezime.Text = Mehanicar.Prezime;
+            Lista = DTOManager.GetAngazovanjaMehanicara(Mehanicar.ZaposleniId);
             InitData();
         }
 
         private void dgvRadnaKnjizica_SelectionChanged(object sender, EventArgs e)
         {
             AngazovanjeMehanicaraPregled tmp = (AngazovanjeMehanicaraPregled)dgvRadnaKnjizica.CurrentRow.DataBoundItem;
-            if(tmp.KrajRada == null || tmp.KrajRada>DateTime.Today)
+            if(tmp.KrajRada == null || tmp.KrajRada > DateTime.Today)
             {
                 btnZavrsiRadniOdnos.Enabled = true;
             }
@@ -45,15 +48,17 @@ namespace Desktop
             ZavrsiRadniOdnos frm = new ZavrsiRadniOdnos(tmp);
             DialogResult dr = frm.ShowDialog();
             if (dr == DialogResult.OK)
+            {
                 InitData();
+            }
         }
 
         private void InitData()
         {
-            List<AngazovanjeMehanicaraPregled> lista = DTOManager.GetAngazovanjaMehanicara(Mehanicar.ZaposleniId);
-            dgvRadnaKnjizica.DataSource = lista;
+            dgvRadnaKnjizica.DataSource = typeof(List<>);
+            dgvRadnaKnjizica.DataSource = Lista;
             bool zaposli = true;
-            foreach(AngazovanjeMehanicaraPregled a in lista)
+            foreach(AngazovanjeMehanicaraPregled a in Lista)
                 if(a.KrajRada == null ||DateTime.Today<a.KrajRada)
                 {
                     zaposli = false;
@@ -69,6 +74,7 @@ namespace Desktop
             DialogResult dr = frm.ShowDialog();
             if(dr == DialogResult.OK)
             {
+                Lista.Add(frm.Angazovanje);
                 InitData();
             }
         }

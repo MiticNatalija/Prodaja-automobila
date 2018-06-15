@@ -418,22 +418,16 @@ namespace Desktop.DTOManagers
                 s = DataLayer.GetSession();
                 IEnumerable<Predstavnistvo> lista = null;
 
-                if (tip.CompareTo("MehanicarHyundaiKia") == 0)
+                if(tip.CompareTo("MehanicarHyundai") == 0)
                 {
                     lista = from shk in s.Query<Predstavnistvo>()
-                                        where shk is ServisHyundaiKia || shk is SalonServisHyundaiKia
-                                        select shk;
-                }
-                else if(tip.CompareTo("MehanicarHyundai") == 0)
-                {
-                    lista = from shk in s.Query<Predstavnistvo>()
-                            where shk is ServisHyundai || shk is SalonServisHyundai
+                            where shk is ServisHyundai || shk is SalonServisHyundai || shk is ServisHyundaiKia || shk is SalonServisHyundaiKia
                             select shk;
                 }
                 else if (tip.CompareTo("MehanicarKia") == 0)
                 {
                     lista = from shk in s.Query<Predstavnistvo>()
-                            where shk is ServisKia || shk is SalonServisKia
+                            where shk is ServisKia || shk is SalonServisKia || shk is ServisHyundaiKia || shk is SalonServisHyundaiKia
                             select shk;
                 }
 

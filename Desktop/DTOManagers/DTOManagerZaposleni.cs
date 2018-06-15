@@ -1122,9 +1122,10 @@ namespace Desktop.DTOManagers
             }
         }
 
-        public static void CreateAngazuje(int servisId, int mehanicarId, DateTime datumPocetka)
+        public static AngazovanjeMehanicaraPregled CreateAngazuje(int servisId, int mehanicarId, DateTime datumPocetka)
         {
             ISession s = null;
+            AngazovanjeMehanicaraPregled tmp = null;
             try
             {
                 s = DataLayer.GetSession();
@@ -1140,7 +1141,7 @@ namespace Desktop.DTOManagers
 
                 s.Save(ang);
                 s.Flush();
-
+                tmp = new AngazovanjeMehanicaraPregled(ang.Id, p.Adresa, ang.DatumPocetka, null, ang.Ocena);
             }
             catch (Exception ec)
             {
@@ -1150,6 +1151,7 @@ namespace Desktop.DTOManagers
             {
                 s.Close();
             }
+            return tmp;
         }
 
         public static MehanicarOcenaPregled AddTest(int idPredstavnika,int idMehanicara,int ocena,DateTime datum)
