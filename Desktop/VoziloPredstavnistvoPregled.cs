@@ -54,9 +54,14 @@ namespace Desktop
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 VoziloPregled v = dlg.v;
-                
-                DTOManager.AddVozilo(v);
-                InitVozila();
+                Vozilo novo = DTOManager.GetVoziloPrekoRegistracije(v.Registracija);
+                if (novo == null)
+                {
+                    DTOManager.AddVozilo(v);
+                    InitVozila();
+                }
+                else
+                    MessageBox.Show("Vozilo vec postoji u bazi!");
             }
         }
 

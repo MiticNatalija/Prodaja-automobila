@@ -148,6 +148,12 @@ namespace Desktop.DTOManagers
 
                 Vozilo v = null;
 
+             //   Vozilo test = GetVoziloPrekoRegistracije(p.Registracija);
+
+
+       
+
+                
                 Predstavnistvo predstavnistvo = (from pr in s.Query<Predstavnistvo>()
                                                  where pr.Id == p.PredstavnistvoPregled.PredstavnistvoId
                                                  select pr).Single<Predstavnistvo>();
@@ -297,7 +303,8 @@ namespace Desktop.DTOManagers
             }
             catch (Exception ec)
             {
-                MessageBox.Show(ec.Message);
+                MessageBox.Show("Okej!");
+               // MessageBox.Show(ec.Message);
             }
             finally
             {
