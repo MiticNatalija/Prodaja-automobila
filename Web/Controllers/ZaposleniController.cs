@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Web.Http;
 using Desktop.DTOManagers;
 using Desktop.DTOs;
+using Desktop.DataProviders;
+using Desktop.Entiteti;
 
 namespace Web.Controllers
 {
@@ -14,31 +16,42 @@ namespace Web.Controllers
         // GET: api/Zaposleni
         public IEnumerable<ZaposleniPregled> Get()
         {
-            return new[]
-            {
-                new ZaposleniPregled("1231231233211", "Proba", "Api", "MehanicarKia")
-            };
+            //return new[]
+            //{
+            //    new ZaposleniPregled("1231231233211", "Proba", "Api", "MehanicarKia")
+            //};
+            DataProvider provider = new DataProvider();
+            IEnumerable<ZaposleniPregled> lista = provider.GetZaposleni();
+            return lista;
         }
 
         // GET: api/Zaposleni/5
-        public string Get(int id)
+        public ZaposleniPregled Get(int id)
         {
-            return "value";
+            DataProvider provider = new DataProvider();
+            return provider.GetZaposleni(id);
         }
 
         // POST: api/Zaposleni
-        public void Post([FromBody]string value)
+        public int Post([FromBody]Zaposleni value)
         {
+            DataProvider provider = new DataProvider();
+           return provider.AddZaposleni(value);
         }
 
         // PUT: api/Zaposleni/5
-        public void Put(int id, [FromBody]string value)
+        public int Put(int id, [FromBody]Zaposleni value)
         {
+
+            DataProvider provider = new DataProvider();
+           return provider.UpdateZaposleni(id, value);
         }
 
         // DELETE: api/Zaposleni/5
-        public void Delete(int id)
+        public int Delete(int id)
         {
+            DataProvider provider = new DataProvider();
+            return provider.RemoveZaposleni(id);
         }
     }
 }
