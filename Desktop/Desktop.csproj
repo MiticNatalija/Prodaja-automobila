@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{84A98923-CEC0-4913-B40D-0D6903B29E03}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Desktop</RootNamespace>
     <AssemblyName>Desktop</AssemblyName>
@@ -225,6 +225,8 @@
     <Compile Include="VoziloPredstavnistvoPregled.Designer.cs">
       <DependentUpon>VoziloPredstavnistvoPregled.cs</DependentUpon>
     </Compile>
+    <Compile Include="Web DTOs\VoziloView.cs" />
+    <Compile Include="Web DTOs\ZaposleniView.cs" />
     <Compile Include="ZavrsiRadniOdnos.cs">
       <SubType>Form</SubType>
     </Compile>

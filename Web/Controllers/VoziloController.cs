@@ -8,6 +8,7 @@ using Desktop.DTOManagers;
 using Desktop.DTOs;
 using Desktop.DataProviders;
 using Desktop.Entiteti;
+using Desktop.Web_DTOs;
 
 
 namespace Web.Controllers
@@ -15,23 +16,25 @@ namespace Web.Controllers
     public class VoziloController : ApiController
     {
         //GET: api/Vozilo
-        public IEnumerable<VoziloPregled> Get()
+        public IEnumerable<Vozilo> Get()
         {
 
             DataProvider provider = new DataProvider();
 
-            IEnumerable<VoziloPregled> vozila = provider.GetVozila();
+            IEnumerable<Vozilo> vozila = provider.GetVozila();
 
             return vozila;
+            
         }
         // GET: api/Vozilo/5
-        public VoziloPregled Get(int id)
+        public VoziloView Get(int id)
         {
             //return DTOManager.GetVozilo(43);
 
             DataProvider provider = new DataProvider();
-
+            
             return provider.GetVozilo(id);
+            
         }
         //POST: api/Vozilo
         public int Post([FromBody]Vozilo v)

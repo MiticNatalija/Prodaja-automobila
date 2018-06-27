@@ -8,28 +8,31 @@ using Desktop.DTOManagers;
 using Desktop.DTOs;
 using Desktop.DataProviders;
 using Desktop.Entiteti;
+using Desktop.Web_DTOs;
 
 namespace Web.Controllers
 {
     public class ZaposleniController : ApiController
     {
         // GET: api/Zaposleni
-        public IEnumerable<ZaposleniPregled> Get()
+        public IEnumerable<Zaposleni> Get()
         {
             //return new[]
             //{
             //    new ZaposleniPregled("1231231233211", "Proba", "Api", "MehanicarKia")
             //};
             DataProvider provider = new DataProvider();
-            IEnumerable<ZaposleniPregled> lista = provider.GetZaposleni();
+            IEnumerable<Zaposleni> lista = provider.GetZaposleni();
             return lista;
+
         }
 
         // GET: api/Zaposleni/5
-        public ZaposleniPregled Get(int id)
+        public ZaposleniView Get(int id)
         {
             DataProvider provider = new DataProvider();
-            return provider.GetZaposleni(id);
+             return provider.GetZaposleni(id);
+            
         }
 
         // POST: api/Zaposleni

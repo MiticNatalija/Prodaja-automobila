@@ -9,6 +9,7 @@ using Desktop.DTOs;
 using Desktop.DTOManagers;
 using NHibernate;
 using NHibernate.Linq;
+using Desktop.Web_DTOs;
 
 
 namespace Desktop.DataProviders
@@ -16,14 +17,16 @@ namespace Desktop.DataProviders
     public partial class DataProvider
     {
 
-        public IEnumerable<VoziloPregled> GetVozila()
+        public IEnumerable<Vozilo> GetVozila()
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                IEnumerable<VoziloPregled> vozila = s.Query<VoziloPregled>().Select(p => p);
+                IEnumerable<Vozilo> vozila = s.Query<Vozilo>().Select(p => p);
                 s.Close();
+               
+
                 return vozila;
 
             }
@@ -34,14 +37,20 @@ namespace Desktop.DataProviders
                 return null;
             }
         }
-        public VoziloPregled GetVozilo(int id)
+        public VoziloView GetVozilo(int id)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
-                VoziloPregled v = (from t in s.Query<VoziloPregled>() where t.VoziloId == id select t).Single<VoziloPregled>();
+              //  Vozilo v = (from t in s.Query<Vozilo>() where t.Id == id select t).Single<Vozilo>();
+                Vozilo v = s.Get<Vozilo>(id);
                 s.Close();
-                return v;
+                VoziloView toret = null;
+                if (v != null)
+                {
+                    toret = new VoziloView(v);
+                }
+                return toret;
             }
             catch (Exception ec)
             {

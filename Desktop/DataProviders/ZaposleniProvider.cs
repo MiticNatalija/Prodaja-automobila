@@ -9,19 +9,20 @@ using Desktop.DTOs;
 using Desktop.DTOManagers;
 using NHibernate;
 using NHibernate.Linq;
+using Desktop.Web_DTOs;
 
 
 namespace Desktop.DataProviders
 {
     public partial class DataProvider
     {
-        public IEnumerable<ZaposleniPregled> GetZaposleni()
+        public IEnumerable<Zaposleni> GetZaposleni()
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                IEnumerable<ZaposleniPregled> zaposleni = s.Query<ZaposleniPregled>().Select(p => p);
+                IEnumerable<Zaposleni> zaposleni = s.Query<Zaposleni>().Select(p => p);
                 s.Close();
 
                 return zaposleni;
@@ -35,14 +36,21 @@ namespace Desktop.DataProviders
             }
 
         }
-        public ZaposleniPregled GetZaposleni(int id)
+        public ZaposleniView GetZaposleni(int id)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
-                ZaposleniPregled z = (from t in s.Query<ZaposleniPregled>() where t.ZaposleniId == id select t).Single<ZaposleniPregled>();
+                //  Zaposleni z = (from t in s.Query<Zaposleni>() where t.Id == id select t).Single<Zaposleni>();
+                Zaposleni z = s.Get<Zaposleni>(id);
                 s.Close();
-                return z;
+                ZaposleniView zap = null;
+                if (z != null)
+                {
+                    zap = new ZaposleniView(z);
+                }
+
+                return zap;
             }
             catch (Exception ec)
             {
