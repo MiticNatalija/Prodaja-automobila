@@ -15,14 +15,10 @@ namespace Web.Controllers
     public class ZaposleniController : ApiController
     {
         // GET: api/Zaposleni
-        public IEnumerable<Zaposleni> Get()
+        public List<ZaposleniView> Get()
         {
-            //return new[]
-            //{
-            //    new ZaposleniPregled("1231231233211", "Proba", "Api", "MehanicarKia")
-            //};
             DataProvider provider = new DataProvider();
-            IEnumerable<Zaposleni> lista = provider.GetZaposleni();
+            List<ZaposleniView> lista = provider.GetZaposleni();
             return lista;
 
         }
@@ -32,18 +28,31 @@ namespace Web.Controllers
         {
             DataProvider provider = new DataProvider();
              return provider.GetZaposleni(id);
-            
+
         }
 
         // POST: api/Zaposleni
-        public int Post([FromBody]Zaposleni value)
+//        {
+//	"Tip": "Predstavnik Kia",
+//	"Mbr": "1809776542345",
+//	"LicnoIme": "Marija",
+//    "ImeOca": "Marko",
+//    "Prezime": "Maric",
+//    "DatumRodjenja": "1996-06-15T00:00:00",
+//    "DatumZaposlenja": "2018-06-15T00:00:00"
+//}
+    public int Post([FromBody]ZaposleniView value)
         {
             DataProvider provider = new DataProvider();
            return provider.AddZaposleni(value);
         }
 
         // PUT: api/Zaposleni/5
-        public int Put(int id, [FromBody]Zaposleni value)
+    //  {  "ImeOca": "Misko",
+    //"Prezime": "Simicicic",
+    //"DatumZaposlenja": "2018-06-15T00:00:00"
+    // }
+        public int Put(int id, [FromBody]ZaposleniView value)
         {
 
             DataProvider provider = new DataProvider();

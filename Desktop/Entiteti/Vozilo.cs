@@ -38,6 +38,12 @@ namespace Desktop.Entiteti
 
         public Putnicko()
         { }
+        public Putnicko(string r, string g, string o)
+        {
+            Registracija = r;
+            Gorivo = g;
+            OznakaMotora = o;
+        }
 
     }
 
@@ -46,5 +52,12 @@ namespace Desktop.Entiteti
         public virtual int? Nosivost { get; set; }
         public Teretno()
         { }
+        public Teretno(string r, string g, string o)
+        {
+            Registracija = r;
+            Gorivo = g;
+            OznakaMotora = o;
+        }
+
     }
 }

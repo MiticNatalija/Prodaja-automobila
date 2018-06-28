@@ -90,6 +90,7 @@
       <DependentUpon>AngazaujMehanicaraServis.cs</DependentUpon>
     </Compile>
     <Compile Include="DataLayer.cs" />
+    <Compile Include="DataProviders\PredstavnistvoProvider.cs" />
     <Compile Include="DataProviders\ZaposleniProvider.cs" />
     <Compile Include="DodajPredstavnistvo.cs">
       <SubType>Form</SubType>
@@ -225,6 +226,7 @@
     <Compile Include="VoziloPredstavnistvoPregled.Designer.cs">
       <DependentUpon>VoziloPredstavnistvoPregled.cs</DependentUpon>
     </Compile>
+    <Compile Include="Web DTOs\PredstavnistvoView.cs" />
     <Compile Include="Web DTOs\VoziloView.cs" />
     <Compile Include="Web DTOs\ZaposleniView.cs" />
     <Compile Include="ZavrsiRadniOdnos.cs">

@@ -17,17 +17,48 @@ namespace Desktop.DataProviders
     public partial class DataProvider
     {
 
-        public IEnumerable<Vozilo> GetVozila()
+        //public IEnumerable<Vozilo> GetVozila()
+        //{
+        //    try
+        //    {
+        //        ISession s = DataLayer.GetSession();
+
+        //        IEnumerable<Vozilo> vozila = s.Query<Vozilo>().Select(p => p);
+
+        //        s.Close();
+
+
+        //        return vozila;
+
+        //    }
+        //    catch (Exception ec)
+        //    {
+        //        // ec.Message;
+        //        // return -1;
+        //        return null;
+        //    }
+        //}
+        public List<VoziloView> GetVozila()
         {
+            List<VoziloView> vozilaView = new List<VoziloView>();
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                IEnumerable<Vozilo> vozila = s.Query<Vozilo>().Select(p => p);
-                s.Close();
-               
+                IEnumerable<Vozilo> vozila = from p in s.Query<Vozilo>()
+                                                             select p;
+                foreach (Vozilo v in vozila)
+                {
+                    if(v is Putnicko)
+                        vozilaView.Add(new VoziloView(v.Id, "Putnicko", v.Registracija, v.Gorivo, v.OznakaMotora));
+                    else if (v is Teretno)
+                        vozilaView.Add(new VoziloView(v.Id, "Teretno", v.Registracija, v.Gorivo, v.OznakaMotora));
 
-                return vozila;
+                }
+                s.Close();
+
+
+                return vozilaView;
 
             }
             catch (Exception ec)
@@ -59,13 +90,19 @@ namespace Desktop.DataProviders
                 return null;
             }
         }
-        public int AddVozilo(Vozilo v)
+        public int AddVozilo(VoziloView v)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                s.Save(v);
+                Vozilo voz = null;
+                if (v.Tip.CompareTo("Putnicko") == 0)
+                    voz = new Putnicko(v.Registracija, v.Gorivo, v.OznakaMotora);
+                else if (v.Tip.CompareTo("Teretno") == 0)
+                    voz = new Teretno(v.Registracija, v.Gorivo, v.OznakaMotora);
+
+                s.Save(voz);
 
                 s.Flush();
                 s.Close();
@@ -98,14 +135,22 @@ namespace Desktop.DataProviders
             }
 
         }
-        public int UpdateVozilo(int id, Vozilo v)
+        public int UpdateVozilo(int id, VoziloView v)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
                 Vozilo voz = s.Load<Vozilo>(id);
-                voz = v;
+
+                if (v.Registracija != null)
+                    voz.Registracija = v.Registracija;
+
+                if (v.Gorivo != null)
+                    voz.Gorivo = v.Gorivo;
+
+                if (v.OznakaMotora != null)
+                    voz.OznakaMotora = v.OznakaMotora;
 
                 s.Update(voz);
 

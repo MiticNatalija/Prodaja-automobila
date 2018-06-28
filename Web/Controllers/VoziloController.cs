@@ -16,12 +16,12 @@ namespace Web.Controllers
     public class VoziloController : ApiController
     {
         //GET: api/Vozilo
-        public IEnumerable<Vozilo> Get()
+        public List<VoziloView> Get()
         {
 
             DataProvider provider = new DataProvider();
 
-            IEnumerable<Vozilo> vozila = provider.GetVozila();
+            List<VoziloView> vozila = provider.GetVozila();
 
             return vozila;
             
@@ -34,17 +34,28 @@ namespace Web.Controllers
             DataProvider provider = new DataProvider();
             
             return provider.GetVozilo(id);
-            
+
         }
         //POST: api/Vozilo
-        public int Post([FromBody]Vozilo v)
+    //        {
+    //	"Tip": "Putnicko",
+    //	"Registracija": "nekaREG",
+    //	"Gorivo": "nekoGorivo",
+    //	"OznakaMotora": "nekaOznaka"
+    //}
+    public int Post([FromBody]VoziloView v)
         {
             DataProvider provider = new DataProvider();
 
             return provider.AddVozilo(v);
         }
         //PUT: api/Vozilo/5
-        public int Put(int id, [FromBody]Vozilo v)
+    // {
+    //	"Registracija": "novaREG18",
+    //	"OznakaMotora": "novaOznaka"
+    // }
+    // bilo koji od atributa registracija, gorivo, oznakaMotora
+    public int Put(int id, [FromBody]VoziloView v)
         {
             DataProvider provider = new DataProvider();
             return provider.UpdateVozilo(id, v);

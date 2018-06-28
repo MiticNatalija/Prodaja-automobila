@@ -21,7 +21,7 @@ namespace Desktop.Entiteti
         public virtual IList<Zaposleni> Mehanicari { get; set; }
 
         public virtual IList<Angazuje> AngazujeMehanicari { get; set; }
-
+        
         public ServisKia()
         {
             Mehanicari = new List<Zaposleni>();

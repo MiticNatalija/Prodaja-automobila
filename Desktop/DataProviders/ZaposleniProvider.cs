@@ -16,17 +16,45 @@ namespace Desktop.DataProviders
 {
     public partial class DataProvider
     {
-        public IEnumerable<Zaposleni> GetZaposleni()
+        public List<ZaposleniView> GetZaposleni()
         {
+            List<ZaposleniView> zaposleniView = new List<ZaposleniView>();
             try
             {
                 ISession s = DataLayer.GetSession();
+                IEnumerable<Zaposleni> zaposleni = from p in s.Query<Zaposleni>()
+                                                             select p;
+                foreach (Zaposleni p in zaposleni)
+                {
+                    string tip = "Greska";
 
-                IEnumerable<Zaposleni> zaposleni = s.Query<Zaposleni>().Select(p => p);
+                    if (p is PredstavnikHyundai)
+                    {
+                        tip = "Predstavnik Hyundai";
+                    }
+                    else if (p is PredstavnikKia)
+                    {
+                        tip = "Predstavnik Kia";
+                    }
+                    else if (p is MehanicarHyundai)
+                    {
+                        tip = "Mehanicar Hyundai";
+                    }
+                    else if (p is MehanicarKia)
+                    {
+                        tip = "Mehanicar Kia";
+                    }
+                    
+                    
+                    zaposleniView.Add(new ZaposleniView(p.Id, tip, p.Mbr, p.LicnoIme, p.ImeOca, p.Prezime, p.DatumRodjenja,p.DatumZaposlenja));
+                }
+
+
+
                 s.Close();
 
-                return zaposleni;
-              
+                return zaposleniView;
+
             }
             catch (Exception ec)
             {
@@ -36,6 +64,7 @@ namespace Desktop.DataProviders
             }
 
         }
+
         public ZaposleniView GetZaposleni(int id)
         {
             try
@@ -60,13 +89,39 @@ namespace Desktop.DataProviders
             }
 
         }
-        public int AddZaposleni(Zaposleni z)
+        public int AddZaposleni(ZaposleniView p)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                s.Save(z);
+                Zaposleni pr = null;
+
+                if (p.Tip.CompareTo("Predstavnik Hyundai") == 0)
+                {
+                    pr = new PredstavnikHyundai();
+                }
+                else if (p.Tip.Equals("Predstavnik Kia"))
+                {
+                    pr = new PredstavnikKia();
+                }
+                else if (p.Tip.Equals("Mehanicar Hyundai"))
+                {
+                    pr = new MehanicarHyundai();
+                }
+                else if (p.Tip.Equals("Mehanicar Kia"))
+                {
+                    pr = new MehanicarKia();
+                }
+               
+                pr.Mbr = p.Mbr;
+                pr.LicnoIme = p.LicnoIme;
+                pr.ImeOca = p.ImeOca;
+                pr.Prezime = p.Prezime;
+                pr.DatumRodjenja = p.DatumRodjenja;
+                pr.DatumZaposlenja = p.DatumZaposlenja;
+
+                s.Save(pr);
 
                 s.Flush();
                 s.Close();
@@ -99,16 +154,31 @@ namespace Desktop.DataProviders
             }
 
         }
-        public int UpdateZaposleni(int id, Zaposleni v)
+        public int UpdateZaposleni(int id, ZaposleniView v)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
+                DateTime d = new DateTime(0001, 1, 1, 0, 0, 0);
 
-                Zaposleni z = s.Load<Zaposleni>(id);
-                z = v;
+                Zaposleni p = s.Load<Zaposleni>(id);
 
-                s.Update(z);
+                if (v.Mbr != null)
+                    p.Mbr = v.Mbr;
+                if (v.LicnoIme != null)
+                    p.LicnoIme = v.LicnoIme;
+                if (v.ImeOca != null)
+                    p.ImeOca = v.ImeOca;
+                if (v.Prezime != null)
+                    p.Prezime = v.Prezime;
+
+                if (DateTime.Compare(v.DatumRodjenja, d) != 0)
+                    p.DatumRodjenja = v.DatumRodjenja;
+
+                if (DateTime.Compare(v.DatumZaposlenja, d) != 0)
+                    p.DatumZaposlenja = v.DatumZaposlenja;
+
+                s.Update(p);
 
                 s.Flush();
                 s.Close();
@@ -119,7 +189,6 @@ namespace Desktop.DataProviders
             {
                 return -1;
             }
-
         }
     }
 }
