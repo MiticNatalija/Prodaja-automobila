@@ -12,7 +12,7 @@ namespace Desktop.Web_DTOs
        
         public int VoziloId { get; protected set; }
 
-        public string Tip { get; set; }  // ne sme protected set zbog post-a
+        public string Tip { get; set; }  
 
 
         public string Registracija { get; set; }
@@ -21,12 +21,25 @@ namespace Desktop.Web_DTOs
         public string OznakaMotora { get; set; }
 
         
-        //public int? BrojMesta { get; set; }
-       // public int? Nosivost { get; set; }
+        public int? BrojMesta { get; set; }
+        public int? Nosivost { get; set; }
   
 
         public VoziloView()
         { }
+        public VoziloView(int id, string tip, string reg, string gor, string om,int? br )
+        {
+            VoziloId = id;
+            Tip = tip;
+            Registracija = reg;
+            Gorivo = gor;
+            OznakaMotora = om;
+            if (tip == "Putnicko")
+                BrojMesta = br;
+            else
+                Nosivost = br;
+        }
+       
         public VoziloView(int id, string tip, string reg, string gor, string om)
         {
             VoziloId = id;
@@ -35,16 +48,19 @@ namespace Desktop.Web_DTOs
             Gorivo = gor;
             OznakaMotora = om;
         }
+
         public VoziloView(Vozilo v)
         {
             VoziloId = v.Id;
             Tip = v.GetType().ToString();
+            if (Tip.Contains("Putnicko"))
+                Tip = "Putnicko";
+            else
+                Tip = "Teretno";
             Registracija = v.Registracija;
             Gorivo = v.Gorivo;
             OznakaMotora = v.OznakaMotora;
-            //BrojMesta = v.BrojMesta;
-            //Nosivost = nosivost;
-            
+          
         }
 
     }

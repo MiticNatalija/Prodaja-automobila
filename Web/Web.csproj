@@ -242,6 +242,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PredstavnistvoController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VlasnikController.cs" />
     <Compile Include="Controllers\VoziloController.cs" />
     <Compile Include="Controllers\ZaposleniController.cs" />
     <Compile Include="Global.asax.cs">

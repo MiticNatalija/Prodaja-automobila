@@ -17,27 +17,7 @@ namespace Desktop.DataProviders
     public partial class DataProvider
     {
 
-        //public IEnumerable<Vozilo> GetVozila()
-        //{
-        //    try
-        //    {
-        //        ISession s = DataLayer.GetSession();
-
-        //        IEnumerable<Vozilo> vozila = s.Query<Vozilo>().Select(p => p);
-
-        //        s.Close();
-
-
-        //        return vozila;
-
-        //    }
-        //    catch (Exception ec)
-        //    {
-        //        // ec.Message;
-        //        // return -1;
-        //        return null;
-        //    }
-        //}
+      
         public List<VoziloView> GetVozila()
         {
             List<VoziloView> vozilaView = new List<VoziloView>();
@@ -49,10 +29,18 @@ namespace Desktop.DataProviders
                                                              select p;
                 foreach (Vozilo v in vozila)
                 {
-                    if(v is Putnicko)
-                        vozilaView.Add(new VoziloView(v.Id, "Putnicko", v.Registracija, v.Gorivo, v.OznakaMotora));
+                    if (v is Putnicko)
+                    {
+                        Putnicko pom = (Putnicko)v;
+                        VoziloView vo = new VoziloView(v.Id, "Putnicko", v.Registracija, v.Gorivo, v.OznakaMotora);
+                        vo.BrojMesta = pom.BrojMesta;
+                        vozilaView.Add(vo);
+                    }
                     else if (v is Teretno)
-                        vozilaView.Add(new VoziloView(v.Id, "Teretno", v.Registracija, v.Gorivo, v.OznakaMotora));
+                    {
+                        Teretno pom = (Teretno)v;
+                        vozilaView.Add(new VoziloView(v.Id, "Teretno", v.Registracija, v.Gorivo, v.OznakaMotora,pom.Nosivost));
+                    }
 
                 }
                 s.Close();
@@ -80,6 +68,16 @@ namespace Desktop.DataProviders
                 if (v != null)
                 {
                     toret = new VoziloView(v);
+                    if (v is Teretno)
+                    {
+                        Teretno pom = (Teretno)v;
+                        toret.Nosivost = pom.Nosivost;
+                    }
+                    else if(v is Putnicko)
+                    {
+                        Putnicko pom = (Putnicko)v;
+                        toret.BrojMesta = pom.BrojMesta;
+                    }
                 }
                 return toret;
             }
@@ -96,13 +94,23 @@ namespace Desktop.DataProviders
             {
                 ISession s = DataLayer.GetSession();
 
-                Vozilo voz = null;
+                
                 if (v.Tip.CompareTo("Putnicko") == 0)
-                    voz = new Putnicko(v.Registracija, v.Gorivo, v.OznakaMotora);
-                else if (v.Tip.CompareTo("Teretno") == 0)
-                    voz = new Teretno(v.Registracija, v.Gorivo, v.OznakaMotora);
+                {
+                    Putnicko pu = new Putnicko(v.Registracija, v.Gorivo, v.OznakaMotora, v.BrojMesta);
+                    s.Save(pu);
 
-                s.Save(voz);
+                }
+
+                else if (v.Tip.CompareTo("Teretno") == 0)
+                {
+
+                    Teretno te = new Teretno(v.Registracija, v.Gorivo, v.OznakaMotora, v.Nosivost);
+                    s.Save(te);
+                   // voz = new Teretno(v.Registracija, v.Gorivo, v.OznakaMotora);
+                }
+
+              //  s.Save(voz);
 
                 s.Flush();
                 s.Close();
@@ -137,27 +145,52 @@ namespace Desktop.DataProviders
         }
         public int UpdateVozilo(int id, VoziloView v)
         {
+            int pov = -1;
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                Vozilo voz = s.Load<Vozilo>(id);
+                //   Vozilo voz = s.Load<Vozilo>(id);
+                Vozilo voz = (from t in s.Query<Vozilo>() where t.Id == id select t).Single<Vozilo>();
+                if (voz is Putnicko)
+                {
+                   
+                    Putnicko pu = (Putnicko)voz;
+                    if (v.Registracija != null)
+                        pu.Registracija = v.Registracija;
+                    if (v.Gorivo != null)
+                        pu.Gorivo = v.Gorivo;
+                    if (v.OznakaMotora != null)
+                        pu.OznakaMotora = v.OznakaMotora;
+                    if (v.BrojMesta != null)
+                        pu.BrojMesta = v.BrojMesta;
+                    s.Update(pu);
+                    pov = 1;
+       
+                }
+                else if(voz is Teretno)
+                {
+                    Teretno te = (Teretno)voz;
+                    if (v.Registracija != null)
+                        te.Registracija = v.Registracija;
 
-                if (v.Registracija != null)
-                    voz.Registracija = v.Registracija;
+                    if (v.Gorivo != null)
+                        te.Gorivo = v.Gorivo;
 
-                if (v.Gorivo != null)
-                    voz.Gorivo = v.Gorivo;
+                    if (v.OznakaMotora != null)
+                        te.OznakaMotora = v.OznakaMotora;
 
-                if (v.OznakaMotora != null)
-                    voz.OznakaMotora = v.OznakaMotora;
+                    if (v.Nosivost != null)
+                        te.Nosivost = v.Nosivost;
+                    pov = 1;
+                }
 
-                s.Update(voz);
+              //  s.Update(voz);
 
                 s.Flush();
                 s.Close();
 
-                return 1;
+                return pov;
             }
             catch (Exception ec)
             {

@@ -22,9 +22,13 @@ namespace Desktop.Web_DTOs
         public string ImeOca { get; set; }
         public string Prezime { get; set; }
        
-        public DateTime DatumRodjenja { get; set; }
+        public DateTime? DatumRodjenja { get; set; }
        
-        public DateTime DatumZaposlenja { get; set; }
+        public DateTime? DatumZaposlenja { get; set; }
+
+        public string Specijalnost { get; set; }
+        public virtual string Adresa { get; set; }
+        public virtual string Telefon { get; set; }
 
         public ZaposleniView()
         { }

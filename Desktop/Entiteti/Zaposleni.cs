@@ -16,6 +16,7 @@ namespace Desktop.Entiteti
         public virtual DateTime DatumRodjenja { get; set; }
         public virtual DateTime DatumZaposlenja { get; set; }
         public virtual string Tip { get; set; }
+        
     }
 
     public class PredstavnikKia : Zaposleni
@@ -28,6 +29,18 @@ namespace Desktop.Entiteti
         {
             Vozila = new List<Vozilo>();
             Predstavnistva = new List<Predstavnistvo>();
+        }
+        public PredstavnikKia(string mbr,string ime,string imeOca,string prezime,DateTime dr,DateTime dz,string adresa,string tel)
+        {
+           
+            Mbr = mbr;
+            LicnoIme = ime;
+            ImeOca = imeOca;
+            Prezime = prezime;
+            DatumRodjenja = dr;
+            DatumZaposlenja = dz;
+            Adresa = adresa;
+            Telefon = tel;
         }
     }
 
@@ -52,6 +65,18 @@ namespace Desktop.Entiteti
             Vozila = new List<Vozilo>();
             Predstavnistva = new List<Predstavnistvo>();
         }
+        public PredstavnikHyundai(string mbr, string ime, string imeOca, string prezime, DateTime dr, DateTime dz, string adresa, string tel)
+        {
+         
+            Mbr = mbr;
+            LicnoIme = ime;
+            ImeOca = imeOca;
+            Prezime = prezime;
+            DatumRodjenja = dr;
+            DatumZaposlenja = dz;
+            Adresa = adresa;
+            Telefon = tel;
+        }
     }
 
     public class MehanicarKia : Zaposleni
@@ -69,6 +94,17 @@ namespace Desktop.Entiteti
             Servisi = new List<Predstavnistvo>();
             AngazujeServisi = new List<Angazuje>();
             Knjizice = new List<Knjizica>();
+        }
+        public MehanicarKia(string mbr, string ime, string imeOca, string prezime, DateTime dr, DateTime dz, string spec)
+        {
+           
+            Mbr = mbr;
+            LicnoIme = ime;
+            ImeOca = imeOca;
+            Prezime = prezime;
+            DatumRodjenja = dr;
+            DatumZaposlenja = dz;
+            Specijalnost = spec;
         }
     }
 
@@ -93,6 +129,17 @@ namespace Desktop.Entiteti
             Servisi = new List<Predstavnistvo>();
             AngazujeServisi = new List<Angazuje>();
             Knjizice = new List<Knjizica>();
+        }
+        public MehanicarHyundai(string mbr, string ime, string imeOca, string prezime, DateTime dr, DateTime dz, string spec)
+        {
+            
+            Mbr = mbr;
+            LicnoIme = ime;
+            ImeOca = imeOca;
+            Prezime = prezime;
+            DatumRodjenja = dr;
+            DatumZaposlenja = dz;
+            Specijalnost = spec;
         }
     }
 

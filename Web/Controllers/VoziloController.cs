@@ -29,20 +29,12 @@ namespace Web.Controllers
         // GET: api/Vozilo/5
         public VoziloView Get(int id)
         {
-            //return DTOManager.GetVozilo(43);
-
             DataProvider provider = new DataProvider();
             
             return provider.GetVozilo(id);
 
         }
         //POST: api/Vozilo
-    //        {
-    //	"Tip": "Putnicko",
-    //	"Registracija": "nekaREG",
-    //	"Gorivo": "nekoGorivo",
-    //	"OznakaMotora": "nekaOznaka"
-    //}
     public int Post([FromBody]VoziloView v)
         {
             DataProvider provider = new DataProvider();
@@ -50,11 +42,6 @@ namespace Web.Controllers
             return provider.AddVozilo(v);
         }
         //PUT: api/Vozilo/5
-    // {
-    //	"Registracija": "novaREG18",
-    //	"OznakaMotora": "novaOznaka"
-    // }
-    // bilo koji od atributa registracija, gorivo, oznakaMotora
     public int Put(int id, [FromBody]VoziloView v)
         {
             DataProvider provider = new DataProvider();

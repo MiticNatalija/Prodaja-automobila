@@ -32,15 +32,6 @@ namespace Web.Controllers
         }
 
         // POST: api/Zaposleni
-//        {
-//	"Tip": "Predstavnik Kia",
-//	"Mbr": "1809776542345",
-//	"LicnoIme": "Marija",
-//    "ImeOca": "Marko",
-//    "Prezime": "Maric",
-//    "DatumRodjenja": "1996-06-15T00:00:00",
-//    "DatumZaposlenja": "2018-06-15T00:00:00"
-//}
     public int Post([FromBody]ZaposleniView value)
         {
             DataProvider provider = new DataProvider();
@@ -48,10 +39,6 @@ namespace Web.Controllers
         }
 
         // PUT: api/Zaposleni/5
-    //  {  "ImeOca": "Misko",
-    //"Prezime": "Simicicic",
-    //"DatumZaposlenja": "2018-06-15T00:00:00"
-    // }
         public int Put(int id, [FromBody]ZaposleniView value)
         {
 

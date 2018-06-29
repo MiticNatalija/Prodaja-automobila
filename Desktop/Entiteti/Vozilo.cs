@@ -44,6 +44,14 @@ namespace Desktop.Entiteti
             Gorivo = g;
             OznakaMotora = o;
         }
+        public Putnicko(string r, string g, string o,int? br)
+        {
+            Registracija = r;
+            Gorivo = g;
+            OznakaMotora = o;
+            BrojMesta = br;
+        }
+
 
     }
 
@@ -57,6 +65,13 @@ namespace Desktop.Entiteti
             Registracija = r;
             Gorivo = g;
             OznakaMotora = o;
+        }
+        public Teretno(string r, string g, string o,int? no)
+        {
+            Registracija = r;
+            Gorivo = g;
+            OznakaMotora = o;
+            Nosivost = no;
         }
 
     }
