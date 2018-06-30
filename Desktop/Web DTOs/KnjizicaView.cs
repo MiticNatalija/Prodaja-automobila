@@ -9,12 +9,12 @@ namespace Desktop.Web_DTOs
 {
     public class KnjizicaView
     {
-        public virtual int Id { get; protected set; }
-        public virtual DateTime DatumIntervencije { get; set; }
-        public virtual int CenaUsluge { get; set; }
-        public virtual string Radovi { get; set; }
-        public virtual int IdVozila { get; set; }
-        public virtual int IdServisa { get; set; }
+        public int Id { get; protected set; }
+        public DateTime DatumIntervencije { get; set; }
+        public int CenaUsluge { get; set; }
+        public string Radovi { get; set; }
+        public int IdVozila { get; set; }
+        public int IdServisa { get; set; }
 
         public KnjizicaView() { }
         public KnjizicaView(int id, DateTime datumIntervencije, int cenaUsluge, string radovi)

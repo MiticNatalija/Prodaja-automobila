@@ -67,8 +67,20 @@ namespace Desktop.DataProviders
                 Kupac kt = new Kupac();
 
                 kt.Vozilo = s.Get<Vozilo>(k.VoziloId);
-
                 s.Save(kt);
+
+                if(k.FizickoLice != null)
+                {
+                    FizickoLice tmp = new FizickoLice(k.FizickoLice.Jmbg, k.FizickoLice.Ime, k.FizickoLice.Prezime, k.FizickoLice.Adresa, k.FizickoLice.Telefon);
+                    tmp.Kupac = kt;
+                    s.Save(tmp);
+                }
+                else
+                {
+                    PravnoLice tmp = new PravnoLice(k.PravnoLice.Pib, k.PravnoLice.Ime, k.PravnoLice.Prezime, k.PravnoLice.Telefon);
+                    tmp.Kupac = kt;
+                    s.Save(tmp);
+                }
 
                 s.Flush();
                 s.Close();
@@ -111,6 +123,23 @@ namespace Desktop.DataProviders
                 Kupac k = s.Load<Kupac>(id);
 
                 k.Vozilo = s.Get<Vozilo>(v.VoziloId);
+                if(v.PravnoLice != null)
+                {
+                    PravnoLice tmp = k.PLice;
+                    tmp.Ime = v.PravnoLice.Ime;
+                    tmp.Prezime = v.PravnoLice.Prezime;
+                    tmp.Telefon = v.PravnoLice.Telefon;
+                    s.Update(tmp);
+                }
+                else
+                {
+                    FizickoLice tmp = k.FLice;
+                    tmp.Ime = v.FizickoLice.Ime;
+                    tmp.Prezime = v.FizickoLice.Prezime;
+                    tmp.Telefon = v.FizickoLice.Telefon;
+                    tmp.Adresa = v.FizickoLice.Adresa;
+                    s.Update(tmp);
+                }
 
                 s.Update(k);
 

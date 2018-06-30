@@ -229,8 +229,10 @@
     <Compile Include="VoziloPredstavnistvoPregled.Designer.cs">
       <DependentUpon>VoziloPredstavnistvoPregled.cs</DependentUpon>
     </Compile>
+    <Compile Include="Web DTOs\FizickoLiceView.cs" />
     <Compile Include="Web DTOs\KnjizicaView.cs" />
     <Compile Include="Web DTOs\KupacView.cs" />
+    <Compile Include="Web DTOs\PravnoLiceView.cs" />
     <Compile Include="Web DTOs\PredstavnistvoView.cs" />
     <Compile Include="Web DTOs\VlasnikView.cs" />
     <Compile Include="Web DTOs\VoziloView.cs" />
