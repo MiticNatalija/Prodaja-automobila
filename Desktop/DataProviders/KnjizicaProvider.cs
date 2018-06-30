@@ -34,24 +34,17 @@ namespace Desktop.DataProviders
             { return null; }
         }
 
-        public List<KnjizicaView> GetKnjizica(int id)
+        public KnjizicaView GetKnjizica(int id)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
-                List<KnjizicaView> sveKnjizice = new List<KnjizicaView>();
-                 List<Knjizica> knjiziceZaVozilo = (from p in s.Query<Knjizica>()
-                                                    select p).ToList<Knjizica>();
                 Knjizica k = s.Get<Knjizica>(id);
+
+                KnjizicaView kt = new KnjizicaView(k);
+
                 s.Close();
-                 foreach(Knjizica t in knjiziceZaVozilo)
-                {
-                    if (t.Vozilo.Id == id)
-                    {
-                        sveKnjizice.Add(new KnjizicaView(t));
-                    }
-                }
-                return sveKnjizice;
+                return kt;
             }
             catch (Exception ec)
             {

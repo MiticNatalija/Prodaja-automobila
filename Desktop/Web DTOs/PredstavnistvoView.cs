@@ -15,15 +15,17 @@ namespace Desktop.Web_DTOs
         public string Adresa { get; set; }
     
         public DateTime DatumOtvaranja { get; set; }
+        public DateTime? DatumVazenjaLicence { get; set; }
 
         public PredstavnistvoView()
         { }
-        public PredstavnistvoView(int id, string tip, string adresa, DateTime datumOtvaranja)
+        public PredstavnistvoView(int id, string tip, string adresa, DateTime datumOtvaranja, DateTime? datumVazenjaLicence)
         {
             PredstavnistvoId = id;
             Tip = tip;
             Adresa = adresa;
             DatumOtvaranja = datumOtvaranja;
+            DatumVazenjaLicence = datumVazenjaLicence;
         }
         public PredstavnistvoView(Predstavnistvo p)
         {
@@ -34,6 +36,7 @@ namespace Desktop.Web_DTOs
             if (p is SalonHyundai)
             {
                 this.Tip = "Salon Hyundai";
+                DatumVazenjaLicence = ((SalonHyundai)p).DatumVazenjaLicence;
             }
             else if (p is SalonKia)
             {
@@ -42,6 +45,7 @@ namespace Desktop.Web_DTOs
             else if (p is SalonHyundaiKia)
             {
                 this.Tip = "Salon Hyundai i Kia";
+                DatumVazenjaLicence = ((SalonHyundaiKia)p).DatumVazenjaLicence;
             }
             else if (p is ServisHyundai)
             {
@@ -58,6 +62,7 @@ namespace Desktop.Web_DTOs
             else if (p is SalonServisHyundai)
             {
                 this.Tip = "Salon i Servis Hyundai";
+                DatumVazenjaLicence = ((SalonServisHyundai)p).DatumVazenjaLicence;
             }
             else if (p is SalonServisKia)
             {
@@ -66,6 +71,7 @@ namespace Desktop.Web_DTOs
             else if (p is SalonServisHyundaiKia)
             {
                 this.Tip = "Salon i Servis Hyundai i Kia";
+                DatumVazenjaLicence = ((SalonServisHyundaiKia)p).DatumVazenjaLicence;
             }
 
         }

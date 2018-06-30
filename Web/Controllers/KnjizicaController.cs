@@ -23,12 +23,10 @@ namespace Web.Controllers
         }
 
         // GET: api/Knjizica/22
-        //ispisuje knjizice za vozilo sa zadatim id-em
-        public List<KnjizicaView> Get(int id)
+        public KnjizicaView Get(int id)
         {
             DataProvider provider = new DataProvider();
             return provider.GetKnjizica(id);
-
         }
 
         // POST: api/Knjizica

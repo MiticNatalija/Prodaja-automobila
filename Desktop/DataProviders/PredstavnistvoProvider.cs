@@ -21,48 +21,8 @@ namespace Desktop.DataProviders
                                                              select p;
                 foreach (Predstavnistvo p in predstavnistva)
                 {
-                    string tip = "Greska";
-
-                    if (p is SalonHyundai)
-                    {
-                      tip = "Salon Hyundai";
-                    }
-                    else if (p is SalonKia)
-                    {
-                       tip = "Salon Kia";
-                    }
-                    else if (p is SalonHyundaiKia)
-                    {
-                        tip = "Salon Hyundai i Kia";
-                    }
-                    else if (p is ServisHyundai)
-                    {
-                        tip = "Servis Hyundai";
-                    }
-                    else if (p is ServisKia)
-                    {
-                        tip = "Servis Kia";
-                    }
-                    else if (p is ServisHyundaiKia)
-                    {
-                        tip = "Servis Hyundai i Kia";
-                    }
-                    else if (p is SalonServisHyundai)
-                    {
-                       tip = "Salon i Servis Hyundai";
-                    }
-                    else if (p is SalonServisKia)
-                    {
-                        tip = "Salon i Servis Kia";
-                    }
-                    else if (p is SalonServisHyundaiKia)
-                    {
-                        tip = "Salon i Servis Hyundai i Kia";
-                    }
-                    predstavnistvaView.Add(new PredstavnistvoView(p.Id, tip, p.Adresa, p.DatumOtvaranja));
+                    predstavnistvaView.Add(new PredstavnistvoView(p));
                 }
-
-
 
                 s.Close();
 
@@ -113,6 +73,7 @@ namespace Desktop.DataProviders
                 if (p.Tip.CompareTo( "Salon Hyundai") == 0)
                 {
                     pr = new SalonHyundai();
+                    ((SalonHyundai)pr).DatumVazenjaLicence = (DateTime)p.DatumVazenjaLicence;
                 }
                 else if (p.Tip.Equals("Salon Kia"))
                 {
@@ -121,6 +82,7 @@ namespace Desktop.DataProviders
                 else if (p.Tip.Equals("Salon Hyundai i Kia"))
                 {
                     pr = new SalonHyundaiKia();
+                    ((SalonHyundaiKia)pr).DatumVazenjaLicence = (DateTime)p.DatumVazenjaLicence;
                 }
                 else if (p.Tip.Equals("Servis Hyundai"))
                 {
@@ -137,6 +99,7 @@ namespace Desktop.DataProviders
                 else if (p.Tip.CompareTo("Salon i Servis Hyundai") == 0)
                 {
                     pr = new SalonServisHyundai();
+                    ((SalonServisHyundai)pr).DatumVazenjaLicence = (DateTime)p.DatumVazenjaLicence;
                 }
                 else if (p.Tip.Equals("Salon i Servis Kia"))
                 {
@@ -145,6 +108,7 @@ namespace Desktop.DataProviders
                 else if (p.Tip.Equals("Salon i Servis Hyundai i Kia"))
                 {
                     pr = new SalonServisHyundaiKia();
+                    ((SalonServisHyundaiKia)pr).DatumVazenjaLicence = (DateTime)p.DatumVazenjaLicence;
                 }
 
                 pr.Adresa = p.Adresa;
