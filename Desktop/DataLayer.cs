@@ -39,8 +39,8 @@ namespace Desktop
             {
                 var cfg = OracleManagedDataClientConfiguration.Oracle10
                 .ConnectionString(c =>
-                 // c.Is("Data Source=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;User Id=S15794;Password=OSQLD15794"));
-                    c.Is("Data Source=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;User Id=S15764;Password=S15764"));
+                 c.Is("Data Source=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;User Id=S15794;Password=OSQLD15794"));
+                  //  c.Is("Data Source=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;User Id=S15764;Password=S15764"));
                 //   c.Is("Data Source=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;User Id=S15680;Password=sbpasd680"));
                 //  c.Is("Data Source=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;User Id=S15750;Password=S15750"));
 

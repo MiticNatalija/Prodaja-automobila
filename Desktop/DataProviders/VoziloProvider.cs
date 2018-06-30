@@ -182,6 +182,7 @@ namespace Desktop.DataProviders
 
                     if (v.Nosivost != null)
                         te.Nosivost = v.Nosivost;
+                    s.Update(te);
                     pov = 1;
                 }
 

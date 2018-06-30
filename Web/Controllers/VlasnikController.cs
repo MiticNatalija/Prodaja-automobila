@@ -32,6 +32,7 @@ namespace Web.Controllers
         }
 
         // POST: api/Vlasnik/5
+        //kreira vlasnika jedino ako postoji vozilo sa zadatim id-em
         public int Post(int id,[FromBody]VlasnikView value)
         {
             DataProvider provider = new DataProvider();
