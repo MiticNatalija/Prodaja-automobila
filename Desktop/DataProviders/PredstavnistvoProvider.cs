@@ -69,32 +69,115 @@ namespace Desktop.DataProviders
                 ISession s = DataLayer.GetSession();
                
                 Predstavnistvo pr = null;
+                Zaposleni zapKia = null;
+                Zaposleni zapHyundai = null;
+                if(p.PKiaId!=null)
+                zapKia = s.Get<Zaposleni>((int)p.PKiaId);
+                if(p.PHyundaiId!=null)
+                zapHyundai = s.Get<Zaposleni>((int)p.PHyundaiId);
 
                 if (p.Tip.CompareTo( "Salon Hyundai") == 0)
                 {
                     pr = new SalonHyundai();
                     ((SalonHyundai)pr).DatumVazenjaLicence = (DateTime)p.DatumVazenjaLicence;
+                    if (zapHyundai != null)
+                    {
+                        if (zapHyundai is PredstavnikHyundai)
+                        {
+                            ((SalonHyundai)pr).PredstavnikHyundai = (PredstavnikHyundai)zapHyundai;
+                            ((PredstavnikHyundai)zapHyundai).Predstavnistva.Add(pr);
+                        }
+                    }
+                    else ((SalonHyundai)pr).PredstavnikHyundai = null;
                 }
+
                 else if (p.Tip.Equals("Salon Kia"))
                 {
                     pr = new SalonKia();
+                    if (zapKia != null)
+                    {
+                        if (zapKia is PredstavnikKia)
+                        {
+                            ((SalonKia)pr).PredstavnikKia = (PredstavnikKia)zapKia;
+                            ((PredstavnikKia)zapKia).Predstavnistva.Add(pr);
+                        }
+                    }
+                    else ((SalonKia)pr).PredstavnikKia = null;
                 }
+
                 else if (p.Tip.Equals("Salon Hyundai i Kia"))
                 {
                     pr = new SalonHyundaiKia();
                     ((SalonHyundaiKia)pr).DatumVazenjaLicence = (DateTime)p.DatumVazenjaLicence;
+                    if (zapHyundai != null)
+                    {
+                        if (zapHyundai is PredstavnikHyundai)
+                        {
+                            ((SalonHyundaiKia)pr).PredstavnikHyundai = (PredstavnikHyundai)zapHyundai;
+                            ((PredstavnikHyundai)zapHyundai).Predstavnistva.Add(pr);
+                        }
+                    }
+                    else ((SalonHyundaiKia)pr).PredstavnikHyundai = null;
+
+                    if (zapKia != null)
+                    {
+                        if (zapKia is PredstavnikKia)
+                        {
+                            ((SalonHyundaiKia)pr).PredstavnikKia = (PredstavnikKia)zapKia;
+                            ((PredstavnikKia)zapKia).Predstavnistva.Add(pr);
+                        }
+                    }
+                    else ((SalonHyundaiKia)pr).PredstavnikKia = null;
                 }
                 else if (p.Tip.Equals("Servis Hyundai"))
                 {
                     pr = new ServisHyundai();
+                    if (zapHyundai != null)
+                    {
+                        if (zapHyundai is PredstavnikHyundai)
+                        {
+                            ((ServisHyundai)pr).PredstavnikHyundai = (PredstavnikHyundai)zapHyundai;
+                            ((PredstavnikHyundai)zapHyundai).Predstavnistva.Add(pr);
+                        }
+                    }
+                    else ((ServisHyundai)pr).PredstavnikHyundai = null;
                 }
+
                 else if (p.Tip.Equals("Servis Kia"))
                 {
                     pr = new ServisKia();
+                    if (zapKia != null)
+                    {
+                        if (zapKia is PredstavnikKia)
+                        {
+                            ((ServisKia)pr).PredstavnikKia = (PredstavnikKia)zapKia;
+                            ((PredstavnikKia)zapKia).Predstavnistva.Add(pr);
+                        }
+                    }
+                    else ((ServisKia)pr).PredstavnikKia = null;
                 }
                 else if (p.Tip.Equals("Servis Hyundai i Kia"))
                 {
                     pr = new ServisHyundaiKia();
+                    if (zapHyundai != null)
+                    {
+                        if (zapHyundai is PredstavnikHyundai)
+                        {
+                            ((ServisHyundaiKia)pr).PredstavnikHyundai = (PredstavnikHyundai)zapHyundai;
+                            ((PredstavnikHyundai)zapHyundai).Predstavnistva.Add(pr);
+                        }
+                    }
+                    else ((ServisHyundaiKia)pr).PredstavnikHyundai = null;
+
+                    if (zapKia != null)
+                    {
+                        if (zapKia is PredstavnikKia)
+                        {
+                            ((ServisHyundaiKia)pr).PredstavnikKia = (PredstavnikKia)zapKia;
+                            ((PredstavnikKia)zapKia).Predstavnistva.Add(pr);
+                        }
+                    }
+                    else ((ServisHyundaiKia)pr).PredstavnikKia = null;
                 }
                 else if (p.Tip.CompareTo("Salon i Servis Hyundai") == 0)
                 {
@@ -104,11 +187,39 @@ namespace Desktop.DataProviders
                 else if (p.Tip.Equals("Salon i Servis Kia"))
                 {
                     pr = new SalonServisKia();
+                    if (zapKia != null)
+                    {
+                        if (zapKia is PredstavnikKia)
+                        {
+                            ((SalonServisKia)pr).PredstavnikKia = (PredstavnikKia)zapKia;
+                            ((PredstavnikKia)zapKia).Predstavnistva.Add(pr);
+                        }
+                    }
+                    else ((SalonServisKia)pr).PredstavnikKia = null;
                 }
                 else if (p.Tip.Equals("Salon i Servis Hyundai i Kia"))
                 {
                     pr = new SalonServisHyundaiKia();
                     ((SalonServisHyundaiKia)pr).DatumVazenjaLicence = (DateTime)p.DatumVazenjaLicence;
+                    if (zapHyundai != null)
+                    {
+                        if (zapHyundai is PredstavnikHyundai)
+                        {
+                            ((SalonServisHyundaiKia)pr).PredstavnikHyundai = (PredstavnikHyundai)zapHyundai;
+                            ((PredstavnikHyundai)zapHyundai).Predstavnistva.Add(pr);
+                        }
+                    }
+                    else ((SalonServisHyundaiKia)pr).PredstavnikHyundai = null;
+
+                    if (zapKia != null)
+                    {
+                        if (zapKia is PredstavnikKia)
+                        {
+                            ((SalonServisHyundaiKia)pr).PredstavnikKia = (PredstavnikKia)zapKia;
+                            ((PredstavnikKia)zapKia).Predstavnistva.Add(pr);
+                        }
+                    }
+                    else ((SalonServisHyundaiKia)pr).PredstavnikKia = null;
                 }
 
                 pr.Adresa = p.Adresa;
