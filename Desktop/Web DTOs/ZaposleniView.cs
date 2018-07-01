@@ -30,8 +30,15 @@ namespace Desktop.Web_DTOs
         public virtual string Adresa { get; set; }
         public virtual string Telefon { get; set; }
 
+        //dodato
+        public List<int> VozilaId { get; set; }
+        public int? PredstavnistvoId { get; set; }
+
         public ZaposleniView()
-        { }
+        {
+            VozilaId = new List<int>();
+            
+        }
         public ZaposleniView(int id, string tip, string mbr, string lime, string ime, string prezime, DateTime r, DateTime z)
         {
             this.ZaposleniId = id;
@@ -42,6 +49,8 @@ namespace Desktop.Web_DTOs
             this.Prezime = prezime;
             this.DatumRodjenja = r;
             this.DatumZaposlenja = z;
+            VozilaId = new List<int>();
+            
         }
         public ZaposleniView(string mbr, string lime, string ime, string prezime, DateTime r, DateTime z)
         {
@@ -52,6 +61,8 @@ namespace Desktop.Web_DTOs
             this.Prezime = prezime;
             this.DatumRodjenja = r;
             this.DatumZaposlenja = z;
+            VozilaId = new List<int>();
+            
         }
 
         public ZaposleniView(Zaposleni z)
@@ -72,7 +83,8 @@ namespace Desktop.Web_DTOs
             this.Prezime = z.Prezime;
             this.DatumRodjenja = z.DatumRodjenja;
             this.DatumZaposlenja = z.DatumZaposlenja;
-            
+            VozilaId = new List<int>();
+           
         }
     }
 }

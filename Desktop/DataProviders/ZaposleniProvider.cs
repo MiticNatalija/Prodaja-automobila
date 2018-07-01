@@ -75,6 +75,9 @@ namespace Desktop.DataProviders
                 ISession s = DataLayer.GetSession();
                 //  Zaposleni z = (from t in s.Query<Zaposleni>() where t.Id == id select t).Single<Zaposleni>();
                 Zaposleni z = s.Get<Zaposleni>(id);
+                List<Vozilo> vozila = (from t in s.Query<Vozilo>() where t.Predstavnik.Id == z.Id select t).ToList<Vozilo>();
+                List<Predstavnistvo> pred = (from p in s.Query<Predstavnistvo>()
+                                             select p).ToList<Predstavnistvo>();
               
                 ZaposleniView zap = null;
                 if (z != null)
@@ -103,8 +106,147 @@ namespace Desktop.DataProviders
                     {
                         MehanicarHyundai mh = (MehanicarHyundai)z;
                         zap.Specijalnost = mh.Specijalnost;
-                    }  
-               
+                    }
+                    foreach (Vozilo v in vozila)
+                    {
+                        zap.VozilaId.Add(v.Id);
+                    }
+
+
+                    foreach (Predstavnistvo p in pred)
+                    {
+
+                        if (p is SalonHyundai)
+                        {
+                            SalonHyundai sh = (SalonHyundai)p;
+                            if (sh.PredstavnikHyundai != null)
+                                if (sh.PredstavnikHyundai.Id == zap.ZaposleniId)
+                                {
+                                    zap.PredstavnistvoId = sh.Id;
+                                    break;
+                                }
+                        }
+                      else  if (p is SalonKia)
+                        {
+                            SalonKia sh = (SalonKia)p;
+                            if (sh.PredstavnikKia != null)
+                                if (sh.PredstavnikKia.Id == zap.ZaposleniId)
+                                {
+                                    zap.PredstavnistvoId = sh.Id;
+                                    break;
+                                }
+                        }
+                        else if (p is SalonHyundaiKia)
+                        {
+
+                            SalonHyundaiKia sh = (SalonHyundaiKia)p;
+                            if (sh.PredstavnikKia != null)
+                            {
+                                if (sh.PredstavnikKia.Id == zap.ZaposleniId)
+                                {
+                                    zap.PredstavnistvoId = sh.Id;
+                                    break;
+                                }
+                            }
+                           
+                            
+                                if (sh.PredstavnikHyundai != null)
+                                    if (sh.PredstavnikHyundai.Id == zap.ZaposleniId)
+                                    {
+                                        zap.PredstavnistvoId = sh.Id;
+                                        break;
+                                    }
+                            
+
+
+                        }
+                        else if (p is ServisHyundai)
+                        {
+
+                            ServisHyundai sh = (ServisHyundai)p;
+                            if (sh.PredstavnikHyundai != null)
+                                if (sh.PredstavnikHyundai.Id == zap.ZaposleniId)
+                                {
+                                    zap.PredstavnistvoId = sh.Id;
+
+                                    break;
+                                }
+
+                        }
+                        else if (p is ServisKia)
+                        {
+                            ServisKia sh = (ServisKia)p;
+                            if (sh.PredstavnikKia != null)
+                                if (sh.PredstavnikKia.Id == zap.ZaposleniId)
+                                {
+                                    zap.PredstavnistvoId = sh.Id;
+                                    break;
+                                }
+                        }
+                        else if (p is ServisHyundaiKia)
+                        {
+                            ServisHyundaiKia sh = (ServisHyundaiKia)p;
+                            if (sh.PredstavnikKia != null)
+                            {
+                                if (sh.PredstavnikKia.Id == zap.ZaposleniId)
+                                {
+                                    zap.PredstavnistvoId = sh.Id;
+                                    break;
+                                }
+                            }
+                            if (sh.PredstavnikHyundai != null)
+                            
+                                if (sh.PredstavnikHyundai.Id == zap.ZaposleniId)
+                                {
+                                    zap.PredstavnistvoId = sh.Id;
+                                    break;
+                                }
+                            
+                        }
+                        else if (p is SalonServisHyundai)
+                        {
+                            SalonServisHyundai sh = (SalonServisHyundai)p;
+                            if (sh.PredstavnikHyundai != null)
+                                if (sh.PredstavnikHyundai.Id == zap.ZaposleniId)
+                                {
+                                    zap.PredstavnistvoId = sh.Id;
+                                    break;
+                                }
+                        }
+                        else if (p is SalonServisKia)
+                        {
+                            SalonServisKia sh = (SalonServisKia)p;
+                            if (sh.PredstavnikKia != null)
+                                if (sh.PredstavnikKia.Id == zap.ZaposleniId)
+                                {
+                                    zap.PredstavnistvoId = sh.Id;
+                                    break;
+                                }
+
+                        }
+                        else if (p is SalonServisHyundaiKia)
+                        {
+                            SalonServisHyundaiKia sh = (SalonServisHyundaiKia)p;
+                            if (sh.PredstavnikKia != null)
+                            {
+                                if (sh.PredstavnikKia.Id == zap.ZaposleniId)
+                                {
+                                    zap.PredstavnistvoId = sh.Id;
+                                    break;
+                                }
+                            }
+                            if (sh.PredstavnikHyundai != null)
+                            
+                                if (sh.PredstavnikHyundai.Id == zap.ZaposleniId)
+                                {
+                                    zap.PredstavnistvoId = sh.Id;
+                                    break;
+                                }
+                            
+                        }
+                       
+                    }
+
                 }
                 s.Close();
                 return zap;
